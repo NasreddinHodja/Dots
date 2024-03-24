@@ -1,0 +1,5 @@
+host = '192.168.1.102'
+port = '1234'
+username = 'nasreddin'
+source = '/media/manga'
+destination = 'Pictures/manga'

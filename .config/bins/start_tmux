@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Start a new tmux session
+tmux new-session -d -s default
+
+# Rename the first window to "home"
+tmux rename-window -t default:1 "home"
+
+# Attach to the new session
+tmux attach -t default

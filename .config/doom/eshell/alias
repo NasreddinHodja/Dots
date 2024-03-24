@@ -1,0 +1,69 @@
+alias D cd ~/Downloads && ls -a
+alias YT youtube-viewer
+alias bat bat --theme=Dracula
+alias batt cat /sys/class/power_supply/BAT?/capacity
+alias bd emacsclient -n ~/.config/directories
+alias bf emacsclient -n ~/.config/files
+alias btd bluetoothctl disconnect
+alias bto bluetoothctl power on; bluetoothctl connect A4:77:58:62:C3:D1
+alias bw emacsclient -n ~/.config/bookmarks
+alias ccat highlight --out-format=ansi
+alias cf cd ~/.config && ls -a
+alias cfa emacsclient -n ~/.config/aliasrc
+alias cfb emacsclient -n ~/.config/i3blocks/config
+alias cfd emacsclient -n ~/.Xdefaults
+alias cfi emacsclient -n ~/.config/i3/config
+alias cfk emacsclient -n ~/.config/sxhkd/sxhkdrc
+alias cfm emacsclient -n ~/.config/mutt/muttrc
+alias cfmb emacsclient -n ~/.config/ncmpcpp/bindings
+alias cfmc emacsclient -n ~/.config/ncmpcpp/config
+alias cfn emacsclient -n ~/.config/newsboat/config
+alias cfu emacsclient -n ~/.config/newsboat/urls
+alias cfv emacsclient -n ~/.config/nvim/init.vim
+alias cfz emacsclient -n /home/nasreddin/.config/zsh/.zshrc
+alias cp cp -iv
+alias d cd ~/Documents && ls -a
+alias diff diff --color=auto
+alias e emacsclient -n
+f=
+alias ffmpeg ffmpeg -hide_banner
+alias g git
+alias grep grep --color=auto
+alias h cd ~/ && ls -a
+alias juno nohup jupyter notebook > error.log &
+alias ka killall
+alias la exa --icons -la --group-directories-first
+alias ls exa --icons --group-directories-first
+alias m cd ~/Music && ls -a
+alias magit nvim -c MagitOnly
+alias maim maim ~/Pictures/scrot/pic-full-220419-1421-03.png
+alias mgdl ~/prog/mgdl/main.py
+alias mkd mkdir -pv
+alias mn cd /mnt && ls -a
+alias mpv mpv --input-ipc-server=/tmp/mpvsoc1650388863
+alias mv mv -iv
+alias nv nvim
+alias p sudo pacman
+alias p5s nohup p5 server > error.log &
+alias pb ~/.config/polybar/launch.sh
+alias pp cd ~/Pictures && ls -a
+alias ptj /home/nasreddin/.local/bin/pngtojpg.sh
+alias rams /home/nasreddin/prog/rams/target/debug/rams
+alias rcd source ranger
+alias ref shortcuts >/dev/null; source ~/.config/shortcutrc
+alias rm rm -v
+alias run-help man
+alias sc cd ~/.local/bin && ls -a
+alias sdn sudo shutdown -h now
+alias szhist bat /home/nasreddin/.config/zsh/.zhistory | grep -i
+alias trem transmission-remote
+alias vim nvim
+alias vimdiff nvim -d
+alias vv cd ~/Videos && ls -a
+alias weath less -S ~/.local/share/weatherreport
+alias which-command whence
+alias xi sudo xbps-install
+alias xq xbps-query
+alias xr sudo xbps-remove -R
+alias yt youtube-dl --add-metadata -i -f bestvideo+bestaudio 
+alias yta yt -x -f bestaudio/best

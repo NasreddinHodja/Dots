@@ -1,0 +1,30 @@
+alias bat bat --theme=Dracula
+alias batt cat /sys/class/power_supply/BAT?/capacity
+alias btd bluetoothctl disconnect
+alias bto bluetoothctl power on; bluetoothctl connect A4:77:58:62:C3:D1
+alias cp cp -iv
+alias diff diff --color=auto
+alias e emacsclient -n
+alias ffmpeg ffmpeg -hide_banner
+alias grep grep --color=auto
+alias juno nohup jupyter notebook > error.log &
+alias la exa --icons -la --group-directories-first
+alias ls exa --icons --group-directories-first
+alias mgdl ~/prog/mgdl/main.py
+alias mpv mpv --input-ipc-server=/tmp/mpvsoc1650388863
+alias mv mv -iv
+alias nv nvim
+alias p sudo pacman
+alias p5s nohup p5 server > error.log &
+alias rams /home/nasreddin/prog/rams/target/debug/rams
+alias rcd source ranger
+alias ref shortcuts >/dev/null; source ~/.config/shortcutrc
+alias rm rm -v
+alias run-help man
+alias sc cd ~/.local/bin && ls -a
+alias szhist bat /home/nasreddin/.config/zsh/.zhistory | grep -i
+alias trem transmission-remote
+alias weath less -S ~/.local/share/weatherreport
+alias which-command whence
+alias yt youtube-dl --add-metadata -i -f bestvideo+bestaudio
+alias yta yt -x -f bestaudio/best
