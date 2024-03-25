@@ -1,5 +1,3 @@
-# Created by newuser for 5.8.1
-
 . ~/.profile
 . ~/.config/aliasrc
 . ~/.config/zsh/.zshrc
