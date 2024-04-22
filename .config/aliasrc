@@ -16,8 +16,8 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="exa --icons --group-directories-first" \
-	la="exa --icons -la --group-directories-first" \
+	ls="eza --icons --group-directories-first" \
+	la="eza --icons -la --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"

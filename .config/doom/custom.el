@@ -14,7 +14,8 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(objed-cursor-color "#ff5555")
- '(package-selected-packages '(web-mode vue-mode zones processing-mode centered-window))
+ '(package-selected-packages
+   '(apheleia web-mode vue-mode zones processing-mode centered-window))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(rustic-ansi-faces
    ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])

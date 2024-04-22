@@ -56,6 +56,8 @@ tmp/
 .config/corectrl/
 .config/firebase/
 .config/simple-scan/
+.config/Webcamoid/
+.config/neofetch/
 
 .config/zsh/.node_token
 .config/.gsd-ke*
