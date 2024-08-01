@@ -58,6 +58,8 @@ tmp/
 .config/simple-scan/
 .config/Webcamoid/
 .config/neofetch/
+.config/Proton/
+.config/libreoffice/
 
 .config/zsh/.node_token
 .config/.gsd-ke*
@@ -66,3 +68,7 @@ tmp/
 .config/QtProject.conf
 .config/monitors*
 .config/connections.db
+
+.local/bin/gallery-dl
+.local/bin/manga-py
+.local/bin/RuneLite.AppImage
