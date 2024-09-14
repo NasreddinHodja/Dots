@@ -60,6 +60,7 @@ tmp/
 .config/neofetch/
 .config/Proton/
 .config/libreoffice/
+.config/go/
 
 .config/zsh/.node_token
 .config/.gsd-ke*

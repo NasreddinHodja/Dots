@@ -122,3 +122,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# openrgb
+openrgb -p nas.orp &> /dev/null

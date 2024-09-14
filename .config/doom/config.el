@@ -216,3 +216,14 @@
 
 ;; vue volar
 (use-package! lsp-volar)
+
+;; org-mode custom highlights
+(defun my/org-mode-keywords ()
+  "Add custom font-lock keywords for org-mode."
+  (font-lock-add-keywords nil
+                          `(( "!!!" 0 '(:foreground ,(doom-color 'error) :background ,(doom-color 'base3) :weight bold) t)))
+  (font-lock-add-keywords nil
+                          `(( "\\(\\?\\?\\?\\)" 0 '(:foreground ,(doom-color 'orange) :background ,(doom-color 'base3) :weight bold) t)))
+  )
+
+(add-hook 'org-mode-hook #'my/org-mode-keywords)
