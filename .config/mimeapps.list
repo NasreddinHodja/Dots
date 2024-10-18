@@ -135,6 +135,7 @@ x-scheme-handler/discord-376180410490552320=discord-376180410490552320.desktop
 image/x-tga=sxiv.desktop
 x-scheme-handler/discord-409416265891971072=discord-409416265891971072.desktop
 text/plain=emacsclient.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 image/bmp=sxiv.desktop;

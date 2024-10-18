@@ -4,6 +4,7 @@
 tmp/
 
 .config/cef_user_data/
+.config/Postman/
 .config/chromium/
 .config/ClickUp/
 .config/dconf/
@@ -73,3 +74,4 @@ tmp/
 .local/bin/gallery-dl
 .local/bin/manga-py
 .local/bin/RuneLite.AppImage
+.local/bin/ffultima1.8.6.irc.zip

@@ -100,7 +100,7 @@
 
 ;;     (add-hook 'org-export-before-processing-hook 'imalison:org-inline-css-hook)))
 
-;; better dashboard
+;; dashboard banner
 (setq +doom-dashboard-banner-file (expand-file-name "ardinha.png" doom-private-dir))
 
 ;; journal config
@@ -127,7 +127,7 @@
 ;; prog
 (defun find-in-prog ()
   (interactive)
-  (counsel-find-file "~/prog"))
+  (counsel-find-file "~/Prog"))
 (map! :leader "f i" 'find-in-prog)
 
 ;; .config
@@ -227,3 +227,6 @@
   )
 
 (add-hook 'org-mode-hook #'my/org-mode-keywords)
+
+;; evil inside mini buffer
+(setq evil-want-minibuffer t)
