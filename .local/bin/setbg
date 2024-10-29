@@ -6,6 +6,7 @@ EXT="${FILE##*.}"
 
 DEST="$HOME/Dots/.config/wp.$EXT"
 
+rm -f $HOME/Dots/.config/wp.*
 cp -f "$FILE" "$DEST"
 
 gsettings set org.gnome.desktop.background picture-uri-dark "file:///$DEST"

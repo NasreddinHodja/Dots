@@ -101,7 +101,7 @@
 ;;     (add-hook 'org-export-before-processing-hook 'imalison:org-inline-css-hook)))
 
 ;; dashboard banner
-(setq +doom-dashboard-banner-file (expand-file-name "ardinha.png" doom-private-dir))
+(setq +doom-dashboard-banner-file (expand-file-name "banner.png" doom-private-dir))
 
 ;; journal config
 ;; (setq org-journal-dir "~/logs/"
@@ -230,3 +230,10 @@
 
 ;; evil inside mini buffer
 (setq evil-want-minibuffer t)
+
+;; rss: elfeed
+(setq rmh-elfeed-org-files (list (expand-file-name "~/.config/doom/elfeed.org")))
+;; (setq elfeed-feeds
+;;       '(("http://feeds.feedburner.com/InformationIsBeautiful" data)))
+(after! elfeed
+  (setq elfeed-search-filter "@1-year-ago +unread"))

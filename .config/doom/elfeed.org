@@ -1,0 +1,10 @@
+#+title: Elfeed
+
+* Blogs :elfeed:
+** http://feeds.feedburner.com/InformationIsBeautiful :blog:
+** https://news.ycombinator.com/rss :news:
+** http://feeds.arstechnica.com/arstechnica/index/ :news:
+** http://rjlipton.com/feed :blog:
+** https://scottaaronson.blog/?feed=rss2 :blog:
+** https://blog.computationalcomplexity.org/feeds/posts/default :blog:
+** http://blog.sigfpe.com/feeds/posts/default :blog:

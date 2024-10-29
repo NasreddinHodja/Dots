@@ -7,6 +7,9 @@
    ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
  '(custom-safe-themes
    '("8c7e832be864674c220f9a9361c851917a93f921fedb7717b1b5ece47690c098" "7a244f4063237ddf967a5298614c9f5c2ca486bf51fec1dd651018cdaaa84a5e" default))
+ '(elfeed-feeds
+   '("http://feeds2.feedburner.com/PetrMitrichev"
+     ("http://feeds.feedburner.com/InformationIsBeautiful")))
  '(fci-rule-color "#6272a4")
  '(ispell-dictionary nil)
  '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))

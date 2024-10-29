@@ -1,5 +1,4 @@
 . ~/.profile
-. ~/.config/aliasrc
 . ~/.config/zsh/.zshrc
 
 . /home/nasreddin/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
