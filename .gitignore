@@ -62,6 +62,7 @@ tmp/
 .config/Proton/
 .config/libreoffice/
 .config/go/
+.config/Roam
 
 .config/zsh/.node_token
 .config/.gsd-ke*
@@ -75,3 +76,4 @@ tmp/
 .local/bin/manga-py
 .local/bin/RuneLite.AppImage
 .local/bin/ffultima1.8.6.irc.zip
+.local/bin/zeninstall
