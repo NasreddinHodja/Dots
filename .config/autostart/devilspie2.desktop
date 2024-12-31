@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=unclutter
+Name=Devilspie2
 Type=Application
-Exec=/bin/bash -c "unclutter &"
+Exec=/bin/bash -c "devilspie2 &"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
