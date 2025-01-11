@@ -1,9 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 disable r
 
@@ -16,12 +10,9 @@ autoload -U colors && colors
 # ┏ %B%{$fg[red]%}[%{$fg[blue]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M%{$fg[red]%}]%{$reset_color%}
 # ┗━%B $%b "
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-# HISTFILE=~/.cache/zsh/history
 HISTFILE=~/.config/zsh/.zhistory
 
 # Basic auto/tab complete:
@@ -83,12 +74,8 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Load zsh-syntax-highlighting; should be last.
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 #source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # remove automatic new line
 unsetopt prompt_cr prompt_sp
@@ -123,3 +110,6 @@ eval "$(zoxide init zsh)"
 
 # openrgb
 openrgb -p nas.orp &> /dev/null
+
+# startship prompt
+eval "$(starship init zsh)"

@@ -1,0 +1,5 @@
+add_newline = false
+format = " $all $character"
+
+[directory]
+truncation_length = 3
