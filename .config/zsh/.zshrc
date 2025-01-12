@@ -1,3 +1,4 @@
+# set +x
 
 disable r
 
@@ -108,8 +109,7 @@ export NVM_DIR="$HOME/.nvm"
 # zoxide
 eval "$(zoxide init zsh)"
 
-# openrgb
-openrgb -p nas.orp &> /dev/null
-
 # startship prompt
 eval "$(starship init zsh)"
+
+# set +x
