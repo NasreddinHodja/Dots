@@ -63,6 +63,7 @@ tmp/
 .config/libreoffice/
 .config/go/
 .config/Roam
+.config/tmux/plugins
 
 .config/zsh/.node_token
 .config/.gsd-ke*
