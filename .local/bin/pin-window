@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Move the current window to the left monitor and pin it, or move it to the right monitor and unpin it.
+#
+
+window_id=$(xdotool getactivewindow)
+
+wmctrl -ir "$window_id" -b toggle,sticky

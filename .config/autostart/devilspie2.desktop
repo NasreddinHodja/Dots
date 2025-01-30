@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Devilspie2
-Type=Application
-Exec=/bin/bash -c "devilspie2 &"
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
