@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.1f", $2 + $4}')
+
+mem_usage=$(free | awk '/Mem/ {printf "%.1f", $3/$2 * 100}')
+
+disk_usage=$(df -h / | awk 'NR==2 {printf "%.1f", $5}' | tr -d '%')
+
+cpu_usage=$(printf "%05.1f" $cpu_usage)
+mem_usage=$(printf "%05.1f" $mem_usage)
+disk_usage=$(printf "%05.1f" $disk_usage)
+
+cpu_icon=" "
+ram_icon="󰘚 "
+disk_icon="󰆼 "
+
+echo "<txt>${cpu_icon} ${cpu_usage}% | ${ram_icon} ${mem_usage}% | ${disk_icon} ${disk_usage}%</txt>"

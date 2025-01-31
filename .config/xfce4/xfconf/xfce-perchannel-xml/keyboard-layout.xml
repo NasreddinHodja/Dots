@@ -4,7 +4,7 @@
   <property name="Default" type="empty">
     <property name="XkbDisable" type="bool" value="false"/>
     <property name="XkbLayout" type="string" value="us"/>
-    <property name="XkbVariant" type="string" value="alt-intl"/>
+    <property name="XkbVariant" type="string" value="intl"/>
     <property name="XkbOptions" type="empty">
       <property name="Custom" type="string" value="custom:super_esc"/>
     </property>

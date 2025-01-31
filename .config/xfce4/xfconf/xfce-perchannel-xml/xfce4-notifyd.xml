@@ -5,6 +5,7 @@
   <property name="applications" type="empty">
     <property name="known_applications" type="array">
       <value type="string" value="blueman"/>
+      <value type="string" value="chromium"/>
       <value type="string" value="flameshot"/>
       <value type="string" value="org.freedesktop.network-manager-applet"/>
     </property>
