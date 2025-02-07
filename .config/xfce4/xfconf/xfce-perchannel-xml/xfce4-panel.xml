@@ -17,9 +17,9 @@
         <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
-        <value type="int" value="1"/>
-        <value type="int" value="3"/>
         <value type="int" value="14"/>
+        <value type="int" value="3"/>
+        <value type="int" value="1"/>
         <value type="int" value="12"/>
         <value type="int" value="10"/>
         <value type="int" value="9"/>
@@ -63,11 +63,14 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="caffeine"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="obs"/>
         <value type="string" value="blueman"/>
+        <value type="string" value="caffeine"/>
       </property>
     </property>
     <property name="plugin-7" type="string" value="separator">
@@ -97,7 +100,7 @@
     </property>
     <property name="plugin-1" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="known-players" type="string" value="zen"/>
+      <property name="known-players" type="string" value="spotify;zen"/>
     </property>
     <property name="plugin-3" type="string" value="separator">
       <property name="style" type="uint" value="0"/>

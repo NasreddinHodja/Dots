@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<channel name="xfce4-finder" version="1.0">
+  <property name="application-directories" type="array">
+    <value type="string" value="/usr/share/applications"/>
+    <value type="string" value="/usr/share/applications/kde4"/>
+    <value type="string" value="/home/nasreddin/.local/share/applications"/>
+  </property>
+  <property name="file-extension" type="string" value=".desktop"/>
+  <property name="web-search" type="string" value="https://www.google.com/#safe=on&amp;q=%s"/>
+  <property name="theme" type="string" value="default"/>
+</channel>
