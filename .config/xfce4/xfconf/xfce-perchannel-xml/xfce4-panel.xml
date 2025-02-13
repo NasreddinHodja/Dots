@@ -68,6 +68,7 @@
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="qBittorrent"/>
         <value type="string" value="obs"/>
         <value type="string" value="blueman"/>
         <value type="string" value="caffeine"/>
@@ -84,8 +85,8 @@
     </property>
     <property name="plugin-10" type="string" value="actions">
       <property name="appearance" type="uint" value="1"/>
-      <property name="button-title" type="uint" value="0"/>
-      <property name="custom-title" type="string" value="power"/>
+      <property name="button-title" type="uint" value="3"/>
+      <property name="custom-title" type="string" value="󰐥"/>
     </property>
     <property name="plugin-12" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
