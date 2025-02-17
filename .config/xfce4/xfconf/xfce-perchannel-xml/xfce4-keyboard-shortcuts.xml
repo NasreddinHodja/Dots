@@ -49,8 +49,8 @@
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;p" type="string" value="flameshot gui"/>
       <property name="&lt;Super&gt;d" type="string" value="rofi -show drun"/>
-      <property name="&lt;Super&gt;comma" type="string" value="move-monitor"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="xflock4"/>
+      <property name="&lt;Super&gt;comma" type="string" value="/home/nasreddin/.local/bin/move-monitor"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

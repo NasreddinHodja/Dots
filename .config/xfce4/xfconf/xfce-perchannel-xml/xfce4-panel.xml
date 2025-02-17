@@ -92,12 +92,12 @@
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-14" type="string" value="genmon">
-      <property name="command" type="string" value="genmon-sys"/>
+      <property name="command" type="string" value="/home/nasreddin/.local/bin/genmon-sys"/>
       <property name="use-label" type="bool" value="true"/>
       <property name="text" type="string" value=""/>
       <property name="update-period" type="int" value="2000"/>
       <property name="enable-single-row" type="bool" value="true"/>
-      <property name="font" type="string" value="Sans 10"/>
+      <property name="font" type="string" value="SauceCodePro Nerd Font 10"/>
     </property>
     <property name="plugin-1" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
