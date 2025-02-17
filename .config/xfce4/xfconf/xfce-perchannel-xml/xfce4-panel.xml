@@ -17,7 +17,9 @@
         <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
+        <value type="int" value="11"/>
         <value type="int" value="14"/>
+        <value type="int" value="13"/>
         <value type="int" value="3"/>
         <value type="int" value="1"/>
         <value type="int" value="12"/>
@@ -86,10 +88,11 @@
     <property name="plugin-10" type="string" value="actions">
       <property name="appearance" type="uint" value="1"/>
       <property name="button-title" type="uint" value="3"/>
-      <property name="custom-title" type="string" value="󰐥"/>
+      <property name="custom-title" type="string" value="⦻"/>
     </property>
     <property name="plugin-12" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="false"/>
     </property>
     <property name="plugin-14" type="string" value="genmon">
       <property name="command" type="string" value="/home/nasreddin/.local/bin/genmon-sys"/>
@@ -104,6 +107,13 @@
       <property name="known-players" type="string" value="spotify;zen"/>
     </property>
     <property name="plugin-3" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="false"/>
+    </property>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
   </property>
