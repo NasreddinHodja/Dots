@@ -17,10 +17,8 @@
         <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
-        <value type="int" value="11"/>
         <value type="int" value="14"/>
         <value type="int" value="13"/>
-        <value type="int" value="3"/>
         <value type="int" value="1"/>
         <value type="int" value="12"/>
         <value type="int" value="10"/>
@@ -100,18 +98,11 @@
       <property name="text" type="string" value=""/>
       <property name="update-period" type="int" value="2000"/>
       <property name="enable-single-row" type="bool" value="true"/>
-      <property name="font" type="string" value="SauceCodePro Nerd Font 10"/>
+      <property name="font" type="string" value="Symbols Nerd Font Mono 10"/>
     </property>
     <property name="plugin-1" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="known-players" type="string" value="spotify;zen"/>
-    </property>
-    <property name="plugin-3" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="false"/>
-    </property>
-    <property name="plugin-11" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
