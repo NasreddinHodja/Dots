@@ -45,4 +45,4 @@ alias \
 	rams="$HOME/Prog/rams/target/debug/rams" \
 	p5s="nohup p5 server > error.log &" \
 	rcd="source ranger" \
-	mgdl="~/Prog/mgdl/main.py" \
+	mgdl="~/Prog/mgdl/target/release/mgdl" \

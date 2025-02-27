@@ -57,7 +57,7 @@
        fold              ; (nigh) universal code folding
        multiple-cursors
        (format           ; automated prettiness
-        +onsave
+        ;; +onsave
         )
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
@@ -157,11 +157,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python
-        +lsp
-        +pyright
-        +pyenv
-        )            ; beautiful is better than ugly
+       (python +lsp +pyright +pyenv)  ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -189,8 +185,7 @@
        ;;emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
-       (rss ;; +org
-        )        ; emacs as an RSS reader
+       ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config

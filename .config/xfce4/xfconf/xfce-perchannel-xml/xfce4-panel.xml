@@ -68,6 +68,7 @@
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="qBittorrent"/>
         <value type="string" value="obs"/>
         <value type="string" value="blueman"/>
@@ -79,6 +80,10 @@
     </property>
     <property name="plugin-8" type="string" value="clock">
       <property name="mode" type="uint" value="2"/>
+      <property name="digital-time-format" type="string" value="%H:%M"/>
+      <property name="digital-date-format" type="string" value="%Y-%m-%d"/>
+      <property name="tooltip-format" type="string" value="%A %d %B %Y"/>
+      <property name="show-week-numbers" type="bool" value="false"/>
     </property>
     <property name="plugin-9" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -86,7 +91,7 @@
     <property name="plugin-10" type="string" value="actions">
       <property name="appearance" type="uint" value="1"/>
       <property name="button-title" type="uint" value="3"/>
-      <property name="custom-title" type="string" value="⦻"/>
+      <property name="custom-title" type="string" value="⬤"/>
     </property>
     <property name="plugin-12" type="string" value="separator">
       <property name="style" type="uint" value="0"/>

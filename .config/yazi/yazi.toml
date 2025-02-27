@@ -1,0 +1,9 @@
+[opener]
+sxiv_browse_dir = [
+    { run = 'sxiv_browse_dir "$@"', orphan = true },
+]
+
+[open]
+rules = [
+    { mime = "image/*", use = "sxiv_browse_dir" },
+]

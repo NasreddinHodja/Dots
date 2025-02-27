@@ -9,7 +9,7 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
                                         ;(package! some-package)
 (package! org-tree-slide)
-(package! centered-window-mode)
+;; (package! centered-window-mode)
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! lsp-volar :recipe (:host github :repo "jadestrong/lsp-volar"))

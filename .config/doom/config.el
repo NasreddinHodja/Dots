@@ -204,8 +204,8 @@
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 ;; (require 'centered-window-mode)
-(centered-window-mode)
-(setq cwm-centered-window-width 95)
+;; (centered-window-mode)
+;; (setq cwm-centered-window-width 95)
 
 
 ;; no first indent inside <script>
@@ -230,10 +230,3 @@
 
 ;; evil inside mini buffer
 (setq evil-want-minibuffer t)
-
-;; rss: elfeed
-(setq rmh-elfeed-org-files (list (expand-file-name "~/.config/doom/elfeed.org")))
-;; (setq elfeed-feeds
-;;       '(("http://feeds.feedburner.com/InformationIsBeautiful" data)))
-(after! elfeed
-  (setq elfeed-search-filter "@1-year-ago +unread"))
