@@ -60,7 +60,7 @@ fi
 next_monitor_index=$(( (current_monitor_index + 1) % monitor_count ))
 
 # calculate new x position for next monitor
-new_x=${monitor_positions[next_monitor_index]}
+new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_monitor_index]))
 new_y=$y
 
 # unmaximize if maximized
