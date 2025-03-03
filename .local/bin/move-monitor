@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# get active window id
+# active window id
 window_id=$(xdotool getactivewindow)
 
-# check if window maximized
+# check maximized
 window_state=$(xprop -id "$window_id" | grep "_NET_WM_STATE")
 
 is_maximized=false
@@ -11,25 +11,27 @@ if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
     is_maximized=true
 fi
 
-# get monitor info using
+# monitor info
 monitors=$(xrandr --listmonitors | grep -v Monitors)
 monitor_count=$(echo "$monitors" | wc -l)
 
-# if only 1 monitor exit
+# exit if only 1 monitor
 if [ "$monitor_count" -eq 1 ]; then
     echo "Only one monitor detected. No action taken."
     exit 0
 fi
 
-# get current window position
+# current window position
 x=$(xwininfo -id "$window_id" | awk '/Absolute upper-left X:/ { print $4 }')
 y=$(xwininfo -id "$window_id" | awk '/Absolute upper-left Y:/ { print $4 }')
 
-# subtract offsets caused by panels or window decorations
+# subtract offsets caused by panels / window decorations
 x_offset=$(xwininfo -id "$window_id" | awk '/Relative upper-left X:/ { print $4 }')
 y_offset=$(xwininfo -id "$window_id" | awk '/Relative upper-left Y:/ { print $4 }')
-x=$((x - x_offset))
+# TODO: + 2 ???
+x=$((x - x_offset + 2))
 y=$((y - y_offset))
+
 
 # monitor widths & positions
 monitor_info=$(xrandr --listmonitors | grep -v Monitors)
@@ -43,7 +45,7 @@ while IFS= read -r line; do
     monitor_positions+=("$monitor_position")
 done <<< "$monitor_info"
 
-# determine current monitor
+# current monitor index
 current_monitor_index=-1
 for i in "${!monitor_positions[@]}"; do
     if [ "$x" -ge "${monitor_positions[$i]}" ] && [ "$x" -lt "$((monitor_positions[$i] + monitor_widths[$i]))" ]; then
@@ -56,10 +58,10 @@ if [ "$current_monitor_index" -eq -1 ]; then
     current_monitor_index=0
 fi
 
-# calculate next monitor index
+# next monitor index
 next_monitor_index=$(( (current_monitor_index + 1) % monitor_count ))
 
-# calculate new x position for next monitor
+# new (x, y) position for next monitor
 new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_monitor_index]))
 new_y=$y
 
@@ -68,10 +70,10 @@ if [ "$is_maximized" = true ]; then
     wmctrl -ir "$window_id" -b remove,maximized_vert,maximized_horz
 fi
 
-# move the window
+# move window
 xdotool windowmove "$window_id" "$new_x" "$new_y"
 
-# restore maximized state if was maximized
+# restore maximized
 if [ "$is_maximized" = true ]; then
     wmctrl -ir "$window_id" -b add,maximized_vert,maximized_horz
 fi
