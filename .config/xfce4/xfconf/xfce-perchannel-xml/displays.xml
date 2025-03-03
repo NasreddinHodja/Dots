@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="displays" version="1.0">
-  <property name="ActiveProfile" type="string" value="Default"/>
+  <property name="ActiveProfile" type="string" value="5e178e4b-7630-4630-a9da-3b890bd52908"/>
   <property name="Notify" type="int" value="1"/>
   <property name="AutoEnableProfiles" type="int" value="0"/>
   <property name="5e178e4b-7630-4630-a9da-3b890bd52908" type="string" value="nhas">
