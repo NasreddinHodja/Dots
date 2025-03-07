@@ -66,6 +66,7 @@ tmp/
 .config/tmux/plugins
 
 .config/zsh/.node_token
+.config/zsh/.zhistory
 .config/.gsd-ke*
 .config/dleyna*
 .config/kde*
