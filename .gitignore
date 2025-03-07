@@ -74,6 +74,7 @@ tmp/
 .config/monitors*
 .config/connections.db
 .config/mgdl/mgdl.db
+.config/.nuxtrc
 
 .local/bin/gallery-dl
 .local/bin/manga-py
