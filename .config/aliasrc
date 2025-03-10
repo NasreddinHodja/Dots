@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
-# Verbosity and settings that you pretty much just always are going to want.
 alias \
 	batt="cat /sys/class/power_supply/BAT?/capacity" \
 	bat="bat --theme=Dracula" \
@@ -12,18 +10,7 @@ alias \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner" \
-	rcd="source ranger"
-
-# Colorize commands when possible.
-alias \
-	ls="eza --icons --group-directories-first" \
-	la="eza --icons -la --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi"
-
-# These common commands are just too long! Abbreviate them.
-alias \
+	rcd="source ranger"\
 	ka="killall" \
 	trem="transmission-remote" \
 	f="$FILE" \
@@ -33,16 +20,17 @@ alias \
 	btd="bluetoothctl disconnect" \
 	nv="nvim" \
 
-# This alias is important. It enables the `pauseallmpv` command.
-alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
-
-# Some other stuff
 alias \
 	magit="nvim -c MagitOnly" \
 	maim="maim ~/Pictures/scrot/pic-full-$(date '+%y%m%d-%H%M-%S').png" \
 	szhist="bat $HOME/.config/zsh/.zhistory | grep -i" \
 	juno="nohup jupyter notebook > error.log &" \
-	rams="$HOME/Prog/rams/target/debug/rams" \
 	p5s="nohup p5 server > error.log &" \
-	rcd="source ranger" \
-	mgdl="~/Prog/mgdl/target/release/mgdl" \
+	mgdl="~/Prog/mgdl/target/release/mgdl"
+
+alias \
+	ls="eza --icons --group-directories-first" \
+	la="eza --icons -la --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
