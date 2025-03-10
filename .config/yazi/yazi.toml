@@ -4,6 +4,6 @@ sxiv_browse_dir = [
 ]
 
 [open]
-rules = [
+prepend_rules = [
     { mime = "image/*", use = "sxiv_browse_dir" },
 ]
