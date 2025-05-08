@@ -65,6 +65,7 @@ tmp/
 .config/Roam
 .config/tmux/plugins
 .config/pmgdl
+.config/.nuxt
 
 .config/zsh/.node_token
 .config/zsh/.zhistory
