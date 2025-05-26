@@ -211,9 +211,6 @@
 ;; no first indent inside <script>
 (setq! web-mode-script-padding nil)
 
-;; set initial window size
-;; (setq initial-frame-alist '((top . 1) (left . 1) (width . 143) (height . 55)))
-
 ;; vue volar
 (use-package! lsp-volar)
 

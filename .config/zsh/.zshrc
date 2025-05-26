@@ -85,7 +85,7 @@ unsetopt prompt_cr prompt_sp
 . /usr/share/fzf/completion.zsh
 
 # NODE_AUTH
-source ~/.config/zsh/.node_token
+. ~/.config/zsh/.node_token
 
 # MAN PAGER
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"

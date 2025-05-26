@@ -21,9 +21,9 @@
         <value type="int" value="13"/>
         <value type="int" value="1"/>
         <value type="int" value="12"/>
-        <value type="int" value="10"/>
-        <value type="int" value="9"/>
         <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
       </property>
       <property name="output-name" type="string" value="Primary"/>
       <property name="enter-opacity" type="uint" value="100"/>
@@ -63,6 +63,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="org.bleachbit.bleachbit"/>
         <value type="string" value="caffeine"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
