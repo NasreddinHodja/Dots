@@ -1,0 +1,97 @@
+#!/usr/bin/env sh
+
+set -e
+
+trap 'echo "Error - Aborting."; exit 1' ERR
+
+ensure_clean_repo() {
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "Error: Uncommitted changes. Commit or stash first."
+    exit 1
+  fi
+}
+
+enter_project_dir() {
+  project_dir=$(zoxide query ~/Prog/seed-website || echo "")
+  if [ -z "$project_dir" ]; then
+    echo "Error: Project directory not found in zoxide."
+    exit 1
+  fi
+  cd "$project_dir"
+}
+
+restore_previous_dir() {
+  last_dir=$(zoxide query -l | head -n 1)
+  if [ -n "$last_dir" ]; then
+    cd "$last_dir"
+  fi
+}
+
+merge_to_dev() {
+  ensure_clean_repo
+  current_branch=$(git branch --show-current)
+
+  if [ "$current_branch" = "dev" ]; then
+    echo "Already on 'dev'. Skipping."
+    return
+  fi
+
+  if [ "$current_branch" = "main" ]; then
+    echo "Currently on 'main'. Skipping."
+    return
+  fi
+
+  if git merge-base --is-ancestor "$current_branch" dev; then
+    echo "'dev' already contains all commits from '$current_branch'. Skipping merge."
+    return
+  fi
+
+  echo "==> Merging $current_branch -> dev"
+  git checkout dev
+  git pull origin dev
+  git merge "$current_branch" --no-edit
+  git push origin dev
+  git checkout "$current_branch"
+  echo "==> Merged into dev."
+}
+
+publish() {
+  ensure_clean_repo
+
+  echo "==> Merging dev -> main"
+  git checkout main
+  git pull origin main
+
+  if git merge-base --is-ancestor dev main; then
+    echo "'main' already contains all commits from 'dev'. Skipping."
+  else
+    git merge dev --no-edit
+    git push origin main
+    echo "==> Merged dev into main."
+  fi
+
+  echo "==> Syncing main → dev"
+  git checkout dev
+  git pull origin dev
+
+  if git merge-base --is-ancestor main dev; then
+    echo "'dev' already up to date with 'main'. Skipping."
+  else
+    git merge main --no-edit
+    git push origin dev
+    echo "==> Synced dev with main."
+  fi
+}
+
+enter_project_dir
+
+if [ "$1" = "dev" ]; then
+  merge_to_dev
+elif [ "$1" = "publish" ]; then
+  publish
+else
+  echo "Usage: sgh [dev|publish]"
+  exit 1
+fi
+
+restore_previous_dir

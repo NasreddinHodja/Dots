@@ -1,0 +1,4 @@
+[[manager.append_keymap]]
+on = ["b", "g"]
+run = "shell 'setbg $0'"
+desc = "Set background"
