@@ -82,10 +82,10 @@ source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/
 unsetopt prompt_cr prompt_sp
 
 # fzf completion
-. /usr/share/fzf/completion.zsh
+source /usr/share/fzf/completion.zsh
 
 # NODE_AUTH
-. ~/.config/zsh/.node_token
+source ~/.config/zsh/.node_token
 
 # MAN PAGER
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"

@@ -7,3 +7,6 @@ sxiv_browse_dir = [
 prepend_rules = [
     { mime = "image/*", use = "sxiv_browse_dir" },
 ]
+
+[plugin.previewer]
+archive = true

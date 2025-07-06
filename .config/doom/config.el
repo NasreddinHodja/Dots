@@ -225,5 +225,31 @@
 
 (add-hook 'org-mode-hook #'my/org-mode-keywords)
 
+;; remap code format to "SPC c RET"
+(map! :leader
+      :prefix "c"
+      "f" nil)
+(map! :leader
+      :prefix "c"
+      :desc "Format buffer or region"
+      "<return>" #'+format/buffer)
+
 ;; evil inside mini buffer
 (setq evil-want-minibuffer t)
+
+;; org download image dir as "./images"
+(setq org-download-image-dir "./images")
+
+;; configure org latex preview
+(setq org-preview-latex-process-alist
+      '((imagemagick
+         :programs ("pdflatex" "convert")
+         :description "pdf > png"
+         :message "You need to install: pdflatex and imagemagick."
+         :image-input-type "pdf"
+         :image-output-type "png"
+         :image-size-adjust (1.0 . 1.0)
+         :latex-compiler ("pdflatex -interaction nonstopmode -output-directory %o %f")
+         :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
+
+(setq org-preview-latex-default-process 'imagemagick)
