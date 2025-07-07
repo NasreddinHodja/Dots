@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+set -e
+
+mkdir -p thumbs
+
+for file in *.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}; do
+  [ -f "$file" ] || continue
+
+  filename=$(basename -- "$file")
+  name="${filename%.*}"
+  output="thumbs/${name}_thumb.webp"
+
+  dimensions=$(magick identify -format "%w %h" "$file")
+  width=$(echo "$dimensions" | cut -d' ' -f1)
+  height=$(echo "$dimensions" | cut -d' ' -f2)
+
+  if [ "$width" -gt "$height" ]; then
+    resize="600x"
+  else
+    resize="x600"
+  fi
+
+  echo "resizing $file -> $output ($resize)"
+
+  magick "$file" -resize "$resize\>" -quality 75 "$output"
+done
