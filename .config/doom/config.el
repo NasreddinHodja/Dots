@@ -253,3 +253,6 @@
          :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
 
 (setq org-preview-latex-default-process 'imagemagick)
+
+;; use trash... just use it friend you re going to need it
+(setq delete-by-moving-to-trash t)

@@ -152,6 +152,7 @@
        (org
         +roam2
         +pretty
+        +hugo
         ;; +journal
         )               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother

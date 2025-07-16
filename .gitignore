@@ -67,6 +67,7 @@ tmp/
 .config/pmgdl
 .config/.nuxt
 .config/.wrangler
+.config/Upscayl
 
 .config/zsh/.node_token
 .config/zsh/.zhistory
