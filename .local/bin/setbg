@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-if [ $# -eq 0 ]; then
+set -e
+
+if [ $# -ne 1 ]; then
     echo "Usage: $0 <image_file>"
-    echo "Example: $0 /path/to/wallpaper.jpg"
     exit 1
 fi
 
@@ -14,33 +15,22 @@ if [ ! -f "$IMAGE_FILE" ]; then
 fi
 
 EXT="${IMAGE_FILE##*.}"
+CONFIG_FILE="$HOME/.config/wp.$EXT"
 
 mkdir -p ~/.config
-
 rm -f ~/.config/wp.*
-
 cp "$IMAGE_FILE" ~/.config/wp."$EXT"
 
-echo "Image copied to ~/.config/wp.$EXT"
+xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-mode -s true
 
-MONITORS=$(xfce4-settings-manager --list | grep -i display 2>/dev/null || xrandr --listmonitors | awk 'NR>1 {print $4}')
-
+MONITORS=$(xrandr --listmonitors | awk 'NR>1 {print $4}')
 WORKSPACES=$(xfconf-query -c xfwm4 -p /general/workspace_names 2>/dev/null | tail -n +3)
 
-for monitor in $(xrandr --listmonitors | awk 'NR>1 {print $4}'); do
-    for i in {0..4}; do
-        xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace$i/last-image" -s "$HOME/.config/wp.$EXT" 2>/dev/null
-        xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace$i/image-style" -s "5" 2>/dev/null  # 5 = zoomed
-    done
+for monitor in $MONITORS; do
+    # reset path so that xfce4 knows i changed files
+    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$IMAGE_FILE"
+    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$CONFIG_FILE"
+    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/image-style" -s 5
 done
 
-for i in {0..9}; do
-    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor0/workspace$i/last-image" -s "$HOME/.config/wp.$EXT" 2>/dev/null
-    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor0/workspace$i/image-style" -s "5" 2>/dev/null
-done
-
-xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor0/image-path" -s "$HOME/.config/wp.$EXT" 2>/dev/null
-xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor0/image-style" -s "5" 2>/dev/null
-
-echo "Background set for all displays in XFCE4"
-echo "Note: You may need to refresh the desktop or restart the session to see changes on all workspaces"
+echo "Background set for all displays/workspaces"
