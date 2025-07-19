@@ -97,6 +97,9 @@ export PATH=$PATH:/home/nasreddin/.local/share/gem/ruby/3.0.0/bin
 # bin
 export PATH=$PATH:/home/nasreddin/.local/bin
 
+# yarn bins
+export PATH="$HOME/.yarn/bin:$PATH"
+
 # tmux
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   ~/.local/bin/start_tmux
