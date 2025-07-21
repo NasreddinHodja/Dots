@@ -6,7 +6,6 @@ current_height=$(xwininfo -id $window_id | grep "Height:" | awk '{print $2}')
 window_x=$(xwininfo -id $window_id | grep "Absolute upper-left X:" | awk '{print $4}')
 window_y=$(xwininfo -id $window_id | grep "Absolute upper-left Y:" | awk '{print $4}')
 
-# Check if window is maximized vertically
 window_state=$(xprop -id $window_id _NET_WM_STATE | cut -d'=' -f2)
 is_maximized_vert=false
 if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
@@ -38,7 +37,6 @@ if [ "$is_maximized_vert" != true ]; then
     Y_POS=$((monitor_height / 2 - current_height / 2))
 fi
 
-# wmctrl -r :ACTIVE: -b remove,maximized_vert
 wmctrl -r :ACTIVE: -e 0,$X_POS,$Y_POS,-1,-1
 
 if [ "$is_maximized_vert" = true ]; then
