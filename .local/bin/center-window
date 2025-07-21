@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+
+window_id=$(xdotool getactivewindow)
+current_width=$(xwininfo -id $window_id | grep "Width:" | awk '{print $2}')
+current_height=$(xwininfo -id $window_id | grep "Height:" | awk '{print $2}')
+window_x=$(xwininfo -id $window_id | grep "Absolute upper-left X:" | awk '{print $4}')
+window_y=$(xwininfo -id $window_id | grep "Absolute upper-left Y:" | awk '{print $4}')
+
+# Check if window is maximized vertically
+window_state=$(xprop -id $window_id _NET_WM_STATE | cut -d'=' -f2)
+is_maximized_vert=false
+if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
+    is_maximized_vert=true
+fi
+
+monitor_info=$(xrandr | grep " connected" | while read line; do
+    if echo $line | grep -q "+"; then
+        monitor_x=$(echo $line | grep -o '+[0-9]*+[0-9]*' | cut -d'+' -f2)
+        monitor_y=$(echo $line | grep -o '+[0-9]*+[0-9]*' | cut -d'+' -f3)
+        monitor_width=$(echo $line | grep -o '[0-9]*x[0-9]*' | cut -dx -f1)
+        monitor_height=$(echo $line | grep -o '[0-9]*x[0-9]*' | cut -dx -f2)
+        if [ $window_x -ge $monitor_x ] && [ $window_x -lt $((monitor_x + monitor_width)) ]; then
+            echo "$monitor_x $monitor_y $monitor_width $monitor_height"
+            break
+        fi
+    fi
+done)
+
+monitor_x=$(echo $monitor_info | cut -d' ' -f1)
+monitor_y=$(echo $monitor_info | cut -d' ' -f2)
+monitor_width=$(echo $monitor_info | cut -d' ' -f3)
+monitor_height=$(echo $monitor_info | cut -d' ' -f4)
+
+X_POS=$(((monitor_width - current_width) / 2 + monitor_x))
+Y_POS=0
+
+if [ "$is_maximized_vert" != true ]; then
+    Y_POS=$((monitor_height / 2 - current_height / 2))
+fi
+
+# wmctrl -r :ACTIVE: -b remove,maximized_vert
+wmctrl -r :ACTIVE: -e 0,$X_POS,$Y_POS,-1,-1
+
+if [ "$is_maximized_vert" = true ]; then
+    wmctrl -r :ACTIVE: -b add,maximized_vert
+fi

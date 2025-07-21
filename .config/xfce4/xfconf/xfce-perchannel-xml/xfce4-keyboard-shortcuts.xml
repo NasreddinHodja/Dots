@@ -51,6 +51,8 @@
       <property name="&lt;Super&gt;d" type="string" value="rofi -show drun"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;comma" type="string" value="/home/nasreddin/.local/bin/move-monitor"/>
+      <property name="&lt;Super&gt;c" type="string" value="/home/nasreddin/.local/bin/center-window"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="/home/nasreddin/.local/bin/cycle-window-widths"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -178,6 +180,7 @@
       <property name="&lt;Alt&gt;&lt;Super&gt;j" type="string" value="tile_down_key"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;h" type="string" value="tile_left_key"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;l" type="string" value="tile_right_key"/>
+      <property name="&lt;Super&gt;v" type="string" value="fill_vert_key"/>
     </property>
   </property>
   <property name="providers" type="array">

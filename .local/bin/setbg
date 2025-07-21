@@ -32,5 +32,3 @@ for monitor in $MONITORS; do
     xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$CONFIG_FILE"
     xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/image-style" -s 5
 done
-
-echo "Background set for all displays/workspaces"

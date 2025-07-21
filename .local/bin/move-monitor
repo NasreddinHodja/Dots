@@ -6,9 +6,15 @@ window_id=$(xdotool getactivewindow)
 # check maximized
 window_state=$(xprop -id "$window_id" | grep "_NET_WM_STATE")
 
-is_maximized=false
+# check maximization states
+is_maximized_vert=false
+is_maximized_horz=false
+
 if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
-    is_maximized=true
+    is_maximized_vert=true
+fi
+if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_HORZ"; then
+    is_maximized_horz=true
 fi
 
 # monitor info
@@ -66,14 +72,20 @@ new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_m
 new_y=$y
 
 # unmaximize if maximized
-if [ "$is_maximized" = true ]; then
-    wmctrl -ir "$window_id" -b remove,maximized_vert,maximized_horz
+if [ "$is_maximized_vert" = true ]; then
+    wmctrl -ir "$window_id" -b remove,maximized_vert
+fi
+if [ "$is_maximized_horz" = true ]; then
+    wmctrl -ir "$window_id" -b remove,maximized_horz
 fi
 
 # move window
 xdotool windowmove "$window_id" "$new_x" "$new_y"
 
 # restore maximized
-if [ "$is_maximized" = true ]; then
-    wmctrl -ir "$window_id" -b add,maximized_vert,maximized_horz
+if [ "$is_maximized_vert" = true ]; then
+    wmctrl -ir "$window_id" -b add,maximized_vert
+fi
+if [ "$is_maximized_horz" = true ]; then
+    wmctrl -ir "$window_id" -b add,maximized_horz
 fi

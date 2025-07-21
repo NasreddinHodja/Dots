@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+WIDTHS="1100 1600"
+
+window_id=$(xdotool getactivewindow)
+current_width=$(xwininfo -id $window_id | grep "Width:" | awk '{print $2}')
+current_x=$(xwininfo -id $window_id | grep "Absolute upper-left X:" | awk '{print $4}')
+current_y=$(xwininfo -id $window_id | grep "Absolute upper-left Y:" | awk '{print $4}')
+
+current_center_x=$((current_x + current_width / 2))
+
+next_width=""
+found_current=false
+for width in $WIDTHS; do
+    if [ "$found_current" = true ]; then
+        next_width=$width
+        break
+    fi
+    if [ "$current_width" = "$width" ]; then
+        found_current=true
+    fi
+done
+
+if [ -z "$next_width" ]; then
+    next_width=$(echo $WIDTHS | cut -d' ' -f1)
+fi
+
+new_x=$((current_center_x - next_width / 2))
+
+wmctrl -r :ACTIVE: -e 0,$new_x,-1,$next_width,-1
+wmctrl -r :ACTIVE: -b add,maximized_vert
