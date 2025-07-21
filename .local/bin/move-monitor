@@ -59,18 +59,16 @@ next_monitor_index=$(( (current_monitor_index + 1) % monitor_count ))
 new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_monitor_index]))
 new_y=$y
 
-if [ "$is_maximized_vert" = true ]; then
-    wmctrl -ir "$window_id" -b remove,maximized_vert
-fi
 if [ "$is_maximized_horz" = true ]; then
-    wmctrl -ir "$window_id" -b remove,maximized_horz
+    wmctrl -ir "$window_id" -b remove,maximized_horz,maximized_vert
+elif [ "$is_maximized_vert" = true ]; then
+    wmctrl -ir "$window_id" -b remove,maximized_vert
 fi
 
 xdotool windowmove "$window_id" "$new_x" "$new_y"
 
-if [ "$is_maximized_vert" = true ]; then
-    wmctrl -ir "$window_id" -b add,maximized_vert
-fi
 if [ "$is_maximized_horz" = true ]; then
-    wmctrl -ir "$window_id" -b add,maximized_horz
+    wmctrl -ir "$window_id" -b add,maximized_horz,maximized_vert
+elif [ "$is_maximized_vert" = true ]; then
+    wmctrl -ir "$window_id"  -b add,maximized_vert
 fi
