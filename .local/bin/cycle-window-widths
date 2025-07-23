@@ -25,8 +25,12 @@ if [ -z "$next_width" ]; then
     next_width=$(echo $WIDTHS | cut -d' ' -f1)
 fi
 
-# TODO: - 2 ??
-new_x=$((current_center_x - next_width / 2 - 2))
+frame_extents=$(xprop -id $window_id _NET_FRAME_EXTENTS | cut -d'=' -f2 | tr -d ' ')
+left_border=$(echo $frame_extents | cut -d',' -f1)
+new_x=$((current_center_x - next_width / 2 - left_border))
+
+wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
 
 wmctrl -r :ACTIVE: -e 0,$new_x,-1,$next_width,-1
+
 wmctrl -r :ACTIVE: -b add,maximized_vert

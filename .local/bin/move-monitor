@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 window_id=$(xdotool getactivewindow)
-
 window_state=$(xprop -id "$window_id" | grep "_NET_WM_STATE")
 is_maximized_vert=false
 is_maximized_horz=false
-
 if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
     is_maximized_vert=true
 fi
@@ -15,7 +13,6 @@ fi
 
 monitors=$(xrandr --listmonitors | grep -v Monitors)
 monitor_count=$(echo "$monitors" | wc -l)
-
 if [ "$monitor_count" -eq 1 ]; then
     echo "Only one monitor detected. No action taken."
     exit 0
@@ -24,22 +21,24 @@ fi
 x=$(xwininfo -id "$window_id" | awk '/Absolute upper-left X:/ { print $4 }')
 y=$(xwininfo -id "$window_id" | awk '/Absolute upper-left Y:/ { print $4 }')
 
-x_offset=$(xwininfo -id "$window_id" | awk '/Relative upper-left X:/ { print $4 }')
-y_offset=$(xwininfo -id "$window_id" | awk '/Relative upper-left Y:/ { print $4 }')
-# TODO: + 2 ???
-x=$((x - x_offset + 2))
-y=$((y - y_offset))
-
+work_area=$(xprop -root _NET_WORKAREA | cut -d'=' -f2 | tr -d ' ')
+global_work_y=$(echo $work_area | cut -d',' -f2)
 
 monitor_info=$(xrandr --listmonitors | grep -v Monitors)
 monitor_widths=()
 monitor_positions=()
+monitor_heights=()
+monitor_y_positions=()
 
 while IFS= read -r line; do
     monitor_width=$(echo "$line" | awk '{print $3}' | cut -d'x' -f1 | cut -d'/' -f1)
+    monitor_height=$(echo "$line" | awk '{print $3}' | cut -d'x' -f2 | cut -d'/' -f1)
     monitor_position=$(echo "$line" | awk '{print $3}' | cut -d'+' -f2)
+    monitor_y_pos=$(echo "$line" | awk '{print $3}' | cut -d'+' -f3)
     monitor_widths+=("$monitor_width")
     monitor_positions+=("$monitor_position")
+    monitor_heights+=("$monitor_height")
+    monitor_y_positions+=("$monitor_y_pos")
 done <<< "$monitor_info"
 
 current_monitor_index=-1
@@ -56,14 +55,14 @@ fi
 
 next_monitor_index=$(( (current_monitor_index + 1) % monitor_count ))
 
-new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_monitor_index]))
-new_y=$y
+current_monitor_work_y=$((monitor_y_positions[current_monitor_index] + global_work_y - monitor_y_positions[0]))
+relative_y=$((y - current_monitor_work_y))
 
-if [ "$is_maximized_horz" = true ]; then
-    wmctrl -ir "$window_id" -b remove,maximized_horz,maximized_vert
-elif [ "$is_maximized_vert" = true ]; then
-    wmctrl -ir "$window_id" -b remove,maximized_vert
-fi
+new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_monitor_index]))
+next_monitor_work_y=$((monitor_y_positions[next_monitor_index] + global_work_y - monitor_y_positions[0]))
+new_y=$((next_monitor_work_y + relative_y))
+
+wmctrl -ir "$window_id" -b remove,maximized_horz,maximized_vert
 
 xdotool windowmove "$window_id" "$new_x" "$new_y"
 

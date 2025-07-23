@@ -3,10 +3,10 @@
 window_id=$(xdotool getactivewindow)
 current_width=$(xwininfo -id $window_id | grep "Width:" | awk '{print $2}')
 current_height=$(xwininfo -id $window_id | grep "Height:" | awk '{print $2}')
+
 window_x=$(xwininfo -id $window_id | grep "Absolute upper-left X:" | awk '{print $4}')
 window_y=$(xwininfo -id $window_id | grep "Absolute upper-left Y:" | awk '{print $4}')
-
-window_state=$(xprop -id $window_id _NET_WM_STATE | cut -d'=' -f2)
+window_state=$(xprop -id $window_id "_NET_WM_STATE" | cut -d'=' -f2)
 is_maximized_vert=false
 if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
     is_maximized_vert=true
@@ -30,12 +30,32 @@ monitor_y=$(echo $monitor_info | cut -d' ' -f2)
 monitor_width=$(echo $monitor_info | cut -d' ' -f3)
 monitor_height=$(echo $monitor_info | cut -d' ' -f4)
 
-X_POS=$(((monitor_width - current_width) / 2 + monitor_x))
-Y_POS=0
+work_area=$(xprop -root _NET_WORKAREA | cut -d'=' -f2 | tr -d ' ')
+global_work_x=$(echo $work_area | cut -d',' -f1)
+global_work_y=$(echo $work_area | cut -d',' -f2)
+global_work_width=$(echo $work_area | cut -d',' -f3)
+global_work_height=$(echo $work_area | cut -d',' -f4)
 
-if [ "$is_maximized_vert" != true ]; then
-    Y_POS=$((monitor_height / 2 - current_height / 2))
+panel_top_height=$((global_work_y - monitor_y))
+panel_bottom_height=$((monitor_height - global_work_height - panel_top_height))
+
+work_x=$monitor_x
+work_y=$((monitor_y + panel_top_height))
+work_width=$monitor_width
+work_height=$((monitor_height - panel_top_height - panel_bottom_height))
+
+frame_extents=$(xprop -id $window_id "_NET_FRAME_EXTENTS" | cut -d'=' -f2 | tr -d ' ')
+left_border=$(echo $frame_extents | cut -d',' -f1)
+top_border=$(echo $frame_extents | cut -d',' -f3)
+
+if [ "$is_maximized_vert" = true ]; then
+    Y_POS=$work_y
+else
+    Y_POS=$((work_height / 2 - current_height / 2 + work_y - top_border))
 fi
+X_POS=$((work_width / 2 - current_width / 2 + work_x - left_border))
+
+wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
 
 wmctrl -r :ACTIVE: -e 0,$X_POS,$Y_POS,-1,-1
 
