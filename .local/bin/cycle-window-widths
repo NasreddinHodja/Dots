@@ -25,7 +25,8 @@ if [ -z "$next_width" ]; then
     next_width=$(echo $WIDTHS | cut -d' ' -f1)
 fi
 
-new_x=$((current_center_x - next_width / 2))
+# TODO: - 2 ??
+new_x=$((current_center_x - next_width / 2 - 2))
 
 wmctrl -r :ACTIVE: -e 0,$new_x,-1,$next_width,-1
 wmctrl -r :ACTIVE: -b add,maximized_vert

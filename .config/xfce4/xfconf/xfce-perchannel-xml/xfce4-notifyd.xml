@@ -12,6 +12,7 @@
       <value type="string" value="org.kde.kdenlive"/>
       <value type="string" value="org.qbittorrent.qBittorrent"/>
       <value type="string" value="org.xfce.Thunar"/>
+      <value type="string" value="signal"/>
       <value type="string" value="Slack"/>
       <value type="string" value="slack_Slack"/>
       <value type="string" value="Spotify"/>
