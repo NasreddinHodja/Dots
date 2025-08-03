@@ -53,10 +53,10 @@
       <property name="&lt;Super&gt;comma" type="string" value="/home/nasreddin/.local/bin/move-monitor"/>
       <property name="&lt;Super&gt;c" type="string" value="/home/nasreddin/.local/bin/center-window"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="/home/nasreddin/.local/bin/cycle-window-widths"/>
-      <property name="&lt;Super&gt;k" type="string" value="/home/nasreddin/.local/bin/dwsw up"/>
-      <property name="&lt;Super&gt;l" type="string" value="/home/nasreddin/.local/bin/dwsw right"/>
-      <property name="&lt;Super&gt;j" type="string" value="/home/nasreddin/.local/bin/dwsw down"/>
-      <property name="&lt;Super&gt;h" type="string" value="/home/nasreddin/.local/bin/dwsw left"/>
+      <property name="&lt;Super&gt;j" type="string" value="/home/nasreddin/.local/bin/dws down"/>
+      <property name="&lt;Super&gt;k" type="string" value="/home/nasreddin/.local/bin/dws up"/>
+      <property name="&lt;Super&gt;l" type="string" value="/home/nasreddin/.local/bin/dws right"/>
+      <property name="&lt;Super&gt;h" type="string" value="/home/nasreddin/.local/bin/dws left"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -183,6 +183,7 @@
       <property name="&lt;Alt&gt;&lt;Super&gt;h" type="string" value="tile_left_key"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;l" type="string" value="tile_right_key"/>
       <property name="&lt;Super&gt;v" type="string" value="fill_vert_key"/>
+      <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
     </property>
   </property>
   <property name="providers" type="array">
