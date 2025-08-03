@@ -3,6 +3,11 @@
 # Directional window switcher (for X) with cursor movement
 # Usage: ./dws [up|down|left|right]
 
+abs_diff() {
+    local diff=$(($1 - $2))
+    echo $((diff < 0 ? -diff : diff))
+}
+
 if [ $# -ne 1 ]; then
     echo "Usage: $0 [up|down|left|right]"
     exit 1
@@ -55,25 +60,25 @@ while IFS= read -r line; do
         up)
             [ $win_center_y -ge $current_center_y ] && continue
             v_dist=$((current_center_y - win_center_y))
-            h_dist=$((win_center_x > current_center_x ? win_center_x - current_center_x : current_center_x - win_center_x))
+            h_dist=$(abs_diff $win_center_x $current_center_x)
             distance=$((v_dist * 100 + h_dist))
             ;;
         down)
             [ $win_center_y -le $current_center_y ] && continue
             v_dist=$((win_center_y - current_center_y))
-            h_dist=$((win_center_x > current_center_x ? win_center_x - current_center_x : current_center_x - win_center_x))
+            h_dist=$(abs_diff $win_center_x $current_center_x)
             distance=$((v_dist * 100 + h_dist))
             ;;
         left)
             [ $win_center_x -ge $current_center_x ] && continue
             h_dist=$((current_center_x - win_center_x))
-            v_dist=$((win_center_y > current_center_y ? win_center_y - current_center_y : current_center_y - win_center_y))
+            v_dist=$(abs_diff $win_center_y $current_center_y)
             distance=$((h_dist * 100 + v_dist))
             ;;
         right)
             [ $win_center_x -le $current_center_x ] && continue
             h_dist=$((win_center_x - current_center_x))
-            v_dist=$((win_center_y > current_center_y ? win_center_y - current_center_y : current_center_y - win_center_y))
+            v_dist=$(abs_diff $win_center_y $current_center_y)
             distance=$((h_dist * 100 + v_dist))
             ;;
     esac
