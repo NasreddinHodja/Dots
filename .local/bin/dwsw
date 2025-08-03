@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 # Directional window switcher using wmctrl (center-based) with cursor movement
 # Usage: ./window_switch.sh [up|down|left|right]
 
@@ -9,16 +8,15 @@ if [ $# -ne 1 ]; then
 fi
 
 direction="$1"
-
 case "$direction" in
-    up|down|left|right) ;;
+    "up"|"down"|"left"|"right") ;;
     *) echo "Invalid direction. Use: up, down, left, right"; exit 1 ;;
 esac
 
 active_id=$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5 | tr -d ',')
 active_id_padded=$(printf "0x%08x" $((active_id)))
-current_window=$(wmctrl -lG | awk -v active="$active_id_padded" '$1 == active {print $1, $3, $4, $5, $6}')
 
+current_window=$(wmctrl -lG | awk -v active="$active_id_padded" '$1 == active {print $1, $3, $4, $5, $6}')
 if [ -z "$current_window" ]; then
     exit 1
 fi
@@ -26,8 +24,24 @@ fi
 read current_id current_x current_y current_w current_h <<< "$current_window"
 current_center_x=$((current_x + current_w / 2))
 current_center_y=$((current_y + current_h / 2))
+
 current_desktop=$(wmctrl -d | grep '\*' | awk '{print $1}')
-all_windows=$(wmctrl -lG | awk -v desktop="$current_desktop" -v exclude="$active_id_padded" '$2 == desktop && $1 != exclude')
+
+all_windows=$(wmctrl -lG | awk -v desktop="$current_desktop" -v exclude="$active_id_padded" '($2 == desktop || $2 == -1) && $1 != exclude' | while read line; do
+    win_id=$(echo "$line" | awk '{print $1}')
+    win_class=$(xprop -id "$win_id" WM_CLASS 2>/dev/null | cut -d'"' -f2,4)
+    win_type=$(xprop -id "$win_id" _NET_WM_WINDOW_TYPE 2>/dev/null)
+
+    # skip if panel, desktop, dock, or other system window
+    case "$win_class" in
+        *panel*|*Panel*|*desktop*|*Desktop*|*dock*|*Dock*) continue ;;
+    esac
+    case "$win_type" in
+        *_NET_WM_WINDOW_TYPE_DESKTOP*|*_NET_WM_WINDOW_TYPE_DOCK*|*_NET_WM_WINDOW_TYPE_TOOLBAR*) continue ;;
+    esac
+
+    echo "$line"
+done)
 
 best_window=""
 best_distance=999999
@@ -38,14 +52,12 @@ while IFS= read -r line; do
     [ -z "$line" ] && continue
 
     read win_id win_x win_y win_w win_h <<< "$(echo "$line" | awk '{print $1, $3, $4, $5, $6}')"
-
     [ -z "$win_id" ] && continue
 
     win_center_x=$((win_x + win_w / 2))
     win_center_y=$((win_y + win_h / 2))
 
     valid_direction=false
-
     case "$direction" in
         "up")
             if [ $win_center_y -lt $current_center_y ]; then

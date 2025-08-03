@@ -2,6 +2,7 @@
 
 window_id=$(xdotool getactivewindow)
 window_state=$(xprop -id "$window_id" | grep "_NET_WM_STATE")
+
 is_maximized_vert=false
 is_maximized_horz=false
 if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then

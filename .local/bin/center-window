@@ -51,7 +51,7 @@ top_border=$(echo $frame_extents | cut -d',' -f3)
 if [ "$is_maximized_vert" = true ]; then
     Y_POS=$work_y
 else
-    Y_POS=$((work_height / 2 - current_height / 2 + work_y - top_border))
+    Y_POS=$((work_height / 2 - current_height / 2 + work_y))
 fi
 X_POS=$((work_width / 2 - current_width / 2 + work_x - left_border))
 
