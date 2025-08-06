@@ -68,6 +68,10 @@ tmp/
 .config/.nuxt
 .config/.wrangler
 .config/Upscayl
+.config/clerk
+.config/nextjs-nodejs
+.config/stripe
+.config/turborepo
 
 .config/zsh/.node_token
 .config/zsh/.zhistory
