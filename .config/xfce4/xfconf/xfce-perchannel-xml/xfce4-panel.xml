@@ -70,6 +70,8 @@
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="ksnip"/>
+        <value type="string" value="flameshot"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="qBittorrent"/>
         <value type="string" value="obs"/>
