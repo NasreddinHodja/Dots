@@ -80,16 +80,10 @@ find_closest_window() {
     local direction="$1" active_id="$2" current_center_x="$3" current_center_y="$4" current_desktop="$5"
     local best_window="" best_distance=$MAX_DISTANCE best_center_x=0 best_center_y=0
     local same_pos_windows=()
-    local candidate_windows
 
-    candidate_windows=$(wmctrl -lG | awk -v desktop="$current_desktop" -v exclude="$active_id" \
-        '($2 == desktop || $2 == -1) && $1 != exclude {print $1, $3, $4, $5, $6}')
-
-    while IFS= read -r line; do
-        [[ -z "$line" ]] && continue
-
-        local win_info=($line)
-        local win_id=${win_info[0]} win_x=${win_info[1]} win_y=${win_info[2]} win_w=${win_info[3]} win_h=${win_info[4]}
+    while read -r win_id desktop win_x win_y win_w win_h _; do
+        [[ "$desktop" == "$current_desktop" || "$desktop" == "-1" ]] || continue
+        [[ "$win_id" != "$active_id" ]] || continue
 
         local win_class
         win_class=$(xprop -id "$win_id" WM_CLASS 2>/dev/null | cut -d'"' -f2)
@@ -113,11 +107,9 @@ find_closest_window() {
             best_center_x=$win_center_x
             best_center_y=$win_center_y
         fi
-    done <<< "$candidate_windows"
+    done < <(wmctrl -lG)
 
-    # Handle windows at same position
     if [[ -z "$best_window" && ${#same_pos_windows[@]} -gt 0 ]]; then
-        # Sort windows for consistent cycling
         IFS=$'\n' same_pos_windows=($(sort <<< "${same_pos_windows[*]}"))
         local found=false
 
@@ -131,7 +123,6 @@ find_closest_window() {
             fi
         done
 
-        # If active window was last, cycle to first
         if [[ -z "$best_window" ]]; then
             best_window=${same_pos_windows[0]}
         fi
@@ -200,7 +191,7 @@ unfocus_current_window() {
 }
 
 is_valid_window_class() {
-    local win_class="${1,,}"  # Convert to lowercase using bash parameter expansion
+    local win_class="${1,,}"
 
     case "$win_class" in
         *panel*|*desktop*|*dock*|*bar*|*notify*) return 1 ;;
