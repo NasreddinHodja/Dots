@@ -35,18 +35,18 @@ abs_diff() {
 
 is_in_direction() {
     direction=$1
-    mouse_x=$2 mouse_y=$3
-    x=$4 y=$5
+    origin_x=$2 origin_y=$3
+    target_x=$4 target_y=$5
 
     case "$direction" in
         left)
-            [ "$x" -lt "$mouse_x" ] ;;
+            [ "$target_x" -lt "$origin_x" ] ;;
         right)
-            [ "$x" -gt "$mouse_x" ] ;;
+            [ "$target_x" -gt "$origin_x" ] ;;
         up)
-            [ "$y" -lt "$mouse_y" ] ;;
+            [ "$target_y" -lt "$origin_y" ] ;;
         down)
-            [ "$y" -gt "$mouse_y" ] ;;
+            [ "$target_y" -gt "$origin_y" ] ;;
         *) return 1 ;;
     esac
 }
