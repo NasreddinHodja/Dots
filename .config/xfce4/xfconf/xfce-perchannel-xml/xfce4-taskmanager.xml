@@ -1,0 +1,14 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<channel name="xfce4-taskmanager" version="1.0">
+  <property name="columns" type="empty">
+    <property name="sort-type" type="uint" value="1"/>
+    <property name="sort-id" type="uint" value="7"/>
+    <property name="column-ppid" type="bool" value="false"/>
+    <property name="column-vsz" type="bool" value="false"/>
+  </property>
+  <property name="interface" type="empty">
+    <property name="process-tree" type="bool" value="true"/>
+  </property>
+  <property name="window-maximized" type="bool" value="true"/>
+</channel>

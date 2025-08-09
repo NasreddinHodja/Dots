@@ -1,124 +1,280 @@
 #!/usr/bin/env sh
+
 # Directional window switcher (for X) with cursor movement
 # Usage: ./dws [up|down|left|right]
-abs_diff() {
-    local diff=$(($1 - $2))
-    echo $((diff < 0 ? -diff : diff))
+
+set -euo pipefail
+
+readonly MAX_DISTANCE=999999
+readonly DIRECTION_WEIGHT=100
+
+check_dependencies() {
+    deps="wmctrl xdotool xprop xrandr"
+    missing=""
+
+    for dep in $deps; do
+        if ! command -v "$dep" >/dev/null 2>&1; then
+            missing="$missing $dep"
+        fi
+    done
+
+    if [ -n "$missing" ]; then
+        echo "Error: Missing dependencies:$missing" >&2
+        exit 1
+    fi
 }
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 [up|down|left|right]"
-    exit 1
-fi
+abs_diff() {
+    diff=$(( $1 - $2 ))
+    if [ "$diff" -lt 0 ]; then
+        echo $(( -diff ))
+    else
+        echo "$diff"
+    fi
+}
 
-direction="$1"
-case "$direction" in
-    up|down|left|right) ;;
-    *) echo "Invalid direction. Use: up, down, left, right"; exit 1 ;;
-esac
+is_in_direction() {
+    direction=$1
+    mouse_x=$2 mouse_y=$3
+    x=$4 y=$5
 
-active_info=$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5 | tr -d ',')
-active_id=$(printf "0x%08x" $((active_info)))
-current_window=$(wmctrl -lG | awk -v active="$active_id" '$1 == active {print $1, $3, $4, $5, $6; exit}')
-if [ -z "$current_window" ]; then
-    exit 1
-fi
-
-set -- $current_window
-current_x=$2 current_y=$3 current_w=$4 current_h=$5
-current_center_x=$((current_x + current_w / 2))
-current_center_y=$((current_y + current_h / 2))
-
-current_desktop=$(wmctrl -d | awk '/\*/ {print $1; exit}')
-candidate_windows=$(wmctrl -lG | awk -v desktop="$current_desktop" -v exclude="$active_id" \
-    '($2 == desktop || $2 == -1) && $1 != exclude {print $1, $3, $4, $5, $6}')
-
-best_window=""
-best_distance=999999
-best_center_x=0
-best_center_y=0
-same_pos_windows=""
-
-while IFS= read -r line; do
-    [ -z "$line" ] && continue
-
-    set -- $line
-
-    win_id=$1 win_x=$2 win_y=$3 win_w=$4 win_h=$5
-    win_class=$(xprop -id "$win_id" WM_CLASS 2>/dev/null | cut -d'"' -f2)
-
-    case "$win_class" in
-        *panel*|*Panel*|*desktop*|*Desktop*|*dock*|*Dock*|*bar*|*Bar*) continue ;;
+    case "$direction" in
+        left)
+            [ "$x" -lt "$mouse_x" ] ;;
+        right)
+            [ "$x" -gt "$mouse_x" ] ;;
+        up)
+            [ "$y" -lt "$mouse_y" ] ;;
+        down)
+            [ "$y" -gt "$mouse_y" ] ;;
+        *) return 1 ;;
     esac
+}
 
-    win_center_x=$((win_x + win_w / 2))
-    win_center_y=$((win_y + win_h / 2))
+distance() {
+    direction=$1
+    win_center_x=$2 win_center_y=$3
+    current_center_x=$4 current_center_y=$5
 
-    if [ $win_center_x -eq $current_center_x ] && [ $win_center_y -eq $current_center_y ]; then
-        same_pos_windows="$same_pos_windows$win_id "
+    if ! is_in_direction "$direction" "$current_center_x" "$current_center_y" "$win_center_x" "$win_center_y"; then
+        echo -1
+        return
     fi
 
     case "$direction" in
         up)
-            [ $win_center_y -ge $current_center_y ] && continue
-            v_dist=$((current_center_y - win_center_y))
-            h_dist=$(abs_diff $win_center_x $current_center_x)
-            distance=$((v_dist * 100 + h_dist))
+            primary_dist=$((current_center_y - win_center_y))
+            secondary_dist=$(abs_diff "$win_center_x" "$current_center_x")
             ;;
         down)
-            [ $win_center_y -le $current_center_y ] && continue
-            v_dist=$((win_center_y - current_center_y))
-            h_dist=$(abs_diff $win_center_x $current_center_x)
-            distance=$((v_dist * 100 + h_dist))
+            primary_dist=$((win_center_y - current_center_y))
+            secondary_dist=$(abs_diff "$win_center_x" "$current_center_x")
             ;;
         left)
-            [ $win_center_x -ge $current_center_x ] && continue
-            h_dist=$((current_center_x - win_center_x))
-            v_dist=$(abs_diff $win_center_y $current_center_y)
-            distance=$((h_dist * 100 + v_dist))
+            primary_dist=$((current_center_x - win_center_x))
+            secondary_dist=$(abs_diff "$win_center_y" "$current_center_y")
             ;;
         right)
-            [ $win_center_x -le $current_center_x ] && continue
-            h_dist=$((win_center_x - current_center_x))
-            v_dist=$(abs_diff $win_center_y $current_center_y)
-            distance=$((h_dist * 100 + v_dist))
+            primary_dist=$((win_center_x - current_center_x))
+            secondary_dist=$(abs_diff "$win_center_y" "$current_center_y")
+            ;;
+        *)
+            echo -1
+            return
             ;;
     esac
 
-    if [ $distance -lt $best_distance ]; then
-        best_distance=$distance
-        best_window=$win_id
-        best_center_x=$win_center_x
-        best_center_y=$win_center_y
-    fi
-done <<< "$candidate_windows"
+    echo $((primary_dist * DIRECTION_WEIGHT + secondary_dist))
+}
 
-if [ -z "$best_window" ] && [ -n "$same_pos_windows" ]; then
-    sorted_windows=$(echo "$same_pos_windows" | tr ' ' '\n' | sort | tr '\n' ' ')
+find_closest_window() {
+    direction="$1"
+    active_id="$2"
+    current_center_x="$3"
+    current_center_y="$4"
+    current_desktop="$5"
 
-    found=false
-    for win_id in $sorted_windows; do
-        if [ "$found" = true ]; then
+    candidate_windows=$(wmctrl -lG | awk -v desktop="$current_desktop" -v exclude="$active_id" \
+        '($2 == desktop || $2 == -1) && $1 != exclude {print $1, $3, $4, $5, $6}')
+
+    best_window=""
+    best_distance=$MAX_DISTANCE
+    best_center_x=0
+    best_center_y=0
+    same_pos_windows=""
+
+    while IFS= read -r line; do
+        [ -z "$line" ] && continue
+        set -- $line
+        win_id=$1 win_x=$2 win_y=$3 win_w=$4 win_h=$5
+
+        win_class=$(xprop -id "$win_id" WM_CLASS 2>/dev/null | cut -d'"' -f2)
+        is_valid_window_class "$win_class" || continue
+
+        win_center_x=$((win_x + win_w / 2))
+        win_center_y=$((win_y + win_h / 2))
+
+        if [ "$win_center_x" -eq "$current_center_x" ] && [ "$win_center_y" -eq "$current_center_y" ]; then
+            same_pos_windows="$same_pos_windows$win_id "
+            continue
+        fi
+
+        win_distance=$(distance "$direction" "$win_center_x" "$win_center_y" "$current_center_x" "$current_center_y")
+        [ $win_distance -eq -1 ] && continue
+
+        if [ $win_distance -lt $best_distance ]; then
+            best_distance=$win_distance
             best_window=$win_id
-            break
+            best_center_x=$win_center_x
+            best_center_y=$win_center_y
         fi
-        if [ "$win_id" = "$active_id" ]; then
-            found=true
-        fi
-    done
+    done <<EOF
+$candidate_windows
+EOF
 
-    if [ -z "$best_window" ]; then
-        best_window=$(echo $sorted_windows | awk '{print $1}')
+
+    if [ -z "$best_window" ] && [ -n "$same_pos_windows" ]; then
+        local sorted_windows
+        sorted_windows=$(echo "$same_pos_windows" | tr ' ' '\n' | sort | tr '\n' ' ')
+        local found=false
+
+        for win_id in $sorted_windows; do
+            if [ "$found" = true ]; then
+                best_window=$win_id
+                break
+            fi
+            if [ "$win_id" = "$active_id" ]; then
+                found=true
+            fi
+        done
+
+        if [ -z "$best_window" ]; then
+            best_window=$(echo $sorted_windows | awk '{print $1}')
+        fi
+
+        best_center_x=$current_center_x
+        best_center_y=$current_center_y
     fi
 
-    best_center_x=$current_center_x
-    best_center_y=$current_center_y
-fi
+    if [ -n "$best_window" ]; then
+        echo "$best_window $best_center_x $best_center_y"
+        return 0
+    else
+        return 1
+    fi
+}
 
-if [ -n "$best_window" ]; then
-    wmctrl -ia "$best_window"
-    xdotool mousemove "$best_center_x" "$best_center_y"
-else
-    echo "No window found in direction: $direction"
+find_closest_monitor() {
+    direction=$1 mouse_x=$2 mouse_y=$3
+    active_monitors=$(xrandr --listactivemonitors)
+
+    best_monitor_x=""
+    best_monitor_y=""
+    best_distance=$MAX_DISTANCE
+
+    while IFS= read -r line; do
+        case "$line" in
+            *:[[:space:]]*) ;;
+            *) continue ;;
+        esac
+
+        monitor_geometry=$(echo "$line" | awk '{print $3}')
+        monitor_w=$(echo "$monitor_geometry" | cut -d'/' -f1 | cut -d'+' -f1)
+        monitor_h=$(echo "$monitor_geometry" | cut -d'x' -f2 | cut -d'/' -f1)
+        monitor_x=$(echo "$monitor_geometry" | cut -d'+' -f2)
+        monitor_y=$(echo "$monitor_geometry" | cut -d'+' -f3)
+
+        monitor_center_x=$((monitor_x + monitor_w / 2))
+        monitor_center_y=$((monitor_y + monitor_h / 2))
+
+        if is_in_direction "$direction" "$mouse_x" "$mouse_y" "$monitor_center_x" "$monitor_center_y"; then
+            distance=$(distance "$direction" "$monitor_center_x" "$monitor_center_y" "$mouse_x" "$mouse_y")
+
+            if [ $distance -ne -1 ] && [ $distance -lt $best_distance ]; then
+                best_distance=$distance
+                best_monitor_x=$monitor_center_x
+                best_monitor_y=$monitor_center_y
+            fi
+        fi
+    done <<EOF
+"$active_monitors"
+EOF
+
+    if [ -n "$best_monitor_x" ] && [ -n "$best_monitor_y" ]; then
+        echo "$best_monitor_x $best_monitor_y"
+        return 0
+    else
+        return 1
+    fi
+}
+
+unfocus_current_window() {
+    if [ -n "${active_id:-}" ] && [ "$active_id" != "0x0" ]; then
+        wmctrl -r :ACTIVE: -b add,below 2>/dev/null || \
+        xdotool key alt+Tab 2>/dev/null || true
+    fi
+}
+
+is_valid_window_class() {
+    win_class=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
+
+    case "$win_class" in
+        *panel*|*desktop*|*dock*|*bar*|*notify*) return 1 ;;
+        *) return 0 ;;
+    esac
+}
+
+main() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [up|down|left|right]"
+        exit 1
+    fi
+
+    direction="$1"
+    case "$direction" in
+        up|down|left|right) ;;
+        *) echo "Invalid direction. Use: up, down, left, right"; exit 1 ;;
+    esac
+
+    check_dependencies
+
+    active_info=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}' | tr -d ',')
+    active_id=$(printf "0x%08x" $((active_info)))
+
+    current_window=$(wmctrl -lG | awk -v active="$active_id" '$1 == active {print $1, $3, $4, $5, $6; exit}')
+
+    if [ -n "$current_window" ]; then
+        set -- $current_window
+        current_x=$2 current_y=$3 current_w=$4 current_h=$5
+        current_center_x=$((current_x + current_w / 2))
+        current_center_y=$((current_y + current_h / 2))
+
+        current_desktop=$(wmctrl -d | awk '/\*/ {print $1; exit}')
+
+        closest_window=$(find_closest_window "$direction" "$active_id" "$current_center_x" "$current_center_y" "$current_desktop" || true)
+        if [ -n "$closest_window" ]; then
+            set -- $closest_window
+            wmctrl -ia "$1"
+            xdotool mousemove "$2" "$3"
+            exit 0
+        fi
+    fi
+
+    unfocus_current_window
+
+    mouse_pos=$(xdotool getmouselocation --shell)
+    mouse_x=$(echo "$mouse_pos" | awk -F= '/X=/ {print $2}')
+    mouse_y=$(echo "$mouse_pos" | awk -F= '/Y=/ {print $2}')
+
+    closest_monitor=$(find_closest_monitor "$direction" "$mouse_x" "$mouse_y")
+
+    if [ -n "$closest_monitor" ]; then
+        set -- $closest_monitor
+        xdotool mousemove "$1" "$2"
+        exit 0
+    fi
+
     exit 1
-fi
+}
+
+main "$@"
