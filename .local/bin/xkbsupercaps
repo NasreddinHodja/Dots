@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+setxkbmap -option caps:super
+
+xcape -e 'Super_L=Escape'
