@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if [ -f bun.lockb ]; then
+    PM="bun"
+elif [ -f yarn.lock ]; then
+    PM="yarn"
+elif [ -f package-lock.json ]; then
+    PM="npm"
+elif [ -f pnpm-lock.yaml ]; then
+    PM="pnpm"
+else
+    echo "No known package manager lockfile found."
+    exit 1
+fi
+
+exec "$PM" "$@"
