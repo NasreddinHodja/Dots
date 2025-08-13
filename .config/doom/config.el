@@ -77,7 +77,6 @@
 
 
 ;; initial window size
-;; initial window size
 (defconst my/frame-parameters
   '((width . 100)
     (height . 45))
