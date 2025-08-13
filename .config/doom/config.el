@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "Source Code Pro" :size 16)
-     doom-variable-pitch-font (font-spec :family "sans" :size 16))
+      doom-variable-pitch-font (font-spec :family "sans" :size 16))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -76,6 +76,17 @@
 ;; they are implemented.
 
 
+;; initial window size
+;; initial window size
+(defconst my/frame-parameters
+  '((width . 100)
+    (height . 45))
+  "Default frame parameters.")
+
+;; Set for all frames (both initial and client)
+(dolist (param my/frame-parameters)
+  (add-to-list 'default-frame-alist param))
+
 ;; remove quit prompt
 (setq confirm-kill-emacs nil)
 
@@ -114,9 +125,9 @@
 
 (map! :leader
       (:prefix ("f" . "file")
-       (:prefix ("i" . "find in")
-        :desc "Find in Prog directory" "p" #'find-in-prog
-        :desc "Find in Dots directory" "d" #'find-in-dots)))
+               (:prefix ("i" . "find in")
+                :desc "Find in Prog directory" "p" #'find-in-prog
+                :desc "Find in Dots directory" "d" #'find-in-dots)))
 
 ;; remap call last macro
 (map! "C-c ." 'call-last-kbd-macro)
@@ -168,19 +179,19 @@
 ;; evil inside mini buffer
 (setq evil-want-minibuffer t)
 
-;; ;; configure org latex preview
-;; (setq org-preview-latex-process-alist
-;;       '((imagemagick
-;;          :programs ("pdflatex" "convert")
-;;          :description "pdf > png"
-;;          :message "You need to install: pdflatex and imagemagick."
-;;          :image-input-type "pdf"
-;;          :image-output-type "png"
-;;          :image-size-adjust (1.0 . 1.0)
-;;          :latex-compiler ("pdflatex -interaction nonstopmode -output-directory %o %f")
-;;          :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
+;; configure org latex preview
+(setq org-preview-latex-process-alist
+      '((imagemagick
+         :programs ("pdflatex" "convert")
+         :description "pdf > png"
+         :message "You need to install: pdflatex and imagemagick."
+         :image-input-type "pdf"
+         :image-output-type "png"
+         :image-size-adjust (1.0 . 1.0)
+         :latex-compiler ("pdflatex -interaction nonstopmode -output-directory %o %f")
+         :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
 
-;; (setq org-preview-latex-default-process 'imagemagick)
+(setq org-preview-latex-default-process 'imagemagick)
 
 ;; use trash
 (setq delete-by-moving-to-trash t)
