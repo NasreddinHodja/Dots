@@ -113,20 +113,52 @@
 ;; roam config
 (setq org-roam-directory "~/Notes")
 
-;; find ins
-(defun find-in-prog ()
-  (interactive)
-  (find-file (read-file-name "Find file in Prog: " "~/Prog/")))
+;; find-ins
+(defun extract-dir-name (dir-path)
+  "Extract directory name from path for function naming."
+  (downcase
+   (file-name-nondirectory
+    (directory-file-name dir-path))))
 
-(defun find-in-dots ()
-  (interactive)
-  (find-file (read-file-name "Find file in Dots: " "~/Dots/")))
+(defun make-find-function (key dir-path)
+  "Generate a find function definition from key and directory path."
+  (let* ((dir-name (extract-dir-name dir-path))
+         (func-name (intern (format "find-in-%s" dir-name)))
+         (prompt (format "Find file in %s: " dir-path)))
+    `(defun ,func-name ()
+       (interactive)
+       (find-file (read-file-name ,prompt ,dir-path)))))
 
-(map! :leader
-      (:prefix ("f" . "file")
-               (:prefix ("i" . "find in")
-                :desc "Find in Prog directory" "p" #'find-in-prog
-                :desc "Find in Dots directory" "d" #'find-in-dots)))
+(defun make-keybinding (key dir-path)
+  "Generate keybinding spec from key and directory path."
+  (let* ((dir-name (extract-dir-name dir-path))
+         (desc (format "Find in %s" dir-path))
+         (func-sym (intern (format "find-in-%s" dir-name))))
+    (list :desc desc key `(quote ,func-sym))))
+
+(defmacro def-find-dirs (&rest specs)
+  "Define find functions and keybindings from (key dir-path) specs."
+  `(progn
+     ;; Generate all function definitions
+     ,@(mapcar (lambda (spec)
+                 (make-find-function (nth 0 spec) (nth 1 spec)))
+               specs)
+     ;; Generate keybinding map
+     (map! :leader
+           (:prefix ("f" . "file")
+                    (:prefix ("i" . "find in")
+                             ,@(mapcan (lambda (spec)
+                                         (make-keybinding (nth 0 spec) (nth 1 spec)))
+                                       specs))))))
+
+;; Usage
+(def-find-dirs
+ ("d" "~/Dots/")
+ ("b" "~/.local/bin")
+ ("p" "~/Prog/")
+ ("f" "~/Facu/")
+ ("t" "~/Trab/")
+ ("h" "~/"))
 
 ;; remap call last macro
 (map! "C-c ." 'call-last-kbd-macro)
