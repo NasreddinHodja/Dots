@@ -226,3 +226,6 @@
 
 ;; use trash
 (setq delete-by-moving-to-trash t)
+
+;; workspaces in modeline
+(setq doom-modeline-persp-name t)
