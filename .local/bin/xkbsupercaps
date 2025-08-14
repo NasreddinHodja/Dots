@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+while ! xset q &>/dev/null; do
+    sleep 0.1
+done
+
 setxkbmap -option caps:super
 
 xcape -e 'Super_L=Escape'
