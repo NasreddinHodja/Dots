@@ -114,47 +114,47 @@
 (setq org-roam-directory "~/Notes")
 
 ;; find-ins
-(defun extract-dir-name (dir-path)
-  "Extract directory name from path for function naming."
+(defun dir-name-from-path (path)
+  "Extract clean directory name from PATH for function naming."
   (downcase
    (file-name-nondirectory
-    (directory-file-name dir-path))))
+    (directory-file-name path))))
 
-(defun make-find-function (key dir-path)
-  "Generate a find function definition from key and directory path."
-  (let* ((dir-name (extract-dir-name dir-path))
-         (func-name (intern (format "find-in-%s" dir-name)))
-         (prompt (format "Find file in %s: " dir-path)))
-    `(defun ,func-name ()
-       (interactive)
-       (find-file (read-file-name ,prompt ,dir-path)))))
+(defun build-finder-function (path)
+  "Create a function definition that finds files in PATH."
+  (let ((name (intern (format "find-in-%s" (dir-name-from-path path))))
+        (prompt (format "Find file in %s: " path))
+        (docstring (format "Find files in %s directory." path)))
+    (list 'defun name '()
+          docstring
+          '(interactive)
+          (list 'find-file
+                (list 'read-file-name prompt path)))))
 
-(defun make-keybinding (key dir-path)
-  "Generate keybinding spec from key and directory path."
-  (let* ((dir-name (extract-dir-name dir-path))
-         (desc (format "Find in %s" dir-path))
-         (func-sym (intern (format "find-in-%s" dir-name))))
-    (list :desc desc key `(quote ,func-sym))))
+(defun build-keybinding (key path)
+  "Create keybinding specification for KEY and PATH."
+  (let ((desc (format "Find in %s" path))
+        (func-name (intern (format "find-in-%s" (dir-name-from-path path)))))
+    (list :desc desc key (list 'quote func-name))))
 
-(defmacro def-find-dirs (&rest specs)
-  "Define find functions and keybindings from (key dir-path) specs."
-  `(progn
-     ;; Generate all function definitions
-     ,@(mapcar (lambda (spec)
-                 (make-find-function (nth 0 spec) (nth 1 spec)))
-               specs)
-     ;; Generate keybinding map
-     (map! :leader
-           (:prefix ("f" . "file")
-                    (:prefix ("i" . "find in")
-                             ,@(mapcan (lambda (spec)
-                                         (make-keybinding (nth 0 spec) (nth 1 spec)))
-                                       specs))))))
+(defmacro def-find-dirs (&rest key-path-pairs)
+  "Create finder functions and keybindings from (KEY PATH) pairs."
+  (let ((functions (mapcar (lambda (pair)
+                             (build-finder-function (nth 1 pair)))
+                           key-path-pairs))
+        (keybindings (mapcar (lambda (pair)
+                               (build-keybinding (nth 0 pair) (nth 1 pair)))
+                             key-path-pairs)))
+    `(progn
+       ,@functions
+       (map! :leader
+             (:prefix ("f" . "file")
+              (:prefix ("i" . "find in")
+               ,@keybindings))))))
 
-;; Usage
 (def-find-dirs
  ("d" "~/Dots/")
- ("b" "~/.local/bin")
+ ("b" "~/.local/bin/")
  ("p" "~/Prog/")
  ("f" "~/Facu/")
  ("t" "~/Trab/")
