@@ -3,9 +3,10 @@
 SCREENSHOT_DIR="${SCREENSHOT_DIR:-$HOME/Pictures/scrot}"
 NOTIFICATION_DURATION="${NOTIFICATION_DURATION:-5000}"
 
-for tool in maim xclip notify-send slop; do
-    command -v "$tool" >/dev/null || {
-        echo "Error: $tool not found." >&2
+DEPS=(xclip maim slop)
+for dep in "${DEPS[@]}"; do
+    command -v "$dep" >/dev/null || {
+        echo "Error: $dep not found." >&2
         exit 1
     }
 done
@@ -21,16 +22,16 @@ capture_and_save() {
 
     [[ -s $filename ]] || return 1
 
-    local action_result=$(notify-send \
-            -t "$NOTIFICATION_DURATION" \
-            -a "Screenshot Tool" \
-            -c "transfer.complete" \
-            -i "$filename" \
-            -A "Open" \
-            "Screenshot Captured" \
-            "Saved screenshot:\n$(basename "$filename")")
+    notify-send \
+        -t "$NOTIFICATION_DURATION" \
+        -a "Screenshot Tool" \
+        -c "transfer.complete" \
+        -i "$filename" \
+        -A "Open" \
+        "Screenshot Captured" \
+        "Saved screenshot:\n${filename##*/}"
 
-    [[ $action_result == 0 ]] && sxiv "$filename"
+    [[ $? == 0 ]] && sxiv "$filename"
 
     return 0
 }
