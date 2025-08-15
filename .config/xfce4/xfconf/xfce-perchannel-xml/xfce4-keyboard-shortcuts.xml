@@ -53,8 +53,9 @@
       <property name="&lt;Super&gt;k" type="string" value="/home/nasreddin/.local/bin/dws up"/>
       <property name="&lt;Super&gt;l" type="string" value="/home/nasreddin/.local/bin/dws right"/>
       <property name="&lt;Super&gt;h" type="string" value="/home/nasreddin/.local/bin/dws left"/>
-      <property name="Print" type="string" value="ksnip -r"/>
-      <property name="&lt;Super&gt;p" type="string" value="ksnip -r -c"/>
+      <property name="Print" type="string" value="/home/nasreddin/.local/bin/scsh -s"/>
+      <property name="&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

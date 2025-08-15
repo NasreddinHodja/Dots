@@ -14,14 +14,25 @@
       <value type="string" value="org.kde.kdenlive"/>
       <value type="string" value="org.qbittorrent.qBittorrent"/>
       <value type="string" value="org.xfce.Thunar"/>
+      <value type="string" value="Screenshot Tool"/>
+      <value type="string" value="scsh"/>
       <value type="string" value="signal"/>
       <value type="string" value="Slack"/>
       <value type="string" value="slack_Slack"/>
       <value type="string" value="Spotify"/>
       <value type="string" value="Upscayl"/>
       <value type="string" value="Xfce volume control"/>
+      <value type="string" value="Xfce4-notifyd settings"/>
       <value type="string" value="xfce4-settings-helper"/>
       <value type="string" value="Zen"/>
     </property>
   </property>
+  <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
+  <property name="theme" type="string" value="Default"/>
+  <property name="show-text-with-gauge" type="bool" value="false"/>
+  <property name="notification-display-fields" type="string" value="full"/>
+  <property name="do-slideout" type="bool" value="false"/>
+  <property name="do-fadeout" type="bool" value="true"/>
+  <property name="min-width-enabled" type="bool" value="false"/>
+  <property name="min-width" type="uint" value="300"/>
 </channel>

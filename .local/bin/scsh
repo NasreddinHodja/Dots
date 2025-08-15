@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+SCREENSHOT_DIR="${SCREENSHOT_DIR:-$HOME/Pictures/scrot}"
+NOTIFICATION_DURATION="${NOTIFICATION_DURATION:-5000}"
+
+for tool in maim xclip notify-send slop; do
+    command -v "$tool" >/dev/null || {
+        echo "Error: $tool not found." >&2
+        exit 1
+    }
+done
+
+mkdir -p "$SCREENSHOT_DIR"
+
+capture_and_save() {
+    local filename="$SCREENSHOT_DIR/$(date +%s).png"
+
+    maim -u -s \
+        | tee "$filename" \
+        | xclip -selection clipboard -t image/png
+
+    [[ -s $filename ]] || return 1
+
+    local action_result=$(notify-send \
+            -t "$NOTIFICATION_DURATION" \
+            -a "Screenshot Tool" \
+            -c "transfer.complete" \
+            -i "$filename" \
+            -A "Open" \
+            "Screenshot Captured" \
+            "Saved screenshot:\n$(basename "$filename")")
+
+    [[ $action_result == 0 ]] && sxiv "$filename"
+
+    return 0
+}
+
+capture() {
+    local temp_file=$(mktemp --suffix=.png)
+
+    trap "rm -f '$temp_file'" EXIT
+
+    maim -u -s "$temp_file"
+
+    if [[ -s "$temp_file" ]]; then
+        xclip -selection clipboard -t image/png < "$temp_file"
+        notify-send \
+            -t $NOTIFICATION_DURATION \
+            -a "Screenshot Tool" \
+            -c "transfer.complete" \
+            -i "$temp_file" \
+            "Screenshot Captured" \
+            "Screenshot copied to clipboard"
+
+        local sleep_time=$(echo "scale=1; $NOTIFICATION_DURATION / 1000 - 0.5" | bc 2>/dev/null || echo "3.5")
+        sleep "$sleep_time"
+    fi
+
+    rm -f "$temp_file"
+    trap - EXIT
+}
+
+case "$1" in
+    -s|--save)
+        capture_and_save
+        ;;
+    "")
+        capture
+        ;;
+    *)
+        exit 1
+        ;;
+esac

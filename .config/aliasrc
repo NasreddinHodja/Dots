@@ -22,11 +22,11 @@ alias \
 
 alias \
 	magit="nvim -c MagitOnly" \
-	maim="maim ~/Pictures/scrot/pic-full-$(date '+%y%m%d-%H%M-%S').png" \
 	szhist="bat $HOME/.config/zsh/.zhistory | grep -i" \
 	juno="nohup jupyter notebook > error.log &" \
 	p5s="nohup p5 server > error.log &" \
 	mgdl="~/Prog/mgdl/target/release/mgdl"
+	# maim="maim ~/Pictures/scrot/pic-full-$(date '+%y%m%d-%H%M-%S').png" \
 
 alias \
 	ls="eza --icons --group-directories-first" \
