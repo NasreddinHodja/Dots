@@ -113,44 +113,34 @@
 ;; roam config
 (setq org-roam-directory "~/Notes")
 
-;; find-ins
-(defun dir-name-from-path (path)
-  "Extract clean directory name from PATH for function naming."
-  (downcase
-   (file-name-nondirectory
-    (directory-file-name path))))
 
-(defun build-finder-function (path)
-  "Create a function definition that finds files in PATH."
-  (let ((name (intern (format "find-in-%s" (dir-name-from-path path))))
-        (prompt (format "Find file in %s: " path))
-        (docstring (format "Find files in %s directory." path)))
-    (list 'defun name '()
-          docstring
-          '(interactive)
-          (list 'find-file
-                (list 'read-file-name prompt path)))))
+;; find-ins
+(defun find-in-dir (dir)
+  "Generic function to find files in DIR."
+
+  (interactive)
+  (find-file (read-file-name (format "Find file in %s: " dir) dir)))
 
 (defun build-keybinding (key path)
   "Create keybinding specification for KEY and PATH."
-  (let ((desc (format "Find in %s" path))
-        (func-name (intern (format "find-in-%s" (dir-name-from-path path)))))
-    (list :desc desc key (list 'quote func-name))))
+
+  (let ((desc (format "Find in %s" path)))
+    (list :desc desc key `(lambda () (interactive) (find-in-dir ,path)))))
 
 (defmacro def-find-dirs (&rest key-path-pairs)
-  "Create finder functions and keybindings from (KEY PATH) pairs."
-  (let ((functions (mapcar (lambda (pair)
-                             (build-finder-function (nth 1 pair)))
-                           key-path-pairs))
-        (keybindings (mapcar (lambda (pair)
+  "Create keybindings from (KEY PATH) pairs."
+
+  (let ((keybindings (mapcar (lambda (pair)
                                (build-keybinding (nth 0 pair) (nth 1 pair)))
                              key-path-pairs)))
-    `(progn
-       ,@functions
-       (map! :leader
-             (:prefix ("f" . "file")
-              (:prefix ("i" . "find in")
-               ,@keybindings))))))
+    `(progn (map! :leader
+           (:prefix ("f" . "file")
+            (:prefix ("i" . "find in")
+             ,@keybindings))))))
+
+(map! :leader
+      (:prefix ("f" . "file")
+       "i" nil))
 
 (def-find-dirs
  ("d" "~/Dots/")
