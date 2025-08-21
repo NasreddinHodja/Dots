@@ -6,7 +6,6 @@
     <property name="XkbLayout" type="string" value="us"/>
     <property name="XkbVariant" type="string" value="intl"/>
     <property name="XkbOptions" type="empty">
-      <property name="Custom" type="string" value="custom:super_esc"/>
     </property>
     <property name="XkbModel" type="string" value=""/>
   </property>
