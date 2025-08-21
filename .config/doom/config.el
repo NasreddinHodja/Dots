@@ -75,6 +75,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; evil inside mini buffer
+(setq evil-want-minibuffer t)
 
 ;; initial window size
 (defconst my/frame-parameters
@@ -150,6 +152,7 @@
  ("t" "~/Trab/")
  ("h" "~/"))
 
+
 ;; remap call last macro
 (map! "C-c ." 'call-last-kbd-macro)
 
@@ -197,8 +200,6 @@
       :desc "Format buffer or region"
       "<return>" #'+format/buffer)
 
-;; evil inside mini buffer
-(setq evil-want-minibuffer t)
 
 ;; configure org latex preview
 (setq org-preview-latex-process-alist
