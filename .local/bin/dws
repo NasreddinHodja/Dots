@@ -210,8 +210,8 @@ main() {
             local target_y="${window_info[2]}"
             local target_class="${window_info[3]}"
 
+            xdotool windowactivate "$target_window"
             xdotool mousemove "$target_x" "$target_y"
-            xdotool windowfocus "$target_window"
             exit 0
         fi
     fi
