@@ -80,6 +80,17 @@ distance() {
     echo $((primary_dist * DIRECTION_WEIGHT + secondary_dist))
 }
 
+is_inside_window() {
+    local x="$1" y="$2" window_x="$3" window_y="$4" window_h="$5" window_w="$6"
+
+    if (( x >= window_x && x <= window_x + window_w &&
+          y >= window_y && y <= window_y + window_h )); then
+        return 0
+    else
+        return 1
+    fi
+}
+
 find_closest_window() {
     local direction="$1" active_id="$2" current_center_x="$3" current_center_y="$4" current_desktop="$5"
     local best_window="" best_distance=$MAX_DISTANCE best_center_x=0 best_center_y=0
@@ -95,6 +106,11 @@ find_closest_window() {
 
         local win_center_x=$((win_x + win_w / 2))
         local win_center_y=$((win_y + win_h / 2))
+
+
+        if [[ "${win_class,,}" == *desktop* ]] && is_inside_window "$current_center_x" "$current_center_y" "$win_x" "$win_y" "$win_h" "$win_w"; then
+            continue
+        fi
 
         if (( win_center_x == current_center_x && win_center_y == current_center_y )); then
             same_pos_windows+=("$win_id")
@@ -187,18 +203,11 @@ find_closest_monitor() {
     fi
 }
 
-unfocus_current_window() {
-    if [[ -n "${active_id:-}" && "$active_id" != "0x0" ]]; then
-        wmctrl -r :ACTIVE: -b add,below 2>/dev/null || \
-        xdotool key alt+Tab 2>/dev/null || true
-    fi
-}
-
 is_valid_window_class() {
     local win_class="${1,,}"
 
     case "$win_class" in
-        *panel*|*desktop*|*dock*|*bar*|*notify*) return 1 ;;
+        *panel*|*dock*|*bar*|*notify*) return 1 ;;
         *) return 0 ;;
     esac
 }
@@ -238,7 +247,6 @@ main() {
         if closest_window=$(find_closest_window "$direction" "$active_id" "$current_center_x" "$current_center_y" "$current_desktop"); then
             local window_info=($closest_window)
 
-            unfocus_current_window
             xdotool mousemove "${window_info[1]}" "${window_info[2]}"
             wmctrl -ia "${window_info[0]}"
             exit 0
@@ -254,7 +262,6 @@ main() {
     local closest_monitor
     if closest_monitor=$(find_closest_monitor "$direction" "$mouse_x" "$mouse_y"); then
         local monitor_info=($closest_monitor)
-        unfocus_current_window
         xdotool mousemove "${monitor_info[0]}" "${monitor_info[1]}"
         exit 0
     fi
