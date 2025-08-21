@@ -29,6 +29,17 @@ abs_diff() {
     echo $(( diff < 0 ? -diff : diff ))
 }
 
+is_inside_window() {
+    local x="$1" y="$2" window_x="$3" window_y="$4" window_h="$5" window_w="$6"
+
+    if (( x >= window_x && x <= window_x + window_w &&
+          y >= window_y && y <= window_y + window_h )); then
+        return 0
+    else
+        return 1
+    fi
+}
+
 is_in_direction() {
     local direction=$1 origin_x=$2 origin_y=$3 target_x=$4 target_y=$5
 
@@ -78,17 +89,6 @@ distance() {
     esac
 
     echo $((primary_dist * DIRECTION_WEIGHT + secondary_dist))
-}
-
-is_inside_window() {
-    local x="$1" y="$2" window_x="$3" window_y="$4" window_h="$5" window_w="$6"
-
-    if (( x >= window_x && x <= window_x + window_w &&
-          y >= window_y && y <= window_y + window_h )); then
-        return 0
-    else
-        return 1
-    fi
 }
 
 find_closest_window() {
@@ -159,50 +159,6 @@ find_closest_window() {
     fi
 }
 
-find_closest_monitor() {
-    local direction=$1 mouse_x=$2 mouse_y=$3
-    local active_monitors best_monitor_x="" best_monitor_y="" best_distance=$MAX_DISTANCE
-
-    active_monitors=$(xrandr --listactivemonitors)
-
-    while IFS= read -r line; do
-        [[ "$line" =~ ^[[:space:]]*[0-9]+:[[:space:]] ]] || continue
-
-        local monitor_geometry
-        monitor_geometry=$(awk '{print $3}' <<< "$line")
-
-        local monitor_w monitor_h monitor_x monitor_y
-        monitor_w=${monitor_geometry%%/*}
-        monitor_w=${monitor_w%%+*}
-        monitor_h=${monitor_geometry#*x}
-        monitor_h=${monitor_h%%/*}
-        monitor_x=${monitor_geometry#*+}
-        monitor_x=${monitor_x%+*}
-        monitor_y=${monitor_geometry##*+}
-
-        local monitor_center_x=$((monitor_x + monitor_w / 2))
-        local monitor_center_y=$((monitor_y + monitor_h / 2))
-
-        if is_in_direction "$direction" "$mouse_x" "$mouse_y" "$monitor_center_x" "$monitor_center_y"; then
-            local distance
-            distance=$(distance "$direction" "$monitor_center_x" "$monitor_center_y" "$mouse_x" "$mouse_y")
-
-            if (( distance != -1 && distance < best_distance )); then
-                best_distance=$distance
-                best_monitor_x=$monitor_center_x
-                best_monitor_y=$monitor_center_y
-            fi
-        fi
-    done <<< "$active_monitors"
-
-    if [[ -n "$best_monitor_x" && -n "$best_monitor_y" ]]; then
-        echo "$best_monitor_x $best_monitor_y"
-        return 0
-    else
-        return 1
-    fi
-}
-
 is_valid_window_class() {
     local win_class="${1,,}"
 
@@ -251,19 +207,6 @@ main() {
             wmctrl -ia "${window_info[0]}"
             exit 0
         fi
-    fi
-
-
-    local mouse_pos mouse_x mouse_y
-    mouse_pos=$(xdotool getmouselocation --shell)
-    mouse_x=$(awk -F= '/X=/ {print $2}' <<< "$mouse_pos")
-    mouse_y=$(awk -F= '/Y=/ {print $2}' <<< "$mouse_pos")
-
-    local closest_monitor
-    if closest_monitor=$(find_closest_monitor "$direction" "$mouse_x" "$mouse_y"); then
-        local monitor_info=($closest_monitor)
-        xdotool mousemove "${monitor_info[0]}" "${monitor_info[1]}"
-        exit 0
     fi
 
     exit 1
