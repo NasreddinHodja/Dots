@@ -3,6 +3,8 @@
 # Directional window switcher (for X) with cursor movement
 # Usage: ./dws [up|down|left|right]
 
+# TODO: fix switching from empty monitor to closest window in other monitor
+
 set -euo pipefail
 
 readonly MAX_DISTANCE=999999
@@ -26,7 +28,11 @@ check_dependencies() {
 
 abs_diff() {
     local diff=$(( $1 - $2 ))
-    echo $(( diff < 0 ? -diff : diff ))
+    echo ${diff#-}
+}
+
+get_window_class() {
+    xprop -id "$1" WM_CLASS 2>/dev/null | cut -d'"' -f2
 }
 
 is_inside_window() {
@@ -92,20 +98,23 @@ distance() {
 }
 
 find_closest_window() {
-    local direction="$1" active_id="$2" current_center_x="$3" current_center_y="$4" current_desktop="$5"
+    local direction="$1"
+    local active_id="$2" current_center_x="$3" current_center_y="$4" current_desktop="$5"
+
     local best_window="" best_distance=$MAX_DISTANCE best_center_x=0 best_center_y=0 best_class=""
     local same_pos_windows=()
 
     while read -r win_id desktop win_x win_y win_w win_h _; do
-        [[ "$desktop" == "$current_desktop" || "$desktop" == "-1" ]] || continue
-        [[ "$win_id" != "$active_id" ]] || continue
+        [[ "$desktop" == "$current_desktop" || "$desktop" == "-1" || "$current_desktop" == "-1" ]] || \
+            continue
+        [[ "$win_id" != "$active_id" || "$desktop" == "-1" || "$current_desktop" == "-1" ]] || \
+            continue
 
-        local win_class=$(xprop -id "$win_id" WM_CLASS 2>/dev/null | cut -d'"' -f2)
+        local win_class=$(get_window_class "$win_id")
         is_valid_window_class "$win_class" || continue
 
         local win_center_x=$((win_x + win_w / 2))
         local win_center_y=$((win_y + win_h / 2))
-
 
         if [[ "${win_class,,}" == *desktop* ]] && is_inside_window "$current_center_x" "$current_center_y" "$win_x" "$win_y" "$win_h" "$win_w"; then
             continue
@@ -118,11 +127,11 @@ find_closest_window() {
 
         local win_distance=$(distance "$direction" "$win_center_x" "$win_center_y" "$current_center_x" "$current_center_y")
 
-        (( win_distance == -1 )) && continue
-
         if [[ "${win_class,,}" == *desktop* ]]; then
             win_distance=$((MAX_DISTANCE - 1))
         fi
+
+        (( win_distance == -1 )) && continue
 
         if (( win_distance < best_distance )); then
             best_distance=$win_distance
@@ -212,10 +221,10 @@ main() {
 
             xdotool windowactivate "$target_window"
             xdotool mousemove "$target_x" "$target_y"
+            xdotool click 1
             exit 0
         fi
     fi
-
 
     exit 1
 }
