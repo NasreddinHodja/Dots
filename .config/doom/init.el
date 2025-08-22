@@ -149,7 +149,7 @@
        latex             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
-       ;;lua               ; one-based indices? one-based indices
+       lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -160,7 +160,7 @@
         +pretty
         +hugo
         +journal)               ; organize your plain life in plain text
-       ;;php               ; perl's insecure younger brother
+       ;; php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;graphviz          ; diagrams for confusing yourself even more
        ;;purescript        ; javascript, but functional
@@ -180,7 +180,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web +lsp)               ; the tubes
-       ;;yaml              ; JSON, but readable
+       yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email
@@ -190,11 +190,11 @@
 
        :app
        ;;calendar
-       ;;emms
-       ;;everywhere        ; *leave* Emacs!? You must be joking
+       ;; emms
+       ;; everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
 
        :config
-       ;;literate
-       (default +bindings +smartparens))
+       ;; literate
+       (default +bindings +smartparens +gnupg))

@@ -63,7 +63,8 @@ is_in_direction() {
 
 distance() {
     local direction=$1 win_center_x=$2 win_center_y=$3 current_center_x=$4 current_center_y=$5
-    local primary_dist secondary_dist
+    local win_class=$6
+    local primary_dist secondary_dist base_distance
 
     if ! is_in_direction "$direction" "$current_center_x" "$current_center_y" "$win_center_x" "$win_center_y"; then
         echo -1
@@ -93,7 +94,13 @@ distance() {
             ;;
     esac
 
-    echo $((primary_dist * DIRECTION_WEIGHT + secondary_dist))
+    base_distance=$((primary_dist * DIRECTION_WEIGHT + secondary_dist))
+
+    if [[ "$win_class" == *desktop* ]]; then
+        echo $((base_distance + 500000))
+    else
+        echo "$base_distance"
+    fi
 }
 
 find_closest_window() {
@@ -124,11 +131,7 @@ find_closest_window() {
             continue
         fi
 
-        local win_distance=$(distance "$direction" "$win_center_x" "$win_center_y" "$current_center_x" "$current_center_y")
-
-        if [[ "${win_class,,}" == *desktop* ]]; then
-            win_distance=$((MAX_DISTANCE - 1))
-        fi
+        local win_distance=$(distance "$direction" "$win_center_x" "$win_center_y" "$current_center_x" "$current_center_y" "$win_class")
 
         (( win_distance == -1 )) && continue
 
@@ -175,7 +178,7 @@ switch_to_window() {
     local window_id=$1 target_x=$2 target_y=$3 target_class=$1
     xdotool windowactivate "$window_id"
     xdotool mousemove "$target_x" "$target_y"
-    [[ "$target_class" == *desktop* ]] || xdotool click 1
+    [[ "$target_class" == *desktop* ]] || xdotool click 3
 }
 
 main() {

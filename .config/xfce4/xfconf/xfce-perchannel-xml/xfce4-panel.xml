@@ -38,6 +38,8 @@
       <property name="background-image" type="string" value="file:///home/nasreddin/.config/wp.jpg"/>
       <property name="mode" type="uint" value="0"/>
       <property name="nrows" type="uint" value="1"/>
+      <property name="enable-struts" type="bool" value="true"/>
+      <property name="border-width" type="uint" value="0"/>
     </property>
   </property>
   <property name="plugins" type="empty">
