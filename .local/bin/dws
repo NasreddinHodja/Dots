@@ -3,62 +3,61 @@
 # Directional window switcher (for X) with cursor movement
 # Usage: ./dws [up|down|left|right]
 
-# TODO: fix switching from empty monitor to closest window in other monitor
-
 set -euo pipefail
 
 readonly MAX_DISTANCE=999999
 readonly DIRECTION_WEIGHT=100
+readonly DEPENDENCIES=(wmctrl xdotool xprop xrandr)
+readonly INVALID_CLASSES=(panel dock bar notify)
 
 check_dependencies() {
-    local deps=(wmctrl xdotool xprop xrandr)
     local missing=()
 
-    for dep in "${deps[@]}"; do
-        if ! command -v "$dep" &>/dev/null; then
-            missing+=("$dep")
-        fi
+    for dep in "${DEPENDENCIES[@]}"; do
+        command -v "$dep" &>/dev/null || missing+=("$dep")
     done
 
-    if (( ${#missing[@]} > 0 )); then
-        printf "Error: Missing dependencies: %s\n" "${missing[*]}" >&2
-        exit 1
-    fi
+    (( ${#missing[@]} == 0 )) || die "Missing dependencies: ${missing[*]}"
 }
 
-abs_diff() {
-    local diff=$(( $1 - $2 ))
-    echo ${diff#-}
+abs_diff() { echo $(($1 < 0 ? -$1 : $1)); }
+die() { echo "Error: $*" >&2; exit 1; }
+
+validate_direction() {
+    case "$1" in
+        up|down|left|right) return 0 ;;
+        *) return 1 ;;
+    esac
 }
 
 get_window_class() {
     xprop -id "$1" WM_CLASS 2>/dev/null | cut -d'"' -f2
 }
 
-is_inside_window() {
-    local x="$1" y="$2" window_x="$3" window_y="$4" window_h="$5" window_w="$6"
+is_valid_window_class() {
+    local class="$1"
 
-    if (( x >= window_x && x <= window_x + window_w &&
-          y >= window_y && y <= window_y + window_h )); then
-        return 0
-    else
-        return 1
-    fi
+    for invalid in "${INVALID_CLASSES[@]}"; do
+        [[ "$class" == *"$invalid"* ]] && return 1
+    done
+
+    return 0
+}
+
+point_in_rect() {
+    local px=$1 py=$2 rx=$3 ry=$4 rw=$5 rh=$6
+
+    (( px >= rx && px <= rx + rw && py >= ry && py <= ry + rh ))
 }
 
 is_in_direction() {
     local direction=$1 origin_x=$2 origin_y=$3 target_x=$4 target_y=$5
 
     case "$direction" in
-        left)
-            (( target_x < origin_x )) ;;
-        right)
-            (( target_x > origin_x )) ;;
-        up)
-            (( target_y < origin_y )) ;;
-        down)
-            (( target_y > origin_y )) ;;
-        *) return 1 ;;
+        left)  (( target_x < origin_x )) ;;
+        right) (( target_x > origin_x )) ;;
+        up)    (( target_y < origin_y )) ;;
+        down)  (( target_y > origin_y )) ;;
     esac
 }
 
@@ -116,7 +115,7 @@ find_closest_window() {
         local win_center_x=$((win_x + win_w / 2))
         local win_center_y=$((win_y + win_h / 2))
 
-        if [[ "${win_class,,}" == *desktop* ]] && is_inside_window "$current_center_x" "$current_center_y" "$win_x" "$win_y" "$win_h" "$win_w"; then
+        if [[ "${win_class,,}" == *desktop* ]] && point_in_rect "$current_center_x" "$current_center_y" "$win_x" "$win_y" "$win_h" "$win_w"; then
             continue
         fi
 
@@ -172,35 +171,25 @@ find_closest_window() {
     fi
 }
 
-is_valid_window_class() {
-    local win_class="${1,,}"
-
-    case "$win_class" in
-        *panel*|*dock*|*bar*|*notify*) return 1 ;;
-        *) return 0 ;;
-    esac
+switch_to_window() {
+    local window_id=$1 target_x=$2 target_y=$3 target_class=$1
+    xdotool windowactivate "$window_id"
+    xdotool mousemove "$target_x" "$target_y"
+    [[ "$target_class" == *desktop* ]] || xdotool click 1
 }
 
 main() {
-    if (( $# != 1 )); then
-        echo "Usage: $0 [up|down|left|right]"
-        exit 1
-    fi
+    (( $# == 1 )) || die "Usage: $0 [up|down|left|right]"
+    validate_direction "$1" || die "Invalid direction: $1"
 
-    local direction="$1"
-    case "$direction" in
-        up|down|left|right) ;;
-        *) echo "Invalid direction. Use: up, down, left, right"; exit 1 ;;
-    esac
+    local direction=$1
 
     check_dependencies
 
-    local active_info active_id
-    active_info=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}' | tr -d ',')
-    active_id=$(printf "0x%08x" $((active_info)))
+    local active_info=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}' | tr -d ',')
+    local active_id=$(printf "0x%08x" $((active_info)))
 
-    local current_window
-    current_window=$(wmctrl -lG | awk -v active="$active_id" '$1 == active {print $1, $3, $4, $5, $6; exit}')
+    local current_window=$(wmctrl -lG | awk -v active="$active_id" '$1 == active {print $1, $3, $4, $5, $6; exit}')
 
     if [[ -n "$current_window" ]]; then
         local current_info=($current_window)
@@ -209,8 +198,7 @@ main() {
         local current_center_x=$((current_x + current_w / 2))
         local current_center_y=$((current_y + current_h / 2))
 
-        local current_desktop
-        current_desktop=$(wmctrl -d | awk '/\*/ {print $1; exit}')
+        local current_desktop=$(wmctrl -d | awk '/\*/ {print $1; exit}')
 
         if closest_window=$(find_closest_window "$direction" "$active_id" "$current_center_x" "$current_center_y" "$current_desktop"); then
             local window_info=($closest_window)
@@ -219,14 +207,12 @@ main() {
             local target_y="${window_info[2]}"
             local target_class="${window_info[3]}"
 
-            xdotool windowactivate "$target_window"
-            xdotool mousemove "$target_x" "$target_y"
-            xdotool click 1
+            switch_to_window "$target_window" "$target_x" "$target_y" "$target_class"
             exit 0
         fi
     fi
 
-    exit 1
+    die "Current window not found"
 }
 
 main "$@"
