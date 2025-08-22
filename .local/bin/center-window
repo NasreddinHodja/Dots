@@ -1,64 +1,83 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-window_id=$(xdotool getactivewindow)
-current_width=$(xwininfo -id $window_id | grep "Width:" | awk '{print $2}')
-current_height=$(xwininfo -id $window_id | grep "Height:" | awk '{print $2}')
+set -euo pipefail
 
-window_x=$(xwininfo -id $window_id | grep "Absolute upper-left X:" | awk '{print $4}')
-window_y=$(xwininfo -id $window_id | grep "Absolute upper-left Y:" | awk '{print $4}')
-window_state=$(xprop -id $window_id "_NET_WM_STATE" | cut -d'=' -f2)
-is_maximized_vert=false
-if echo "$window_state" | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"; then
-    is_maximized_vert=true
-fi
+get_window_info() {
+    local window_id=$1
+    xwininfo -id "$window_id" | awk '
+        /Width:/ { width = $2 }
+        /Height:/ { height = $2 }
+        /Absolute upper-left X:/ { x = $4 }
+        /Absolute upper-left Y:/ { y = $4 }
+        END { print x, y, width, height }
+    '
+}
 
-monitor_info=$(xrandr | grep " connected" | while read line; do
-    if echo $line | grep -q "+"; then
-        monitor_x=$(echo $line | grep -o '+[0-9]*+[0-9]*' | cut -d'+' -f2)
-        monitor_y=$(echo $line | grep -o '+[0-9]*+[0-9]*' | cut -d'+' -f3)
-        monitor_width=$(echo $line | grep -o '[0-9]*x[0-9]*' | cut -dx -f1)
-        monitor_height=$(echo $line | grep -o '[0-9]*x[0-9]*' | cut -dx -f2)
-        if [ $window_x -ge $monitor_x ] && [ $window_x -lt $((monitor_x + monitor_width)) ]; then
-            echo "$monitor_x $monitor_y $monitor_width $monitor_height"
-            break
-        fi
+is_maximized_vert() {
+    xprop -id "$1" "_NET_WM_STATE" 2>/dev/null | grep -q "_NET_WM_STATE_MAXIMIZED_VERT"
+}
+
+find_monitor() {
+    local win_x=$1
+    xrandr --listmonitors | awk -v wx="$win_x" '
+        NR > 1 && /\+/ {
+            match($0, /([0-9]+)\/[0-9]+x([0-9]+)\/[0-9]+\+([0-9]+)\+([0-9]+)/, arr)
+            mon_w = arr[1]; mon_h = arr[2]; mon_x = arr[3]; mon_y = arr[4]
+            if (wx >= mon_x && wx < mon_x + mon_w) {
+                print mon_x, mon_y, mon_w, mon_h
+                exit
+            }
+        }
+    '
+}
+
+get_workarea() {
+    xprop -root "_NET_WORKAREA" 2>/dev/null |
+    sed 's/.*= //' | tr -d ' ' |
+    awk -F, '{ print $1, $2, $3, $4 }'
+}
+
+get_frame_extents() {
+    xprop -id "$1" "_NET_FRAME_EXTENTS" 2>/dev/null |
+    sed 's/.*= //' | tr -d ' ' |
+    awk -F, '{ print $1, $3 }' # left, top
+}
+
+main() {
+    local window_id=$(xdotool getactivewindow)
+
+    read -r window_x window_y current_width current_height <<< "$(get_window_info "$window_id")"
+
+    local maximized_vert=false
+    is_maximized_vert "$window_id" && maximized_vert=true
+
+    read -r monitor_x monitor_y monitor_width monitor_height <<< "$(find_monitor "$window_x")"
+
+    read -r work_x work_y work_width work_height <<< "$(get_workarea)"
+
+    local panel_top_height=$((work_y - monitor_y))
+    local panel_bottom_height=$((monitor_height - work_height - panel_top_height))
+
+    work_x=$monitor_x
+    work_y=$((monitor_y + panel_top_height))
+    work_width=$monitor_width
+    work_height=$((monitor_height - panel_top_height - panel_bottom_height))
+
+    read -r left_border top_border <<< "$(get_frame_extents "$window_id")"
+
+    local x_pos=$((work_width / 2 - current_width / 2 + work_x - left_border))
+    local y_pos
+
+    if [[ "$maximized_vert" == true ]]; then
+        y_pos=$work_y
+    else
+        y_pos=$((work_height / 2 - current_height / 2 + work_y))
     fi
-done)
 
-monitor_x=$(echo $monitor_info | cut -d' ' -f1)
-monitor_y=$(echo $monitor_info | cut -d' ' -f2)
-monitor_width=$(echo $monitor_info | cut -d' ' -f3)
-monitor_height=$(echo $monitor_info | cut -d' ' -f4)
+    wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
+    wmctrl -r :ACTIVE: -e "0,$x_pos,$y_pos,-1,-1"
 
-work_area=$(xprop -root _NET_WORKAREA | cut -d'=' -f2 | tr -d ' ')
-global_work_x=$(echo $work_area | cut -d',' -f1)
-global_work_y=$(echo $work_area | cut -d',' -f2)
-global_work_width=$(echo $work_area | cut -d',' -f3)
-global_work_height=$(echo $work_area | cut -d',' -f4)
+    [[ "$maximized_vert" == true ]] && wmctrl -r :ACTIVE: -b add,maximized_vert
+}
 
-panel_top_height=$((global_work_y - monitor_y))
-panel_bottom_height=$((monitor_height - global_work_height - panel_top_height))
-
-work_x=$monitor_x
-work_y=$((monitor_y + panel_top_height))
-work_width=$monitor_width
-work_height=$((monitor_height - panel_top_height - panel_bottom_height))
-
-frame_extents=$(xprop -id $window_id "_NET_FRAME_EXTENTS" | cut -d'=' -f2 | tr -d ' ')
-left_border=$(echo $frame_extents | cut -d',' -f1)
-top_border=$(echo $frame_extents | cut -d',' -f3)
-
-if [ "$is_maximized_vert" = true ]; then
-    Y_POS=$work_y
-else
-    Y_POS=$((work_height / 2 - current_height / 2 + work_y))
-fi
-X_POS=$((work_width / 2 - current_width / 2 + work_x - left_border))
-
-wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
-
-wmctrl -r :ACTIVE: -e 0,$X_POS,$Y_POS,-1,-1
-
-if [ "$is_maximized_vert" = true ]; then
-    wmctrl -r :ACTIVE: -b add,maximized_vert
-fi
+main "$@"
