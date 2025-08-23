@@ -1,32 +1,24 @@
 #!/bin/sh
 
-command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
-
 alias \
-	batt="cat /sys/class/power_supply/BAT?/capacity" \
+	# batt="cat /sys/class/power_supply/BAT?/capacity" \
 	bat="bat --theme=Dracula" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner" \
-	rcd="source ranger"\
 	ka="killall" \
 	trem="transmission-remote" \
 	f="$FILE" \
 	e="$EDITOR" \
 	p="sudo pacman" \
-	bto="bluetoothctl power on; bluetoothctl connect A4:77:58:62:C3:D1" \
-	btd="bluetoothctl disconnect" \
-	nv="nvim" \
 
 alias \
-	magit="nvim -c MagitOnly" \
 	szhist="bat $HOME/.config/zsh/.zhistory | grep -i" \
 	juno="nohup jupyter notebook > error.log &" \
 	p5s="nohup p5 server > error.log &" \
 	mgdl="~/Prog/mgdl/target/release/mgdl"
-	# maim="maim ~/Pictures/scrot/pic-full-$(date '+%y%m%d-%H%M-%S').png" \
 
 alias \
 	ls="eza --icons --group-directories-first" \

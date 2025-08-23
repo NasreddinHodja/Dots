@@ -19,7 +19,7 @@ cpu_icon=" "
 ram_icon="󰘚 "
 disk_icon="󰆼 "
 
-echo "<txt>${cpu_icon} ${cpu_usage}%  |  ${ram_icon} ${mem_percent}% <span fgcolor='#888888'>[${mem_used} / ${mem_total}]</span>  |  ${disk_icon} ${disk_percent}% <span fgcolor='#888888'>[${disk_used} / ${disk_total}]</span></txt>"
+echo "<txt>${cpu_icon} ${cpu_usage}%  |  ${ram_icon} ${mem_percent}% <span fgcolor='#888888'>(${mem_used} / ${mem_total})</span>  |  ${disk_icon} ${disk_percent}% <span fgcolor='#888888'>(${disk_used} / ${disk_total})</span></txt>"
 
 echo "<txtclick>xfce4-taskmanager</txtclick>"
 
