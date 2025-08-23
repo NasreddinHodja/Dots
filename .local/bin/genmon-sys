@@ -39,6 +39,4 @@ echo "<tool><b>System Monitor</b>
 <b>Uptime:</b> ${uptime_info}
 
 <b>Top CPU Processes:</b>
-${top_processes}
-
-<i>Click to open Task Manager</i></tool>"
+${top_processes}</tool>"
