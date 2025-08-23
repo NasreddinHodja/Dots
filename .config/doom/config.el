@@ -233,3 +233,6 @@
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?" :target
          (file+head "%(my-org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
+
+;; projects folder
+(setq projectile-project-search-path '("~/Prog/"))
