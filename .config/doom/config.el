@@ -136,13 +136,13 @@
                                (build-keybinding (nth 0 pair) (nth 1 pair)))
                              key-path-pairs)))
     `(progn (map! :leader
-           (:prefix ("f" . "file")
-            (:prefix ("i" . "find in")
-             ,@keybindings))))))
+                  (:prefix ("f" . "file")
+                           (:prefix ("i" . "find in")
+                                    ,@keybindings))))))
 
 (map! :leader
       (:prefix ("f" . "file")
-       "i" nil))
+               "i" nil))
 
 (def-find-dirs
  ("d" "~/Dots/")
@@ -220,3 +220,16 @@
 
 ;; workspaces in modeline
 (setq doom-modeline-persp-name t)
+
+;; dont move cursor back when exiting insert mode
+(setq evil-move-cursor-back nil
+      evil-move-beyond-eol t)
+
+;; default create roam node template
+(defun my-org-roam-slug (title)
+  "Convert TITLE to a slug with hyphens instead of underscores."
+  (replace-regexp-in-string "_" "-" (org-roam-node-slug (org-roam-node-create :title title))))
+
+(setq org-roam-capture-templates
+      '(("d" "default" plain "%?" :target
+         (file+head "%(my-org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
