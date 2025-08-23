@@ -221,10 +221,6 @@
 ;; workspaces in modeline
 (setq doom-modeline-persp-name t)
 
-;; dont move cursor back when exiting insert mode
-(setq evil-move-cursor-back nil
-      evil-move-beyond-eol t)
-
 ;; default create roam node template
 (defun my-org-roam-slug (title)
   "Convert TITLE to a slug with hyphens instead of underscores."
