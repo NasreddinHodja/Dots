@@ -80,6 +80,7 @@
         <value type="string" value="blueman"/>
         <value type="string" value="caffeine"/>
       </property>
+      <property name="icon-size" type="int" value="22"/>
     </property>
     <property name="plugin-7" type="string" value="separator">
       <property name="style" type="uint" value="0"/>

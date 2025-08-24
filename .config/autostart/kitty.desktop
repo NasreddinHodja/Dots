@@ -9,3 +9,5 @@ StartupNotify=true
 Exec=kitty
 Icon=kitty
 Categories=System;TerminalEmulator;
+Hidden=true
+

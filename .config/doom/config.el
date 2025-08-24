@@ -1,28 +1,12 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
 ;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
+;; - `after!' for reconfiguring packages
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
+;; - `load!' for loading external *.el files relative to this one
 
 
 (setq user-full-name "Tomás Bizet"
@@ -40,12 +24,12 @@
 
 ;;; general
 ;; initial window parameters
-(defconst my/frame-parameters
+(defconst nas/frame-parameters
   '((width . 100)
     (height . 45))
   "Default frame parameters.")
 
-(dolist (param my/frame-parameters)
+(dolist (param nas/frame-parameters)
   (add-to-list 'default-frame-alist param))
 
 ;; use trash
@@ -84,9 +68,6 @@
 ;; default org-mode on buffers
 (setq initial-major-mode 'org-mode)
 
-;; doom scratch with org
-(setq doom-scratch-initial-major-mode 'org-mode)
-
 ;; org-mode src block syntax highlight
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t
@@ -100,7 +81,7 @@
 (setq org-log-done 'time)
 
 ;; org-mode custom highlights
-(defun my/org-mode-keywords ()
+(defun nas/org-mode-keywords ()
   "Add custom font-lock keywords for org-mode."
   (font-lock-add-keywords nil ;; !!!
                           `(( "!!!" 0 '(:foreground ,(doom-color 'error) :background ,(doom-color 'base3) :weight bold) t)))
@@ -108,7 +89,7 @@
                           `(( "\\(\\?\\?\\?\\)" 0 '(:foreground ,(doom-color 'orange) :background ,(doom-color 'base3) :weight bold) t)))
   )
 
-(add-hook! 'org-mode-hook #'my/org-mode-keywords)
+(add-hook! 'org-mode-hook #'nas/org-mode-keywords)
 
 ;; org latex export class
 (with-eval-after-load 'ox-latex
@@ -141,34 +122,34 @@
 (setq org-preview-latex-default-process 'imagemagick)
 
 ;; default create roam node template
-(defun my/org-roam-slug (title)
+(defun nas/org-roam-slug (title)
   "Convert TITLE to a slug with hyphens instead of underscores."
   (replace-regexp-in-string "_" "-" (org-roam-node-slug (org-roam-node-create :title title))))
 
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?" :target
-         (file+head "%(my/org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
+         (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
 
 
 ;;; maps
 ;; find-ins
-(defun my/find-in-dir (dir)
+(defun nas/find-in-dir (dir)
   "Generic function to find files in DIR."
 
   (interactive)
   (find-file (read-file-name (format "Find file in %s: " dir) dir)))
 
-(defun my/build-keybinding (key path)
+(defun nas/build-keybinding (key path)
   "Create keybinding specification for KEY and PATH."
 
   (let ((desc (format "Find in %s" path)))
-    (list :desc desc key `(lambda () (interactive) (my/find-in-dir ,path)))))
+    (list :desc desc key `(lambda () (interactive) (nas/find-in-dir ,path)))))
 
-(defmacro my/def-find-dirs (&rest key-path-pairs)
+(defmacro nas/def-find-dirs (&rest key-path-pairs)
   "Create keybindings from (KEY PATH) pairs."
 
   (let ((keybindings (mapcar (lambda (pair)
-                               (my/build-keybinding (nth 0 pair) (nth 1 pair)))
+                               (nas/build-keybinding (nth 0 pair) (nth 1 pair)))
                              key-path-pairs)))
     `(progn (map! :leader
                   (:prefix ("f" . "file")
@@ -179,7 +160,7 @@
       (:prefix ("f" . "file")
                "i" nil))
 
-(my/def-find-dirs
+(nas/def-find-dirs
  ("d" "~/Dots/")
  ("b" "~/.local/bin/")
  ("p" "~/Prog/")
@@ -195,3 +176,55 @@
       :prefix "c"
       :desc "Format buffer or region"
       "<return>" #'+format/buffer)
+
+
+;;; eshell
+;; aliasrc to eshell aliases
+(defconst nas/aliasrc-file "~/.config/aliasrc")
+(defconst nas/eshell-aliases-file "~/.config/doom/eshell/aliases")
+
+(defun nas/eshell-convert-aliasrc ()
+  "Convert multi-line Bash-style aliasrc to cleaned Eshell aliases."
+
+  (when (file-exists-p nas/aliasrc-file)
+    (let ((aliases '()))
+      (with-temp-buffer
+        (insert-file-contents nas/aliasrc-file)
+
+        ;; Remove comments
+        (goto-char (point-min))
+        (while (re-search-forward "#.*$" nil t)
+          (replace-match ""))
+
+        ;; Delete empty lines
+        (goto-char (point-min))
+        (flush-lines "^[ \t]*$")
+
+        ;; Delete lines that are just 'alias \'
+        (goto-char (point-min))
+        (flush-lines "^alias[ \t]*\\\\[ \t]*$")
+
+        ;; Remove indentation
+        (goto-char (point-min))
+        (while (re-search-forward "^[ \t]+" nil t)
+          (replace-match ""))
+
+        ;; Collect alias pairs
+        (goto-char (point-min))
+        (while (not (eobp))
+          (let ((line (string-trim (thing-at-point 'line t))))
+            (when (string-match "^\\([^=]+\\)=\"\\([^\"]+\\)\"[ \\\]*$" line)
+              (push (format "alias %s %s"
+                            (match-string 1 line)
+                            (match-string 2 line))
+                    aliases)))
+          (forward-line 1)))
+
+      (unless (file-exists-p (file-name-directory nas/eshell-aliases-file))
+        (make-directory (file-name-directory nas/eshell-aliases-file) t))
+
+      ;; Write aliases to file
+      (with-temp-file nas/eshell-aliases-file
+        (insert (mapconcat 'identity (nreverse aliases) "\n"))))))
+
+(add-hook! eshell-first-time-mode-hook #'nas/eshell-convert-aliasrc)

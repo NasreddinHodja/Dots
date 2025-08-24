@@ -1,6 +1,7 @@
 #!/bin/sh
 
 alias \
+	# batt="cat /sys/class/power_supply/BAT?/capacity" \
 	bat="bat --theme=Dracula" \
 	cp="cp -iv" \
 	mv="mv -iv" \
