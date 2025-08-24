@@ -1,20 +1,21 @@
-alias bat bat --theme=Dracula
-alias cp cp -iv
-alias mv mv -iv
-alias rm rm -v
-alias mkd mkdir -pv
-alias ffmpeg ffmpeg -hide_banner
-alias ka killall
-alias trem transmission-remote
-alias f $FILE
-alias e $EDITOR
-alias p sudo pacman
-alias szhist bat $HOME/.config/zsh/.zhistory | grep -i
-alias juno nohup jupyter notebook > error.log &
-alias p5s nohup p5 server > error.log &
-alias mgdl ~/Prog/mgdl/target/release/mgdl
-alias ls eza --icons --group-directories-first
-alias la eza --icons -la --group-directories-first
-alias grep grep --color=auto
-alias diff diff --color=auto
-alias ccat highlight --out-format=ansi
+alias bat bat --theme=Dracula $@*
+alias cp cp -iv $@*
+alias mv mv -iv $@*
+alias rm rm -v $@*
+alias mkd mkdir -pv $@*
+alias ffmpeg ffmpeg -hide_banner $@*
+alias ka killall $@*
+alias trem transmission-remote $@*
+alias f $FILE $@*
+alias e $EDITOR $@*
+alias p sudo pacman $@*
+alias szhist bat $HOME/.config/zsh/.zhistory | grep -i $@*
+alias juno nohup jupyter notebook > error.log & $@*
+alias p5s nohup p5 server > error.log & $@*
+alias mgdl ~/Prog/mgdl/target/release/mgdl $@*
+alias ls eza --icons --group-directories-first $@*
+alias la eza --icons -la --group-directories-first $@*
+alias grep grep --color=auto $@*
+alias diff diff --color=auto $@*
+alias ccat highlight --out-format=ansi $@*
+alias rem systemctl --user restart emacs $@*

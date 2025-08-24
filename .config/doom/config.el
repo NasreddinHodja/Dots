@@ -9,7 +9,8 @@
 ;; - `load!' for loading external *.el files relative to this one
 
 
-(setq user-full-name "Tomás Bizet"
+;;; * general
+(setq user-full-name "tomás bizet"
       user-mail-address "tbizetde@gmail.com")
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 16)
@@ -21,8 +22,6 @@
 
 (setq display-line-numbers-type 'relative)
 
-
-;;; general
 ;; initial window parameters
 (defconst nas/frame-parameters
   '((width . 100)
@@ -38,17 +37,11 @@
 ;; remove quit prompt
 (setq confirm-kill-emacs nil)
 
-;;; projects
-(setq projectile-project-search-path '("~/Prog/"))
+;;; * projects
+(setq projectile-project-search-path '("~/prog/"))
 
 ;; evil inside mini buffer
 (setq evil-want-minibuffer t)
-
-;; popups
-(set-popup-rules!
-  '(("*helpful*" :ignore t)
-    ("*compilation" :ignore t)
-    ("*Help*" :ignore t)))
 
 ;; line numbers in text-mode
 (add-hook! 'text-mode-hook #'display-line-numbers-mode)
@@ -57,10 +50,13 @@
 (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 ;; workspaces
-(setq doom-modeline-persp-name t)
+(setq doom-modeline-persp-name t
+      +workspaces-data-file "workspaces"
+      persp-save-dir "~/.config/doom/workspaces/"
+      persp-auto-save-opt 0)
 
 
-;;; org-mode
+;;; * org-mode
 ;; dirs
 (setq org-directory "~/Notes/"
       org-roam-directory org-directory)
@@ -83,10 +79,12 @@
 ;; org-mode custom highlights
 (defun nas/org-mode-keywords ()
   "Add custom font-lock keywords for org-mode."
-  (font-lock-add-keywords nil ;; !!!
-                          `(( "!!!" 0 '(:foreground ,(doom-color 'error) :background ,(doom-color 'base3) :weight bold) t)))
-  (font-lock-add-keywords nil ;; ???
-                          `(( "\\(\\?\\?\\?\\)" 0 '(:foreground ,(doom-color 'orange) :background ,(doom-color 'base3) :weight bold) t)))
+  (font-lock-add-keywords  ;; !!!
+   nil
+   `(("!!!" 0 '(:foreground ,(doom-color 'error) :background ,(doom-color 'base3) :weight bold) t)))
+  (font-lock-add-keywords  ;; ???
+   nil
+   `(("\\(\\?\\?\\?\\)" 0 '(:foreground ,(doom-color 'orange) :background ,(doom-color 'base3) :weight bold) t)))
   )
 
 (add-hook! 'org-mode-hook #'nas/org-mode-keywords)
@@ -132,7 +130,7 @@
          (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
 
 
-;;; maps
+;;; * maps
 ;; find-ins
 (defun nas/find-in-dir (dir)
   "Generic function to find files in DIR."
@@ -178,8 +176,19 @@
       :desc "Format buffer or region"
       "<return>" #'+format/buffer)
 
+;; popups
+(map! :leader
+      :prefix ("M-p" . "popup")
+      :desc "Raise"  "r" #'+popup/raise
+      :desc "Close"  "c" #'+popup/close
+      :desc "Toggle" "t" #'+popup/toggle
+      :desc "Cycle" "n" #'+popup/other
+      :desc "Restore" "u" #'+popup/restore
+      :desc "Close all" "u" #'+popup/cloase-all
+      :desc "Buffer to popup" "RET" #'+popup/buffer)
 
-;;; eshell
+
+;;; * eshell
 ;; aliasrc to eshell aliases
 (defconst nas/aliasrc-file "~/.config/aliasrc")
 (defconst nas/eshell-aliases-file "~/.config/doom/eshell/aliases")
@@ -215,7 +224,7 @@
         (while (not (eobp))
           (let ((line (string-trim (thing-at-point 'line t))))
             (when (string-match "^\\([^=]+\\)=\"\\([^\"]+\\)\"[ \\\]*$" line)
-              (push (format "alias %s %s"
+              (push (format "alias %s %s $@*"
                             (match-string 1 line)
                             (match-string 2 line))
                     aliases)))
@@ -229,3 +238,5 @@
         (insert (mapconcat 'identity (nreverse aliases) "\n"))))))
 
 (add-hook! eshell-first-time-mode-hook #'nas/eshell-convert-aliasrc)
+
+(nas/eshell-convert-aliasrc)
