@@ -1,0 +1,20 @@
+bat bat --theme=Dracula
+cp cp -iv
+mv mv -iv
+rm rm -v
+mkd mkdir -pv
+ffmpeg ffmpeg -hide_banner
+ka killall
+trem transmission-remote
+f $FILE
+e $EDITOR
+p sudo pacman
+szhist bat $HOME/.config/zsh/.zhistory | grep -i
+juno nohup jupyter notebook > error.log &
+p5s nohup p5 server > error.log &
+mgdl ~/Prog/mgdl/target/release/mgdl
+ls eza --icons --group-directories-first
+la eza --icons -la --group-directories-first
+grep grep --color=auto
+diff diff --color=auto
+ccat highlight --out-format=ansi

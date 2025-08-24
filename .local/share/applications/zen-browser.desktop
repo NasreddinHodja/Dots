@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zen Browser
+Exec=/home/nasreddin/.local/src/zen/zen
+Icon=/home/nasreddin/.local/src/zen/browser/chrome/icons/default/default128.png
+Type=Application
+Categories=Network;WebBrowser;
+StartupNotify=true
+Terminal=false
