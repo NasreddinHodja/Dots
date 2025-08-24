@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
-systemctl --user restart emacs
+RID="66666"
 
-launch-main-emacs
+notify-send "Emacs" "Restarting Emacs daemon...\n" --icon=emacs --replace-id=$RID --hint=int:value:"0%"
+
+if systemctl --user restart emacs; then
+    notify-send "Emacs" "Daemon restarted successfully\n" --replace-id=$RID --icon=emacs --hint=int:value:"50%"
+
+    if launch-main-emacs; then
+        notify-send "Emacs" "Main frame opened successfully\n" --replace-id=$RID --icon=emacs --hint=int:value:"100%"
+    else
+        notify-send "Emacs" "Failed to open main frame\n" --replace-id=$RID --icon=dialog-error --urgency=critical --hint=int:value:"50%"
+    fi
+else
+    notify-send "Emacs" "Failed to restart daemon\n" --replace-id=$RID --hint=int:value:0 --icon=dialog-error --urgency=critical --hint=int:value:"0%"
+fi

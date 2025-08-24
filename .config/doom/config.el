@@ -10,6 +10,7 @@
 
 
 ;;; * general
+
 (setq! user-full-name "tomás bizet"
        user-mail-address "tbizetde@gmail.com")
 
@@ -37,7 +38,9 @@
 ;; remove quit prompt
 (setq! confirm-kill-emacs nil)
 
+
 ;;; * projects
+
 (setq! projectile-project-search-path '("~/prog/"))
 
 ;; evil inside mini buffer
@@ -67,6 +70,7 @@
 
 
 ;;; * org-mode
+
 ;; dirs
 (setq! org-directory "~/Notes/"
        org-roam-directory org-directory)
@@ -141,6 +145,7 @@
 
 
 ;;; * maps
+
 ;; find-ins
 (defun nas/find-in-dir (dir)
   "Generic function to find files in DIR."
@@ -203,8 +208,7 @@
 
   (interactive)
 
-  (message "Restarting daemon...")
-  (call-process "systemd-run" nil 0 nil "--user" "--scope" "--unit=restart-emacs"
+  (call-process "systemd-run" nil 0 nil "--user" "--scope"
                 "bash" "-c" "sleep 1 && remcs"))
 
 (map! :leader
@@ -213,6 +217,7 @@
       :desc "Restart & restore" "R" #'doom/restart-and-restore)
 
 ;;; * eshell
+
 ;; aliasrc to eshell aliases
 (defconst nas/aliasrc-file "~/.config/aliasrc")
 (defconst nas/eshell-aliases-file "~/.config/doom/eshell/aliases")
