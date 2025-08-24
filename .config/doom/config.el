@@ -125,7 +125,7 @@
 (defun nas/org-roam-slug (title)
   (replace-regexp-in-string
    "[^[:alnum:]-]+" "-"
-   (replace-regexp-in-string "[ \t]+" "-" title))))
+   (replace-regexp-in-string "[ \t]+" "-" title)))
 
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?" :target
