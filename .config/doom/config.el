@@ -123,8 +123,9 @@
 
 ;; default create roam node template
 (defun nas/org-roam-slug (title)
-  "Convert TITLE to a slug with hyphens instead of underscores."
-  (replace-regexp-in-string "_" "-" (org-roam-node-slug (org-roam-node-create :title title))))
+  (replace-regexp-in-string
+   "[^[:alnum:]-]+" "-"
+   (replace-regexp-in-string "[ \t]+" "-" title))))
 
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?" :target
