@@ -10,17 +10,17 @@
 
 
 ;;; * general
-(setq user-full-name "tomás bizet"
-      user-mail-address "tbizetde@gmail.com")
+(setq! user-full-name "tomás bizet"
+       user-mail-address "tbizetde@gmail.com")
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 16)
-      doom-variable-pitch-font (font-spec :family "sans" :size 16))
+(setq! doom-font (font-spec :family "Source Code Pro" :size 16)
+       doom-variable-pitch-font (font-spec :family "sans" :size 16))
 
-(setq doom-theme 'doom-dracula)
+(setq! doom-theme 'doom-dracula)
 
-(setq +doom-dashboard-banner-file (expand-file-name "banner.png" doom-user-dir))
+(setq! +doom-dashboard-banner-file (expand-file-name "banner.png" doom-user-dir))
 
-(setq display-line-numbers-type 'relative)
+(setq! display-line-numbers-type 'relative)
 
 ;; initial window parameters
 (defconst nas/frame-parameters
@@ -32,16 +32,16 @@
   (add-to-list 'default-frame-alist param))
 
 ;; use trash
-(setq delete-by-moving-to-trash t)
+(setq! delete-by-moving-to-trash t)
 
 ;; remove quit prompt
-(setq confirm-kill-emacs nil)
+(setq! confirm-kill-emacs nil)
 
 ;;; * projects
-(setq projectile-project-search-path '("~/prog/"))
+(setq! projectile-project-search-path '("~/prog/"))
 
 ;; evil inside mini buffer
-(setq evil-want-minibuffer t)
+(setq! evil-want-minibuffer t)
 
 ;; line numbers in text-mode
 (add-hook! 'text-mode-hook #'display-line-numbers-mode)
@@ -50,31 +50,41 @@
 (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 ;; workspaces
-(setq doom-modeline-persp-name t
-      +workspaces-data-file "workspaces"
-      persp-save-dir "~/.config/doom/workspaces/"
-      persp-auto-save-opt 0)
+(defconst nas/workspaces-dir "~/.config/doom/workspaces/")
+(defconst nas/workspaces-file "workspaces")
+
+(setq! doom-modeline-persp-name t
+       +workspaces-data-file (concat nas/workspaces-dir nas/workspaces-file))
+
+(after! persp
+  (setq! persp-auto-save-opt 0
+         ;; TODO set this shit or figure out other way
+         ;; persp-save-dir nas/workspaces-dir
+         ))
+
+(defconst nas/desktop-dir "~/.config/doom/desktop/")
+(setq! desktop-dirname nas/desktop-dir)
 
 
 ;;; * org-mode
 ;; dirs
-(setq org-directory "~/Notes/"
-      org-roam-directory org-directory)
+(setq! org-directory "~/Notes/"
+       org-roam-directory org-directory)
 
 ;; default org-mode on buffers
-(setq initial-major-mode 'org-mode)
+(setq! initial-major-mode 'org-mode)
 
 ;; org-mode src block syntax highlight
-(setq org-src-fontify-natively t
-      org-src-tab-acts-natively t
-      org-confirm-babel-evaluate nil
-      org-edit-src-content-indentation 0)
+(setq! org-src-fontify-natively t
+       org-src-tab-acts-natively t
+       org-confirm-babel-evaluate nil
+       org-edit-src-content-indentation 0)
 
 ;; hide markup chars in org-mode
-(setq org-hide-emphasis-markers t)
+(setq! org-hide-emphasis-markers t)
 
 ;; close scheduled when done
-(setq org-log-done 'time)
+(setq! org-log-done 'time)
 
 ;; org-mode custom highlights
 (defun nas/org-mode-keywords ()
@@ -103,21 +113,21 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-(setq org-latex-listings 't)
+(setq! org-latex-listings 't)
 
 ;; configure org latex preview
-(setq org-preview-latex-process-alist
-      '((imagemagick
-         :programs ("pdflatex" "convert")
-         :description "pdf > png"
-         :message "You need to install: pdflatex and imagemagick."
-         :image-input-type "pdf"
-         :image-output-type "png"
-         :image-size-adjust (1.0 . 1.0)
-         :latex-compiler ("pdflatex -interaction nonstopmode -output-directory %o %f")
-         :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
+(setq! org-preview-latex-process-alist
+       '((imagemagick
+          :programs ("pdflatex" "convert")
+          :description "pdf > png"
+          :message "You need to install: pdflatex and imagemagick."
+          :image-input-type "pdf"
+          :image-output-type "png"
+          :image-size-adjust (1.0 . 1.0)
+          :latex-compiler ("pdflatex -interaction nonstopmode -output-directory %o %f")
+          :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
 
-(setq org-preview-latex-default-process 'imagemagick)
+(setq! org-preview-latex-default-process 'imagemagick)
 
 ;; default create roam node template
 (defun nas/org-roam-slug (title)
@@ -125,9 +135,9 @@
    "[^[:alnum:]-]+" "-"
    (replace-regexp-in-string "[ \t]+" "-" title)))
 
-(setq org-roam-capture-templates
-      '(("d" "default" plain "%?" :target
-         (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
+(setq! org-roam-capture-templates
+       '(("d" "default" plain "%?" :target
+          (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
 
 
 ;;; * maps
@@ -187,6 +197,20 @@
       :desc "Close all" "u" #'+popup/cloase-all
       :desc "Buffer to popup" "RET" #'+popup/buffer)
 
+;; restart & restart daemon
+(defun nas/restart ()
+  "Restart daemon and reopen main frame by running `remcs'"
+
+  (interactive)
+
+  (message "Restarting daemon...")
+  (call-process "systemd-run" nil 0 nil "--user" "--scope" "--unit=restart-emacs"
+                "bash" "-c" "sleep 1 && remcs"))
+
+(map! :leader
+      :prefix "q"
+      :desc "Restart daemon & main frame" "r" #'nas/restart
+      :desc "Restart & restore" "R" #'doom/restart-and-restore)
 
 ;;; * eshell
 ;; aliasrc to eshell aliases
@@ -239,4 +263,4 @@
 
 (add-hook! eshell-first-time-mode-hook #'nas/eshell-convert-aliasrc)
 
-(nas/eshell-convert-aliasrc)
+(setq! eshell-directory-name "~/.config/doom/eshell/")

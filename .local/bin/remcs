@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+systemctl --user restart emacs
+
+launch-main-emacs
