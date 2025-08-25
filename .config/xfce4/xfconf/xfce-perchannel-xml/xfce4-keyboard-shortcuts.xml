@@ -51,6 +51,9 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="xkill"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="xfce4-session-logout"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;c" type="string" value="/home/nasreddin/.local/bin/supercaps">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
     </property>
   </property>
   <property name="xfwm4" type="empty">

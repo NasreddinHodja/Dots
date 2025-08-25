@@ -48,10 +48,15 @@
        evil-default-state 'normal)
 
 ;; line numbers in text-mode
-(add-hook! 'text-mode-hook #'display-line-numbers-mode)
+(add-hook! text-mode #'display-line-numbers-mode)
 
 ;; 80 col indicator
-(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
+(add-hook! prog-mode #'display-fill-column-indicator-mode)
+
+;; hide modeline ignores
+(use-package! hide-mode-line
+  :config
+  (setq hide-mode-line-excluded-modes '(elemental-mode vterm-mode eshell-mode)))
 
 ;; workspaces
 (defconst nas/workspaces-dir "~/.config/doom/workspaces/")
@@ -99,7 +104,7 @@
    `(("\\(\\?\\?\\?\\)" 0 '(:foreground ,(doom-color 'orange) :background ,(doom-color 'base3) :weight bold) t)))
   )
 
-(add-hook! 'org-mode-hook #'nas/org-mode-keywords)
+(add-hook! org-mode #'nas/org-mode-keywords)
 
 ;; org latex export class
 (with-eval-after-load 'ox-latex
@@ -190,8 +195,7 @@
       "<return>" #'+format/buffer)
 
 ;; popups
-(map! :leader
-      :prefix ("M-p" . "popup")
+(map! :prefix ("M-p" . "popup")
       :desc "Raise"  "r" #'+popup/raise
       :desc "Close"  "c" #'+popup/close
       :desc "Toggle" "t" #'+popup/toggle
@@ -262,25 +266,24 @@
       (with-temp-file nas/eshell-aliases-file
         (insert (mapconcat 'identity (nreverse aliases) "\n"))))))
 
-(add-hook! 'eshell-mode-hook #'nas/eshell-convert-aliasrc)
+(add-hook! eshell-mode #'nas/eshell-convert-aliasrc)
 
 (setq! eshell-directory-name "~/.config/doom/eshell/")
-
-(remove-hook! 'eshell-mode-hook #'hide-mode-line-mode)
 
 
 ;;; * vterm
 
-(remove-hook! 'vterm-mode-hook #'(hide-mode-line-mode evil-mode evil-collection-vterm-escape-stay))
+(add-hook! vterm-mode #'turn-off-evil-mode)
 
 
 ;;; * claudin
+(use-package! claudemacs
+  :defer-incrementally eat
+  :config
+  (with-eval-after-load 'eat
+    (setq! eat-term-scrollback-size 400000))
 
-(use-package! eat)
-(use-package! claudemacs)
+  (global-auto-revert-mode t))
+
 (map! :leader :desc "Claude Code" "M-c" #'claudemacs-transient-menu)
 
-(with-eval-after-load 'eat
-  (setq! eat-term-scrollback-size 400000))
-
-(global-auto-revert-mode t)
