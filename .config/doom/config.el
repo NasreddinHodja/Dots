@@ -43,8 +43,9 @@
 
 (setq! projectile-project-search-path '("~/prog/"))
 
-;; evil inside mini buffer
-(setq! evil-want-minibuffer t)
+;; evil
+(setq! evil-want-minibuffer t
+       evil-default-state 'normal)
 
 ;; line numbers in text-mode
 (add-hook! 'text-mode-hook #'display-line-numbers-mode)
@@ -64,9 +65,6 @@
          ;; TODO set this shit or figure out other way
          ;; persp-save-dir nas/workspaces-dir
          ))
-
-(defconst nas/desktop-dir "~/.config/doom/desktop/")
-(setq! desktop-dirname nas/desktop-dir)
 
 
 ;;; * org-mode
@@ -216,6 +214,10 @@
       :desc "Restart daemon & main frame" "r" #'nas/restart
       :desc "Restart & restore" "R" #'doom/restart-and-restore)
 
+;; toggle evil
+(map! :desc "Toggle evil" "C-c RET" #'evil-mode)
+
+
 ;;; * eshell
 
 ;; aliasrc to eshell aliases
@@ -230,25 +232,20 @@
       (with-temp-buffer
         (insert-file-contents nas/aliasrc-file)
 
-        ;; Remove comments
         (goto-char (point-min))
         (while (re-search-forward "#.*$" nil t)
           (replace-match ""))
 
-        ;; Delete empty lines
         (goto-char (point-min))
         (flush-lines "^[ \t]*$")
 
-        ;; Delete lines that are just 'alias \'
         (goto-char (point-min))
         (flush-lines "^alias[ \t]*\\\\[ \t]*$")
 
-        ;; Remove indentation
         (goto-char (point-min))
         (while (re-search-forward "^[ \t]+" nil t)
           (replace-match ""))
 
-        ;; Collect alias pairs
         (goto-char (point-min))
         (while (not (eobp))
           (let ((line (string-trim (thing-at-point 'line t))))
@@ -262,15 +259,27 @@
       (unless (file-exists-p (file-name-directory nas/eshell-aliases-file))
         (make-directory (file-name-directory nas/eshell-aliases-file) t))
 
-      ;; Write aliases to file
       (with-temp-file nas/eshell-aliases-file
         (insert (mapconcat 'identity (nreverse aliases) "\n"))))))
 
-(add-hook! eshell-first-time-mode-hook #'nas/eshell-convert-aliasrc)
+(add-hook! 'eshell-mode-hook #'nas/eshell-convert-aliasrc)
 
 (setq! eshell-directory-name "~/.config/doom/eshell/")
 
-;;; claudin
+(remove-hook! 'eshell-mode-hook #'hide-mode-line-mode)
+
+
+;;; * vterm
+
+;; disable evil in vterm by default
+(add-hook! 'vterm-mode-hook
+           #'turn-off-evil-mode)
+
+(remove-hook! 'vterm-mode-hook #'hide-mode-line-mode)
+
+
+;;; * claudin
+
 (use-package! eat)
 (use-package! claudemacs)
 (map! :leader :desc "Claude Code" "M-c" #'claudemacs-transient-menu)
