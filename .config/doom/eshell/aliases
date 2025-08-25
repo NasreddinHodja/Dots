@@ -18,4 +18,3 @@ alias la eza --icons -la --group-directories-first $@*
 alias grep grep --color=auto $@*
 alias diff diff --color=auto $@*
 alias ccat highlight --out-format=ansi $@*
-alias rem systemctl --user restart emacs $@*

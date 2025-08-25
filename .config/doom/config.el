@@ -177,7 +177,7 @@
  ("b" "~/.local/bin/")
  ("p" "~/Prog/")
  ("f" "~/Facu/")
- ("t" "~/Trab/")
+ ("w" "~/Work/")
  ("h" "~/"))
 
 ;; remap code format to "SPC c RET"
@@ -271,11 +271,7 @@
 
 ;;; * vterm
 
-;; disable evil in vterm by default
-(add-hook! 'vterm-mode-hook
-           #'turn-off-evil-mode)
-
-(remove-hook! 'vterm-mode-hook #'hide-mode-line-mode)
+(remove-hook! 'vterm-mode-hook #'(hide-mode-line-mode evil-mode evil-collection-vterm-escape-stay))
 
 
 ;;; * claudin

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SXIV Browse Dir
+Exec=/home/nasreddin/.local/bin/sxiv_browse_dir %f
+Type=Application
+MimeType=image/png;image/jpeg;image/gif;image/bmp;image/webp;image/tiff;
+Icon=image-viewer
+Categories=Graphics;Viewer;

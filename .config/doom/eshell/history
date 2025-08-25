@@ -46,3 +46,6 @@ exit
 notify-send "oie" "oie" --icon=emacs --replace-id="666666";notify-send "oie" "oie" --icon=emacs --replace-id="666666";
 notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"0%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"25%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"50%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"75%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"100%"
 exit
+z /home/nasreddin/Work/minerva 
+la
+yay -Syu dot
