@@ -3,7 +3,7 @@
 <channel name="xfce4-taskmanager" version="1.0">
   <property name="columns" type="empty">
     <property name="sort-type" type="uint" value="1"/>
-    <property name="sort-id" type="uint" value="6"/>
+    <property name="sort-id" type="uint" value="7"/>
     <property name="column-ppid" type="bool" value="true"/>
     <property name="column-vsz" type="bool" value="true"/>
     <property name="column-state" type="bool" value="true"/>
@@ -16,5 +16,7 @@
     <property name="full-command-line" type="bool" value="false"/>
     <property name="more-precision" type="bool" value="true"/>
   </property>
-  <property name="window-maximized" type="bool" value="true"/>
+  <property name="window-maximized" type="bool" value="false"/>
+  <property name="window-width" type="int" value="919"/>
+  <property name="window-height" type="int" value="638"/>
 </channel>

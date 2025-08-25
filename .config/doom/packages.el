@@ -47,3 +47,9 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+(package! claudemacs
+  :recipe (:host github :repo "cpoile/claudemacs"))
+
+(package! eat
+  :recipe (:host codeberg :repo "akib/emacs-eat"))

@@ -269,3 +269,13 @@
 (add-hook! eshell-first-time-mode-hook #'nas/eshell-convert-aliasrc)
 
 (setq! eshell-directory-name "~/.config/doom/eshell/")
+
+;;; claudin
+(use-package! eat)
+(use-package! claudemacs)
+(map! :leader :desc "Claude Code" "M-c" #'claudemacs-transient-menu)
+
+(with-eval-after-load 'eat
+  (setq! eat-term-scrollback-size 400000))
+
+(global-auto-revert-mode t)

@@ -1,0 +1,48 @@
+notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
+notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456 --transient
+la
+notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
+ka xfce4-notifyd
+notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
+z -
+z ~
+aldkfa
+la
+dws right
+dws left
+dws right
+dws left
+dws right
+claude
+exit
+docker-compose -f docker-compose.dev.yml up -d
+systemctl start docker
+docker-compose -f docker-compose.dev.yml up -d
+pm dev:app
+codium .
+pm install
+pm dev:app
+exit
+pm dev
+pm dev:app
+pm app:dev
+pm dev:ap
+pm dev:appp
+pm dev:app
+pm dev
+pm dev:app
+mpv ~/Videos/obs/2025-08-24\ 20-55-19.mp4 
+mpv ~/Videos/obs/2025-08-24\ 20-58-09.mp4 
+mpv ~/Videos/obs/2025-08-24\ 21-08-48.mp4 
+z
+z ~
+exit
+z minerva
+docker-compose -f docker-compose.dev.yml donw
+docker-compose -f docker-compose.dev.yml down
+docker-compose -f docker-compose.dev.yml up -d
+pm dev
+exit
+notify-send "oie" "oie" --icon=emacs --replace-id="666666";notify-send "oie" "oie" --icon=emacs --replace-id="666666";
+notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"0%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"25%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"50%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"75%"sleep 0.5notify-send "oie" "oie" --icon=emacs --replace-id="666666"notify-send "progress" "progress" --icon=emacs --replace-id="666667" --hint:int:value:"100%"
+exit

@@ -1,17 +1,25 @@
 #!/usr/bin/env bash
 
-RID="66666"
+TRID="666666"
+PRID="777777"
 
-notify-send "Emacs" "Restarting Emacs daemon...\n" --icon=emacs --replace-id=$RID --hint=int:value:"0%"
+TITLE="Restarting Emacs"
+INIT_MSG=""
+DAEMON_MSG="$INIT_MSG""Daemon restarted successfully\n"
+DAEMON_ERR_MSG="$INIT_MSG""[ERROR] Failed to restart daemon\n"
+SUCCESS_MSG="$DAEMON_MSG""Main frame opened successfully\n"
+FAILURE_MSG="$INIT_MSG""[ERROR] Failed to open Main frame\n"
+
+notify-send "$TITLE" "$INIT_MSG" --icon=emacs --hint=int:value:"0%" --replace-id=$TRID
 
 if systemctl --user restart emacs; then
-    notify-send "Emacs" "Daemon restarted successfully\n" --replace-id=$RID --icon=emacs --hint=int:value:"50%"
+    notify-send "$TITLE" "$DAEMON_MSG" --hint=int:value:"50%" --icon=emacs --replace-id=$TRID
 
     if launch-main-emacs; then
-        notify-send "Emacs" "Main frame opened successfully\n" --replace-id=$RID --icon=emacs --hint=int:value:"100%"
+        notify-send "$TITLE" "$SUCCESS_MSG" --hint=int:value:"100%" --icon=emacs --replace-id=$TRID
     else
-        notify-send "Emacs" "Failed to open main frame\n" --replace-id=$RID --icon=dialog-error --urgency=critical --hint=int:value:"50%"
+        notify-send "$TITLE" "$FAILURE_MSG" --hint=int:value:"50%" --icon=dialog-error --urgency=critical
     fi
 else
-    notify-send "Emacs" "Failed to restart daemon\n" --replace-id=$RID --hint=int:value:0 --icon=dialog-error --urgency=critical --hint=int:value:"0%"
+    notify-send "$TITLE" "$DAEMON_ERR_MSG" --icon=dialog-error --hint=int:value:"0%" --urgency=critical --replace-id=$TRID
 fi

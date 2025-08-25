@@ -33,6 +33,8 @@
   <property name="notification-display-fields" type="string" value="full"/>
   <property name="do-slideout" type="bool" value="false"/>
   <property name="do-fadeout" type="bool" value="true"/>
-  <property name="min-width-enabled" type="bool" value="true"/>
+  <property name="min-width-enabled" type="bool" value="false"/>
   <property name="min-width" type="uint" value="300"/>
+  <property name="date-time-format" type="string" value="locale-default"/>
+  <property name="show-notifications-on" type="string" value="primary-monitor"/>
 </channel>
