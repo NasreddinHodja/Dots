@@ -65,11 +65,9 @@
 (setq! doom-modeline-persp-name t
        +workspaces-data-file (concat nas/workspaces-dir nas/workspaces-file))
 
-(after! persp
-  (setq! persp-auto-save-opt 0
-         ;; TODO set this shit or figure out other way
-         ;; persp-save-dir nas/workspaces-dir
-         ))
+;; TODO figure why this is being reset
+(setq! persp-auto-save-opt 0
+       persp-save-dir nas/workspaces-dir)
 
 
 ;;; * org-mode
@@ -136,15 +134,18 @@
 
 (setq! org-preview-latex-default-process 'imagemagick)
 
-;; default create roam node template
+;; roam capture templates
 (defun nas/org-roam-slug (title)
   (replace-regexp-in-string
    "[^[:alnum:]-]+" "-"
    (replace-regexp-in-string "[ \t]+" "-" title)))
 
 (setq! org-roam-capture-templates
-       '(("d" "default" plain "%?" :target
-          (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n") :unnarrowed t)))
+       '(("d" "default" plain
+          "%?"
+          :if-new
+          (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n")
+          :unnarrowed t)))
 
 
 ;;; * maps
@@ -185,7 +186,7 @@
  ("w" "~/Work/")
  ("h" "~/"))
 
-;; remap code format to "SPC c RET"
+;; Remap code format to "SPC c RET"
 (map! :leader
       :prefix "c"
       "f" nil)
@@ -277,13 +278,11 @@
 
 
 ;;; * claudin
-(use-package! claudemacs
-  :defer-incrementally eat
-  :config
-  (with-eval-after-load 'eat
-    (setq! eat-term-scrollback-size 400000))
+(with-eval-after-load 'eat
+  (setq eat-term-scrollback-size 400000))
 
-  (global-auto-revert-mode t))
+(setq claudemacs-prefer-projectile-root t)
+
+(global-auto-revert-mode t)
 
 (map! :leader :desc "Claude Code" "M-c" #'claudemacs-transient-menu)
-

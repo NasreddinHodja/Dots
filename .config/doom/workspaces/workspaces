@@ -1,0 +1,36 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "work"
+            ((def-buffer "Work" "/home/nasreddin/Work/" dired-mode)
+             (def-eshell-buffer "*doom:eshell*"
+                                ((major-mode . eshell-mode)
+                                 (default-directory
+                                  . "/home/nasreddin/Work/minerva/")))
+             (def-buffer "minerva" "/home/nasreddin/Work/minerva/" dired-mode))
+            (def-wconf
+             (((min-height . 4) (min-width . 58) (min-height-ignore . 2)
+               (min-width-ignore . 58) (min-height-safe . 1)
+               (min-width-safe . 2) (min-pixel-height . 84)
+               (min-pixel-width . 580) (min-pixel-height-ignore . 42)
+               (min-pixel-width-ignore . 580) (min-pixel-height-safe . 21)
+               (min-pixel-width-safe . 20))
+              leaf (pixel-width . 1016) (pixel-height . 924) (total-width . 101)
+              (total-height . 44) (normal-height . 1.0) (normal-width . 1.0)
+              (parameters
+               (better-jumper-struct
+                . #s(better-jumper-jump-list-struct
+                     (0 0
+                        . [nil nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil nil nil nil nil nil nil nil nil nil
+                               nil nil nil])
+                     -1)))
+              (buffer "*doom*" (selected . t) (hscroll . 0)
+                      (fringes 0 0 nil nil) (margins 56)
+                      (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0)
+                      (dedicated) (point . 1) (start . 1))))
+            (def-params ((last-project-root))) nil nil nil))
