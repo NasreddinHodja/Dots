@@ -94,3 +94,14 @@ yay -Rsn sxiv
 sxiv
 nsxiv
 exit
+sxiv 
+nsxiv ~/Pictures/wp/1690736230577770.jpg 
+nsxiv-browse-dir
+nsxiv ~/Pictures/wp/1690736230577770.jpg r
+source .Xresources 
+xrdb .Xresources 
+nsxiv ~/Pictures/wp/1690736230577770.jpg r
+git rm -r --cached .
+la
+git add .
+exit
