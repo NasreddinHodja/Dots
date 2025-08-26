@@ -1,4 +1,4 @@
-#+title: Dotfiles Configuration
+#+title: =.config/=
 #+description: Personal dotfiles
 
 * Overview
