@@ -31,7 +31,7 @@ capture_and_save() {
         "Screenshot Captured" \
         "Saved screenshot:\n${filename##*/}"
 
-    [[ $? == 0 ]] && sxiv "$filename"
+    [[ $? == 0 ]] && nsxiv "$filename"
 
     return 0
 }

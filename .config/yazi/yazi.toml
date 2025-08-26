@@ -1,6 +1,6 @@
 [opener]
-sxiv_browse_dir = [
-    { run = 'sxiv_browse_dir "$@"', orphan = true },
+nsxiv_browse_dir = [
+    { run = 'nsxiv_browse_dir "$@"', orphan = true },
 ]
 
 [open]

@@ -17,6 +17,7 @@ tmp/
 .config/gnome-control-center/
 .config/gnome-session/
 .config/goa-1.0/
+.config/go/
 .config/GREYC/
 .config/gtk-*/
 .config/ibus/
@@ -68,8 +69,13 @@ tmp/
 .config/.nuxt
 .config/.wrangler
 .config/Upscayl
-.config/clerk
 .config/nextjs-nodejs
+.config/turborepo
+.config/clerk
+.config/epiphany
+.config/configstore
+.config/evolution
+.config/nextjs*
 .config/stripe
 .config/turborepo
 

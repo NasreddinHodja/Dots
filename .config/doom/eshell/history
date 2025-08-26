@@ -66,3 +66,31 @@ systemctl restart kanata
 reboot
 cp kanata.kbd /etc/kanata/kanata-config.kbd 
 systemctl restart kanata
+xrandr
+echo $DISPLAY
+xrandr --listmonitors
+xrandr --list-monitors
+xrandr --listmonitors
+maim -g 1920/527x1080/296+1920+0
+maim -g 1920x1080+1920+0
+maim -g 1920x1080+1920+0 ./screenshot.png
+la
+sxiv screenshot.png 
+xrandr --listmonitors
+mkdir assets
+maim -g 1920x1080+1920+0 ./assets/screenshot.png
+rm screenshot.png 
+la
+rm *.png
+la
+maim -u -g 1920x1080+1920+0 ./assets/screenshot.png
+la
+rm -r .local/bin/assets/
+mkdir assets
+maim -u -g 1920x1080+1920+0 ./assets/screenshot.png
+exit
+yay -Syu nsxiv
+yay -Rsn sxiv
+sxiv
+nsxiv
+exit

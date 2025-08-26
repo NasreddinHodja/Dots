@@ -1,8 +1,8 @@
 #+title: Dotfiles Configuration
 #+description: Personal dotfiles
 
-
 * Overview
+
 [[./assets/screenshot.png]]
 
 Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org][Linux]] setup with [[https://www.xfce.org/][XFCE4]], [[https://www.gnu.org/software/emacs/][Emacs]], and some custom stuff for efficiency.
@@ -15,53 +15,50 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 + Plain text configuration files that are transparent and version-controllable
 
 * System Configuration
+
 + *GNU/Linux*: [[https://archlinux.org][Arch Linux]]
 + *Init System*: [[https://systemd.io/][systemd]]
 + *Keyboard remaps*: [[https://github.com/jtroo/kanata][kanata]]
 
 ** Applications
 + *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (mostly =dired=)
-+ *Keyboard remaps*: [[https://github.com/jtroo/kanata][kanata]]
 + *Video player*: [[https://mpv.io/][mpv]]
 + *Image viewer*: [[https://github.com/nsxiv/nsxiv][nsxiv]]
 + *PDF viewer*: [[https://github.com/pwmt/zathura][zathura]]
 
 ** Desktop Environment
-- *DE*: [[https://www.xfce.org/][XFCE4]] with custom window management scripts
-- *bar*: [[https://docs.xfce.org/xfce/xfce4-panel/start][xfce panel]] with [[https://docs.xfce.org/panel-plugins/xfce4-genmon-plugin/start][genmon plugin]]
-- *App launcher*: [[https://github.com/davatorium/rofi][rofi]]
-- *Theme / Color Scheme*: [[https://draculatheme.com/contribute][Dracula]] - é Brasil porra
++ *DE*: [[https://www.xfce.org/][XFCE4]] with custom window management scripts
+  - keyboard-centric workflow
++ *Bar*: [[https://docs.xfce.org/xfce/xfce4-panel/start][xfce panel]] with [[https://docs.xfce.org/panel-plugins/xfce4-genmon-plugin/start][genmon plugin]]
++ *App launcher*: [[https://github.com/davatorium/rofi][rofi]]
++ *Theme / Color Scheme*: [[https://draculatheme.com/contribute][Dracula]] - é Brasil porra
 
 ** Development Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
   - Main development environment
   - =eshell= for terminal, =vterm= as a fallback
   - =dired= for file management
-+ *Work Editor* (web development): [[https://vscodium.com/][VSCodium]] with vim mode ()
++ *Work Editor* (web development): [[https://vscodium.com/][VSCodium]] with vim mode
 + *Terminal emulator*: [[https://sw.kovidgoyal.net/kitty/][kitty]] with =tmux=
-  - Prompt: [[https://starship.rs/][startship]]
+  - Prompt: [[https://starship.rs/][starship]]
   - Just fallback
 + *Shell*: [[https://www.zsh.org/][zsh]] with vim mode, history substring search, and syntax highlighting
   - Fallback: Bash
 
-
 * Baby's first scripts
 
 ** Window Management Scripts
-
 Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
-
-| Script              | Description                                                   |
-|---------------------+---------------------------------------------------------------|
+| Script                | Description                                                    |
+|-----------------------+----------------------------------------------------------------|
 | =center-window=       | Centers the active window within its current workspace        |
 | =cycle-window-widths= | Cycles between predefined window width states (normal/large)  |
 | =dws=                 | Switch focus to the closest window in the specified direction |
 | =move-monitor=        | Move active window to the next monitor                        |
 
 ** System Monitoring & Utilities
-
-| Script     | Description                                               |
-|------------+-----------------------------------------------------------|
+| Script       | Description                                                |
+|--------------+------------------------------------------------------------|
 | =genmon-sys= | System monitor feeder for XFCE panel (CPU/RAM/disk usage) |
 | =pm=         | Smart package manager detection (yarn/pnpm/npm/bun)       |
 | =scsh=       | Screenshot utility using maim                             |
@@ -82,4 +79,3 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 ├── .zshrc                 # ZSH configuration
 └── README.org             # This file
 #+end_example
-
