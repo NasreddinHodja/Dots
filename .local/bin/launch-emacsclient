@@ -4,4 +4,4 @@ while ! emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
     sleep 0.3
 done
 
-xdg-open /home/nasreddin/.local/share/applications/emacsclient-main.desktop
+xdg-open /usr/share/applications/emacsclient.desktop

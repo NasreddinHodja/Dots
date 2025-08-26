@@ -57,3 +57,12 @@ la
 exit
 yay -Syu
 exit
+sudo mv ~/Dots/.config/kanata/kanata.kbd 
+sudo mv ~/Dots/.config/kanata/kanata.kbd kanata-config.kbd 
+la
+systemctl restart kanata
+sudo cp ~/Dots/.config/kanata/kanata.kbd kanata-config.kbd  
+systemctl restart kanata
+reboot
+cp kanata.kbd /etc/kanata/kanata-config.kbd 
+systemctl restart kanata

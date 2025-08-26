@@ -15,7 +15,7 @@ notify-send "$TITLE" "$INIT_MSG" --icon=emacs --hint=int:value:"0%" --replace-id
 if systemctl --user restart emacs; then
     notify-send "$TITLE" "$DAEMON_MSG" --hint=int:value:"50%" --icon=emacs --replace-id=$TRID
 
-    if launch-main-emacs; then
+    if launch-emacsclient; then
         notify-send "$TITLE" "$SUCCESS_MSG" --hint=int:value:"100%" --icon=emacs --replace-id=$TRID
     else
         notify-send "$TITLE" "$FAILURE_MSG" --hint=int:value:"50%" --icon=dialog-error --urgency=critical

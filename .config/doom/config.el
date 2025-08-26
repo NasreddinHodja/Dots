@@ -38,6 +38,8 @@
 ;; remove quit prompt
 (setq! confirm-kill-emacs nil)
 
+;; load path for local packages
+(add-to-list 'load-path (expand-file-name "local" doom-user-dir))
 
 ;;; * projects
 
@@ -53,7 +55,7 @@
 ;; 80 col indicator
 (add-hook! prog-mode #'display-fill-column-indicator-mode)
 
-;; hide modeline ignores
+;; TODO hide modeline ignores
 (use-package! hide-mode-line
   :config
   (setq hide-mode-line-excluded-modes '(elemental-mode vterm-mode eshell-mode)))
@@ -286,3 +288,9 @@
 (global-auto-revert-mode t)
 
 (map! :leader :desc "Claude Code" "M-c" #'claudemacs-transient-menu)
+
+;;; kanata
+(use-package! kanata-kbd-mode)
+
+(use-package! kanata-kbd-mode
+  :mode ("\\.kbd\\'" . kanata-kbd-mode))
