@@ -9,7 +9,9 @@
 ;; - `load!' for loading external *.el files relative to this one
 
 
-;;; * general
+;;
+;;; * GENERAL ==================================================================
+;;
 
 (setq! user-full-name "tomás bizet"
        user-mail-address "tbizetde@gmail.com")
@@ -41,7 +43,10 @@
 ;; load path for local packages
 (add-to-list 'load-path (expand-file-name "local" doom-user-dir))
 
-;;; * projects
+
+;;
+;;; * PROJECTS =================================================================
+;;
 
 (setq! projectile-project-search-path '("~/prog/"))
 
@@ -72,7 +77,9 @@
        persp-save-dir nas/workspaces-dir)
 
 
-;;; * org-mode
+;;
+;;; * ORG-MODE =================================================================
+;;
 
 ;; dirs
 (setq! org-directory "~/Notes/"
@@ -150,7 +157,9 @@
           :unnarrowed t)))
 
 
-;;; * maps
+;;
+;;; * MAPS =====================================================================
+;;
 
 ;; find-ins
 (defun nas/find-in-dir (dir)
@@ -225,7 +234,9 @@
 (map! :desc "Toggle evil" "C-c RET" #'evil-mode)
 
 
-;;; * eshell
+;;
+;;; * ESHELL ===================================================================
+;;
 
 ;; aliasrc to eshell aliases
 (defconst nas/aliasrc-file "~/.config/aliasrc")
@@ -274,12 +285,17 @@
 (setq! eshell-directory-name "~/.config/doom/eshell/")
 
 
-;;; * vterm
+;;
+;;; * VTERM ====================================================================
+;;
 
 (add-hook! vterm-mode #'turn-off-evil-mode)
 
 
-;;; * claudin
+;;
+;;; * CLAUDIN ==================================================================
+;;
+
 (with-eval-after-load 'eat
   (setq eat-term-scrollback-size 400000))
 
@@ -289,7 +305,11 @@
 
 (map! :leader :desc "Claude Code" "M-c" #'claudemacs-transient-menu)
 
-;;; kanata
+
+;;
+;;; KANATA =====================================================================
+;;
+
 (use-package! kanata-kbd-mode)
 
 (use-package! kanata-kbd-mode
