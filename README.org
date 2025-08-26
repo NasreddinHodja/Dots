@@ -49,18 +49,20 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 
 ** Window Management Scripts
 Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
+
 | Script                | Description                                                    |
 |-----------------------+----------------------------------------------------------------|
 | =center-window=       | Centers the active window within its current workspace        |
-| =cycle-window-widths= | Cycles between predefined window width states (normal/large)  |
+| =cycle-window-widths= | Cycles between predefined window width states |
 | =dws=                 | Switch focus to the closest window in the specified direction |
 | =move-monitor=        | Move active window to the next monitor                        |
 
-** System Monitoring & Utilities
-| Script       | Description                                                |
-|--------------+------------------------------------------------------------|
+** Utilities
+
+| Script     | Description                                               |
+|------------+-----------------------------------------------------------|
 | =genmon-sys= | System monitor feeder for XFCE panel (CPU/RAM/disk usage) |
-| =pm=         | Smart package manager detection (yarn/pnpm/npm/bun)       |
+| =pm=         | Run js package manager (yarn/pnpm/npm/bun)                |
 | =scsh=       | Screenshot utility using maim                             |
 | =setbg=      | XFCE background setter                                    |
 
