@@ -55,13 +55,10 @@ main() {
 
     read -r work_x work_y work_width work_height <<< "$(get_workarea)"
 
-    local panel_top_height=$((work_y - monitor_y))
-    local panel_bottom_height=$((monitor_height - work_height - panel_top_height))
-
-    work_x=$monitor_x
-    work_y=$((monitor_y + panel_top_height))
+    work_x=$(($monitor_x + work_x))
+    work_y=$((monitor_y + work_y))
     work_width=$monitor_width
-    work_height=$((monitor_height - panel_top_height - panel_bottom_height))
+    echo $work_y
 
     read -r left_border top_border <<< "$(get_frame_extents "$window_id")"
 
@@ -71,13 +68,17 @@ main() {
     if [[ "$maximized_vert" == true ]]; then
         y_pos=$work_y
     else
-        y_pos=$((work_height / 2 - current_height / 2 + work_y))
+        echo $work_height $current_height $work_y
+        y_pos=$((work_height / 2 - current_height / 2))
     fi
+
 
     wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
     wmctrl -r :ACTIVE: -e "0,$x_pos,$y_pos,-1,-1"
 
     [[ "$maximized_vert" == true ]] && wmctrl -r :ACTIVE: -b add,maximized_vert
+
+    return 0
 }
 
 main "$@"

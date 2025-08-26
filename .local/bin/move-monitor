@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# TODO fix y shift
+
 window_id=$(xdotool getactivewindow)
 window_state=$(xprop -id "$window_id" | grep "_NET_WM_STATE")
 
@@ -22,23 +24,17 @@ fi
 x=$(xwininfo -id "$window_id" | awk '/Absolute upper-left X:/ { print $4 }')
 y=$(xwininfo -id "$window_id" | awk '/Absolute upper-left Y:/ { print $4 }')
 
-work_area=$(xprop -root _NET_WORKAREA | cut -d'=' -f2 | tr -d ' ')
-global_work_y=$(echo $work_area | cut -d',' -f2)
-
 monitor_info=$(xrandr --listmonitors | grep -v Monitors)
 monitor_widths=()
 monitor_positions=()
-monitor_heights=()
 monitor_y_positions=()
 
 while IFS= read -r line; do
     monitor_width=$(echo "$line" | awk '{print $3}' | cut -d'x' -f1 | cut -d'/' -f1)
-    monitor_height=$(echo "$line" | awk '{print $3}' | cut -d'x' -f2 | cut -d'/' -f1)
     monitor_position=$(echo "$line" | awk '{print $3}' | cut -d'+' -f2)
     monitor_y_pos=$(echo "$line" | awk '{print $3}' | cut -d'+' -f3)
     monitor_widths+=("$monitor_width")
     monitor_positions+=("$monitor_position")
-    monitor_heights+=("$monitor_height")
     monitor_y_positions+=("$monitor_y_pos")
 done <<< "$monitor_info"
 
@@ -56,11 +52,11 @@ fi
 
 next_monitor_index=$(( (current_monitor_index + 1) % monitor_count ))
 
-current_monitor_work_y=$((monitor_y_positions[current_monitor_index] + global_work_y - monitor_y_positions[0]))
+current_monitor_work_y=$((monitor_y_positions[current_monitor_index] - monitor_y_positions[0]))
 relative_y=$((y - current_monitor_work_y))
 
 new_x=$((monitor_positions[next_monitor_index] + x - monitor_positions[current_monitor_index]))
-next_monitor_work_y=$((monitor_y_positions[next_monitor_index] + global_work_y - monitor_y_positions[0]))
+next_monitor_work_y=$((monitor_y_positions[next_monitor_index] - monitor_y_positions[0]))
 new_y=$((next_monitor_work_y + relative_y))
 
 wmctrl -ir "$window_id" -b remove,maximized_horz,maximized_vert
