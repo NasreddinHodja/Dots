@@ -12,7 +12,7 @@ configuration {
 
 
 * {
-    font: "Jetbrains Mono 12";
+    font: "Source Code Pro 12";
     foreground: #f8f8f2;
     background-color: #282a36;
     active-background: #6272a4;
@@ -33,7 +33,7 @@ configuration {
     border-color:     @bordercolor;
     padding:          15;
     width:            400px;
-    height:           400px;
+    height:           380px;
     kb-row-up:        "Up,Control+p,Control+k";
     kb-row-down:      "Down,Control+n,Control+j";
 }
