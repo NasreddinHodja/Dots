@@ -314,3 +314,9 @@
 
 (use-package! kanata-kbd-mode
   :mode ("\\.kbd\\'" . kanata-kbd-mode))
+
+(add-hook 'after-save-hook
+  (lambda ()
+    (when (string-match "/\\.config/kanata/kanata\\.kbd$" buffer-file-name)
+      (copy-file buffer-file-name "/sudo::/etc/kanata/kanata-config.kbd" t)
+      (message "Kanata config updated!"))))

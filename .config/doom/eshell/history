@@ -1,22 +1,3 @@
-ka xfce4-notifyd
-notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
-z -
-z ~
-aldkfa
-la
-dws right
-dws left
-dws right
-dws left
-dws right
-claude
-exit
-docker-compose -f docker-compose.dev.yml up -d
-systemctl start docker
-docker-compose -f docker-compose.dev.yml up -d
-pm dev:app
-codium .
-pm install
 pm dev:app
 exit
 pm dev
@@ -126,3 +107,22 @@ git remote set-url --add --push origin https://codeberg.org/nasrezine/Dots.git
 git remote set-url --add --push origin https://github.com/NasreddinHodja/Dots.git
 git push
 git push -u origin main
+systemctl restart kanata
+z ..
+alsdla
+la
+claude
+la
+bat debug.py 
+exit
+systemctl status
+systemctl status kanata
+la /etc/kanata/ 
+sudo chown 640 /etc/kanata/kanata-config.kbd 
+systemctl start kanata.service 
+systemctl status kanata.service 
+sudo rm /etc/kanata/kanata-config.kbd 
+cp ~/.config/kanata/kanata.kbd /etc/kanata/kanata-config.kbd 
+sudo !!
+sudo cp ~/.config/kanata/kanata.kbd /etc/kanata/kanata-config.kbd 
+exit

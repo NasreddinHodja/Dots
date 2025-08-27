@@ -1,6 +1,22 @@
-(defcfg
- process-unmapped-keys yes
-)
+(defcfg process-unmapped-keys yes)
+
+(defvar
+ tap-time 100
+ hold-time 150)
+
+(defalias caps-esc-ralt (tap-hold $tap-time $hold-time esc ralt))
+
+(defalias q-sft-mod (tap-hold $tap-time $hold-time q lsft)
+          p-sft-mod (tap-hold $tap-time $hold-time p rsft))
+
+(defalias w-ctl-mod (tap-hold $tap-time $hold-time w lctl)
+          o-ctl-mod (tap-hold $tap-time $hold-time o rctl))
+
+(defalias e-met-mod (tap-hold $tap-time $hold-time e lmet)
+          i-met-mod (tap-hold $tap-time $hold-time i rmet))
+
+(defalias r-alt-mod (tap-hold $tap-time $hold-time r lalt)
+          u-alt-mod (tap-hold $tap-time $hold-time u lalt))
 
 #|
 (defsrc
@@ -12,38 +28,11 @@
 )
 |#
 (defsrc
- caps
+ caps esc
  q w e r
- p o i u
-)
-
-(defvar
- tap-time 100
- hold-time 150
-)
-
-(defalias
- q-sft-mod (tap-hold $tap-time $hold-time q lsft)
- p-sft-mod (tap-hold $tap-time $hold-time p rsft)
-)
-
-(defalias
- w-ctl-mod (tap-hold $tap-time $hold-time w lctl)
- o-ctl-mod (tap-hold $tap-time $hold-time o rctl)
-)
-
-(defalias
- e-met-mod (tap-hold $tap-time $hold-time e lmet)
- i-met-mod (tap-hold $tap-time $hold-time i rmet)
-)
-
-(defalias
- r-alt-mod (tap-hold $tap-time $hold-time r lalt)
- u-alt-mod (tap-hold $tap-time $hold-time u lalt)
-)
+ p o i u)
 
 (deflayer base
- esc
+ @caps-esc-ralt caps
  @q-sft-mod @w-ctl-mod @e-met-mod @r-alt-mod
- @p-sft-mod @o-ctl-mod @i-met-mod @u-alt-mod
-)
+ @p-sft-mod @o-ctl-mod @i-met-mod @u-alt-mod)
