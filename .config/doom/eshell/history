@@ -1,7 +1,3 @@
-notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
-notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456 --transient
-la
-notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
 ka xfce4-notifyd
 notify-send "Emacs" "Progressing in emacs..." --icon=emacs --hint=int:value:"40%" --replace-id=123456
 z -
@@ -105,3 +101,28 @@ git rm -r --cached .
 la
 git add .
 exit
+xprop -root "_NET_WORKAREA"
+    xprop -root "_NET_WORKAREA" 2>/dev/null |    sed 's/.*= //' | tr -d ' ' |    awk -F, '{ print $1, $2, $3, $4 }'
+    xprop -root "_NET_WORKAREA" 2>/dev/null | sed 's/.*= //' | tr -d ' ' | awk -F, '{ print $1, $2, $3, $4 }'
+center-window 
+    xprop -root "_NET_WORKAREA" 2>/dev/null | sed 's/.*= //' | tr -d ' ' | awk -F, '{ print $1, $2, $3, $4 }' 
+center-window
+center-window 
+xprop -root _NET_WORKAREA | cut -d'=' -f2 | tr -d ' '
+move-monitor 
+xprop -root
+xprop -root _NET_WORKAREA
+center-window 
+move-monitor
+move-monitor 
+move-monitor
+move-monitor 
+exit
+main-emacsclient 
+git remote add origin https://codeberg.org/nasrezine/Dots.git
+git remote remove origin
+git remote add origin https://codeberg.org/nasrezine/Dots.git
+git remote set-url --add --push origin https://codeberg.org/nasrezine/Dots.git
+git remote set-url --add --push origin https://github.com/NasreddinHodja/Dots.git
+git push
+git push -u origin main

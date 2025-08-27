@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -n "$*" ]; then
+    /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" "$@" &
+else
+    /usr/bin/emacsclient --alternate-editor= --create-frame &
+fi
+
+sleep 0.8
+
+center-window
