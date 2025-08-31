@@ -15,9 +15,9 @@ disk_used=$(echo $disk_info | cut -d'|' -f2)
 disk_total=$(echo $disk_info | cut -d'|' -f3)
 disk_percent=$(printf "%05.1f" $disk_percent)
 
-cpu_icon=" "
-ram_icon="󰘚 "
-disk_icon="󰆼 "
+cpu_icon="   "
+ram_icon="󰘚  "
+disk_icon="󰆼  "
 
 echo "<txt>${cpu_icon} ${cpu_usage}%  |  ${ram_icon} ${mem_percent}% <span fgcolor='#888888'>(${mem_used} / ${mem_total})</span>  |  ${disk_icon} ${disk_percent}% <span fgcolor='#888888'>(${disk_used} / ${disk_total})</span></txt>"
 

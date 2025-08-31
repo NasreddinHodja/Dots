@@ -1,38 +1,46 @@
-(defcfg process-unmapped-keys yes)
+(defcfg
+ process-unmapped-keys yes
+ concurrent-tap-hold yes
+)
 
 (defvar
- tap-time 100
- hold-time 150)
-
-(defalias caps-esc-ralt (tap-hold $tap-time $hold-time esc ralt))
-
-(defalias q-sft-mod (tap-hold $tap-time $hold-time q lsft)
-          p-sft-mod (tap-hold $tap-time $hold-time p rsft))
-
-(defalias w-ctl-mod (tap-hold $tap-time $hold-time w lctl)
-          o-ctl-mod (tap-hold $tap-time $hold-time o rctl))
-
-(defalias e-met-mod (tap-hold $tap-time $hold-time e lmet)
-          i-met-mod (tap-hold $tap-time $hold-time i rmet))
-
-(defalias r-alt-mod (tap-hold $tap-time $hold-time r lalt)
-          u-alt-mod (tap-hold $tap-time $hold-time u lalt))
-
-#|
-(defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+ tap-time 150
+ hold-time 300
+ chord-time 80
 )
-|#
+
+(deftemplate charmod (char mod)
+  (switch
+    ((key-timing 3 less-than 250)) $char break
+    () (tap-hold-release-timeout 200 500 $char $mod $char) break
+  )
+)
+
 (defsrc
  caps esc
- q w e r
- p o i u)
+ q
+ w
+ e
+ r
+ p
+ o
+ i
+ u
+)
 
 (deflayer base
- @caps-esc-ralt caps
- @q-sft-mod @w-ctl-mod @e-met-mod @r-alt-mod
- @p-sft-mod @o-ctl-mod @i-met-mod @u-alt-mod)
+ (t! charmod esc ralt) caps
+ (t! charmod q lsft)
+ (t! charmod w lctl)
+ (t! charmod e lmet)
+ (t! charmod r lalt)
+ (t! charmod p lsft)
+ (t! charmod o lctl)
+ (t! charmod i lmet)
+ (t! charmod u lalt)
+)
+
+(defchordsv2
+  (q w) lsft $chord-time first-release ()
+  (o p) rsft $chord-time first-release ()
+)
