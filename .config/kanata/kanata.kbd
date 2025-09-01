@@ -30,14 +30,14 @@
 
 (deflayer base
  (t! charmod esc ralt) caps
- (t! charmod a lalt)
- (t! charmod s lmet)
+ (t! charmod a lmet)
+ (t! charmod s lalt)
  (t! charmod d lctl)
  (t! charmod f lsft)
  (t! charmod j lsft)
  (t! charmod k lctl)
- (t! charmod l lmet)
- (t! charmod ; lalt)
+ (t! charmod l lalt)
+ (t! charmod ; lmet)
 )
 
 (defchordsv2
