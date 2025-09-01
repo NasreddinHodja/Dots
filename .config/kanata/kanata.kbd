@@ -18,29 +18,29 @@
 
 (defsrc
  caps esc
- q
- w
- e
- r
- p
- o
- i
- u
+ a
+ s
+ d
+ f
+ j
+ k
+ l
+ ;
 )
 
 (deflayer base
  (t! charmod esc ralt) caps
- (t! charmod q lsft)
- (t! charmod w lctl)
- (t! charmod e lmet)
- (t! charmod r lalt)
- (t! charmod p lsft)
- (t! charmod o lctl)
- (t! charmod i lmet)
- (t! charmod u lalt)
+ (t! charmod a lalt)
+ (t! charmod s lmet)
+ (t! charmod d lctl)
+ (t! charmod f lsft)
+ (t! charmod j lsft)
+ (t! charmod k lctl)
+ (t! charmod l lmet)
+ (t! charmod ; lalt)
 )
 
 (defchordsv2
-  (q w) lsft $chord-time first-release ()
-  (o p) rsft $chord-time first-release ()
+  (w e) lsft $chord-time first-release ()
+  (i o) rsft $chord-time first-release ()
 )
