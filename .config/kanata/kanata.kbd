@@ -22,10 +22,12 @@
 
 (defsrc
  caps
+ esc
 )
 
 (deflayer base
  (t! th esc lmet)
+ caps
 )
 
 ;; (defchordsv2
