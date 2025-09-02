@@ -1,12 +1,12 @@
 (defcfg
  process-unmapped-keys yes
- ;; concurrent-tap-hold yes
+ concurrent-tap-hold yes
 )
 
 (defvar
  tap-time 150
  hold-time 200
- ;; chord-time 80
+ chord-time 80
 )
 
 ;; (deftemplate thr (char mod)
@@ -30,8 +30,16 @@
  caps
 )
 
-;; (defchordsv2
-;;   (w e) lsft $chord-time first-release ()
-;;   (i o) rsft $chord-time first-release ()
-;;   (a f) M-lsft $chord-time first-release ()
-;; )
+(defchordsv2
+  (d f) lctl $chord-time first-release ()
+  (j k) rctl $chord-time first-release ()
+
+  (s d) lsft $chord-time first-release ()
+  (k l) rsft $chord-time first-release ()
+
+  (w e) lmet $chord-time first-release ()
+  (i o) rmet $chord-time first-release ()
+
+  (e r) lalt $chord-time first-release ()
+  (u i) lalt $chord-time first-release ()
+)
