@@ -1,0 +1,31 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  esc
+  caps
+  spc
+  a s d f j k l ;
+)
+
+(deflayer base
+  caps
+  (tap-hold 180 250 esc ralt)
+  (tap-hold 180 200 spc (layer-while-held modlayer))
+  a s d f j k l ;
+)
+
+(deflayer modlayer
+  _
+  _
+  _
+  (one-shot-press 2000 lmet)
+  (one-shot-press 2000 lalt)
+  (one-shot-press 2000 lctl)
+  (one-shot-press 2000 lsft)
+  (one-shot-press 2000 rsft)
+  (one-shot-press 2000 rctl)
+  (one-shot-press 2000 ralt)
+  (one-shot-press 2000 rmet)
+)

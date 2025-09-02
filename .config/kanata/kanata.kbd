@@ -1,45 +1,22 @@
 (defcfg
- process-unmapped-keys yes
- concurrent-tap-hold yes
-)
-
-(defvar
- tap-time 150
- hold-time 200
- chord-time 80
-)
-
-;; (deftemplate thr (char mod)
-;;  (switch
-;;   ((key-timing 3 less-than 400)) $char break
-;;   () (tap-hold-release-timeout 200 500 $char $mod $char) break
-;;   )
-;; )
-
-(deftemplate th (char mod)
- (tap-hold $tap-time $hold-time $char $mod)
+  process-unmapped-keys yes
 )
 
 (defsrc
- caps
- esc
+  esc
+  caps
+  a s d f j k l ;
 )
 
 (deflayer base
- (t! th esc lmet)
- caps
-)
-
-(defchordsv2
-  (d f) lctl $chord-time first-release ()
-  (j k) rctl $chord-time first-release ()
-
-  (s d) lsft $chord-time first-release ()
-  (k l) rsft $chord-time first-release ()
-
-  (w e) lmet $chord-time first-release ()
-  (i o) rmet $chord-time first-release ()
-
-  (e r) lalt $chord-time first-release ()
-  (u i) lalt $chord-time first-release ()
+  caps
+  (tap-hold 180 250 esc ralt)
+  (tap-hold 150 200 a lmet)
+  (tap-hold 150 200 s lalt)
+  (tap-hold 150 200 d lctl)
+  (tap-hold 150 200 f lsft)
+  (tap-hold 150 200 j rsft)
+  (tap-hold 150 200 k rctl)
+  (tap-hold 150 200 l ralt)
+  (tap-hold 150 200 ; rmet)
 )
