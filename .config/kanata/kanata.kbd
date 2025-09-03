@@ -17,6 +17,6 @@
   (tap-hold 150 200 f lsft)
   (tap-hold 150 200 j rsft)
   (tap-hold 150 200 k rctl)
-  (tap-hold 150 200 l ralt)
+  (tap-hold 150 200 l lalt)
   (tap-hold 150 200 ; lmet)
 )
