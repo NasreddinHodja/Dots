@@ -14,11 +14,29 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 + Free ((or open-source)) software tools
 + Plain text configuration files that are transparent and version-controllable
 
+** Directory Structure
+
+#+begin_example
+.dotfiles/
+├── .config/
+│   ├── doom/              # Doom Emacs config
+│   ├── kitty/             # Terminal emulator config
+│   ├── rofi/              # App launcher config
+│   ├── zathura/           # PDF viewer config
+│   └── ...
+├── .local/
+│   └── bin/               # Custom scripts
+├── .zshrc                 # ZSH config
+├── .Xresources            # X params
+├── ...
+└── README.org             # This file
+#+end_example
+
 * System Configuration
 
 + *GNU/Linux*: [[https://archlinux.org][Arch Linux]]
 + *Init System*: [[https://systemd.io/][systemd]]
-+ *Keyboard remaps*: [[https://github.com/jtroo/kanata][kanata]]
++ *Package manager*: [[https://github.com/Jguer/yay][yay]]
 
 ** Applications
 + *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (mostly =dired=)
@@ -65,24 +83,6 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 | =pm=         | Run js package manager (yarn/pnpm/npm/bun)                |
 | =scsh=       | Screenshot utility using maim                             |
 | =setbg=      | XFCE background setter                                    |
-
-* Configuration Structure
-
-#+begin_example
-.dotfiles/
-├── .config/
-│   ├── doom/              # Doom Emacs config
-│   ├── kitty/             # Terminal emulator config
-│   ├── rofi/              # App launcher config
-│   ├── zathura/           # PDF viewer config
-│   └── ...
-├── .local/
-│   └── bin/               # Custom scripts
-├── .zshrc                 # ZSH config
-├── .Xresources            # X params
-├── ...
-└── README.org             # This file
-#+end_example
 
 * Keyboard Layout [WIP]
 
