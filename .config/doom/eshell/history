@@ -1,77 +1,3 @@
-exit
-la
-exit
-yay -Syu
-exit
-sudo mv ~/Dots/.config/kanata/kanata.kbd 
-sudo mv ~/Dots/.config/kanata/kanata.kbd kanata-config.kbd 
-la
-systemctl restart kanata
-sudo cp ~/Dots/.config/kanata/kanata.kbd kanata-config.kbd  
-systemctl restart kanata
-reboot
-cp kanata.kbd /etc/kanata/kanata-config.kbd 
-systemctl restart kanata
-xrandr
-echo $DISPLAY
-xrandr --listmonitors
-xrandr --list-monitors
-xrandr --listmonitors
-maim -g 1920/527x1080/296+1920+0
-maim -g 1920x1080+1920+0
-maim -g 1920x1080+1920+0 ./screenshot.png
-la
-sxiv screenshot.png 
-xrandr --listmonitors
-mkdir assets
-maim -g 1920x1080+1920+0 ./assets/screenshot.png
-rm screenshot.png 
-la
-rm *.png
-la
-maim -u -g 1920x1080+1920+0 ./assets/screenshot.png
-la
-rm -r .local/bin/assets/
-mkdir assets
-maim -u -g 1920x1080+1920+0 ./assets/screenshot.png
-exit
-yay -Syu nsxiv
-yay -Rsn sxiv
-sxiv
-nsxiv
-exit
-sxiv 
-nsxiv ~/Pictures/wp/1690736230577770.jpg 
-nsxiv-browse-dir
-nsxiv ~/Pictures/wp/1690736230577770.jpg r
-source .Xresources 
-xrdb .Xresources 
-nsxiv ~/Pictures/wp/1690736230577770.jpg r
-git rm -r --cached .
-la
-git add .
-exit
-xprop -root "_NET_WORKAREA"
-    xprop -root "_NET_WORKAREA" 2>/dev/null |    sed 's/.*= //' | tr -d ' ' |    awk -F, '{ print $1, $2, $3, $4 }'
-    xprop -root "_NET_WORKAREA" 2>/dev/null | sed 's/.*= //' | tr -d ' ' | awk -F, '{ print $1, $2, $3, $4 }'
-center-window 
-    xprop -root "_NET_WORKAREA" 2>/dev/null | sed 's/.*= //' | tr -d ' ' | awk -F, '{ print $1, $2, $3, $4 }' 
-center-window
-center-window 
-xprop -root _NET_WORKAREA | cut -d'=' -f2 | tr -d ' '
-move-monitor 
-xprop -root
-xprop -root _NET_WORKAREA
-center-window 
-move-monitor
-move-monitor 
-move-monitor
-move-monitor 
-exit
-main-emacsclient 
-git remote add origin https://codeberg.org/nasrezine/Dots.git
-git remote remove origin
-git remote add origin https://codeberg.org/nasrezine/Dots.git
 git remote set-url --add --push origin https://codeberg.org/nasrezine/Dots.git
 git remote set-url --add --push origin https://github.com/NasreddinHodja/Dots.git
 git push
@@ -126,3 +52,77 @@ exirt
 exit
 la
 systemctl restart kanata
+z ..
+la Manga/
+z manga
+z ..
+z -
+z ~
+z manga
+la
+rm -rf abara/ alive/ no_longer_human/
+la
+exit
+la /media
+la /run/media/ 
+lsblk
+simple-mtpfs
+adb devices
+adb -h
+adb --help
+adb devices
+adb devices -l
+adb kill-server
+yay -Syu simple-mtpfs
+simple-mtpfs -l
+z
+z ~
+mkdir Android
+rm Android/ 
+rm -rf Android/ 
+la .android/ 
+mkdir android/ 
+simple-mtpfs devices
+simple-mtpfs -l
+simple-mtpfs --device 1 android/ 
+la android/Pictures/
+la Manga/ 
+la android/Pictures/Manga/eden_it_s_an_endless_world/ 
+ls android/Pictures/Manga/eden_it_s_an_endless_world/
+yay -Rsn simple-mtpfs
+exit
+z .config/
+mkdir nasmacs; cd $_
+touch init.el
+emacs -q -l init.el 
+emacs -Q
+sh -c "emacs -q -l init.el"
+exit
+sh -c "emacs -q -l init.el"
+mgdl -u
+exit
+bluetoothctl
+exit
+mgdl -uy
+mgdl -u
+kanata
+xfce4-settings-manager 
+bluetoothctl
+exit
+z prog/
+z ..
+z kbldraw
+l
+la
+virtualenv .venv
+source .venv/bin/activate
+. .venv/bin/activate
+chmod +x main.py 
+./main.py 
+exit
+npm init
+npm install -D typescript ts-node @types/node
+git init
+git add .
+git status
+exit

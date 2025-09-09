@@ -25,7 +25,6 @@
 
 (setq! display-line-numbers-type 'relative)
 
-;; initial window parameters
 (defconst nas/frame-parameters
   '((width . 100)
     (height . 45))
@@ -43,11 +42,6 @@
 ;; load path for local packages
 (add-to-list 'load-path (expand-file-name "local" doom-user-dir))
 
-
-;;
-;;; * PROJECTS =================================================================
-;;
-
 (setq! projectile-project-search-path '("~/prog/"))
 
 ;; evil
@@ -61,9 +55,7 @@
 (add-hook! prog-mode #'display-fill-column-indicator-mode)
 
 ;; TODO hide modeline ignores
-(use-package! hide-mode-line
-  :config
-  (setq hide-mode-line-excluded-modes '(elemental-mode vterm-mode eshell-mode)))
+(setq! hide-mode-line-excluded-modes '(elemental-mode vterm-mode eshell-mode))
 
 ;; workspaces
 (defconst nas/workspaces-dir "~/.config/doom/workspaces/")
@@ -96,9 +88,6 @@
 
 ;; hide markup chars in org-mode
 (setq! org-hide-emphasis-markers t)
-
-;; close scheduled when done
-(setq! org-log-done 'time)
 
 ;; org-mode custom highlights
 (defun nas/org-mode-keywords ()
@@ -320,7 +309,7 @@
 
 
 ;;
-;;; KANATA =====================================================================
+;;; * KANATA =====================================================================
 ;;
 
 (use-package! kanata-kbd-mode)

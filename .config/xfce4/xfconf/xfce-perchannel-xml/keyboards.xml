@@ -4,7 +4,7 @@
   <property name="Default" type="empty">
     <property name="Numlock" type="bool" value="false"/>
     <property name="KeyRepeat" type="empty">
-      <property name="Rate" type="int" value="121"/>
+      <property name="Rate" type="int" value="136"/>
     </property>
   </property>
 </channel>

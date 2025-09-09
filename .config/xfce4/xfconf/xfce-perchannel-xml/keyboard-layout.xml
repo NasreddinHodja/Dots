@@ -5,8 +5,7 @@
     <property name="XkbDisable" type="bool" value="false"/>
     <property name="XkbLayout" type="string" value="us"/>
     <property name="XkbVariant" type="string" value="intl"/>
-    <property name="XkbOptions" type="empty">
-    </property>
+    <property name="XkbOptions" type="empty"/>
     <property name="XkbModel" type="string" value=""/>
   </property>
 </channel>
