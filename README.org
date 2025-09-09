@@ -52,7 +52,7 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 
 | Script              | Description                                                   |
 |---------------------+---------------------------------------------------------------|
-| =center-window=       | Centers the active window within its current workspace        |
+| =center-window=       | Centers the active window within its current monitor          |
 | =cycle-window-widths= | Cycles between predefined window width states                 |
 | =dws=                 | Switch focus to the closest window in the specified direction |
 | =move-monitor=        | Move active window to the next monitor                        |
@@ -71,18 +71,21 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 #+begin_example
 .dotfiles/
 ├── .config/
-│   ├── doom/              # Doom Emacs configuration
+│   ├── doom/              # Doom Emacs config
 │   ├── kitty/             # Terminal emulator config
-│   ├── rofi/              # Application launcher
-│   ├── zathura/           # PDF viewer
+│   ├── rofi/              # App launcher config
+│   ├── zathura/           # PDF viewer config
 │   └── ...
 ├── .local/
 │   └── bin/               # Custom scripts
-├── .zshrc                 # ZSH configuration
+├── .zshrc                 # ZSH config
+├── .Xresources            # X params
+├── ...
 └── README.org             # This file
 #+end_example
 
-* Keyboard Layout
+* Keyboard Layout [WIP]
+
 + [[https://github.com/foostan/crkbd][corne v3 42-key split keyboard]]
 + [[https://qmk.fm/][QMK firmware]]
 + layout file at =.config/qmk/naskbl.json=
