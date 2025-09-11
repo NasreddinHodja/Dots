@@ -73,7 +73,6 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 | =center-window=       | Centers the active window within its current monitor          |
 | =cycle-window-widths= | Cycles between predefined window width states                 |
 | =dws=                 | Switch focus to the closest window in the specified direction |
-| =move-monitor=        | Move active window to the next monitor                        |
 
 ** Utilities
 
