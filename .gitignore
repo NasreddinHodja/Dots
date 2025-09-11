@@ -78,7 +78,6 @@ tmp/
 .config/nextjs*
 .config/stripe
 .config/turborepo
-
 .config/zsh/.node_token
 .config/zsh/.zhistory
 .config/.gsd-ke*
@@ -89,6 +88,7 @@ tmp/
 .config/connections.db
 .config/mgdl/mgdl.db
 .config/.nuxtrc
+.config/inkscape
 
 .local/bin/gallery-dl
 .local/bin/manga-py
