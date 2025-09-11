@@ -1,9 +1,10 @@
 #!/bin/bash
 
 if [ -n "$*" ]; then
-    /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" "$@" &
+    /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" --frame-parameters="((width . 120) (height . 45) (left . 2272) (top . 0) (fullscreen . fullheight))" "$@" &
+
 else
-    /usr/bin/emacsclient --alternate-editor= --create-frame &
+    /usr/bin/emacsclient --alternate-editor= --create-frame --frame-parameters="((width . 120) (height . 45) (left . 2272) (top . 0) (fullscreen . fullheight))" &
 fi
 
 sleep 0.8

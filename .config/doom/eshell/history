@@ -1,8 +1,3 @@
-la
-claude
-la
-bat debug.py 
-exit
 systemctl status
 systemctl status kanata
 la /etc/kanata/ 
@@ -126,3 +121,8 @@ lsblk -f
 [ -d /sys/firmware/efi ] && echo "UEFI boot" || echo "BIOS boot"
 sh -c '[ -d /sys/firmware/efi ] && echo "UEFI boot" || echo "BIOS boot"'
 yay -Syu inkscape
+eixt
+exit
+z ..
+la
+./watch.sh 
