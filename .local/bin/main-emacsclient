@@ -1,10 +1,12 @@
 #!/bin/bash
 
+frame_params="((width . 120) (height . 45) (left . 2272) (top . 0) (fullscreen . fullheight))"
+
 if [ -n "$*" ]; then
-    /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" --frame-parameters="((width . 120) (height . 45) (left . 2272) (top . 0) (fullscreen . fullheight))" "$@" &
+    /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" --frame-parameters="$frame_params" "$@" &
 
 else
-    /usr/bin/emacsclient --alternate-editor= --create-frame --frame-parameters="((width . 120) (height . 45) (left . 2272) (top . 0) (fullscreen . fullheight))" &
+    /usr/bin/emacsclient --alternate-editor= --create-frame --frame-parameters="$frame_params" &
 fi
 
 sleep 0.8
