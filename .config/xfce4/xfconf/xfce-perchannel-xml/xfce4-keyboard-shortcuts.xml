@@ -43,8 +43,9 @@
       <property name="&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="xkill"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;x" type="string" value="/home/nasreddin/.local/bin/power-menu"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;w" type="string" value="/home/nasreddin/.local/bin/cycle-window-widths"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;b" type="string" value="/home/nasreddin/.local/bin/pickbg"/>
+      <property name="Caps_Lock" type="string" value="/home/nasreddin/.local/bin/power-menu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
