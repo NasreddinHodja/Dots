@@ -1,5 +1,3 @@
-systemctl status
-systemctl status kanata
 la /etc/kanata/ 
 sudo chown 640 /etc/kanata/kanata-config.kbd 
 systemctl start kanata.service 
@@ -126,3 +124,5 @@ exit
 z ..
 la
 ./watch.sh 
+exite
+exit
