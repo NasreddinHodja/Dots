@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=OpenRGB 0.9+ (1.0rc1), for controlling RGB lighting.
+Icon=OpenRGB
+Name=OpenRGB
+StartupNotify=true
+Terminal=false
+Type=Application
+Exec=/usr/bin/openrgb -p "pinku"
+RunHook=0
+

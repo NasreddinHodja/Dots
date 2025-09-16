@@ -23,7 +23,7 @@
 
 (setq! +doom-dashboard-banner-file (expand-file-name "banner.png" doom-user-dir))
 
-(setq! display-line-numbers-type 'relative)
+(setq! display-line-numbers-type 'visual)
 
 (defconst nas/frame-parameters
   '((width . 100)
@@ -144,6 +144,14 @@
           :if-new
           (file+head "%(nas/org-roam-slug \"${title}\").org" "#+title: ${title}\n")
           :unnarrowed t)))
+
+
+(after! org
+  (setq! org-todo-keywords
+         '((sequence "TODO(t)" "PROJ(p)" "LOOP(r)" "STRT(s)" "WAIT (W)" "WAIT TEST(w)" "HOLD(h)" "IDEA(i)"
+            "|" "DONE(d)" "KILL(k) CANCELLED(c)")
+           (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
+           (sequence "|" "OKAY(o)" "YES(y)" "NO(n)"))))
 
 
 ;;
@@ -318,7 +326,7 @@
   :mode ("\\.kbd\\'" . kanata-kbd-mode))
 
 (add-hook 'after-save-hook
-  (lambda ()
-    (when (string-match "/\\.config/kanata/kanata\\.kbd$" buffer-file-name)
-      (copy-file buffer-file-name "/sudo::/etc/kanata/kanata-config.kbd" t)
-      (message "Kanata config updated!"))))
+          (lambda ()
+            (when (string-match "/\\.config/kanata/kanata\\.kbd$" buffer-file-name)
+              (copy-file buffer-file-name "/sudo::/etc/kanata/kanata-config.kbd" t)
+              (message "Kanata config updated!"))))

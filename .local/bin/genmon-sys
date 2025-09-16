@@ -15,7 +15,7 @@ disk_used=$(echo $disk_info | cut -d'|' -f2)
 disk_total=$(echo $disk_info | cut -d'|' -f3)
 disk_percent=$(printf "%05.1f" $disk_percent)
 
-cpu_icon="   "
+cpu_icon="  "
 ram_icon="󰘚  "
 disk_icon="󰆼  "
 

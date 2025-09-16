@@ -72,6 +72,7 @@
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="openrgb"/>
         <value type="string" value="systray"/>
         <value type="string" value="ksnip"/>
         <value type="string" value="flameshot"/>

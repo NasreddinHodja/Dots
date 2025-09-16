@@ -89,6 +89,8 @@ tmp/
 .config/mgdl/mgdl.db
 .config/.nuxtrc
 .config/inkscape
+.config/qmk_firmware
+.config/kcharselectrc
 
 .local/bin/gallery-dl
 .local/bin/manga-py
