@@ -84,3 +84,4 @@ eval "$(starship init zsh)"
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+

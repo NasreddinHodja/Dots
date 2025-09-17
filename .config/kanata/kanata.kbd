@@ -4,19 +4,24 @@
 
 (defsrc
   esc
+
   caps
+
   a s d f j k l ;
 )
 
 (deflayer base
   caps
+
   (tap-hold 180 250 esc ralt)
+
   (tap-hold 150 200 a lmet)
   (tap-hold 150 200 s lalt)
   (tap-hold 150 200 d lctl)
   (tap-hold 150 200 f lsft)
+
   (tap-hold 150 200 j rsft)
   (tap-hold 150 200 k rctl)
   (tap-hold 150 200 l lalt)
-  (tap-hold 150 200 ; lmet)
+  (tap-hold 150 200 ; rmet)
 )

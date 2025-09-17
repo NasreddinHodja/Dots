@@ -3,6 +3,10 @@ export VISUAL="emacsclient -nc"
 export PAGER="less"
 export MANPAGER="less"
 
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=/opt/devkitpro/devkitARM
+export DEVKITPPC=/opt/devkitpro/devkitPPC
+
 source ~/.config/zsh/.node_token
 
 export PATH="$HOME/.yarn/bin:$PATH"
