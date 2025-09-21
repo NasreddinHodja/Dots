@@ -68,16 +68,26 @@
 (setq! persp-auto-save-opt 0
        persp-save-dir nas/workspaces-dir)
 
+;; lsp hints
+(setq lsp-inlay-hint-enable t)
 
 ;;
 ;;; * ORG-MODE =================================================================
 ;;
 
+;; src blocks results with ansi colors
+(require 'ansi-color)
+(defun nas/ansi-colorize-buffer ()
+  (let ((buffer-read-only nil))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
+(add-hook 'org-babel-after-execute-hook 'nas/ansi-colorize-buffer)
+
 ;; dirs
 (setq! org-directory "~/Notes/"
        org-roam-directory org-directory)
 
-;; default org-mode on buffers
+;; default to org-mode on buffers
 (setq! initial-major-mode 'org-mode)
 
 ;; org-mode src block syntax highlight
@@ -85,9 +95,6 @@
        org-src-tab-acts-natively t
        org-confirm-babel-evaluate nil
        org-edit-src-content-indentation 0)
-
-;; hide markup chars in org-mode
-(setq! org-hide-emphasis-markers t)
 
 ;; org-mode custom highlights
 (defun nas/org-mode-keywords ()
@@ -299,7 +306,8 @@
 
   (evil-define-key 'normal vterm-mode-map
     "c" #'nas/vterm-send-c
-    "d" #'nas/vterm-send-d))
+    "d" #'nas/vterm-send-d)
+  )
 
 
 ;;

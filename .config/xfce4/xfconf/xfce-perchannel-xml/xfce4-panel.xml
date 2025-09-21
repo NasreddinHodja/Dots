@@ -119,7 +119,7 @@
     </property>
     <property name="plugin-1" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="known-players" type="string" value="Chromium;spotify;Upscayl;zen"/>
+      <property name="known-players" type="string" value=";Chromium;spotify;Upscayl;zen"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>

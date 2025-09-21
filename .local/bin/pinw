@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+WINDOW_INFO=$(wmctrl -lG | grep "$(printf '0x%08x' $(xdotool getactivewindow))")
+DESKTOP=$(echo "$WINDOW_INFO" | awk '{print $2}')
+WINDOW_X=$(echo "$WINDOW_INFO" | awk '{print $3}')
+
+LEFT_MONITOR_THRESHOLD=1920
+
+if [[ $DESKTOP == "-1" ]] && [[ $WINDOW_X -lt $LEFT_MONITOR_THRESHOLD ]]; then
+    wmctrl -r :ACTIVE: -b remove,sticky
+    xdotool key super+shift+l
+else
+    xdotool key super+shift+h
+    wmctrl -r :ACTIVE: -b add,sticky
+fi

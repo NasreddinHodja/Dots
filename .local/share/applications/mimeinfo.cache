@@ -1,2 +1,24 @@
 [MIME Cache]
+application/x-shellscript=main-emacsclient.desktop;
+image/bmp=nsxiv-browse-dir.desktop;
+image/gif=nsxiv-browse-dir.desktop;
+image/jpeg=nsxiv-browse-dir.desktop;
+image/png=nsxiv-browse-dir.desktop;
+image/tiff=nsxiv-browse-dir.desktop;
+image/webp=nsxiv-browse-dir.desktop;
+text/english=main-emacsclient.desktop;
+text/plain=main-emacsclient.desktop;
+text/x-c=main-emacsclient.desktop;
+text/x-c++=main-emacsclient.desktop;
+text/x-c++hdr=main-emacsclient.desktop;
+text/x-c++src=main-emacsclient.desktop;
+text/x-chdr=main-emacsclient.desktop;
+text/x-csrc=main-emacsclient.desktop;
+text/x-java=main-emacsclient.desktop;
+text/x-makefile=main-emacsclient.desktop;
+text/x-moc=main-emacsclient.desktop;
+text/x-pascal=main-emacsclient.desktop;
+text/x-tcl=main-emacsclient.desktop;
+text/x-tex=main-emacsclient.desktop;
 x-scheme-handler/discord-409416265891971072=discord-409416265891971072.desktop;
+x-scheme-handler/org-protocol=main-emacsclient.desktop;

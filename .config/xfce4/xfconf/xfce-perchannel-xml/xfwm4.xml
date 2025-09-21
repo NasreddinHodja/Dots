@@ -9,7 +9,7 @@
     <property name="button_layout" type="string" value="O|SHMC"/>
     <property name="button_offset" type="int" value="0"/>
     <property name="button_spacing" type="int" value="0"/>
-    <property name="click_to_focus" type="bool" value="false"/>
+    <property name="click_to_focus" type="bool" value="true"/>
     <property name="cycle_apps_only" type="bool" value="false"/>
     <property name="cycle_draw_frame" type="bool" value="true"/>
     <property name="cycle_raise" type="bool" value="false"/>
@@ -40,7 +40,7 @@
     <property name="prevent_focus_stealing" type="bool" value="false"/>
     <property name="raise_delay" type="int" value="250"/>
     <property name="raise_on_click" type="bool" value="true"/>
-    <property name="raise_on_focus" type="bool" value="false"/>
+    <property name="raise_on_focus" type="bool" value="true"/>
     <property name="raise_with_any_button" type="bool" value="true"/>
     <property name="repeat_urgent_blink" type="bool" value="false"/>
     <property name="resize_opacity" type="int" value="100"/>

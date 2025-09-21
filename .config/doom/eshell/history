@@ -1,12 +1,3 @@
-la /etc/kanata/ 
-sudo chown 640 /etc/kanata/kanata-config.kbd 
-systemctl start kanata.service 
-systemctl status kanata.service 
-sudo rm /etc/kanata/kanata-config.kbd 
-cp ~/.config/kanata/kanata.kbd /etc/kanata/kanata-config.kbd 
-sudo !!
-sudo cp ~/.config/kanata/kanata.kbd /etc/kanata/kanata-config.kbd 
-exit
 z ..
 la
 mgdl -u
@@ -126,3 +117,12 @@ la
 ./watch.sh 
 exite
 exit
+echo ac abc abbc abbbc | grep --color -E 'ab?c'
+(defun ek/babel-ansi ()  (when-let ((beg (org-babel-where-is-src-block-result nil nil)))    (save-excursion      (goto-char beg)      (when (looking-at org-babel-result-regexp)        (let ((end (org-babel-result-end))              (ansi-color-context-region nil))          (ansi-color-apply-on-region beg end))))))(add-hook 'org-babel-after-execute-hook 'ek/babel-ansi)
+remove-hook 'org-babel-execute-hook 'ek/babel-ansi
+(remove-hook 'org-babel-execute-hook 'ek/babel-ansi)
+(require 'ansi-color)(defun my/ansi-colorize-buffer ()  (let ((buffer-read-only nil))    (ansi-color-apply-on-region (point-min) (point-max))))(add-hook 'org-babel-after-execute-hook 'my/ansi-colorize-buffer)
+(remove-hook 'org-babel-execute-hook 'ek/babel-ansi))
+(remove-hook 'org-babel-execute-hook 'ek/babel-ansi)
+(require 'ansi-color)(defun my/ansi-colorize-buffer ()  (let ((buffer-read-only nil))    (ansi-color-apply-on-region (point-min) (point-max))))(add-hook 'org-babel-after-execute-hook 'my/ansi-colorize-buffer)
+cp ~/Pictures/scrot/pic-full-250814-2330-19.png 
