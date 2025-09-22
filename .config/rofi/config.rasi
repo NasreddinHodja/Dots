@@ -1,4 +1,3 @@
-/*Dracula theme based on the Purple official rofi theme*/
 configuration {
     show-icons:       true;
     display-drun:     "";
@@ -45,10 +44,10 @@ configuration {
 }
 
 #mainbox {
-    border:  0;
-    padding: 0;
-    margin: 0px;
-    spacing: 8px;
+    border:   0;
+    padding:  0;
+    margin:   0px;
+    spacing:  8px;
     children: [ inputbar,listview ];
 }
 
@@ -92,6 +91,8 @@ configuration {
 #element.selected.normal {
     background-color: @selected-background;
     text-color:       @foreground;
+    border:           0 0 0 3px;
+    border-color:     @purple;
 }
 #element.selected.urgent {
     background-color: @selected-urgent-background;
@@ -146,19 +147,18 @@ configuration {
 }
 
 #entry {
-    spacing:    0;
-    text-color: @foreground;
-    placeholder-color: #44475a;
+    spacing:            0;
+    text-color:         @foreground;
+    placeholder-color:  #44475a;
 }
 
 #prompt {
-    spacing:    0;
-    text-color: @active-background;
+    spacing: 0;
 }
 
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-    spacing: 8px;
+    children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    spacing:  8px;
 }
 
 #textbox-prompt-colon {
@@ -170,5 +170,5 @@ configuration {
 
 element-text, element-icon {
     background-color: inherit;
-    text-color: inherit;
+    text-color:       inherit;
 }
