@@ -2,19 +2,20 @@
 
 # Improved shutdown menu with more options and better styling
 
-CHOICE=$(echo -e "Shutdown\nReboot\nLock\nSleep\nCancel" | \
+CHOICE=$(echo -e "Shutdown\nReboot\nLock\nSleep\nLog out\nCancel" | \
     rofi -dmenu -i \
     -p "⚡ " \
     -theme-str 'window {width: 300px; height: 180px;}' \
     -theme-str 'inputbar {children: [prompt, entry];}' \
     -theme-str 'element {children: [element-text];}' \
-    -theme-str 'listview {lines: 4;}')
+    -theme-str 'listview {lines: 5;}')
 
 case $CHOICE in
     "Shutdown") systemctl poweroff ;;
     "Reboot") systemctl reboot ;;
     "Lock") loginctl lock-session ;;
     "Sleep") systemctl suspend ;;
+    "Log out") loginctl terminate-session $XDG_SESSION_ID ;;
     "") ;;
     *) exit 1 ;;
 esac

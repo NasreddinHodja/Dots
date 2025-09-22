@@ -17,6 +17,6 @@
     <property name="more-precision" type="bool" value="true"/>
   </property>
   <property name="window-maximized" type="bool" value="false"/>
-  <property name="window-width" type="int" value="919"/>
+  <property name="window-width" type="int" value="989"/>
   <property name="window-height" type="int" value="638"/>
 </channel>

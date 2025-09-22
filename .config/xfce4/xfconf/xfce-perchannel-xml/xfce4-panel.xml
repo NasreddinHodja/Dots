@@ -40,6 +40,7 @@
       <property name="nrows" type="uint" value="1"/>
       <property name="enable-struts" type="bool" value="true"/>
       <property name="border-width" type="uint" value="0"/>
+      <property name="length-adjust" type="bool" value="true"/>
     </property>
   </property>
   <property name="plugins" type="empty">

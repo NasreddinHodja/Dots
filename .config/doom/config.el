@@ -289,25 +289,25 @@
 ;;; * VTERM ====================================================================
 ;;
 
-(after! vterm
-  (defun nas/vterm-send-c ()
-    "Send c command to zsh vi mode."
-    (interactive)
-    (execute-kbd-macro (kbd "i"))
-    (vterm-send-key (kbd "ESC"))
-    (vterm-send-key (kbd "c")))
+;; (after! vterm
+;;   (defun nas/vterm-send-c ()
+;;     "Send c command to zsh vi mode."
+;;     (interactive)
+;;     (execute-kbd-macro (kbd "i"))
+;;     (vterm-send-key (kbd "ESC"))
+;;     (vterm-send-key (kbd "c")))
 
-  (defun nas/vterm-send-d ()
-    "Send c command to zsh vi mode."
-    (interactive)
-    (execute-kbd-macro (kbd "i"))
-    (vterm-send-key (kbd "ESC"))
-    (vterm-send-key (kbd "d")))
+;;   (defun nas/vterm-send-d ()
+;;     "Send c command to zsh vi mode."
+;;     (interactive)
+;;     (execute-kbd-macro (kbd "i"))
+;;     (vterm-send-key (kbd "ESC"))
+;;     (vterm-send-key (kbd "d")))
 
-  (evil-define-key 'normal vterm-mode-map
-    "c" #'nas/vterm-send-c
-    "d" #'nas/vterm-send-d)
-  )
+;;   (evil-define-key 'normal vterm-mode-map
+;;     "c" #'nas/vterm-send-c
+;;     "d" #'nas/vterm-send-d)
+;;   )
 
 
 ;;

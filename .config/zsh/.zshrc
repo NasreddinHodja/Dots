@@ -26,9 +26,11 @@ is_interactive_terminal() {
 if is_interactive_terminal; then
     bindkey -v
     export KEYTIMEOUT=1
+
     # keys for history substring search
-    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd '^[ k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
+
     # vim keys in tab complete menu
     bindkey -M menuselect 'h' vi-backward-char
     bindkey -M menuselect 'k' vi-up-line-or-history
@@ -78,6 +80,9 @@ eval "$(zoxide init zsh)"
 
 # startship prompt
 eval "$(starship init zsh)"
+
+# tweaks for vterm
+source ~/.config/zsh/zsh-vterm
 
 # *should be last*
 # load zsh-syntax-highlighting & zsh-history-substring-search

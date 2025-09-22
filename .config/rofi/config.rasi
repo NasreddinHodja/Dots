@@ -1,5 +1,4 @@
 /*Dracula theme based on the Purple official rofi theme*/
-
 configuration {
     show-icons:       true;
     display-drun:     "";
@@ -10,59 +9,75 @@ configuration {
     kb-remove-to-eol: "Control+Shift+e";
 }
 
-
 * {
-    font: "Source Code Pro 12";
+    background: #282a36;
+    current-line: #44475a;
     foreground: #f8f8f2;
-    background-color: #282a36;
-    active-background: #6272a4;
-    urgent-background: #ff5555;
-    urgent-foreground: #282a36;
+    comment: #6272a4;
+    cyan: #8be9fd;
+    green: #50fa7b;
+    orange: #ffb86c;
+    pink: #ff79c6;
+    purple: #bd93f9;
+    red: #ff5555;
+    yellow: #f1fa8c;
+    font: "Source Code Pro 12";
+    active-background: @current-line;
+    urgent-background: @red;
+    urgent-foreground: @background;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
     selected-active-background: @active-background;
     separatorcolor: @active-background;
-    bordercolor: @active-background;
-
+    border-color: @active-background;
 }
 
 #window {
-    background-color: @background-color;
-    border:           3;
-    border-radius:    0;
-    border-color:     @bordercolor;
-    padding:          15;
-    width:            400px;
-    height:           380px;
+    background-color: @background;
+    border:           3px;
+    border-radius:    0px;
+    border-color:     @border-color;
+    width:            465px;
+    height:           375px;
+    padding:          20px 24px;
     kb-row-up:        "Up,Control+p,Control+k";
     kb-row-down:      "Down,Control+n,Control+j";
 }
+
 #mainbox {
     border:  0;
     padding: 0;
+    margin: 0px;
+    spacing: 8px;
+    children: [ inputbar,listview ];
 }
+
 #message {
     border:       0px;
     border-color: @separatorcolor;
-    padding:      1px;
+    padding:      0px;
 }
+
 #textbox {
     text-color: @foreground;
 }
+
 #listview {
     fixed-height: 0;
     border:       0px;
-    border-color: @bordercolor;
-    spacing:      2px ;
+    border-color: @border-color;
+    spacing:      1px;
     scrollbar:    false;
-    padding:      2px 0px 0px ;
 }
+
 #element {
     border:  0;
-    padding: 3px ;
+    padding: 8px 12px;
+    spacing: 12px;
 }
+
 #element.normal.normal {
-    background-color: @background-color;
+    background-color: @background;
     text-color:       @foreground;
 }
 #element.normal.urgent {
@@ -73,6 +88,7 @@ configuration {
     background-color: @active-background;
     text-color:       @foreground;
 }
+
 #element.selected.normal {
     background-color: @selected-background;
     text-color:       @foreground;
@@ -83,10 +99,11 @@ configuration {
 }
 #element.selected.active {
     background-color: @selected-active-background;
-    text-color:       @foreground;
+    text-color:       @blue;
 }
+
 #element.alternate.normal {
-    background-color: @background-color;
+    background-color: @background;
     text-color:       @foreground;
 }
 #element.alternate.urgent {
@@ -97,46 +114,60 @@ configuration {
     background-color: @active-background;
     text-color:       @foreground;
 }
+
 #scrollbar {
     width:        2px ;
     border:       0;
     handle-width: 8px ;
     padding:      0;
 }
+
 #sidebar {
     border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
 }
+
 #button.selected {
     background-color: @selected-background;
     text-color:       @foreground;
 }
+
 #inputbar {
+    border:     3px;
     spacing:    0;
     text-color: @foreground;
-    padding:    1px ;
+    padding:    10px 12px;
+    margin:     0px 0px 4px 0px;
 }
+
 #case-indicator {
     spacing:    0;
     text-color: @foreground;
 }
+
 #entry {
     spacing:    0;
     text-color: @foreground;
+    placeholder-color: #44475a;
 }
+
 #prompt {
     spacing:    0;
-    text-color: @foreground;
+    text-color: @active-background;
 }
+
 #inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    spacing: 8px;
 }
+
 #textbox-prompt-colon {
     expand:     false;
     str:        ">";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @foreground;
+    margin:     0px 0.1em 0em 0em;
+    text-color: @active-background;
 }
+
 element-text, element-icon {
     background-color: inherit;
     text-color: inherit;
