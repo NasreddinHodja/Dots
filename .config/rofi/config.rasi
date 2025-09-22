@@ -91,7 +91,7 @@ configuration {
 #element.selected.normal {
     background-color: @selected-background;
     text-color:       @foreground;
-    border:           0 0 0 3px;
+    border:           0 0 0 2px;
     border-color:     @purple;
 }
 #element.selected.urgent {
@@ -134,10 +134,10 @@ configuration {
 }
 
 #inputbar {
-    border:     3px;
+    border:     0 0 3px 0;
     spacing:    0;
     text-color: @foreground;
-    padding:    10px 12px;
+    padding:    10px 12px 12px 12px;
     margin:     0px 0px 4px 0px;
 }
 
