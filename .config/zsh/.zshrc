@@ -28,7 +28,7 @@ if is_interactive_terminal; then
     export KEYTIMEOUT=1
 
     # keys for history substring search
-    bindkey -M vicmd '^[ k' history-substring-search-up
+    bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
 
     # vim keys in tab complete menu

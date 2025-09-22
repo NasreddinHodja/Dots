@@ -12,7 +12,7 @@
   <property name="last-window-width" type="int" value="754"/>
   <property name="last-window-height" type="int" value="692"/>
   <property name="misc-use-csd" type="bool" value="false"/>
-  <property name="last-sort-column" type="string" value="THUNAR_COLUMN_DATE_MODIFIED"/>
+  <property name="last-sort-column" type="string" value="THUNAR_COLUMN_DATE_DELETED"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_DESCENDING"/>
   <property name="misc-status-bar-active-info" type="uint" value="31"/>
 </channel>

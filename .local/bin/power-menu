@@ -4,7 +4,7 @@
 
 CHOICE=$(echo -e "Shutdown\nReboot\nLock\nSleep\nLog out\nCancel" | \
     rofi -dmenu -i \
-    -p "⚡ " \
+    -p ">" \
     -theme-str 'window {width: 300px; height: 180px;}' \
     -theme-str 'inputbar {children: [prompt, entry];}' \
     -theme-str 'element {children: [element-text];}' \

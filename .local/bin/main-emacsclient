@@ -1,6 +1,6 @@
 #!/bin/bash
 
-frame_params="((width . 120) (height . 45) (left . 2272) (top . 0) (fullscreen . fullheight))"
+frame_params="((width . 120) (height . 45) (left . 2269) (top . 0) (fullscreen . fullheight))"
 
 if [ -n "$*" ]; then
     /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" --frame-parameters="$frame_params" "$@" &
