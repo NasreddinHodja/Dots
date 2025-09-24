@@ -2,7 +2,7 @@
 static char *bottom_right_inactive[] = {
 /* columns rows colors chars-per-pixel */
 "3 3 1 1 ",
-"@ c #44475a",
+"@ c #1d1f27",
 /* pixels */
 "@@@"
 "@@@"

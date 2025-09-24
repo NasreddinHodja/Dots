@@ -38,8 +38,8 @@ window {
     border-radius:    0px;
     border-color:     @border-color;
     width:            465px;
-    height:           375px;
-    padding:          20px 24px;
+    height:           370px;
+    padding:          16px 24px;
     kb-row-up:        "Up,Control+p,Control+k";
     kb-row-down:      "Down,Control+n,Control+j";
 }
