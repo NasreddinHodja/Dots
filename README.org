@@ -16,12 +16,12 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 ** Directory Structure
 
 #+begin_example
-.dotfiles/
+Dots/
 ├── .config/
 │   ├── doom/              # Doom Emacs config
 │   ├── kitty/             # Terminal emulator config
 │   ├── rofi/              # App launcher config
-│   ├── zathura/           # PDF viewer config
+│   ├── sioyek/            # PDF viewer config
 │   └── ...
 ├── .local/
 │   └── bin/               # Custom scripts
@@ -41,7 +41,7 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 + *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (or =dired=)
 + *Video player*: [[https://mpv.io/][mpv]]
 + *Image viewer*: [[https://github.com/nsxiv/nsxiv][nsxiv]]
-+ *PDF viewer*: [[https://github.com/pwmt/zathura][zathura]]
++ *PDF viewer*: [[https://sioyek.info/][sioyek]]
 
 ** Desktop Environment
 + *DE*: [[https://www.xfce.org/][XFCE4]] with keyboard-centric workflow
