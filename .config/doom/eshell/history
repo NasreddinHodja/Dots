@@ -1,36 +1,3 @@
-z ..
-la
-mgdl -u
-cargo run -- --log quiet
-cargo run -- -l plain
-cargo run -- -d
-cargo run -- -u
-cargo build --release
-mgdl -u
-la
-cargo run
-./shutdown-menu 
-power-menu 
-power-menu
-rofi -show run -p "Run "
-systemctl stop kanata
-z /home/nasreddin/Dots/.config/kanata 
-kanata -c kanata.kbd 
-systemctl start kanata
-systemctl restart kanata
-exit
-mgdl -u
-ka zen
-exit
-la
-codium .
-exit
-exirt
-exit
-la
-systemctl restart kanata
-z ..
-la Manga/
 z manga
 z ..
 z -
@@ -126,3 +93,36 @@ remove-hook 'org-babel-execute-hook 'ek/babel-ansi
 (remove-hook 'org-babel-execute-hook 'ek/babel-ansi)
 (require 'ansi-color)(defun my/ansi-colorize-buffer ()  (let ((buffer-read-only nil))    (ansi-color-apply-on-region (point-min) (point-max))))(add-hook 'org-babel-after-execute-hook 'my/ansi-colorize-buffer)
 cp ~/Pictures/scrot/pic-full-250814-2330-19.png 
+wmctrl -lG
+cargo run -- add 0x03604ae4
+exit
+cargo run -- add 03604ae4
+la
+cargo run -- add 03604ae4s
+cargo run -- add 03604ae4
+cargo run -- add 0x03604ae44
+exit
+wmctrl -lG
+wmctrl -lG | awk '{print $1}'
+wmctrl -lG | grep chromium
+wmctrl -lG | grep -i chromium
+wmctrl -lG | grep -i chromium | awk '{print $1}'
+wmctrl -lG | grep Chromium | awk '{print $1}'
+wmctrl -lG
+wmctrl -lG | grep Chromium
+wmctrl -lG | grep -i chromium 
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//p'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//' | awk '{print $1}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//' | awk '{print $1}' | printf '%d\n'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//' | awk '{print $1}' | printf '%d\n' $_
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//' | awk '{printf '%d', $1}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//' | awk '{printf "%d", $1}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.:0x//' | awk '{printf "%s", $1}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%s", $1}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d", $1}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d", strtonum($1)}'
+exit
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d", strtonum($1)}'
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
+exit

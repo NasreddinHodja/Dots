@@ -1,11 +1,13 @@
 [Desktop Entry]
-Categories=Utility;
-Comment=OpenRGB 0.9+ (1.0rc1), for controlling RGB lighting.
-Icon=OpenRGB
-Name=OpenRGB
-StartupNotify=true
-Terminal=false
+Encoding=UTF-8
+Version=0.9.4
 Type=Application
-Exec=/usr/bin/openrgb -p "pinku"
+Name=OpenRGB
+Comment=load OpenRGB profile
+Exec=/usr/bin/sudo /usr/bin/openrgb -p "pinku"
+OnlyShowIn=XFCE;
 RunHook=0
+StartupNotify=false
+Terminal=false
+Hidden=false
 

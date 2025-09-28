@@ -93,6 +93,7 @@ tmp/
 .config/kcharselectrc
 .config/mgba
 .config/milkytracker
+.config/FreeCAD
 
 .local/bin/gallery-dl
 .local/bin/manga-py

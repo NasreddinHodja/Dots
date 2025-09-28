@@ -9,7 +9,6 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 
 ** Philosophy
 + Keyboard-driven workflow with vim keybindings across all applications
-+ Most work happens in [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
 + Unix philosophy
 + Free ((or open-source)) software tools
 + Plain text configuration files that are transparent and version-controllable
@@ -39,55 +38,49 @@ Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org]
 + *Package manager*: [[https://github.com/Jguer/yay][yay]]
 
 ** Applications
-+ *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (mostly =dired=)
++ *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (or =dired=)
 + *Video player*: [[https://mpv.io/][mpv]]
 + *Image viewer*: [[https://github.com/nsxiv/nsxiv][nsxiv]]
 + *PDF viewer*: [[https://github.com/pwmt/zathura][zathura]]
 
 ** Desktop Environment
-+ *DE*: [[https://www.xfce.org/][XFCE4]] with custom window management scripts
-  - keyboard-centric workflow
++ *DE*: [[https://www.xfce.org/][XFCE4]] with keyboard-centric workflow
 + *Bar*: [[https://docs.xfce.org/xfce/xfce4-panel/start][xfce panel]] with [[https://docs.xfce.org/panel-plugins/xfce4-genmon-plugin/start][genmon plugin]]
 + *App launcher*: [[https://github.com/davatorium/rofi][rofi]]
 + *Theme / Color Scheme*: [[https://draculatheme.com/contribute][Dracula]] - é Brasil porra
 
 ** Development Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
-  - Main development environment
-  - =eshell= for terminal, =vterm= as a fallback
-  - =dired= for file management
-+ *Work Editor* (web development): [[https://vscodium.com/][VSCodium]] with vim mode
-+ *Terminal emulator*: [[https://sw.kovidgoyal.net/kitty/][kitty]] with =tmux=
-  - Prompt: [[https://starship.rs/][starship]]
-  - Just fallback
++ *WebDev Editor*: [[https://vscodium.com/][VSCodium]] with =vim= mode
++ *Terminal emulator*: [[https://sw.kovidgoyal.net/kitty/][kitty]] with =tmux= and [[https://starship.rs/][starship]]
 + *Shell*: [[https://www.zsh.org/][zsh]] with vim mode, history substring search, and syntax highlighting
-  - Fallback: Bash
 
 * Baby's first scripts
 
 ** Window Management Scripts
 Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 
-| Script              | Description                                                   |
-|---------------------+---------------------------------------------------------------|
+| Script                | Description                                                   |
+|-----------------------+---------------------------------------------------------------|
+| =dws=                 | Switch focus to the closest window in the specified direction |
 | =center-window=       | Centers the active window within its current monitor          |
 | =cycle-window-widths= | Cycles between predefined window width states                 |
-| =dws=                 | Switch focus to the closest window in the specified direction |
 
 ** Utilities
 
-| Script     | Description                                               |
-|------------+-----------------------------------------------------------|
+| Script       | Description                                               |
+|--------------+-----------------------------------------------------------|
 | =genmon-sys= | System monitor feeder for XFCE panel (CPU/RAM/disk usage) |
 | =pm=         | Run js package manager (yarn/pnpm/npm/bun)                |
 | =scsh=       | Screenshot utility using maim                             |
 | =setbg=      | XFCE background setter                                    |
+| =pickbg=     | Visual background picker with =nsxiv=                     |
+| =power-menu= | Power menu with =rofi=                                    |
 
 * Keyboard Layout [WIP]
 
 + [[https://github.com/foostan/crkbd][corne v3 42-key split keyboard]]
 + [[https://qmk.fm/][QMK firmware]]
-+ layout file at =.config/qmk/naskbl.json=
 
 ** Layer 0 - Base
 
