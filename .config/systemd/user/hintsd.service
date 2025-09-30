@@ -1,0 +1,8 @@
+[Unit]
+Description=Hints daemon
+[Service]
+Type=simple
+ExecStart=/home/nasreddin/Dots/.local/bin/hintsd
+Restart=always
+[Install]
+WantedBy=default.target

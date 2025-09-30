@@ -9,9 +9,10 @@ configuration {
 }
 
 * {
-    background: #282a36;
+    bg-dark: #1d1f27;
+    bg: #282a36;
     current-line: #44475a;
-    foreground: #f8f8f2;
+    fg: #f8f8f2;
     comment: #6272a4;
     cyan: #8be9fd;
     green: #50fa7b;
@@ -22,21 +23,22 @@ configuration {
     yellow: #f1fa8c;
 
     font: "Source Code Pro 12";
-    active-background: @current-line;
+    background: @bg-dark;
+    active-background: @bg;
     urgent-background: @red;
     urgent-foreground: @background;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
     selected-active-background: @active-background;
-    separatorcolor: @active-background;
-    border-color: @active-background;
+    separatorcolor: @bg;
+    border-color: @bg;
 }
 
 window {
     background-color: @background;
     border:           3px;
     border-radius:    0px;
-    border-color:     @border-color;
+    border-color:     @bg-dark;
     width:            465px;
     height:           370px;
     padding:          16px 24px;
@@ -59,7 +61,7 @@ message {
 }
 
 textbox {
-    text-color: @foreground;
+    text-color: @fg;
 }
 
 listview {
@@ -78,7 +80,7 @@ element {
 
 element.normal.normal {
     background-color: @background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 element.normal.urgent {
     background-color: @urgent-background;
@@ -86,18 +88,18 @@ element.normal.urgent {
 }
 element.normal.active {
     background-color: @active-background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 
 element.selected.normal {
     background-color: @selected-background;
-    text-color:       @foreground;
-    border:           0 0 0 2px;
+    text-color:       @fg;
+    border:           0px 0px 0px 1px;
     border-color:     @purple;
 }
 element.selected.urgent {
     background-color: @selected-urgent-background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 element.selected.active {
     background-color: @selected-active-background;
@@ -106,15 +108,15 @@ element.selected.active {
 
 element.alternate.normal {
     background-color: @background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 element.alternate.urgent {
     background-color: @urgent-background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 element.alternate.active {
     background-color: @active-background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 
 scrollbar {
@@ -131,25 +133,25 @@ sidebar {
 
 button.selected {
     background-color: @selected-background;
-    text-color:       @foreground;
+    text-color:       @fg;
 }
 
 inputbar {
-    border:     0 0 3px 0;
+    border:     0 0 1px 0;
     spacing:    0;
-    text-color: @foreground;
+    text-color: @fg;
     padding:    10px 12px 12px 12px;
     margin:     0px 0px 4px 0px;
 }
 
 case-indicator {
     spacing:    0;
-    text-color: @foreground;
+    text-color: @fg;
 }
 
 entry {
     spacing:            0;
-    text-color:         @foreground;
+    text-color:         @fg;
     placeholder-color:  #44475a;
 }
 
@@ -165,9 +167,9 @@ inputbar {
 
 textbox-prompt-colon {
     expand:     false;
-    str:        ">";
-    margin:     0px 0.1em 0em 0em;
-    text-color: @active-background;
+    str:        "●︎";
+    margin:     0px 0.3em 0em 0em;
+    text-color: @comment;
 }
 
 element-text, element-icon {

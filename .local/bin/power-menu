@@ -4,10 +4,16 @@
 
 CHOICE=$(echo -e "Shutdown\nReboot\nLock\nSleep\nLog out" | \
     rofi -dmenu -i \
-    -p ">" \
-    -theme-str 'window {width: 300px; height: 295px;}' \
-    -theme-str 'inputbar {children: [prompt, entry];}' \
+    -p "" \
+    -theme-str 'window {width: 300px; height: 290px;}' \
+    -theme-str 'inputbar {children: [prompt,textbox-prompt-colon,entry];}' \
     -theme-str 'element {children: [element-text];}' \
+    -theme-str 'textbox-prompt-colon {
+    expand:     false;
+    str:        "𐓏";
+    margin:     0px 0.3em 0em 0em;
+    text-color: @comment;
+}' \
     -theme-str 'listview {lines: 5;}')
 
 case $CHOICE in
