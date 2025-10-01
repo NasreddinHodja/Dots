@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Improved shutdown menu with more options and better styling
-
 theme_str='
 window {
     width: 230px;
