@@ -6,6 +6,7 @@ configuration {
     kb-row-down:      "Down,Control+j";
     kb-accept-entry:  "Control+m,Return,KP_Enter";
     kb-remove-to-eol: "Control+Shift+e";
+    window-type: "normal";
 }
 
 * {
