@@ -41,7 +41,7 @@ window {
     border-color:     @bg-dark;
     width:            465px;
     height:           370px;
-    padding:          16px 24px;
+    padding:          14px 20px;
     kb-row-up:        "Up,Control+p,Control+k";
     kb-row-down:      "Down,Control+n,Control+j";
 }
@@ -153,6 +153,7 @@ entry {
     spacing:            0;
     text-color:         @fg;
     placeholder-color:  #44475a;
+    placeholder: "";
 }
 
 prompt {

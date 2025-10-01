@@ -2,26 +2,36 @@
 
 # Improved shutdown menu with more options and better styling
 
-CHOICE=$(echo -e "Shutdown\nReboot\nLock\nSleep\nLog out" | \
-    rofi -dmenu -i \
-    -p "" \
-    -theme-str 'window {width: 300px; height: 290px;}' \
-    -theme-str 'inputbar {children: [prompt,textbox-prompt-colon,entry];}' \
-    -theme-str 'element {children: [element-text];}' \
-    -theme-str 'textbox-prompt-colon {
+theme_str='
+window {
+    width: 230px;
+    height: 290px;
+}
+
+element {
+    children: [element-text];
+    padding: 8px 12px 8px 18px;
+}
+
+textbox-prompt-colon {
     expand:     false;
     str:        "𐓏";
     margin:     0px 0.3em 0em 0em;
     text-color: @comment;
-}' \
-    -theme-str 'listview {lines: 5;}')
+}
 
+listview {
+    lines: 5;
+}
+'
+CHOICE=$(echo -e "󰐥  Shutdown\n󰜉  Reboot\n󰌾  Lock\n󰒲  Sleep\n󰍃  Log out" | \
+    rofi -dmenu -i -p "" -theme-str "$theme_str")
 case $CHOICE in
-    "Shutdown") systemctl poweroff ;;
-    "Reboot") systemctl reboot ;;
-    "Lock") loginctl lock-session ;;
-    "Sleep") systemctl suspend ;;
-    "Log out") loginctl terminate-session $XDG_SESSION_ID ;;
+    *"Shutdown") systemctl poweroff ;;
+    *"Reboot") systemctl reboot ;;
+    *"Lock") loginctl lock-session ;;
+    *"Sleep") systemctl suspend ;;
+    *"Log out") loginctl terminate-session $XDG_SESSION_ID ;;
     "") ;;
     *) exit 1 ;;
 esac
