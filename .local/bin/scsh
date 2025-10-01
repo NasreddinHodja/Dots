@@ -2,8 +2,8 @@
 
 SCREENSHOT_DIR="${SCREENSHOT_DIR:-$HOME/Pictures/scrot}"
 NOTIFICATION_DURATION="${NOTIFICATION_DURATION:-5000}"
+DEPS=(xclip maim slop xdotool xrandr)
 
-DEPS=(xclip maim slop)
 for dep in "${DEPS[@]}"; do
     command -v "$dep" >/dev/null || {
         echo "Error: $dep not found." >&2
@@ -13,38 +13,77 @@ done
 
 mkdir -p "$SCREENSHOT_DIR"
 
+get_active_monitor_geometry() {
+    local mouse_pos=$(xdotool getmouselocation --shell)
+    local mouse_x=$(echo "$mouse_pos" | grep X= | cut -d= -f2)
+    local mouse_y=$(echo "$mouse_pos" | grep Y= | cut -d= -f2)
+
+    xrandr --current | grep ' connected' | while read -r line; do
+        local geometry=$(echo "$line" | grep -oP '\d+x\d+\+\d+\+\d+')
+
+        if [[ -n "$geometry" ]]; then
+            local width=$(echo "$geometry" | cut -d'x' -f1)
+            local height=$(echo "$geometry" | cut -d'x' -f2 | cut -d'+' -f1)
+            local offset_x=$(echo "$geometry" | cut -d'+' -f2)
+            local offset_y=$(echo "$geometry" | cut -d'+' -f3)
+
+            if (( mouse_x >= offset_x && mouse_x < offset_x + width && mouse_y >= offset_y && mouse_y < offset_y + height )); then
+                echo "-g ${width}x${height}+${offset_x}+${offset_y}"
+                return
+            fi
+        fi
+    done
+}
+
 capture_and_save() {
+    local mode="$1"
     local filename="$SCREENSHOT_DIR/$(date +%s).png"
 
-    maim -u -s \
-        | tee "$filename" \
-        | xclip -selection clipboard -t image/png
+    if [[ "$mode" == "screen" ]]; then
+        local geometry=$(get_active_monitor_geometry)
+        maim -u $geometry "$filename"
+    else
+        maim -u -s \
+            | tee "$filename" \
+            | xclip -selection clipboard -t image/png
+    fi
 
     [[ -s $filename ]] || return 1
 
-    notify-send \
+    if [[ "$mode" == "screen" ]]; then
+        xclip -selection clipboard -t image/png < "$filename"
+    fi
+
+    action=$(notify-send \
         -t "$NOTIFICATION_DURATION" \
         -a "Screenshot Tool" \
         -c "transfer.complete" \
         -i "$filename" \
-        -A "Open" \
+        -A "Open=open" \
         "Screenshot Captured" \
-        "Saved screenshot:\n${filename##*/}"
+        "Saved screenshot:\n${filename##*/}")
 
-    [[ $? == 0 ]] && nsxiv "$filename"
+    [[ "$action" == "Open" ]] && nsxiv "$filename"
 
     return 0
 }
 
 capture() {
+    local mode="$1"
     local temp_file=$(mktemp --suffix=.png)
 
     trap "rm -f '$temp_file'" EXIT
 
-    maim -u -s "$temp_file"
+    if [[ "$mode" == "screen" ]]; then
+        local geometry=$(get_active_monitor_geometry)
+        maim -u $geometry "$temp_file"
+    else
+        maim -u -s "$temp_file"
+    fi
 
     if [[ -s "$temp_file" ]]; then
         xclip -selection clipboard -t image/png < "$temp_file"
+
         notify-send \
             -t $NOTIFICATION_DURATION \
             -a "Screenshot Tool" \
@@ -58,17 +97,32 @@ capture() {
     fi
 
     rm -f "$temp_file"
+
     trap - EXIT
 }
 
-case "$1" in
-    -s|--save)
-        capture_and_save
-        ;;
-    "")
-        capture
-        ;;
-    *)
-        exit 1
-        ;;
-esac
+mode="selection"
+action="copy"
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -S|--screen)
+            mode="screen"
+            shift
+            ;;
+        -s|--save)
+            action="save"
+            shift
+            ;;
+        *)
+            echo "Usage: $0 [-S|--screen] [-s|--save]" >&2
+            exit 1
+            ;;
+    esac
+done
+
+if [[ "$action" == "save" ]]; then
+    capture_and_save "$mode"
+else
+    capture "$mode"
+fi
