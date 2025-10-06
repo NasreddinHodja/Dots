@@ -39,7 +39,7 @@ window {
     background-color: @background;
     border:           3px;
     border-radius:    0px;
-    border-color:     @bg-dark;
+    border-color:     @current-line;
     width:            465px;
     height:           370px;
     padding:          14px 20px;
@@ -171,7 +171,7 @@ textbox-prompt-colon {
     expand:     false;
     str:        "●︎";
     margin:     0px 0.3em 0em 0em;
-    text-color: @comment;
+    text-color: @green;
 }
 
 element-text, element-icon {

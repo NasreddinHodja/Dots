@@ -15,7 +15,7 @@ textbox-prompt-colon {
     expand:     false;
     str:        "𐓏";
     margin:     0px 0.3em 0em 0em;
-    text-color: @comment;
+    text-color: @red;
 }
 
 listview {

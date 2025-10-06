@@ -1,8 +1,3 @@
-z manga
-z ..
-z -
-z ~
-z manga
 la
 rm -rf abara/ alive/ no_longer_human/
 la
@@ -126,3 +121,8 @@ exit
 wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d", strtonum($1)}'
 wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
 exit
+wmctrl -lG
+wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
+wmctrl -lG | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
+wmctrl -lG 
+wmctrl -lG | grep -i "About the Xfce Desktop Environment" | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
