@@ -1,26 +1,3 @@
-la
-rm -rf abara/ alive/ no_longer_human/
-la
-exit
-la /media
-la /run/media/ 
-lsblk
-simple-mtpfs
-adb devices
-adb -h
-adb --help
-adb devices
-adb devices -l
-adb kill-server
-yay -Syu simple-mtpfs
-simple-mtpfs -l
-z
-z ~
-mkdir Android
-rm Android/ 
-rm -rf Android/ 
-la .android/ 
-mkdir android/ 
 simple-mtpfs devices
 simple-mtpfs -l
 simple-mtpfs --device 1 android/ 
@@ -126,3 +103,26 @@ wmctrl -lG | grep -i chromium | sed 's/(standard input):.://' | awk '{printf "%d
 wmctrl -lG | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
 wmctrl -lG 
 wmctrl -lG | grep -i "About the Xfce Desktop Environment" | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
+exit
+~
+exit
+maim -u -g 1920x1080+1920+0 ./assets/screenshot.png 
+maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png 
+exit
+maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png
+exit
+maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png
+exit
+maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png
+eixtx
+exit
+maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
+exit
+maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
+exit
+maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
+s
+exit
+maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
+exit
+maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
