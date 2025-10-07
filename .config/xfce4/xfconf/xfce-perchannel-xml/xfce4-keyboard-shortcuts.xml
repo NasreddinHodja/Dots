@@ -46,8 +46,6 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;w" type="string" value="/home/nasreddin/.local/bin/cycle-window-widths"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;b" type="string" value="/home/nasreddin/.local/bin/pickbg"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;x" type="string" value="/home/nasreddin/.local/bin/power-menu"/>
-      <property name="&lt;Super&gt;i" type="string" value="/home/nasreddin/.local/bin/hints"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;i" type="string" value="/home/nasreddin/.local/bin/hints --mode scroll"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -S"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s -S"/>
     </property>
