@@ -79,7 +79,7 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 
 * Keyboard Layout [WIP]
 
-+ [[https://github.com/foostan/crkbd][corne v3 42-key split keyboard]]
++ [[https://github.com/foostan/crkbd][corne v2 42-key split keyboard]]
 + [[https://qmk.fm/][QMK firmware]]
 
 ** Layer 0 - Base
