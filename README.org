@@ -90,26 +90,22 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 
 [[./assets/naskbl_symbol.png]]
 
-** Layer 2 - Number
-
-[[./assets/naskbl_number.png]]
-
-** Layer 3 - Navigation
+** Layer 2 - Navigation
 
 [[./assets/naskbl_navigation.png]]
 
-** Layer 4 - Mouse
+** Layer 3 - Mouse
 
 [[./assets/naskbl_mouse.png]]
 
-** Layer 5 - Function
+** Layer 4 - Function
 
 [[./assets/naskbl_function.png]]
 
-** TODO Layer 6 - Macro
+** TODO Layer 5 - Macro
 
 [[./assets/naskbl_macro.png]]
 
-** Layer 7 - Gaming (FPS)
+** Layer 6 - Gaming (FPS)
 
 [[./assets/naskbl_gaming.png]]
