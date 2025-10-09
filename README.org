@@ -86,13 +86,13 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 
 [[./assets/naskbl_base.png]]
 
-** Layer 1 - Number
-
-[[./assets/naskbl_number.png]]
-
-** Layer 2 - Symbol
+** Layer 1 - Symbol
 
 [[./assets/naskbl_symbol.png]]
+
+** Layer 2 - Number
+
+[[./assets/naskbl_number.png]]
 
 ** Layer 3 - Navigation
 
