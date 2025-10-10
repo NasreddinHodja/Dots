@@ -48,6 +48,7 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;x" type="string" value="/home/nasreddin/.local/bin/power-menu"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -S"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s -S"/>
+      <property name="&lt;Super&gt;w" type="string" value="/home/nasreddin/.local/bin/window-menu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
