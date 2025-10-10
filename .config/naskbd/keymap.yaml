@@ -40,7 +40,7 @@ layers:
   NAV:
     - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
     - ['', LGUI, LALT, LCTL, LSFT, {t: VOLU, shifted: VOLD}, LEFT, DOWN, UP, RGHT, TAB, '']
-    - ['', VOLD, MPRV, MPLY, MNXT, '', HOME, PGDN, PGUP, END, CAPS, '']
+    - ['', VOLD, MPRV, MPLY, MNXT, '', {t: HOME, shifted: MS WHLL}, {t: PGDN, shifted: MS WHLD}, {t: PGUP, shifted: MS WHLU}, {t: END, shifted: MS WHLR}, CAPS, '']
     - ['', {type: held}, '', INS, DEL, '']
 
   MOU:

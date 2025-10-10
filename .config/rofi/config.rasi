@@ -89,14 +89,15 @@ element.normal.urgent {
     text-color:       @urgent-foreground;
 }
 element.normal.active {
-    background-color: @active-background;
-    text-color:       @fg;
+    background-color: @background;
+    text-color:       @comment;
+    highlight: bold;
 }
 
 element.selected.normal {
     background-color: @selected-background;
     text-color:       @fg;
-    border:           0px 0px 0px 1px;
+    border:           0px 0px 0px 2px;
     border-color:     @purple;
 }
 element.selected.urgent {
@@ -105,7 +106,9 @@ element.selected.urgent {
 }
 element.selected.active {
     background-color: @selected-active-background;
-    text-color:       @blue;
+    text-color:       @fg;
+    border: 0 0 0 2px;
+    border-color: @pink;
 }
 
 element.alternate.normal {
