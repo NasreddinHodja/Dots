@@ -82,4 +82,4 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 + [[https://github.com/foostan/crkbd][corne v2 42-key split keyboard]]
 + [[https://qmk.fm/][QMK firmware]]
 
-[[./.config/naskbd/diagram.png]]
+[[./.config/naskbd/diagram.svg]]

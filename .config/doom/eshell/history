@@ -1,15 +1,3 @@
-simple-mtpfs devices
-simple-mtpfs -l
-simple-mtpfs --device 1 android/ 
-la android/Pictures/
-la Manga/ 
-la android/Pictures/Manga/eden_it_s_an_endless_world/ 
-ls android/Pictures/Manga/eden_it_s_an_endless_world/
-yay -Rsn simple-mtpfs
-exit
-z .config/
-mkdir nasmacs; cd $_
-touch init.el
 emacs -q -l init.el 
 emacs -Q
 sh -c "emacs -q -l init.el"
@@ -126,3 +114,15 @@ exit
 maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
 exit
 maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
+keymap draw keymap.yaml 
+keymap draw keymap.yaml > keymap.png
+la
+keymap draw -h
+keymap draw keymap.yaml > keymap.svg
+keymap draw -d keymap.yaml > keymap.svg
+keymap draw --dark-mode keymap.yaml > keymap.svg
+keymap draw -d keymap.yaml > keymap.svgg
+keymap draw -d keymap.yaml > keymap.svg
+keymap draw --help
+keymap draw -c keymap-drawer-config.yaml keymap.yaml > keymap.svg
+exit
