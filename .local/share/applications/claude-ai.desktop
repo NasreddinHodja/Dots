@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Claude
+Comment=Launch Claude AI
+Exec=chromium --app=https://claude.ai --class=Claude
+Icon=/home/nasreddin/.local/share/icons/claude.png
+Terminal=false
+Categories=Network;WebBrowser;

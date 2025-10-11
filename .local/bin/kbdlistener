@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+
+import hid
+import time
+
+VENDOR_ID = 0x4653
+PRODUCT_ID = 0x0001
+USAGE_PAGE = 0xFF60
+USAGE = 0x61
+
+def listen_for_layers():
+    device = None
+
+    while True:
+        try:
+            if device is None:
+                devices = hid.enumerate(VENDOR_ID, PRODUCT_ID)
+                raw_hid = [d for d in devices if d['usage_page'] == USAGE_PAGE and d['usage'] == USAGE]
+
+                if not raw_hid:
+                    print("Searching...", flush=True)
+                    time.sleep(2)
+                    continue
+
+                device = hid.Device(path=raw_hid[0]['path'])
+                print("BASE", flush=True)
+
+            data = device.read(32, timeout=1000)
+            if data and data[0] == 0x01:
+                layer_name = bytes(data[2:]).split(b'\x00')[0].decode('utf-8')
+                print(f"{layer_name}", flush=True)
+                try:
+                    with open("/tmp/keyboard_layer", "w") as f:
+                        f.write(layer_name + "\n")
+                except Exception as e:
+                    print(f"File write error: {e}", flush=True)
+
+        except (IOError, OSError) as e:
+            print("Reconnecting...", flush=True)
+            device = None
+            time.sleep(2)
+
+        except KeyboardInterrupt:
+            break
+
+        except Exception as e:
+            print(f"ERROR: {e}", flush=True)
+            time.sleep(2)
+
+    if device:
+        try:
+            device.close()
+        except:
+            pass
+
+if __name__ == '__main__':
+    listen_for_layers()
