@@ -14,7 +14,8 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="4"/>
         <value type="int" value="2"/>
-        <value type="int" value="5"/>
+        <value type="int" value="11"/>
+        <value type="int" value="16"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
         <value type="int" value="14"/>
@@ -59,10 +60,6 @@
       <property name="rows" type="uint" value="1"/>
       <property name="miniature-view" type="bool" value="false"/>
       <property name="numbering" type="bool" value="false"/>
-    </property>
-    <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="true"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
@@ -125,6 +122,13 @@
       <property name="known-players" type="string" value=";Chromium;spotify;Upscayl;zen"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="true"/>
+    </property>
+    <property name="plugin-16" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
   </property>
