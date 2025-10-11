@@ -2,9 +2,9 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=kbdlistener
-Comment=Listens to keyboard HID
-Exec=/home/nasreddin/.local/bin/kbdlistener
+Name=Keyboard Layout Conky
+Comment=
+Exec=/usr/bin/conky -c /home/nasreddin/.config/conky/keyboard-layers.conf
 OnlyShowIn=XFCE;
 RunHook=0
 StartupNotify=false
