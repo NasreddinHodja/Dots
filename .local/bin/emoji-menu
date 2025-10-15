@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+theme_str='
+window {
+    width: 500px;
+    height: 400px;
+}
+
+element {
+    padding: 8px 40px 8px 0px;
+}
+
+listview {
+    lines: 5;
+}
+'
+
+rofi -modi emoji -show emoji -p "" -theme-str "$theme_str"

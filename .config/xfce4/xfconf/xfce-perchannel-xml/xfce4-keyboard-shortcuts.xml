@@ -49,6 +49,7 @@
       <property name="&lt;Super&gt;l" type="string" value="/home/nasreddin/.local/bin/dws right"/>
       <property name="&lt;Super&gt;k" type="string" value="/home/nasreddin/.local/bin/dws up"/>
       <property name="&lt;Super&gt;j" type="string" value="/home/nasreddin/.local/bin/dws down"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;semicolon" type="string" value="/home/nasreddin/.local/bin/emoji-menu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

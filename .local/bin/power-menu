@@ -22,8 +22,10 @@ listview {
     lines: 5;
 }
 '
+
 CHOICE=$(echo -e "󰐥  Shutdown\n󰜉  Reboot\n󰌾  Lock\n󰒲  Sleep\n󰍃  Log out" | \
     rofi -dmenu -i -p "" -theme-str "$theme_str")
+
 case $CHOICE in
     *"Shutdown") systemctl poweroff ;;
     *"Reboot") systemctl reboot ;;
