@@ -3,20 +3,20 @@ layout: {qmk_keyboard: mechboards/crkbd/pro, layout_name: LAYOUT_split_3x6_3}
 
 layers:
   BASE:
-    - ['', Q, W, E, R, T, Y, U, I, O, P, '']
+    - ['', Q, W, F, P, B, J, L, U, Y, ;, '']
     - ''
     - {t: A, h: LGUI}
-    - {t: S, h: LALT}
-    - {t: D, h: LCTL}
-    - {t: F, h: LSFT}
+    - {t: R, h: LALT}
+    - {t: S, h: LCTL}
+    - {t: T, h: LSFT}
     - {t: G, h: RALT}
-    - {t: H, h: RALT}
-    - {t: J, h: LSFT}
-    - {t: K, h: LCTL}
-    - {t: L, h: LALT}
-    - {t: ;, h: LGUI}
+    - {t: M, h: RALT}
+    - {t: N, h: LSFT}
+    - {t: E, h: LCTL}
+    - {t: I, h: LALT}
+    - {t: O, h: LGUI}
     - ''
-    - ['', Z, X, C, V, B, N, M, ',', ., /, '']
+    - ['', Z, X, C, D, V, K, H, ',', ., /, '']
     - ['', {t: ESC, h: NAV}, {t: BSPC, h: MOU}, {t: ENT, h: FUN}, {t: SPC, h: SYM}, '']
 
   SYM:
@@ -72,10 +72,9 @@ layers:
     - [I, '', 9, 8, 7, 6, '', '', '', '', '', GAM]
     - ['', {type: held}, '', '', '', '']
 
-
 combos:
   - {p: [2, 3], k: "TAB", l: ["BASE"]}
-  - {p: [3, 4], k: "\"", l: ["BASE"]}
-  - {p: [7, 8], k: "'", l: ["BASE"]}
+  - {p: [3, 4], k: "'", l: ["BASE"]}
+  - {p: [7, 8], k: "\"", l: ["BASE"]}
   - {p: [8, 9], k: "~", l: ["BASE"]}
   - {p: [31, 32], k: "^", l: ["BASE"]}

@@ -29,7 +29,7 @@
       <property name="output-name" type="string" value="Primary"/>
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="leave-opacity" type="uint" value="100"/>
-      <property name="background-style" type="uint" value="0"/>
+      <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
         <value type="double" value="0.16862745098039217"/>
         <value type="double" value="0.16470588235294117"/>

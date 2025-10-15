@@ -23,7 +23,6 @@ def listen_for_layers():
                     continue
 
                 device = hid.Device(path=raw_hid[0]['path'])
-                print("BASE", flush=True)
 
             data = device.read(32, timeout=1000)
             if data and data[0] == 0x01:

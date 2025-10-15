@@ -45,4 +45,7 @@
   </property>
   <property name="icon-view" type="bool" value="false"/>
   <property name="sort-by-frecency" type="bool" value="true"/>
+  <property name="hide-category-pane" type="bool" value="true"/>
+  <property name="hide-window-decorations" type="bool" value="false"/>
+  <property name="generic-names" type="bool" value="false"/>
 </channel>

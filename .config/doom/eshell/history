@@ -1,43 +1,3 @@
-maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png 
-exit
-maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png
-exit
-maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png
-exit
-maim -u -g 1920x1080+1920+0 -d 1 ./assets/screenshot.png
-eixtx
-exit
-maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
-exit
-maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
-exit
-maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
-s
-exit
-maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
-exit
-maim -u -g 1920x1080+1920+0 -d 3 ./assets/screenshot.png
-keymap draw keymap.yaml 
-keymap draw keymap.yaml > keymap.png
-la
-keymap draw -h
-keymap draw keymap.yaml > keymap.svg
-keymap draw -d keymap.yaml > keymap.svg
-keymap draw --dark-mode keymap.yaml > keymap.svg
-keymap draw -d keymap.yaml > keymap.svgg
-keymap draw -d keymap.yaml > keymap.svg
-keymap draw --help
-keymap draw -c keymap-drawer-config.yaml keymap.yaml > keymap.svg
-exit
-cargo new zxtab
-exit
-cargo ru n
-cargo run
-cargo add clap
-cargo run
-cargo add clap --features derive
-cargo install x11rb
-cargo add x11rb
 wmctrl -lG | grep -i "About the Xfce Desktop Environment" | sed 's/(standard input):.://' | awk '{printf "%d\n", strtonum($1)}'
 wmctrl -lG
 cargo run -- new 0x01200007
@@ -126,3 +86,43 @@ qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
 conky
 conky -c ~/.config/conky/keyboard-layers.conf
 which conky
+qmk info -kb crkbd -km naskbdy
+qmk info -kb crkbd -km naskbd
+z qmk
+qmk info -kb crkbd -km naskbd
+sudo udevadm control --reload-rulessudo udevadm trigger
+sudo usermod -aG uucp $USER
+qmk flash
+qmk flash -km naskbd
+qmk flash -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+exit
+keymap 
+pipx install keymap-drawer
+pipx uninstall keymap-drawr
+pipx uninstall keymap-drawer
+pipx install keymap-drawer
+keymap draw keymap.yaml -o diagram.svg
+qmk flash -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbdg
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+la
+keymap draw keymap.yaml -o colemak.svg
+la
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+oie fjflAasssdddsddfsdffwerytarstttfyyyusAstnrystrstrsrrrbbll
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+ka kbdlistener
+ka conky
+conky -c ~/.config/conky/keyboard-layers.confy
+conky -c ~/.config/conky/keyboard-layers.conf
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd-querty
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+keymap draw keymap.yaml -o base.svg
+la
+rm colemak.svg 
+keymap draw keymap.yaml -o fun.svg 
+conky -c ~/.config/conky/keyboard-layers.conf
+la
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+dws left

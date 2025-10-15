@@ -100,3 +100,4 @@ tmp/
 .local/bin/RuneLite.AppImage
 .local/bin/ffultima1.8.6.irc.zip
 .local/bin/zeninstall
+.local/bin/keymap
