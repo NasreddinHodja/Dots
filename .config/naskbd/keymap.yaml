@@ -50,9 +50,9 @@ layers:
     - ['', '', {type: held}, MS BTN2, MS BTN1, '']
 
   FUN:
-    - ['', F1, F2, F3, F4, PAUS, '', GAM, '', '', '', '']
+    - ['', F1, F2, F3, F4, PAUS, GAM, {t: 'DM PLY1', shifted: 'DM PLY2'}, {t: 'DM REC1', shifted: 'DM REC2'}, 'DM RSTP', '', '']
     - ['', F5, F6, F7, F8, PSCR, QK BOOT, LSFT, LCTL, LALT, LGUI, '']
-    - ['', F9, F10, F11, F12, '', '', LOCK, '', '', '', '']
+    - ['', F9, F10, F11, F12, '', LOCK, '', '', '', '', '']
     - ''
     - APP
     - ''

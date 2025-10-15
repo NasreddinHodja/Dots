@@ -1,5 +1,3 @@
-/home/nasreddin/Dots
-/home/nasreddin/Dots/.config/naskbd
 /home/nasreddin/Prog
 /home/nasreddin/Prog/zxtab
 /home/nasreddin/Prog/zxtab/src
@@ -31,3 +29,5 @@
 /home/nasreddin/Dots/.config/qmk_firmware
 /home/nasreddin/Downloads
 /home/nasreddin/Dots/.local/bin
+/home/nasreddin/Dots/.config/qmk_firmware/keyboards/crkbd/keymaps/naskbd
+/home/nasreddin/Dots/.config/naskbd
