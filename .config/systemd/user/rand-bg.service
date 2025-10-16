@@ -1,0 +1,9 @@
+[Unit]
+Description=Random Background Changer
+
+[Service]
+Type=oneshot
+ExecStart=/home/nasreddin/.local/bin/rand-bg
+
+[Install]
+WantedBy=default.target

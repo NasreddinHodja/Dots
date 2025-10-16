@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Random Background Every 45 Minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=45min
+
+[Install]
+WantedBy=timers.target
