@@ -1,6 +1,3 @@
-./main.py 
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd 
-./main.py 
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd m
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
 exit
@@ -126,3 +123,6 @@ exit
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
 rand-bg 
 systemctl --user daemon-reloadsystemctl --user restart rand-bg.timer
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+maim 
+maim sc.png
