@@ -23,7 +23,7 @@
 
 (setq! +doom-dashboard-banner-file (expand-file-name "banner.png" doom-user-dir))
 
-(setq! display-line-numbers-type 'visual)
+(setq! display-line-numbers-type 'relative)
 
 (defconst nas/frame-parameters
   '((width . 100)

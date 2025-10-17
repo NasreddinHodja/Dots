@@ -1,44 +1,3 @@
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd m
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-exit
-conky -c ~/.config/conky/keyboard-layers.conf
-conky -c ~/.config/conky/keyboard-layer.conf
-conky -c ~/.config/conky/keyboard-layers.conf
-kbdlistener 
-conky -c ~/.config/conky/keyboard-layer.conf 
-conky -c ~/.config/conky/keyboard-layers.conf 
-kbdlistener
-genmon-kbd
-kbdlistener 
-bat /tmp/keyboard_layer 
-kbdlistener  
-kbdlistener
-conky -c ~/.config/conky/keyboard-layers.conf 
-kbdlistener
-conky -c ~/.config/conky/keyboard-layers.conf 
-la
-keymap draw keymap.yaml --layer BASE -o base.svg
-keymap draw keymap.yaml -o base.svg
-keymap draw keymap.yaml -o sym.svg
-keymap draw keymap.yaml -o nav.svg
-keymap draw keymap.yaml -o base.svg
-keymap draw keymap.yaml -o mou.svg
-keymap draw keymap.yaml -o fun.svg
-keymap draw keymap.yaml -o gam.svg
-keymap draw keymap.yaml -o gnm.svg
-conky -c ~/.config/conky/keyboard-layers.conf
-cat /tmp/keyboard_layer 
-genmon-kbd 
-kbdli
-kbdlistener 
-la /sys/class/hidraw/hidraw0/ 
-kbdlistener  
-kbdlistener
-conky -c ~/.config/conky/keyboard-layers.conf
-kbdlistenerf
-kbdlistener
-grep -H . /sys/class/hidraw/hidraw*/device/uevent
-kbdlistener
 ls -l /dev/hidraw*
 grep -H . /sys/class/hidraw/hidraw*/device/uevent | grep input2 -B2
 kbdlistener
@@ -126,3 +85,44 @@ systemctl --user daemon-reloadsystemctl --user restart rand-bg.timer
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
 maim 
 maim sc.png
+maim assets/screenshot.png 
+yay 
+./watch.sh 
+exit
+python gen.py 
+mv test/ ~/.local/share/themes/ 
+python gen.py  
+mv test/ ~/.local/share/themes/ 
+rm -rf ~/.local/share/themes/test/
+mv test/ ~/.local/share/themes/ 
+rm -rf ~/.local/share/themes/test/
+python gen.py  
+mv test/ ~/.local/share/themes/ 
+python gen.py   
+rm -rf ~/.local/share/themes/test/
+mv test/ ~/.local/share/themes/ 
+python gen.py    
+mv test2/ ~/.local/share/themes/
+python gen.py  
+mv test3/ ~/.local/share/themes/
+chmod +x gen.py 
+./gen.py 
+exit
+rm -rf ../test/
+./gen.py 
+mv test/ ~/.local/share/themes/
+rm -rf ../test//
+z -
+z ~/.local/share/themes/MinimalGen 
+./gen.py 
+mv test/ ~/.local/share/themes/
+ia
+./gen.py 
+mv gapped/ ~/.local/share/themes/
+./gen.py 
+la
+mv gen.py ..
+ia
+la
+z ..
+la
