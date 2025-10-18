@@ -1,12 +1,3 @@
-conky -c ~/.config/conky/keyboard-layers.confn
-conky -c ~/.config/conky/keyboard-layers.conf
-cat /tmp/keyboard_layer 
-qmk info -kb crkbd -km your_keymap | grep RAW
-qmk info -kb crkbd -km your_keymap
-qmk info -kb crkbd -km naskbd | grep RAW
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd k
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-qmk info -kb crkbd -km naskbd | grep RAW
 qmk info -kb crkbd -km naskbd
 qmk info -km naskbd
 qmk info -kb crkbd/rev1 -km naskbd
@@ -126,3 +117,12 @@ exit
 mv MiniDrac/ ~/.local/share/themes/
 rm -rf ~/.local/share/themes/MiniDrac/ 
 mv MiniDrac/ ~/.local/share/themes/ 
+rm Dots/wp.state.json 
+rand-bg
+xdg-open material/2404.19756v5.pdf
+yay -Syu mupdf
+./watch.sh 
+exit
+pkill -USR1 unclutter
+wmctrl -lG
+xprop

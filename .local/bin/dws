@@ -8,7 +8,7 @@ set -euo pipefail
 readonly MAX_DISTANCE=999999
 readonly DIRECTION_WEIGHT=100
 readonly DEPENDENCIES=(wmctrl xdotool xprop xrandr)
-readonly INVALID_CLASSES=(panel dock bar notify)
+readonly INVALID_CLASSES=(panel dock bar notify Conky)
 
 check_dependencies() {
     local missing=()
@@ -190,7 +190,9 @@ switch_to_window() {
     local window_id=$1 target_x=$2 target_y=$3 target_class=$4
 
     xdotool windowactivate "$window_id" \
-        mousemove "$target_x" "$target_y" \
+        mousemove "$target_x" "$target_y"
+
+    pkill -USR1 unclutter
     # [[ "$target_class" != *desktop* ]] || xdotool click 1
 }
 
