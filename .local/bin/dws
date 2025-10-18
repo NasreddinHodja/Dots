@@ -3,6 +3,7 @@
 # Directional window switcher (for X) with cursor movement
 # Usage: ./dws [up|down|left|right]
 
+set -x
 set -euo pipefail
 
 readonly MAX_DISTANCE=999999
@@ -189,11 +190,12 @@ find_closest_window() {
 switch_to_window() {
     local window_id=$1 target_x=$2 target_y=$3 target_class=$4
 
-    xdotool windowactivate "$window_id" \
-        mousemove "$target_x" "$target_y"
-
-    pkill -USR1 unclutter
-    # [[ "$target_class" != *desktop* ]] || xdotool click 1
+    if [[ "${target_class,,}" == *desktop* ]]; then
+        xdotool mousemove "$target_x" "$target_y" click 1
+    else
+        xdotool windowactivate "$window_id" \
+            mousemove "$target_x" "$target_y"
+    fi
 }
 
 main() {
@@ -203,6 +205,7 @@ main() {
     local direction=$1
 
     check_dependencies
+    pgrep -x unclutter >/dev/null && pkill -USR1 unclutter || true
 
     local active_info=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}' | tr -d ',')
     local active_id=$(printf "0x%08x" $((active_info)))

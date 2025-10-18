@@ -1,5 +1,3 @@
-qmk info -kb crkbd -km naskbd
-qmk info -km naskbd
 qmk info -kb crkbd/rev1 -km naskbd
 conky -c ~/.config/conky/keyboard-layers.conf
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
@@ -126,3 +124,5 @@ exit
 pkill -USR1 unclutter
 wmctrl -lG
 xprop
+rand-bg 
+la
