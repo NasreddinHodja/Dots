@@ -1,5 +1,3 @@
-/home/nasreddin/Dots/.config/qmk_firmware
-/home/nasreddin/Prog/kbdlistener
 /home/nasreddin/Prog/kbdlistener
 /home/nasreddin/Prog/kbdlistener
 /home/nasreddin/Dots/.config/conky
@@ -30,3 +28,6 @@
 /
 /home/nasreddin/.local/share/themes/MinimalGen
 /home/nasreddin/.local/share/themes
+~
+/home/nasreddin/Dots/.local/share/themes
+/home/nasreddin/Dots

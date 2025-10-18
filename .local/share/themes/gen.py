@@ -24,7 +24,7 @@ static char *bottom_right_inactive[] = {
 };'''
 
 def getInput():
-    return "MiniDrac", 3, 10, "#282a36", "#44475a"
+    return "MiniDrac", 3, 0, "#282a36", "#44475a"
 
 def genRC(path, width, gap, onColor, offColor):
     try:
