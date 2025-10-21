@@ -2,7 +2,7 @@
 Description=Run Random Background Every 45 Minutes
 
 [Timer]
-OnBootSec=1min
+OnStartupSec=0
 OnUnitActiveSec=45min
 
 [Install]

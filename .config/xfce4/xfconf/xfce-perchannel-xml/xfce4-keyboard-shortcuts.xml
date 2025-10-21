@@ -34,15 +34,10 @@
     <property name="custom" type="empty">
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;c" type="string" value="/home/nasreddin/.local/bin/center-window"/>
-      <property name="Print" type="string" value="/home/nasreddin/.local/bin/scsh -s"/>
-      <property name="&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="xkill"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;w" type="string" value="/home/nasreddin/.local/bin/cycle-window-widths"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;b" type="string" value="/home/nasreddin/.local/bin/pickbg"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;x" type="string" value="/home/nasreddin/.local/bin/power-menu"/>
-      <property name="&lt;Primary&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -S"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/home/nasreddin/.local/bin/scsh -s -S"/>
       <property name="&lt;Super&gt;w" type="string" value="/home/nasreddin/.local/bin/window-menu"/>
       <property name="&lt;Super&gt;s" type="string" value="rofi -show drun"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;semicolon" type="string" value="/home/nasreddin/.local/bin/emoji-menu"/>
@@ -50,6 +45,9 @@
       <property name="&lt;Super&gt;Left" type="string" value="/home/nasreddin/.local/bin/dws left"/>
       <property name="&lt;Super&gt;Right" type="string" value="/home/nasreddin/.local/bin/dws right"/>
       <property name="&lt;Super&gt;Up" type="string" value="/home/nasreddin/.local/bin/dws top"/>
+      <property name="&lt;Super&gt;p" type="string" value="/usr/bin/flameshot gui"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;p" type="string" value="/usr/bin/flameshot full"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;b" type="string" value=" /home/nasreddin/.local/bin/rand-bg"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

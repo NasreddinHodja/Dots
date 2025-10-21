@@ -1,58 +1,3 @@
-qmk info -kb crkbd/rev1 -km naskbd
-conky -c ~/.config/conky/keyboard-layers.conf
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-conky
-conky -c ~/.config/conky/keyboard-layers.conf
-which conky
-qmk info -kb crkbd -km naskbdy
-qmk info -kb crkbd -km naskbd
-z qmk
-qmk info -kb crkbd -km naskbd
-sudo udevadm control --reload-rulessudo udevadm trigger
-sudo usermod -aG uucp $USER
-qmk flash
-qmk flash -km naskbd
-qmk flash -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-exit
-keymap 
-pipx install keymap-drawer
-pipx uninstall keymap-drawr
-pipx uninstall keymap-drawer
-pipx install keymap-drawer
-keymap draw keymap.yaml -o diagram.svg
-qmk flash -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbdg
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-la
-keymap draw keymap.yaml -o colemak.svg
-la
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-oie fjflAasssdddsddfsdffwerytarstttfyyyusAstnrystrstrsrrrbbll
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-ka kbdlistener
-ka conky
-conky -c ~/.config/conky/keyboard-layers.confy
-conky -c ~/.config/conky/keyboard-layers.conf
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd-querty
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-keymap draw keymap.yaml -o base.svg
-la
-rm colemak.svg 
-keymap draw keymap.yaml -o fun.svg 
-conky -c ~/.config/conky/keyboard-layers.conf
-la
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-dws left
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-iiiik
-e
-keymap draw keymap.yaml -o diagram.svg 
-keymap draw keymap.yaml -o fun.svg 
-xdg-open diagram.svg 
-nsxiv diagram.svg 
-keymap draw keymap.yaml -o diagram.svg  
-keymap draw keymap.yaml -o fun.svg  
 z ../../../
 z ..
 la
@@ -126,3 +71,58 @@ wmctrl -lG
 xprop
 rand-bg 
 la
+dws right
+dws left
+sleep 3; dws left
+la
+la Dots/ 
+codium .
+yay -S telegram
+yay -S telegram-desktop
+yay -S tipp10
+exit
+z down
+curl https://www.eternal-lands.com/EternalLands-Linux-Installer_1.9.7.sh > eternal-lands-installer.sh
+rm -rf Games/ .local/share/applications/eternallands_static.desktop 
+la
+ls
+yay firefox
+yay -Qs firefox
+yay -Qs *firefox*
+rand-bg
+bluetoothctl
+exis
+exit
+rand-bg 
+yay -S flameshot
+flameshot guy
+flameshot gui
+yay -Rns maim
+flameshot --help
+flameshot laucher
+flameshot launcher
+z dots
+la
+rm wp.state.json 
+rand-bg 
+z down
+z ..
+z Games
+la
+unzip medivia-linux-build.zip 
+na
+la
+chmod +x medivia 
+./medivia 
+z ..
+rm -rf Games/
+la
+ia
+la
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+keymap draw keymap.yaml -o diagram.svg  
+nsxiv diagram.svg 
+keymap draw keymap.yaml -o base.svg  
+nsxiv base.svg 
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+oie
