@@ -30,7 +30,7 @@
     </property>
   </property>
   <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
-  <property name="theme" type="string" value="Default"/>
+  <property name="theme" type="string" value="Nas-Notify"/>
   <property name="show-text-with-gauge" type="bool" value="true"/>
   <property name="notification-display-fields" type="string" value="full"/>
   <property name="do-slideout" type="bool" value="false"/>

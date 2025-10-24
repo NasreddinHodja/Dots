@@ -39,7 +39,7 @@ fi
 
 # determine mode based on size
 # 5 = stretched (default), 2 = tiled
-if [ "$WIDTH" -le 600 ] && [ "$HEIGHT" -le 600 ]; then
+if [ "$WIDTH" -le 1000 ] && [ "$HEIGHT" -le 1000 ]; then
     STYLE=2
 else
     STYLE=5

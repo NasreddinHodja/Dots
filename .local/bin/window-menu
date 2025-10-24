@@ -1,3 +1,14 @@
 #!/usr/bin/env bash
 
-rofi -show windowcd -modi windowcd,window -display-window
+theme_str='
+window {
+    width: 600px;
+    height: 400px;
+}
+
+listview {
+    lines: 5;
+}
+'
+
+rofi -theme-str "$theme_str" -show window -modi window,windowcd

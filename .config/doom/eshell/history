@@ -1,13 +1,3 @@
-yay firefox
-yay -Qs firefox
-yay -Qs *firefox*
-rand-bg
-bluetoothctl
-exis
-exit
-rand-bg 
-yay -S flameshot
-flameshot guy
 flameshot gui
 yay -Rns maim
 flameshot --help
@@ -126,3 +116,13 @@ setbg test.png
 yay -Syu
 yay -Syu hyprland
 yay -Rns hyprland
+nsxiv ~/Pictures/wp/
+nsxiv -f ~/Pictures/wp/
+nsxiv -T 400x400 ~/Pictures/wp/
++ 360 1920
+systemctl --user disable rand-bg 
+systemctl --user remove rand-bg 
+z prog
+git clone https://github.com/BenjaminHCCarr/PropagandaTiles.git
+z PropagandaTiles
+la
