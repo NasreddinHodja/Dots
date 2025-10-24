@@ -96,6 +96,8 @@ wp.state.json
 .config/mgba
 .config/milkytracker
 .config/FreeCAD
+.config/MuseScore
+.config/zoom*
 
 .local/bin/gallery-dl
 .local/bin/manga-py
@@ -103,3 +105,4 @@ wp.state.json
 .local/bin/ffultima1.8.6.irc.zip
 .local/bin/zeninstall
 .local/bin/keymap
+/.local/share/applications/musescore-studio.desktop

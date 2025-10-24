@@ -38,7 +38,7 @@ if is_interactive_terminal; then
     bindkey -M menuselect 'j' vi-down-line-or-history
     bindkey -v '^?' backward-delete-char
 
-    # cursor shape for different vi modes - ONLY if not in vterm
+    # cursor shape for different vi modes
     function zle-keymap-select {
         if [[ ${KEYMAP} == vicmd ]] ||
            [[ $1 = 'block' ]]; then
@@ -58,6 +58,12 @@ if is_interactive_terminal; then
     zle -N zle-line-init
     echo -ne '\e[5 q' # use beam shape cursor on startup.
     preexec() { echo -ne '\e[5 q' ;}
+else
+    # keys for history substring search
+    bindkey '^P' history-substring-search-up
+    bindkey '^N' history-substring-search-down
+    bindkey -M vicmd '^P' history-substring-search-up
+    bindkey -M vicmd '^N' history-substring-search-down
 fi
 
 # load aliases and shortcuts if existent
@@ -89,4 +95,3 @@ source ~/.config/zsh/zsh-vterm
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-

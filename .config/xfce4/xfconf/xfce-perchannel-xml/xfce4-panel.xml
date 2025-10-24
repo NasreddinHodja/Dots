@@ -15,7 +15,6 @@
         <value type="int" value="4"/>
         <value type="int" value="2"/>
         <value type="int" value="11"/>
-        <value type="int" value="16"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
         <value type="int" value="14"/>
@@ -29,7 +28,7 @@
       <property name="output-name" type="string" value="Primary"/>
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="leave-opacity" type="uint" value="100"/>
-      <property name="background-style" type="uint" value="1"/>
+      <property name="background-style" type="uint" value="0"/>
       <property name="background-rgba" type="array">
         <value type="double" value="0.16862745098039217"/>
         <value type="double" value="0.16470588235294117"/>
@@ -72,6 +71,7 @@
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="zoom"/>
         <value type="string" value="TelegramDesktop"/>
         <value type="string" value="openrgb"/>
         <value type="string" value="systray"/>
@@ -128,9 +128,6 @@
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
       <property name="expand" type="bool" value="true"/>
-    </property>
-    <property name="plugin-16" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
     </property>
   </property>
 </channel>

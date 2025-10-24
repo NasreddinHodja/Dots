@@ -303,19 +303,19 @@ path.combo {
 </g>
 <g class="combo combopos-0">
 <rect rx="6" ry="6" x="154" y="18" width="28" height="26" class="combo"/>
-<text x="168" y="32" class="combo tap">&#x27;</text>
+<text x="168" y="32" class="combo tap">TAB</text>
 </g>
 <g class="combo combopos-1">
 <rect rx="6" ry="6" x="210" y="18" width="28" height="26" class="combo"/>
-<text x="224" y="32" class="combo tap">&quot;</text>
+<text x="224" y="32" class="combo tap">&#x27;</text>
 </g>
 <g class="combo combopos-2">
 <rect rx="6" ry="6" x="210" y="130" width="28" height="26" class="combo"/>
-<text x="224" y="144" class="combo tap">TAB</text>
+<text x="224" y="144" class="combo tap">^</text>
 </g>
 <g class="combo combopos-3">
 <rect rx="6" ry="6" x="546" y="18" width="28" height="26" class="combo"/>
-<text x="560" y="32" class="combo tap">^</text>
+<text x="560" y="32" class="combo tap">&quot;</text>
 </g>
 <g class="combo combopos-4">
 <rect rx="6" ry="6" x="602" y="18" width="28" height="26" class="combo"/>
