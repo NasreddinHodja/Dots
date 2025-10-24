@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+flameshot full -p screenshot_raw.png
+magick screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.png

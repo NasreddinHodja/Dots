@@ -1,36 +1,3 @@
-flameshot launcher
-z dots
-la
-rm wp.state.json 
-rand-bg 
-z down
-z ..
-z Games
-la
-unzip medivia-linux-build.zip 
-na
-la
-chmod +x medivia 
-./medivia 
-z ..
-rm -rf Games/
-la
-ia
-la
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-keymap draw keymap.yaml -o diagram.svg  
-nsxiv diagram.svg 
-keymap draw keymap.yaml -o base.svg  
-nsxiv base.svg 
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-oie
-./watch.sh 
-keymap draw keymap.yaml -o base.svg  
-nsxiv base.svg 
-keymap draw keymap.yaml -o diagram.svg   
-xrandr 
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
-exite
 bash
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbdh
 qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
@@ -126,3 +93,36 @@ systemctl --user status  rand-bg.service
 systemctl --user disable rand-bg.service 
 notify-send 
 exit
+maim -h
+maim
+maim 
+z /home/nasreddin/Dots/assets 
+la
+convert screenshot.png -crop 2x1@ +repage -append output.png
+convert screenshot.png -crop 2x1@ +repage -reverse -append output.png
+notify-send oiee
+flameshot full 
+z asssets
+z assets
+flameshot full -o screenshot.png 
+flameshot --help
+flameshot full --help
+flameshot full -p screenshot.png
+la
+chmod +x .local/bin/dots-screenshot
+dots-screenshot 
+magick convert screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.png
+z assets 
+flameshot full -p screenshot_raw.pngmagick convert screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.pngrm screenshot_raw.png
+dots-screenshot 
+flameshot full -p screenshot_raw.pngmagick screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.png
+nsxiv screenshot.png 
+dots-screenshot 
+nsxiv screenshot.png  
+la
+mv screenshot* assets/ 
+la
+la assets/ 
+nsxiv assets/screenshot.png  
+dots-screenshot 
+mv screenshot* assets/ 

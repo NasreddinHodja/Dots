@@ -45,11 +45,12 @@ Dots/
 
 ** Desktop Environment
 + *DE*: [[https://www.xfce.org/][XFCE4]] with keyboard-centric workflow
++ *Compositor*: [[https://github.com/yshui/picom][picom]]
 + *Bar*: [[https://docs.xfce.org/xfce/xfce4-panel/start][xfce panel]] with [[https://docs.xfce.org/panel-plugins/xfce4-genmon-plugin/start][genmon plugin]]
 + *App launcher*: [[https://github.com/davatorium/rofi][rofi]]
 + *Theme / Color Scheme*: [[https://draculatheme.com/contribute][Dracula]] - é Brasil porra
 
-** Development Tools
+** Dev Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
 + *WebDev Editor*: [[https://vscodium.com/][VSCodium]] with =vim= mode
 + *Terminal emulator*: [[https://sw.kovidgoyal.net/kitty/][kitty]] with =tmux= and [[https://starship.rs/][starship]]
@@ -72,7 +73,6 @@ Located in =.local/bin/= - all scripts designed for X11/XFCE workflow:
 |--------------+-----------------------------------------------------------|
 | =genmon-sys= | System monitor feeder for XFCE panel (CPU/RAM/disk usage) |
 | =pm=         | Run js package manager (yarn/pnpm/npm/bun)                |
-| =scsh=       | Screenshot utility using maim                             |
 | =setbg=      | XFCE background setter                                    |
 | =pickbg=     | Visual background picker with =nsxiv=                     |
 | =power-menu= | Power menu with =rofi=                                    |
