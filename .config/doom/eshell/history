@@ -1,6 +1,3 @@
-bash
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbdh
-qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
 exit
 virtualenv .venv
 . .venv/bin/activate 
@@ -126,3 +123,6 @@ la assets/
 nsxiv assets/screenshot.png  
 dots-screenshot 
 mv screenshot* assets/ 
+nsxiv ~/Pictures/wp
+nsxiv -t -g 1200x800+2277+127 ~/Pictures/wp/
+pickbg 

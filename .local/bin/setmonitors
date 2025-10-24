@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-xrandr --output HDMI-A-0 --primary --auto --output DisplayPort-2 --left-of HDMI-A-0 --auto

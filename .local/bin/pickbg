@@ -2,15 +2,4 @@
 
 WP_DIR="$HOME/Pictures/wp/"
 
-marked=("$WP_DIR")
-
-while true; do
-    readarray -t marked < <(nsxiv -r -t -g 1200x800+2277+127 -o "${marked[@]}" | tr '\0' '\n')
-
-    [[ "${#marked[@]}" -eq 0 ]] && exit 0;
-    [[ "${#marked[@]}" -le 1 ]] && break;
-done
-
-[[ "${#marked[@]}" -eq 1 ]] && {
-    $HOME/.local/bin/setbg "${marked[0]}"
-}
+nsxiv -t -g 1200x800+2277+127 "$WP_DIR"
