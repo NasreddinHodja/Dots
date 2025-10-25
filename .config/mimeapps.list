@@ -28,7 +28,6 @@ image/svg+xml=org.nsxiv-browse-dir.desktop
 image/svg+xml-compressed=org.nsxiv-browse-dir.desktop
 image/vnd.wap.wbmp=org.nsxiv-browse-dir.desktop
 image/x-icns=org.nsxiv-browse-dir.desktop
-x-scheme-handler/mailto=userapp-Thunderbird-Z0PYC3.desktop
 text/calendar=userapp-Thunderbird-NUNZC3.desktop
 audio/x-vorbis+ogg=mpv.desktop
 audio/aac=mpv.desktop
@@ -246,7 +245,7 @@ application/xml=zen-browser.desktop;
 application/xml-external-parsed-entity=chromium.desktop;zen-browser.desktop;
 image/webp=zen-browser.desktop;
 text/markdown=nvim.desktop;
-x-scheme-handler/mailto=userapp-Thunderbird-Z0PYC3.desktop;
 x-scheme-handler/mid=userapp-Thunderbird-Z0PYC3.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-NUNZC3.desktop;
 x-scheme-handler/webcals=userapp-Thunderbird-NUNZC3.desktop;
+

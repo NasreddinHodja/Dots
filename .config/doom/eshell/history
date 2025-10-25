@@ -1,37 +1,3 @@
-exit
-virtualenv .venv
-. .venv/bin/activate 
-source .venv/bin/activate 
-pip install pyaudio
-exit
-z down
-unzip 00-Pandeiro.zip 
-mv 00-Pandeiro/ ~/Documents/
-yay -Syu zoom
-exit
-./main.py 
-codium
-mkdir cyberia_xeque.zip 
-mkdir cyberia_xeque
-mv cyberia_xeque.zip cyberia_xeque/ 
-z cyberia_xeque
-unzip cyberia_xeque.zip 
-la
-mv selecionadas-fotos\ CYBERIA\ XEQUE\ MATE\ RJ\ 17-08selecionadas/* .
-la
-rm selecionadas-fotos\ CYBERIA\ XEQUE\ MATE\ RJ\ 17-08selecionadas/ 
-rm -r selecionadas-fotos\ CYBERIA\ XEQUE\ MATE\ RJ\ 17-08selecionadas/ 
-la
-mkdir videos
-mv *.MOV videos/ 
-mkdir pictures
-mkdir *.JPG 
-la
-mv *.JPG pictures/ 
-lr
-la
-z pictures
-la
 du -h .
 chmod +x rename.sh 
 ./rename.sh 
@@ -126,3 +92,37 @@ mv screenshot* assets/
 nsxiv ~/Pictures/wp
 nsxiv -t -g 1200x800+2277+127 ~/Pictures/wp/
 pickbg 
+git clone https://codeberg.org/nsxiv/nsxiv.git
+yay -Rns nsxiv/ 
+yay -Rns nsxiv
+nsxiv
+z ..
+la
+rm -rf nsxiv/ 
+git clone https://codeberg.org/nasrezine/nsxiv.git
+z /home/nasreddin/Prog/nsxiv 
+la
+exit
+make all
+make install-all 
+sudo !!
+sudo make install-all 
+~/.local/bin/legacy/pickbg 
+which nsxiv 
+sudo make install-all  
+nsxiv ~/Pictures/wp/1687685224005547.jpg -t
+la ~/.cache/nsxiv/ 
+rm -r ~/.cache/nsxiv/
+z ..
+rm -rf nsxiv/ 
+la
+yay -Syu nsxiv
+la
+xprop
+ka picom
+ping archlinux.org
+xprop
+conky -c ../conky/keyboard-layers.conf 
+ka conky
+which conky
+ka conky 

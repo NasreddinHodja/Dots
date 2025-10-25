@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Conky Naskbd
+Exec=/usr/bin/conky -c /home/nasreddin/.config/conky/keyboard-layers.conf
+Icon=conky-logomark-violet
+Type=Application
+Categories=Network;WebBrowser;
+StartupNotify=true
+Terminal=false
