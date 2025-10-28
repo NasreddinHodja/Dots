@@ -3,6 +3,8 @@
 while read file
 do
 	case "$1" in
+	"W")
+		cp "$file" /home/nasreddin/Pictures/wp/ ;;
 	"w")
 		/home/nasreddin/.local/bin/setbg "$file" & ;;
 	"c")

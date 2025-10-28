@@ -143,8 +143,6 @@
       <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="maximize_vert_key"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;m" type="string" value="move_window_key"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;r" type="string" value="resize_window_key"/>
-      <property name="&lt;Super&gt;Tab" type="string" value="cycle_windows_key"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;ISO_Left_Tab" type="string" value="cycle_reverse_windows_key"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;h" type="string" value="move_window_to_monitor_left_key"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="move_window_to_monitor_right_key"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;k" type="string" value="tile_up_key"/>
