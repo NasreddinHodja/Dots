@@ -1,25 +1,3 @@
-wrangler login
-nvm use 
-la ~/.nvm/ 
-nvm use
-nvm use 23
-nvm use
-chmod +x upload.sh 
-./upload.sh 
-chmod genlines.sh 
-chmod +x genlines.sh 
-./genlines.sh 
-chmod +x xfce-night-mode 
-./xfce-night-mode 
-systemctl --user stop rand-bg.timer 
-systemctl --user disable rand-bg.timer 
-setbg test.png 
-identify 
-setbg test.png 
-identify -format '%w %h' test.png
-bash
-setbg test.png 
-yay -Syu
 yay -Syu hyprland
 yay -Rns hyprland
 nsxiv ~/Pictures/wp/
@@ -126,3 +104,25 @@ z ..
 sleep 3; wmctrl -lx
 z ../..
 la
+nmcli -f ACTIVE,SSID,FREQ dev wifi | grep yes
+yay
+./watch.sh 
+sudo pacman -S xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland
+journalctl -b -1 -p err
+lspci | grep -E "VGA|3D"
+pacman -Qs mesapacman -Qs vulkan
+ls -la ~/.cache/hyprland/cat ~/.cache/hyprland/hyprland.log 2>/dev/null || echo "No Hyprland log found"
+journalctl -b -1 | grep -iE "amdgpu|radeon|drm|gpu" | tail -30
+sudo pacman -S xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-waylan
+sudo pacman -R $(pacman -Qtdq)
+sudo pacman -R $(yay-Qtdq)
+bash
+./watch.sh 
+yt-dlp -f "bv*+ba/b" https://youtu.be/1EJpWtWjUIc?si=j8H5AmaMtXAVc6b1
+yt-dlp -f "bv*+ba/b" "https://youtu.be/1EJpWtWjUIc?si=j8H5AmaMtXAVc6b1"
+conky -c keyboard-layers.conf 
+hyprctl 
+hyprctl monitors list
+env | grep HYPR
+bash
+yay -Rns hyprland hyprpaper hyprlock waybar
