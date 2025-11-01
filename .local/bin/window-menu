@@ -3,7 +3,7 @@
 theme_str='
 window {
     width: 600px;
-    height: 400px;
+    height: 300px;
 }
 
 listview {

@@ -1,17 +1,3 @@
-yay -Syu hyprland
-yay -Rns hyprland
-nsxiv ~/Pictures/wp/
-nsxiv -f ~/Pictures/wp/
-nsxiv -T 400x400 ~/Pictures/wp/
-+ 360 1920
-systemctl --user disable rand-bg 
-systemctl --user remove rand-bg 
-z prog
-git clone https://github.com/BenjaminHCCarr/PropagandaTiles.git
-z PropagandaTiles
-la
-systemctl --user status  rand-bg.service 
-systemctl --user disable rand-bg.service 
 notify-send 
 exit
 maim -h
@@ -126,3 +112,17 @@ hyprctl monitors list
 env | grep HYPR
 bash
 yay -Rns hyprland hyprpaper hyprlock waybar
+mgdl -u
+ping archlinux.org
+z ~
+sudo tar -xzvf ~/Downloads/sugar-dark.tar.gz -C /usr/share/sddm/themes
+sudo tar -xzvf ~/Downloads/sugar-dark.tar.tar -C /usr/share/sddm/themes
+la
+cd /usr/share/sddm/themes/ 
+la
+cd sugar-dark/ 
+la
+z ..
+rm -rf sugar-dark/
+sudo !!
+sudo rm -rf sugar-dark/ 
