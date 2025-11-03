@@ -1,48 +1,3 @@
-notify-send 
-exit
-maim -h
-maim
-maim 
-z /home/nasreddin/Dots/assets 
-la
-convert screenshot.png -crop 2x1@ +repage -append output.png
-convert screenshot.png -crop 2x1@ +repage -reverse -append output.png
-notify-send oiee
-flameshot full 
-z asssets
-z assets
-flameshot full -o screenshot.png 
-flameshot --help
-flameshot full --help
-flameshot full -p screenshot.png
-la
-chmod +x .local/bin/dots-screenshot
-dots-screenshot 
-magick convert screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.png
-z assets 
-flameshot full -p screenshot_raw.pngmagick convert screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.pngrm screenshot_raw.png
-dots-screenshot 
-flameshot full -p screenshot_raw.pngmagick screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.png
-nsxiv screenshot.png 
-dots-screenshot 
-nsxiv screenshot.png  
-la
-mv screenshot* assets/ 
-la
-la assets/ 
-nsxiv assets/screenshot.png  
-dots-screenshot 
-mv screenshot* assets/ 
-nsxiv ~/Pictures/wp
-nsxiv -t -g 1200x800+2277+127 ~/Pictures/wp/
-pickbg 
-git clone https://codeberg.org/nsxiv/nsxiv.git
-yay -Rns nsxiv/ 
-yay -Rns nsxiv
-nsxiv
-z ..
-la
-rm -rf nsxiv/ 
 git clone https://codeberg.org/nasrezine/nsxiv.git
 z /home/nasreddin/Prog/nsxiv 
 la
@@ -126,3 +81,48 @@ z ..
 rm -rf sugar-dark/
 sudo !!
 sudo rm -rf sugar-dark/ 
+xprop
+xwininfo -root -tree
+sleep 2; xwininfo -root -tree
+xprop -id 0x1800003
+xprop -id 0x1800003 | grep _NET_WM_WINDOW_TYPE
+xprop -id 0x1800003 | grep -E 'WM_CLASS|WM_NAME|_NET_WM_WINDOW_TYPE'
+yay -Qs sddm
+yay -Rns sddm-sugar-dark
+yay -Qs sddm
+yay -Ss sddm
+yay -Scc
+yay -Qs sddm
+yay -Ss sddm*silent*
+yay -Ss "sddm*silent*"
+yay -Ss sddm | grep silent
+yay -Syu sddm-silent-theme-git
+yay -Syu sddm-silent-theme
+la
+xrandr | grep -w connected
+a
+la
+yay -Syu gba-dew
+yay -Syu gba-dev
+mgba-qt 
+mgba  
+yay -Syu mgba
+yay -Ss mgba
+la
+rm -rf libtonc-examples/ 
+la
+git clone https://github.com/gbadev-org/libtonc-examples
+cd libtonc-examples/basic/ 
+cd first/ 
+la
+make
+la
+mgba-qt first.gba 
+./gen-xfwm-theme.py 
+la
+./gen-xfwm-theme.py 
+xfconf-query -c xsettings -p /Net/ThemeName
+gsettings get org.gnome.desktop.interface gtk-theme
+cat ~/.config/gtk-4.0/settings.ini
+./gen-xfwm-theme.py 
+./gen-xfwm-theme.py

@@ -1,3 +1,6 @@
+/home/nasreddin/Prog/gba-learning/libtonc-examples/basic/first|6|1762146154
+/sudo:root@localhost:/usr/share/sddm/scripts|3|1762103912
+/sudo:root@localhost:/usr/lib/sddm/sddm.conf.d|10|1762103577
 /usr/share/sddm/themes/sugar-dark|2|1762023175
 /usr/share/sddm/themes|8|1762025834
 /home/nasreddin/Dots/.config/hypr|12|1761945574
@@ -13,7 +16,7 @@
 /home/nasreddin/Dots/.config/systemd/user|7|1761270108
 /home/nasreddin/Games|11|1761010525
 /home/nasreddin/Prog/seed-website|14|1761252623
-/home/nasreddin/Dots/.local/share/themes|5|1760764225
+/home/nasreddin/Dots/.local/share/themes|23|1762148256
 /home/nasreddin/Facu/tcc/content/step_002|3|1760825027
 /home/nasreddin/Dots/assets|22|1761292187
 /home/nasreddin/Downloads|7|1761198316
@@ -37,7 +40,7 @@
 /home/nasreddin/Work/minerva|104|1757099589
 /home/nasreddin/.themes/Nas-Notify/xfce4-notify-4.0|1|1756067345
 /home/nasreddin/Dots/.local/bin|236|1761333655
-/home/nasreddin/Dots|166|1761945585
+/home/nasreddin/Dots|178|1762146608
 /home/nasreddin/Dots/.config/doom|26|1761253132
 /home/nasreddin/Dots/.config|1|1756060331
 /home/nasreddin/.themes/Dracula/gtk-3.0/widgets|21|1756067784
@@ -72,3 +75,7 @@
 /home/nasreddin/.local/share/themes/Nas-Notify/xfce-notify-4.0|15|1761622850
 /home/nasreddin/Dots/.local/share/applications|3|1761362664
 /home/nasreddin/.local/share/backgrounds|4|1761788067
+/sudo:root@localhost:/usr/share/sddm/themes/silent|1|1762098333
+/usr/lib/sddm/sddm.conf.d|3|1762103644
+/home/nasreddin/Prog/gba-learning|16|1762141683
+/home/nasreddin/Prog/gba-learning/libtonc-examples/basic|1|1762141712
