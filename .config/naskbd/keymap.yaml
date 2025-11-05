@@ -22,16 +22,16 @@ layers:
   SYM:
     - ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '']
     - ''
-    - {t: \, h: LGUI}
+    - {t: "'", h: LGUI}
     - {t: '[', h: LALT}
     - {t: '{', h: LCTL}
     - {t: (, h: LSFT}
-    - ''''
-    - '`'
+    - \
+    - '|'
     - {t: ), h: LSFT}
     - {t: '}', h: LCTL}
     - {t: ']', h: LALT}
-    - {t: '|', h: LGUI}
+    - {t: '`', h: LGUI}
     - ''
     - ['', '!', '@', '#', $, '%', ^, '&', '*', '=', '+', '']
     - ['', '-', _, '', {type: held}, '']
@@ -39,14 +39,14 @@ layers:
 
   NAV:
     - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
-    - ['', LGUI, LALT, LCTL, LSFT, {t: VOLU, shifted: VOLD}, LEFT, DOWN, UP, RGHT, TAB, '']
-    - ['', VOLD, MPRV, MPLY, MNXT, '', {t: HOME, shifted: MS WHLL}, {t: PGDN, shifted: MS WHLD}, {t: PGUP, shifted: MS WHLU}, {t: END, shifted: MS WHLR}, CAPS, '']
+    - ['', LGUI, LALT, LCTL, LSFT, VOLU, LEFT, DOWN, UP, RGHT, TAB, '']
+    - ['', '', MPRV, MPLY, MNXT, VOLD, {t: HOME, shifted: MS WHLL}, {t: PGDN, shifted: MS WHLD}, {t: PGUP, shifted: MS WHLU}, {t: END, shifted: MS WHLR}, '', '']
     - ['', {type: held}, '', INS, DEL, '']
 
   MOU:
     - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
     - ['', LGUI, LALT, LCTL, LSFT, VOLU, MS LEFT, MS DOWN, MS UP, MS RGHT, TAB, '']
-    - ['', VOLD, MPRV, MPLY, MNXT, '', MS WHLL, MS WHLD, MS WHLU, MS WHLR, MS BTN3, '']
+    - ['', '', MPRV, MPLY, MNXT, VOLD, MS WHLL, MS WHLD, MS WHLU, MS WHLR, MS BTN3, '']
     - ['', '', {type: held}, MS BTN2, MS BTN1, '']
 
   FUN:
@@ -78,3 +78,4 @@ combos:
   - {p: [27, 28], k: "^", l: ["BASE"]}
   - {p: [7, 8], k: "\"", l: ["BASE"]}
   - {p: [8, 9], k: "~", l: ["BASE"]}
+  - {p: [7, 8, 9], k: "CAPS", l: ["BASE"], a: top, o: 0.2}

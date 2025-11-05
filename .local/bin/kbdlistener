@@ -8,23 +8,26 @@ PRODUCT_ID = 0x0001
 USAGE_PAGE = 0xFF60
 USAGE = 0x61
 
+def connect_device():
+    devices = hid.enumerate(VENDOR_ID, PRODUCT_ID)
+    raw_hid = [d for d in devices if d['usage_page'] == USAGE_PAGE and d['usage'] == USAGE]
+
+    if not raw_hid:
+        print("Searching...", flush=True)
+        time.sleep(2)
+        return None
+
+    return hid.Device(path=raw_hid[0]['path'])
+
 def listen_for_layers():
-    device = None
-
     while True:
+        device = connect_device()
+        if device is None:
+            continue
+
         try:
-            if device is None:
-                devices = hid.enumerate(VENDOR_ID, PRODUCT_ID)
-                raw_hid = [d for d in devices if d['usage_page'] == USAGE_PAGE and d['usage'] == USAGE]
-
-                if not raw_hid:
-                    print("Searching...", flush=True)
-                    time.sleep(2)
-                    continue
-
-                device = hid.Device(path=raw_hid[0]['path'])
-
             data = device.read(32, timeout=1000)
+            print(data)
             if data and data[0] == 0x01:
                 layer_name = bytes(data[2:]).split(b'\x00')[0].decode('utf-8')
                 print(f"{layer_name}", flush=True)
@@ -33,6 +36,15 @@ def listen_for_layers():
                         f.write(layer_name + "\n")
                 except Exception as e:
                     print(f"File write error: {e}", flush=True)
+            if data and data[0] == 0x02:
+                states = [bool(state) for state in data[1:]]
+                print(f"states = {states}", flush=True)
+                try:
+                    with open("/tmp/keyboard_leds", "w") as f:
+                        f.write(f"{states}")
+                except Exception as e:
+                    print(f"File write error: {e}", flush=True)
+
 
         except (IOError, OSError) as e:
             print("Reconnecting...", flush=True)

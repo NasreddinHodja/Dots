@@ -3,7 +3,6 @@
 # Directional window switcher (for X) with cursor movement
 # Usage: ./dws [up|down|left|right]
 
-set -x
 set -euo pipefail
 
 readonly MAX_DISTANCE=999999

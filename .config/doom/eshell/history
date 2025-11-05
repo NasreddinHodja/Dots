@@ -1,57 +1,3 @@
-git clone https://codeberg.org/nasrezine/nsxiv.git
-z /home/nasreddin/Prog/nsxiv 
-la
-exit
-make all
-make install-all 
-sudo !!
-sudo make install-all 
-~/.local/bin/legacy/pickbg 
-which nsxiv 
-sudo make install-all  
-nsxiv ~/Pictures/wp/1687685224005547.jpg -t
-la ~/.cache/nsxiv/ 
-rm -r ~/.cache/nsxiv/
-z ..
-rm -rf nsxiv/ 
-la
-yay -Syu nsxiv
-la
-xprop
-ka picom
-ping archlinux.org
-xprop
-conky -c ../conky/keyboard-layers.conf 
-ka conky
-which conky
-ka conky 
-la
-nsxiv -r -t
-nsxiv -r -t .
-la
-mkdir ~/Pictures/wp/tiles
-./select-mine.sh
-xprop -name Genmon
-n|
-wmctrl -lx
-sleep 2; wmctrl -lG
-sleep 3; wmctrl -lG
-sleep 3; wmctrl -lx
-yay -Syu hyprland
-./select-mine.sh 
-z ..
-./watch.sh 
-./select-mine.sh 
-sleep 3; wmctrl -lx
-z ../..
-la
-nmcli -f ACTIVE,SSID,FREQ dev wifi | grep yes
-yay
-./watch.sh 
-sudo pacman -S xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland
-journalctl -b -1 -p err
-lspci | grep -E "VGA|3D"
-pacman -Qs mesapacman -Qs vulkan
 ls -la ~/.cache/hyprland/cat ~/.cache/hyprland/hyprland.log 2>/dev/null || echo "No Hyprland log found"
 journalctl -b -1 | grep -iE "amdgpu|radeon|drm|gpu" | tail -30
 sudo pacman -S xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-waylan
@@ -126,3 +72,57 @@ gsettings get org.gnome.desktop.interface gtk-theme
 cat ~/.config/gtk-4.0/settings.ini
 ./gen-xfwm-theme.py 
 ./gen-xfwm-theme.py
+cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist
+typst compile main.typ Tomas_Bizet_CV.pdf
+sioyek Tomas_Bizet_CV.pdf 
+typst compile main.typ Tomas_Bizet_CV.pdf
+sioyek Tomas_Bizet_CV.pdf
+typst compile main.typ Tomas_Bizet_CV.pdf
+sioyek Tomas_Bizet_CV.pdf
+typst compile main.typ Tomas_Bizet_CV.pdf
+sioyek Tomas_Bizet_CV.pdf
+typst compile main.typ Tomas_Bizet_CV.pdf
+sioyek Tomas_Bizet_CV.pdf
+node ./main.js 
+node ./main.js |
+node ./main.js 
+./watch.sh 
+yay
+./watch.sh 
+exit
+cd
+z prog
+la
+git clone https://github.com/gbadev-org/libtonc-template.git
+la
+rm -rf .git
+make
+la
+rm -rf *
+la
+exit
+make
+la
+./watch.sh 
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd
+keymap --help
+keymap draw --help
+keymap draw -s BASE -o test.png
+keymap draw -s BASE -o test.png keymap.yaml 
+nsxiv test.png 
+la
+rm *.svg
+la
+rm test.png
+keymap draw -o diagram.svg keymap.yaml
+keymap draw -s BASE -o base.svg keymap.yaml
+keymap draw -s SYM -o base.svg keymap.yaml
+keymap draw -s BASE -o base.svg keymap.yaml
+keymap draw -s SYM -o sym.svg keymap.yaml
+keymap draw -s NAV -o nav.svg keymap.yaml
+keymap draw -s MOU -o mou.svg keymap.yaml
+keymap draw -s FUN -o fun.svg keymap.yaml
+keymap draw -s GAM -o gam.svg keymap.yaml
+keymap draw -s GNM -o gnm.svg keymap.yaml
+la
