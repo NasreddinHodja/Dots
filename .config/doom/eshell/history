@@ -1,17 +1,3 @@
-ls -la ~/.cache/hyprland/cat ~/.cache/hyprland/hyprland.log 2>/dev/null || echo "No Hyprland log found"
-journalctl -b -1 | grep -iE "amdgpu|radeon|drm|gpu" | tail -30
-sudo pacman -S xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-waylan
-sudo pacman -R $(pacman -Qtdq)
-sudo pacman -R $(yay-Qtdq)
-bash
-./watch.sh 
-yt-dlp -f "bv*+ba/b" https://youtu.be/1EJpWtWjUIc?si=j8H5AmaMtXAVc6b1
-yt-dlp -f "bv*+ba/b" "https://youtu.be/1EJpWtWjUIc?si=j8H5AmaMtXAVc6b1"
-conky -c keyboard-layers.conf 
-hyprctl 
-hyprctl monitors list
-env | grep HYPR
-bash
 yay -Rns hyprland hyprpaper hyprlock waybar
 mgdl -u
 ping archlinux.org
@@ -126,3 +112,17 @@ keymap draw -s FUN -o fun.svg keymap.yaml
 keymap draw -s GAM -o gam.svg keymap.yaml
 keymap draw -s GNM -o gnm.svg keymap.yaml
 la
+echo $DISPLAY
+emacsclient -c
+systemctl --user daemon-reload 
+systemctl --user restart emacs.service 
+emacs --fg-daemon 
+systemctl --user daemon-reload
+systemctl --user restart emacs.service
+systemctl --user status emacs.service
+/usr/bin/emacs --fg-daemon --with-x-toolkit=lucid
+/usr/bin/emacs --daemon --headless
+systemctl --user remove emacs
+systemctl --user disable emacs
+systemctl --user enable emacs
+./main-emacsclient 

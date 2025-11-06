@@ -22,8 +22,8 @@
 /home/nasreddin/Dots/assets|22|1761292187
 /home/nasreddin/Downloads|7|1761198316
 /home/nasreddin/Videos/obs|8|1761950930
-/home/nasreddin/Dots/.config/qmk_firmware|47|1762320096
-/home/nasreddin/Dots/.config/naskbd|156|1762321440
+/home/nasreddin/Dots/.config/qmk_firmware|52|1762377590
+/home/nasreddin/Dots/.config/naskbd|171|1762378081
 /home/nasreddin/Prog/zxtab/src|112|1760135018
 /home/nasreddin/Prog/bash-learning|12|1761426116
 /home/nasreddin/Prog/kbldraw|9|1757437681
@@ -40,7 +40,7 @@
 /home/nasreddin/Notes|28|1757626561
 /home/nasreddin/Work/minerva|104|1757099589
 /home/nasreddin/.themes/Nas-Notify/xfce4-notify-4.0|1|1756067345
-/home/nasreddin/Dots/.local/bin|252|1762310460
+/home/nasreddin/Dots/.local/bin|260|1762373007
 /home/nasreddin/Dots|178|1762146608
 /home/nasreddin/Dots/.config/doom|26|1761253132
 /home/nasreddin/Dots/.config|1|1756060331
@@ -57,7 +57,7 @@
 /home/nasreddin/Prog/kbld|7|1757438572
 /home/nasreddin/Prog/bash-learning/notes|22|1761426112
 /home/nasreddin/Prog/zxtab|4|1760132652
-/home/nasreddin/Dots/.config/qmk_firmware/keyboards/crkbd/keymaps/naskbd|147|1762321038
+/home/nasreddin/Dots/.config/qmk_firmware/keyboards/crkbd/keymaps/naskbd|154|1762406947
 /home/nasreddin/Dots/.config/qmk_firmware/keyboards/crkbd|1|1760156530
 /home/nasreddin/Prog/kbdlistener|9|1760157782
 /home/nasreddin/Dots/.config/conky|31|1761938612
@@ -83,3 +83,4 @@
 /home/nasreddin/Documents/CV/resume|20|1762210096
 /home/nasreddin/Prog/scratch|11|1762216011
 /home/nasreddin/Prog/gba-rasgamortalha|14|1762298357
+/usr/lib/systemd/user|9|1762372776

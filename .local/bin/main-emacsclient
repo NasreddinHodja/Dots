@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 while ! emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
     sleep 0.3
 done
@@ -8,9 +9,8 @@ frame_params="((width . 120) (height . 45) (left . 2269) (top . 0) (fullscreen .
 
 if [ -n "$*" ]; then
     /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" --frame-parameters="$frame_params" "$@" &
-
 else
-    /usr/bin/emacsclient --alternate-editor= --create-frame --frame-parameters="$frame_params" &
+    /usr/bin/emacsclient --alternate-editor= --create-frame --display="$DISPLAY" --frame-parameters="$frame_params" &
 fi
 
 sleep 0.8
