@@ -1,9 +1,3 @@
-yay -Rns hyprland hyprpaper hyprlock waybar
-mgdl -u
-ping archlinux.org
-z ~
-sudo tar -xzvf ~/Downloads/sugar-dark.tar.gz -C /usr/share/sddm/themes
-sudo tar -xzvf ~/Downloads/sugar-dark.tar.tar -C /usr/share/sddm/themes
 la
 cd /usr/share/sddm/themes/ 
 la
@@ -126,3 +120,9 @@ systemctl --user remove emacs
 systemctl --user disable emacs
 systemctl --user enable emacs
 ./main-emacsclient 
+git pus 
+git push
+systemctl --user disable emacs
+cp /usr/lib/systemd/user/emacs.service .config/systemd/user/ 
+systemctl --user list-units --type=targetsystemctl --user list-units --type=service | grep xfce
+systemctl --user daemon-reloadsystemctl --user disable emacs.servicesystemctl --user enable emacs.servicesystemctl --user restart emacs.service
