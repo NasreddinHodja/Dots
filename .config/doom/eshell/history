@@ -1,8 +1,3 @@
-yay -Scc
-yay -Qs sddm
-yay -Ss sddm*silent*
-yay -Ss "sddm*silent*"
-yay -Ss sddm | grep silent
 yay -Syu sddm-silent-theme-git
 yay -Syu sddm-silent-theme
 la
@@ -126,3 +121,8 @@ keymap draw --help
 ./watch.sh 
 exit
 mgdl -u
+dots-screenshot 
+bat ~/.local/bin/dots-screenshot 
+flameshot full -p screenshot_raw.png
+la
+rm screenshot_raw.png 
