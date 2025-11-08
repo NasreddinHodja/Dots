@@ -1,0 +1,3 @@
+[submodule ".config/qmk_userspace"]
+	path = .config/qmk_userspace
+	url = https://github.com/NasreddinHodja/qmk_userspace.git

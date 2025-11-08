@@ -1,32 +1,3 @@
-yay -Syu sddm-silent-theme-git
-yay -Syu sddm-silent-theme
-la
-xrandr | grep -w connected
-a
-la
-yay -Syu gba-dew
-yay -Syu gba-dev
-mgba-qt 
-mgba  
-yay -Syu mgba
-yay -Ss mgba
-la
-rm -rf libtonc-examples/ 
-la
-git clone https://github.com/gbadev-org/libtonc-examples
-cd libtonc-examples/basic/ 
-cd first/ 
-la
-make
-la
-mgba-qt first.gba 
-./gen-xfwm-theme.py 
-la
-./gen-xfwm-theme.py 
-xfconf-query -c xsettings -p /Net/ThemeName
-gsettings get org.gnome.desktop.interface gtk-theme
-cat ~/.config/gtk-4.0/settings.ini
-./gen-xfwm-theme.py 
 ./gen-xfwm-theme.py
 cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist
 typst compile main.typ Tomas_Bizet_CV.pdf
@@ -126,3 +97,32 @@ bat ~/.local/bin/dots-screenshot
 flameshot full -p screenshot_raw.png
 la
 rm screenshot_raw.png 
+kbdlistener 
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd 
+git clone https://github.com/qmk/qmk_userspace.git
+qmk config user.overlay_dir="$(realpath qmk_userspace)"
+bash
+la
+git clone https://github.com/qmk/qmk_userspace.git
+lqa
+qmk config user.overlay_dir="$(realpath qmk_userspace)"
+la
+rm -rf qmk_userspace/ 
+git clone https://github.com/NasreddinHodja/qmk_userspace.git
+qmk config user.overlay_dir="$(realpath qmk_userspace)"t
+qmk config user.overlay_dir="$(realpath qmk_userspace)"
+qmk compile -kb crkbd/rev1 -e CONVERT_TO=rp2040_ce -km naskbd 
+qmk userspace-add -kb crkbd -km naskbd
+qmk config
+qmk userspace-add -kb crkbd -km naskbdg
+qmk setup
+qmk setup -H ~/.config/ 
+qmk setup -H ~/.config/qmk_firmware
+exit
+qmk compile -kb crkbd/rev1 -km naskbd
+git status
+git add .
+git commit -m "moved to external userspace"
+git pute
+git push
+qmk compile -kb crkbd/rev1 -km naskbd
