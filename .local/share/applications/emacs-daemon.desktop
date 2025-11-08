@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Emacs Daemon
+Comment=Start Emacs in daemon mode
+Exec=emacs --fg-daemon
+Icon=emacs
+Terminal=false
+Categories=Utility;TextEditor;
+StartupNotify=false
