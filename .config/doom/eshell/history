@@ -1,22 +1,3 @@
-la
-cd /usr/share/sddm/themes/ 
-la
-cd sugar-dark/ 
-la
-z ..
-rm -rf sugar-dark/
-sudo !!
-sudo rm -rf sugar-dark/ 
-xprop
-xwininfo -root -tree
-sleep 2; xwininfo -root -tree
-xprop -id 0x1800003
-xprop -id 0x1800003 | grep _NET_WM_WINDOW_TYPE
-xprop -id 0x1800003 | grep -E 'WM_CLASS|WM_NAME|_NET_WM_WINDOW_TYPE'
-yay -Qs sddm
-yay -Rns sddm-sugar-dark
-yay -Qs sddm
-yay -Ss sddm
 yay -Scc
 yay -Qs sddm
 yay -Ss sddm*silent*
@@ -126,3 +107,22 @@ systemctl --user disable emacs
 cp /usr/lib/systemd/user/emacs.service .config/systemd/user/ 
 systemctl --user list-units --type=targetsystemctl --user list-units --type=service | grep xfce
 systemctl --user daemon-reloadsystemctl --user disable emacs.servicesystemctl --user enable emacs.servicesystemctl --user restart emacs.service
+systemctl disable emacs
+systemctl --user disable emacs
+emacs --daemon
+mgdl -d https://weebcentral.com/series/01J76XY7E4JCPK14V53BVQWD9Y/Bleach
+./watch.sh 
+exit
+file ../naskbd/base.svg 
+bash
+identify -format "%wx%h\n" ../naskbd/base.svg
+identify -format "%wx%h\n" ../naskbd/sym.svg
+kbdlistener 
+a
+la
+kbdlistener
+keymap --help
+keymap draw --help
+./watch.sh 
+exit
+mgdl -u
