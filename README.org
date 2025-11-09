@@ -67,26 +67,25 @@ Dots/
 [[./.config/naskbd/diagram.svg]]
 
 ** Features
-+ *34 keys, except in gaming layers*
-  34 keys feel extremely comfortable. Gaming (especially FPS) benefits from a few extra keys, though.
+*** 34 keys, except in gaming layers
+34 keys feel extremely comfortable. Gaming (especially FPS) benefits from a few extra keys, though.
 
-+ *Colemak DH for* =BASE=
+*** Colemak DH for =BASE= + combos
+Combos for most common symbols, =CAPS= and =DEL=
 
-+ *Combos in* =BASE= *for most common symbols*
+*** Typing with only 2 layers
+Initially, I used separate layers for numbers and symbols, inspired by [[https://github.com/manna-harbour/miryoku][miryoku]].
+I later found that holding the outer thumb keys on the Corne is a bit uncomfortable, but pressing keys with the right hand while holding a thumb key on the same hand actually feels fine.
+I’m now experimenting with having just one additional layer for typing, accessed by holding the most comfortable right-hand thumb key (the one that’s less messed up).
 
-+ *Typing with only 2 layers*
-  Initially, I used separate layers for numbers and symbols, inspired by [[https://github.com/manna-harbour/miryoku][miryoku]].
-  I later found that holding the outer thumb keys on the Corne is a bit uncomfortable, but pressing keys with the right hand while holding a thumb key on the same hand actually feels fine.
-  I’m now experimenting with having just one additional layer for typing, accessed by holding the most comfortable right-hand thumb key (the one that’s less messed up).
+*** =SYM= layer
++ Top row: numbers, mimicking a classic keyboard layout
++ Left hand: symbols
++ Right hand: =() [] {} <>=
 
-+ =SYM= *layer*
-  - Top row: numbers, mimicking a classic keyboard layout
-  - Left hand: symbols
-  - Right hand: =() [] {} <>=
+*** Home row mods on =BASE= and =SYM=
 
-+ *Home row mods on* =BASE= *and* =SYM=
-
-+ *Sticky* =MOU= *and* =NAV= *layers*
-  After holding the corresponding layer key and pressing any key defined in =MOU= or =NAV=, the layer remains active even after releasing the key.
-  The layer automatically turns off when a =KC_TRNS= or =KC_NO= key is pressed.
-  These layers are mostly used for navigation keys, which are often pressed in sequences. Keeping the layer sticky prevents strain from holding the layer key for extended periods — you only need to hold it for the first keypress.
+*** Sticky =MOU= and =NAV= layers
+After holding the corresponding layer key and pressing any key defined in =MOU= or =NAV=, the layer remains active even after releasing the key.
+The layer automatically turns off when a =KC_TRNS= or =KC_NO= key is pressed.
+These layers are mostly used for navigation keys, which are often pressed in sequences. Keeping the layer sticky prevents strain from holding the layer key for extended periods — you only need to hold it for the first keypress.
