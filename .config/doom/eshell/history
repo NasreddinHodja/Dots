@@ -1,23 +1,3 @@
-./gen-xfwm-theme.py
-cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist
-typst compile main.typ Tomas_Bizet_CV.pdf
-sioyek Tomas_Bizet_CV.pdf 
-typst compile main.typ Tomas_Bizet_CV.pdf
-sioyek Tomas_Bizet_CV.pdf
-typst compile main.typ Tomas_Bizet_CV.pdf
-sioyek Tomas_Bizet_CV.pdf
-typst compile main.typ Tomas_Bizet_CV.pdf
-sioyek Tomas_Bizet_CV.pdf
-typst compile main.typ Tomas_Bizet_CV.pdf
-sioyek Tomas_Bizet_CV.pdf
-node ./main.js 
-node ./main.js |
-node ./main.js 
-./watch.sh 
-yay
-./watch.sh 
-exit
-cd
 z prog
 la
 git clone https://github.com/gbadev-org/libtonc-template.git
@@ -125,4 +105,24 @@ git add .
 git commit -m "moved to external userspace"
 git pute
 git push
+qmk compile -kb crkbd/rev1 -km naskbd
+git add
+git add .
+git submodule add https://github.com/NasreddinHodja/qmk_userspace.git .config/qmk_userspace
+la
+git rm -r --cached .config/qmk_userspace
+git rm -r --cached .config/qmk_userspace -f
+la
+la .config/qmk_userspace/ 
+git submodule add https://github.com/NasreddinHodja/qmk_userspace.git .config/qmk_userspace 
+git statu
+git status
+qmk compile -kb crkbd/rev1 -km naskbd
+qmk compile -kb crkbd/rev1 -km bup
+qmk compile -kb crkbd/rev1 -km naskbd
+la .
+la ../../../../
+la ../../../../users/
+la ../../../../users/nasreddin
+la
 qmk compile -kb crkbd/rev1 -km naskbd
