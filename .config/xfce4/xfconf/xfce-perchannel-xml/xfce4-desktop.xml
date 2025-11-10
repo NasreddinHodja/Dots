@@ -9,13 +9,13 @@
     <property name="screen0" type="empty">
       <property name="monitorHDMI-A-0" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/nasreddin/.config/wp.png"/>
+          <property name="last-image" type="string" value="/home/nasreddin/.config/wp.jpg"/>
           <property name="image-style" type="int" value="5"/>
         </property>
       </property>
       <property name="monitorDisplayPort-2" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/nasreddin/.config/wp.png"/>
+          <property name="last-image" type="string" value="/home/nasreddin/.config/wp.jpg"/>
           <property name="rgba1" type="array">
             <value type="double" value="0.16862745098039217"/>
             <value type="double" value="0.16470588235294117"/>
