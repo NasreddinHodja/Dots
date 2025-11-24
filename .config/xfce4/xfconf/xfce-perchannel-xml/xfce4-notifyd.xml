@@ -40,4 +40,5 @@
   <property name="min-width" type="uint" value="300"/>
   <property name="date-time-format" type="string" value="locale-default"/>
   <property name="show-notifications-on" type="string" value="primary-monitor"/>
+  <property name="initial-opacity" type="double" value="0.80000000000000004"/>
 </channel>

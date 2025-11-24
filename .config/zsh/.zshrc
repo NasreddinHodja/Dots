@@ -23,48 +23,48 @@ is_interactive_terminal() {
 }
 
 # vi mode
-if is_interactive_terminal; then
-    bindkey -v
-    export KEYTIMEOUT=1
+# if is_interactive_terminal; then
+bindkey -v
+export KEYTIMEOUT=1
 
-    # keys for history substring search
-    bindkey -M vicmd 'k' history-substring-search-up
-    bindkey -M vicmd 'j' history-substring-search-down
+# keys for history substring search
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
-    # vim keys in tab complete menu
-    bindkey -M menuselect 'h' vi-backward-char
-    bindkey -M menuselect 'k' vi-up-line-or-history
-    bindkey -M menuselect 'l' vi-forward-char
-    bindkey -M menuselect 'j' vi-down-line-or-history
-    bindkey -v '^?' backward-delete-char
+# vim keys in tab complete menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
 
-    # cursor shape for different vi modes
-    function zle-keymap-select {
-        if [[ ${KEYMAP} == vicmd ]] ||
-           [[ $1 = 'block' ]]; then
-            echo -ne '\e[1 q'
-        elif [[ ${KEYMAP} == main ]] ||
-             [[ ${KEYMAP} == viins ]] ||
-             [[ ${KEYMAP} = '' ]] ||
-             [[ $1 = 'beam' ]]; then
-            echo -ne '\e[5 q'
-        fi
-    }
-    zle -N zle-keymap-select
-    zle-line-init() {
-        zle -K viins
-        echo -ne "\e[5 q"
-    }
-    zle -N zle-line-init
-    echo -ne '\e[5 q' # use beam shape cursor on startup.
-    preexec() { echo -ne '\e[5 q' ;}
-else
-    # keys for history substring search
-    bindkey '^P' history-substring-search-up
-    bindkey '^N' history-substring-search-down
-    bindkey -M vicmd '^P' history-substring-search-up
-    bindkey -M vicmd '^N' history-substring-search-down
-fi
+# cursor shape for different vi modes
+function zle-keymap-select {
+    if [[ ${KEYMAP} == vicmd ]] ||
+        [[ $1 = 'block' ]]; then
+        echo -ne '\e[1 q'
+    elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+        echo -ne '\e[5 q'
+    fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;}
+# else
+#     # keys for history substring search
+#     bindkey '^P' history-substring-search-up
+#     bindkey '^N' history-substring-search-down
+#     bindkey -M vicmd '^P' history-substring-search-up
+#     bindkey -M vicmd '^N' history-substring-search-down
+# fi
 
 # load aliases and shortcuts if existent
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"

@@ -2,10 +2,9 @@
 
 
 count=0
-while ! emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
-    (( count > 30 )) && exit 1
-    sleep 0.3
-    (( count++ ))
+until emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
+    (( count++ > 100 )) && exit 1
+    sleep 0.1
 done
 
 frame_params="((width . 120) (height . 45) (left . 2269) (top . 0) (fullscreen . fullheight))"
@@ -16,6 +15,11 @@ else
     /usr/bin/emacsclient --alternate-editor= --create-frame --display="$DISPLAY" --frame-parameters="$frame_params" &
 fi
 
-sleep 0.8
+count=0
+until xdotool search --class Emacs >/dev/null 2>&1; do
+    (( count++ > 100 )) && exit 1
+    sleep 0.1
+done
 
+wmctrl -x -r emacs.Emacs -t 0
 center-window

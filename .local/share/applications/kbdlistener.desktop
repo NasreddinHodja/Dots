@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=kbdlistener
+Comment=Listens to hid reports from QMK keyboard
+Exec=/home/nasreddin/.local/bin/kbdlistener
+Type=Application
+Terminal=false
+Categories=Development;TextEditor;

@@ -8,3 +8,5 @@ keymap draw -s MOU -o mou.svg keymap.yaml
 keymap draw -s FUN -o fun.svg keymap.yaml
 keymap draw -s GAM -o gam.svg keymap.yaml
 keymap draw -s GNM -o gnm.svg keymap.yaml
+
+sed -i '/class="layer-.*"/,/\/g/ {/class="label"/d}' *.svg

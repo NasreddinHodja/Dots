@@ -71,6 +71,17 @@
 ;; lsp hints
 (setq lsp-inlay-hint-enable t)
 
+;; transparency
+(set-frame-parameter (selected-frame) 'alpha '(92 . 92))
+(add-to-list 'default-frame-alist '(alpha . (92 . 92)))
+
+;;
+;;; * EMACS BINDINGS ===========================================================
+;;
+
+(map! "C-=" #'er/expand-region)
+
+
 ;;
 ;;; * ORG-MODE =================================================================
 ;;
@@ -289,6 +300,8 @@
 ;;; * VTERM ====================================================================
 ;;
 
+;; (add-hook 'vterm-mode-hook #'evil-emacs-state)
+
 ;; (after! vterm
 ;;   (defun nas/vterm-send-c ()
 ;;     "Send c command to zsh vi mode."
@@ -327,8 +340,6 @@
 ;;
 ;;; * KANATA =====================================================================
 ;;
-
-(use-package! kanata-kbd-mode)
 
 (use-package! kanata-kbd-mode
   :mode ("\\.kbd\\'" . kanata-kbd-mode))
