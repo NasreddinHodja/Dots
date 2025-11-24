@@ -85,7 +85,7 @@ I’m now experimenting with having just one additional layer for typing, access
 
 *** Home row mods on =BASE= and =SYM=
 
-*** Sticky =MOU= and =NAV= layers
-After holding the corresponding layer key and pressing any key defined in =MOU= or =NAV=, the layer remains active even after releasing the key.
+*** Sticky =MOU= layer
+After holding the corresponding layer key and pressing any key defined in =MOU=, the layer remains active even after releasing the key.
 The layer automatically turns off when a =KC_TRNS= or =KC_NO= key is pressed.
 These layers are mostly used for navigation keys, which are often pressed in sequences. Keeping the layer sticky prevents strain from holding the layer key for extended periods — you only need to hold it for the first keypress.

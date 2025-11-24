@@ -1,12 +1,3 @@
-git add
-git add .
-git submodule add https://github.com/NasreddinHodja/qmk_userspace.git .config/qmk_userspace
-la
-git rm -r --cached .config/qmk_userspace
-git rm -r --cached .config/qmk_userspace -f
-la
-la .config/qmk_userspace/ 
-git submodule add https://github.com/NasreddinHodja/qmk_userspace.git .config/qmk_userspace 
 git statu
 git status
 qmk compile -kb crkbd/rev1 -km naskbd
@@ -126,3 +117,12 @@ ka conky
 ./draw.sh 
 ka conky
 qmk compile -kb crkbd/rev1 -km naskbd
+qmk compile -kb crkbd/rev1 -km naskbd 
+qmk compile -kb crkbd/rev1 -km naskbd
+dots-screenshot 
+la
+rm *.png
+dots-screenshot 
+nsxiv .
+dots-screenshot 
+dots-screenshot

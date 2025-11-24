@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 
-flameshot full -p screenshot_raw.png
-magick screenshot_raw.png -crop 2x1@ +repage -reverse -append screenshot.png
+TRID="666666"
+notify-send -i camera-photo "Dots screenshot" --hint=int:value:"50%" --replace-id=$TRID
+
+flameshot full -p ~/Dots/assets/screenshot_raw.png
+magick ~/Dots/assets/screenshot_raw.png -crop 2x1@ +repage -reverse -append ~/Dots/assets/screenshot.png
+rm ~/Dots/assets/screenshot_raw.png
+
+notify-send -i camera-photo "Dots screenshot" --hint=int:value:"100%" --replace-id=$TRID
