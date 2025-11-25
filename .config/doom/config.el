@@ -72,8 +72,8 @@
 (setq lsp-inlay-hint-enable t)
 
 ;; ;; transparency
-(set-frame-parameter (selected-frame) 'alpha '(92 . 92))
-(add-to-list 'default-frame-alist '(alpha . (92 . 92)))
+(set-frame-parameter (selected-frame) 'alpha '(91 . 91))
+(add-to-list 'default-frame-alist '(alpha . (91 . 91)))
 
 ;;
 ;;; * EMACS BINDINGS ===========================================================

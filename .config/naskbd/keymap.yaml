@@ -3,20 +3,20 @@ layout: {qmk_keyboard: mechboards/crkbd/pro, layout_name: LAYOUT_split_3x6_3}
 
 layers:
   BASE:
-    - ['', Q, W, F, P, B, J, L, U, Y, ;, '']
+    - ['', q, b, m, g, k, x, l, o, u, ;, '']
     - ''
-    - {t: A, h: LGUI}
-    - {t: R, h: LALT}
-    - {t: S, h: LCTL}
-    - {t: T, h: LSFT}
-    - {t: G, h: RALT}
-    - {t: M, h: RALT}
-    - {t: N, h: LSFT}
-    - {t: E, h: LCTL}
-    - {t: I, h: LALT}
-    - {t: O, h: LGUI}
+    - {t: d, h: LGUI}
+    - {t: n, h: LALT}
+    - {t: s, h: LCTL}
+    - {t: t, h: LSFT}
+    - {t: w, h: RALT}
+    - {t: z, h: RALT}
+    - {t: r, h: LSFT}
+    - {t: a, h: LCTL}
+    - {t: e, h: LALT}
+    - {t: i, h: LGUI}
     - ''
-    - ['', Z, X, C, D, V, K, H, ',', ., /, '']
+    - ['', y, f, c, p, v, j, h, ',', '.', '/', '']
     - ['', {t: ESC, h: NAV}, {t: BSPC, h: MOU}, {t: ENT, h: FUN}, {t: SPC, h: SYM}, '']
   SYM:
     - ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '']
