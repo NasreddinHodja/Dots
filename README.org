@@ -84,6 +84,8 @@ I’m now experimenting with having just one additional layer for typing, access
 + Right hand: =() [] {} <>=
 
 *** Home row mods on =BASE= and =SYM=
++ hold homerow keys to activate mods
++ includes right alt
 
 *** Sticky =MOU= layer
 After holding the corresponding layer key and pressing any key defined in =MOU=, the layer remains active even after releasing the key.

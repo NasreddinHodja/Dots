@@ -149,6 +149,10 @@
       <property name="&lt;Alt&gt;&lt;Super&gt;j" type="string" value="tile_down_key"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;h" type="string" value="tile_left_key"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;l" type="string" value="tile_right_key"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="tile_up_right_key"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;j" type="string" value="tile_down_right_key"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;h" type="string" value="tile_down_left_key"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;k" type="string" value="tile_up_left_key"/>
     </property>
   </property>
   <property name="providers" type="array">
