@@ -1,40 +1,4 @@
 exit
-kbdlistener
-yay
-mkdir modules
-git submodule add https://github.com/getreuer/qmk-modules.git modules/getreuergit submodule update --init --recursive
-git submodule update --init --recursive
-la
-la modules/ 
-la modules/getreuer/ 
-git submodule deinit -f modules
-git rm -f path/to/submodule
-git rm -f modules/ 
-git rm -rf modules/ 
-rm -rf .git/modules/modules/ 
-qmk compile -kb crkbd/rev1 -km naskbd
-keymap draw -o diagram.svg keymap.yaml
-la
-chmod +x ./draw.sh 
-./draw
-./draw.sh 
-qmk compile -kb crkbd/rev1 -km naskbd
-yay
-qmk compile -kb crkbd/rev1 -km naskbdy
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-yay -Ss floorp
-yay -Syu floorp
-yay -Rns floorp
-mgdl -u
-yt-
-yt-dlp -f "bestvideo+bestaudio" "https://www.youtube.com/watch?v=fkYQTwGMAek&list=RDfkYQTwGMAek&start_radio=1"
-la
-yt-dlp -f "bestvideo+bestaudio" "https://youtu.be/fkYQTwGMAek?si=UIfBSwsR6ET606P2"
-la
-yt-dlp -f "bestvideo+bestaudio" "https://youtu.be/fkYQTwGMAek?si=UIfBSwsR6ET606P2"
-yt-dlp -f "bestaudio" --extract-audio --audio-format mp3 "https://youtu.be/fkYQTwGMAek?si=UIfBSwsR6ET606P2"
-exit
 yay
 rm -rf /var/lib/pacman/db.lck 
 sudo !!
@@ -126,3 +90,39 @@ qmk compile -kb crkbd/rev1 -km naskbd
 ka conky
 ./draw.sh 
 ka conky
+qmk compile -kb crkbd/rev1 -km naskbd-ced
+qmk compile -kb crkbd/rev1 -km naskbd
+./draw.sh 
+keymap draw -o diagram.svg keymap.yaml
+./draw.sh 
+ka conky
+ka kbdlistener
+kbdlistener 
+kbdlistener
+ka conky
+ka kbdlistener
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+ka conky
+kbdlistener 
+ka kbdlistener
+ka conky
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd
+ka kbdlistener
+kbdlistener 
+kbdlistener
+qmk compile -kb crkbd/rev1 -km naskbd 
+qmk console
+qmk compile -kb crkbd/rev1 -km naskbd 
+qmk console
+qmk compile -kb crkbd/rev1 -km naskbd 
+./draw.sh 
+nsxiv diagram.svg 
