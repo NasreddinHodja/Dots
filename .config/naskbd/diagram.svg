@@ -125,6 +125,7 @@ path.combo {
 /* End Tabler Icons Cleanup */
 </style>
 <g transform="translate(30, 0)" class="layer-BASE">
+<text x="0" y="28" class="label" id="BASE">BASE:</text>
 <g transform="translate(0, 81)">
 <g transform="translate(28, 49)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -355,6 +356,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 356)" class="layer-CED">
+<text x="0" y="28" class="label" id="CED">CED:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 49)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -489,6 +491,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 687)" class="layer-SYM">
+<text x="0" y="28" class="label" id="SYM">SYM:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 49)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -659,6 +662,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 1017)" class="layer-NAV">
+<text x="0" y="28" class="label" id="NAV">NAV:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 49)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -819,6 +823,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 1348)" class="layer-MOU">
+<text x="0" y="28" class="label" id="MOU">MOU:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 49)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1005,6 +1010,7 @@ path.combo {
 </g>
 </g>
 <g transform="translate(30, 1678)" class="layer-FUN">
+<text x="0" y="28" class="label" id="FUN">FUN:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 49)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

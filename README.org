@@ -67,11 +67,17 @@ Dots/
 [[./.config/naskbd/diagram.svg]]
 
 ** Features
-*** 34 keys, except in gaming layers
-34 keys feel extremely comfortable. Gaming (especially FPS) benefits from a few extra keys, though.
+*** 34 keys
+34 keys feel extremely comfortable 😀.
 
 *** Colemak DH for =BASE= + combos
 Combos for most common symbols, =CAPS= and =DEL=
+
+*** =CED= layer
++ When using US intl. layout, =RALT + ,= produces a =ç=
++ =CED= layer is then activated for the next keypress, with easy access to:
+  - =õ= and =ã=
+  - =ões= and =ão=
 
 *** Typing with only 2 layers
 Initially, I used separate layers for numbers and symbols, inspired by [[https://github.com/manna-harbour/miryoku][miryoku]].

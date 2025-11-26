@@ -1,8 +1,3 @@
-exit
-yay
-rm -rf /var/lib/pacman/db.lck 
-sudo !!
-rm -rf /var/lib/pacman/db.lck 
 sudo rm -rf /var/lib/pacman/db.lck 
 ./watch.sh 
 exit
@@ -126,3 +121,8 @@ qmk console
 qmk compile -kb crkbd/rev1 -km naskbd 
 ./draw.sh 
 nsxiv diagram.svg 
+qmk compile -kb crkbd/rev1 -km naskbd
+z /home/nasreddin/Dots/.config/naskbd 
+la
+./draw.sh 
+ka conky 
