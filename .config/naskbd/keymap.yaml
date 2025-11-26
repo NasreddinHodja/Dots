@@ -16,7 +16,7 @@ layers:
     - {t: o, h: LGUI}
     - ''
     - ['', z, x, c, d, v, k, h, {t: ',', h: CED}, '.', '/', '']
-    - ['', {t: ESC, h: NAV}, {t: BSPC, h: MOU}, {t: ENT, h: FUN}, {t: SPC, h: SYM}, '']
+    - ['', {t: ESC, h: NAV}, {t: BSPC, h: MOU}, ENT, {t: SPC, h: SYM}, '']
 
   CED:
     - ['', '', '', '', '', '', '', '', '', '', '', '']
@@ -39,13 +39,13 @@ layers:
     - {t: '<', h: LGUI}
     - ''
     - ['', ':', '?', '%', '!', '`', '/', ')', ']', '}', '>', '']
-    - ['', '-', _, '', {type: held}, '']
+    - ['', {t: '-', h: FUN}, _, '', {type: held}, '']
 
   NAV:
     - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
     - ['', LGUI, LALT, LCTL, LSFT, VOLU, LEFT, DOWN, UP, RGHT, TAB, '']
     - ['', VOLD, MPRV, MPLY, MNXT, '', HOME, PGDN, PGUP, END, '', '']
-    - ['', {type: held}, '', INS, DEL, '']
+    - ['', {type: held}, '', INS, {t: DEL, h: FUN}, '']
 
   MOU:
     - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
@@ -56,12 +56,12 @@ layers:
   FUN:
     - ['', F1, F2, F3, F4, PAUS, GAM, {t: 'DM PLY1', shifted: 'DM PLY2'}, {t: 'DM REC1', shifted: 'DM REC2'}, 'DM RSTP', '', '']
     - ['', F5, F6, F7, F8, PSCR, QK BOOT, LSFT, LCTL, LALT, LGUI, '']
-    - ['', F9, F10, F11, F12, '', LOCK, '', '', '', '', '']
-    - ''
-    - APP
+    - ['', F9, F10, F11, F12, '', LOCK, APP, '', '', '', '']
     - ''
     - {type: held}
     - ''
+    - ''
+    - {type: held}
     - ''
 
 combos:

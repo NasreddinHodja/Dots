@@ -1,10 +1,3 @@
-sudo rm -rf /var/lib/pacman/db.lck 
-./watch.sh 
-exit
-resolvectl status
-yay -Syu hyprland
-exit
-./watch.sh 
 la
 ./watch-presentations.sh 
 ./build-presentations.sh 
@@ -126,3 +119,10 @@ z /home/nasreddin/Dots/.config/naskbd
 la
 ./draw.sh 
 ka conky 
+qmk compile -kb crkbd/rev1 -km naskbd
+./draw.sh 
+nsxiv diagram.svg
+qmk compile -kb crkbd/rev1 -km naskbd
+m
+./draw.sh 
+nsxiv diagram.svg
