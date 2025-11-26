@@ -8,4 +8,4 @@ keymap draw -s NAV -o nav.svg keymap.yaml
 keymap draw -s MOU -o mou.svg keymap.yaml
 keymap draw -s FUN -o fun.svg keymap.yaml
 
-# sed -i '/class="layer-.*"/,/\/g/ {/class="label"/d}' *.svg
+sed -i '/class="layer-.*"/,/\/g/ {/class="label"/d}' *.svg

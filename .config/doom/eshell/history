@@ -1,22 +1,3 @@
-la
-./watch-presentations.sh 
-./build-presentations.sh 
-./watch.sh 
-qmk compile -kb crkbd/rev1 -km naskbd
-./watch.sh 
-./watch-presentations.sh 
-exit
-yay
-qmk compile -kb crkbd/rev1 -km naskbd
-exit
-yay -Rns walker hyprland hyprpaper hyprlock 
-mgdl -u
-yay -Sc
-la
-rm -rf *
-la
-z ..
-rm -rf *
 ka conky
 ./watch.sh 
 exit
@@ -126,3 +107,22 @@ qmk compile -kb crkbd/rev1 -km naskbd
 m
 ./draw.sh 
 nsxiv diagram.svg
+./watch-presentations.sh 
+exit
+./draw.sh 
+ka conky
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd 
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd  
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd   
+kbdlistener 
+qmk compile -kb crkbd/rev1 -km naskbd   
+kbdlistener 
+ka conky
