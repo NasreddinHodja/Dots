@@ -1,74 +1,4 @@
 ka conky
-./watch.sh 
-exit
-./watch.sh 
-(prin1 (nas/scripts-to-html-extra '("a.js" "b.js")))
-./watch.sh 
-exit
-make photoshop VERSION=22
-make wine
-z ..
-rm -rf adobe-linux/ 
-exit
-mgdl -d https://weebcentral.com/series/01K4JBKB0VX8TCFSSF1MK2DTZZ/jujutsu-kaisen-modulo
-qmk compile -kb crkbd/rev1 -km naskbdk-romak
-cd ../../.../
-qmk compile -kb crkbd/rev1 -km naskbdk-romak
-qmk compile -kb crkbd/rev1 -km naskbd-romak
-keymap draw -o diagram.svg keymap.yaml
-keymap draw -s BASE -o base.svg keymap.yaml
-qmk compile -kb crkbd/rev1 -km naskbd
-keymap draw -s BASE -o base.svg keymap.yaml
-z ../naskbd
-keymap draw -s BASE -o base.svg keymap.yaml
-keymap draw -o diagram.svg keymap.yaml
-ka conky
-exit
-picom
-qmk compile -kb crkbd/rev1 -km naskbd
-qmk compile -kb crkbd/rev1 -km naskbd-romak
-qmk compile -kb crkbd/rev1 -km naskbd
-keymap --help 
-keymap draw --help 
-ka conky
-./draw.sh 
-ka conky
-qmk compile -kb crkbd/rev1 -km naskbd
-qmk compile -kb crkbd/rev1 -km naskbd 
-qmk compile -kb crkbd/rev1 -km naskbd
-dots-screenshot 
-la
-rm *.png
-dots-screenshot 
-nsxiv .
-dots-screenshot 
-dots-screenshot
-./watch-presentations.sh 
-yay -Syu sioyek
-sudo rm -rf /var/lib/pacman/d
-sudo rm -rf /var/lib/pacman/db.lck 
-yay -Syu sioyek
-./watch-presentations.sh 
-exit
-qmk compile -kb crkbd/rev1 -km naskbd-romak
-qmk compile -kb crkbd/rev1 -km naskbd-romakk
-qmk compile -kb crkbd/rev1 -km naskbd-romak
-./draw.sh 
-ka conky
-qmk compile -kb crkbd/rev1 -km naskbd
-ka conky
-./draw.sh 
-ka conky
-qmk compile -kb crkbd/rev1 -km naskbd-ced
-qmk compile -kb crkbd/rev1 -km naskbd
-./draw.sh 
-keymap draw -o diagram.svg keymap.yaml
-./draw.sh 
-ka conky
-ka kbdlistener
-kbdlistener 
-kbdlistener
-ka conky
 ka kbdlistener
 qmk compile -kb crkbd/rev1 -km naskbd
 kbdlistener 
@@ -126,3 +56,73 @@ kbdlistener
 qmk compile -kb crkbd/rev1 -km naskbd   
 kbdlistener 
 ka conky
+npx sv create ztyper
+codium . 
+z ..
+rm -rf ztypr/ 
+exit 
+qmk compile -kb crkbd/rev1 -km naskbd   
+qmk compile -kb crkbd/rev1 -km naskbd
+qmk compile -kb crkbd/rev1 -km naskbd-romak
+qmk compile -kb crkbd/rev1 -km naskbd
+./draw.sh 
+ka conky
+qmk compile -kb crkbd/rev1 -km naskbd
+qmk compile -kb crkbd/rev1 -km naskbd-colemak
+qmk compile -kb crkbd/rev1 -km naskbd
+./draw.sh 
+ka conky
+yay
+ka conky
+yay -Rns lightdm
+yay -Rns lightdm lightdm-gtk-greeter
+yay -Rns lightdm-gtk-greeter
+yay -Rns lightdm-gtk-greeter-settings
+yay -Rns lightdm-gtk-greeter
+yay -Rns lightdm
+systemctl disable sddm
+sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+systemctl enable lightdm
+yay -Rns sddm sddm-kcm
+yay -Rns sddm 
+yay -Rns sddm sddm-silent-theme
+systemctl enable --now lightdm
+journalctl -xeu lightdm.service
+./on-workspace-switch 
+exit
+yay -Syu qtile
+xrandr
+yay -Syu arandr
+la ../screenlayout.sh 
+exit
+la ~/.local/bin
+window-menu 
+loginctl lock-session
+xscreensaver 
+xscreensaver-command -lock
+xscreensaver -no-splash &
+xscreensaver-command -lock
+lxappearence
+yay -Syu lxappearence
+yay -Syu lxappearance
+./config.py
+python config.py 
+qtile cmd-obj -o cmd -f reload_config
+qtile check
+yay -Syu dunst
+qtile check
+yay -Syu python-mypy
+qtile check
+mypy
+yay -Syu mypy
+python ./config.py 
+python ./config.py
+touch modules/__init__.py
+qtile cmd-obj -o cmd -f restart
+python3
+qtile cmd-obj -o cmd -f restart
+qtile check
+qtile cmd-obj -o cmd -f restart
+qtile check
+exit
+qtile check

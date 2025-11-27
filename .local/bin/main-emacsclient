@@ -3,7 +3,7 @@
 
 count=0
 until emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
-    (( count++ > 100 )) && exit 1
+    (( count++ > 500 )) && exit 1
     sleep 0.1
 done
 
@@ -17,7 +17,7 @@ fi
 
 count=0
 until xdotool search --class Emacs >/dev/null 2>&1; do
-    (( count++ > 100 )) && exit 1
+    (( count++ > 500 )) && exit 1
     sleep 0.1
 done
 

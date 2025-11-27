@@ -71,9 +71,15 @@
 ;; lsp hints
 (setq lsp-inlay-hint-enable t)
 
-;; ;; transparency
+;; transparency
 (set-frame-parameter (selected-frame) 'alpha '(91 . 91))
 (add-to-list 'default-frame-alist '(alpha . (91 . 91)))
+
+;; proced
+(map! :leader
+      :desc "Proced"
+      "o h" #'proced)
+
 
 ;;
 ;;; * EMACS BINDINGS ===========================================================
