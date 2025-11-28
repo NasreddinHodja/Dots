@@ -151,7 +151,7 @@ layouts = [
         single_border_width=3,
     ),
     layout.Max(
-        margin=inner_gaps,
+        margin=outer_gaps,
     ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(
@@ -174,11 +174,6 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-
-def getSep():
-    return widget.Sep(
-    ),
-
 widget_defaults = dict(
     font="Source Code Pro",
     fontsize=12,
@@ -187,10 +182,17 @@ widget_defaults = dict(
     background=colors["bg_dark"],
 )
 sep_defaults = dict(
+    foreground=colors["fg"],
+    background=colors["bg_dark"],
+    linewidth=1,
+    padding=16,
+    size_percent=45,
+)
+sep_blank_defaults = dict(
     foreground=colors["bg_dark"],
     background=colors["bg_dark"],
-    linewidth=3,
-    padding=8,
+    linewidth=1,
+    padding=10,
     size_percent=50,
 )
 extension_defaults = widget_defaults.copy()
@@ -222,7 +224,7 @@ screens = [
                     rounded=False,
                     borderwidth=0,
                 ),
-                widget.Sep(foreground=colors["bg_dark"], background=colors["bg_dark"]),
+                widget.Sep(**sep_blank_defaults),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -233,36 +235,50 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.Sep(**sep_blank_defaults),
                 widget.Systray(icon_size=14),
-                widget.Sep(**sep_defaults),
+                widget.Sep(**sep_blank_defaults),
                 widget.CurrentLayout(
                     decorations=[
                         BorderDecoration(
-                            border_width=3,
+                            border_width=4,
                             colour=colors["bg_dark"],
                         ),
                     ],
                     foreground=colors["fg"],
                     background=colors["gray"],
-                    padding=10,
                 ),
-                # widget.Sep(**sep_defaults),
+                widget.Sep(foreground=colors["bg_dark"]),
                 widget.GenPollText(
-                    func=get_sysmon,
+                    func=lambda: get_sysmon(0),
                     update_interval=3,
                     foreground=colors["fg"],
                 ),
+                widget.Sep(**sep_defaults),
+                widget.GenPollText(
+                    func=lambda: get_sysmon(1),
+                    update_interval=3,
+                    foreground=colors["fg"],
+                ),
+                widget.Sep(**sep_defaults),
+                widget.GenPollText(
+                    func=lambda: get_sysmon(2),
+                    update_interval=3,
+                    foreground=colors["fg"],
+                ),
+                widget.Sep(**sep_defaults),
                 widget.PulseVolume(
                     fmt='󰕾 {}',
                 ),
+                widget.Sep(**sep_defaults),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.Sep(foreground=colors["bg_dark"], background=colors["bg_dark"]),
             ],
             24,
             margin=[inner_gaps,
-                    250,
+                    360,
                     inner_gaps,
-                    250],
+                    360],
             padding=4
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta

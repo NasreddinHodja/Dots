@@ -1,5 +1,3 @@
-./draw.sh 
-ka conky
 qmk compile -kb crkbd/rev1 -km naskbd
 qmk compile -kb crkbd/rev1 -km naskbd-colemak
 qmk compile -kb crkbd/rev1 -km naskbd
@@ -126,3 +124,5 @@ setvol mute
 qmk compile -kb crkbd/rev1 -km naskbd
 mgdl -u
 ./watch-presentations.sh 
+setxkbmap -layout us -variant intl
+qtile cmd-obj -o cmd -f restart

@@ -11,7 +11,7 @@ notify() {
 "$HOME/.config/screenlayout.sh"
 feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
 emacs --bg-daemon &
-setxkbmap -layout us -variant intl &
+setxkbmap -layout us -variant intl
 picom &
 
 emacsclient --alternate-editor= --create-frame -n
