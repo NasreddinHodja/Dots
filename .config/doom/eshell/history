@@ -1,50 +1,3 @@
-ka conky
-ka kbdlistener
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-ka conky
-kbdlistener 
-ka kbdlistener
-ka conky
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-qmk compile -kb crkbd/rev1 -km naskbd
-ka kbdlistener
-kbdlistener 
-kbdlistener
-qmk compile -kb crkbd/rev1 -km naskbd 
-qmk console
-qmk compile -kb crkbd/rev1 -km naskbd 
-qmk console
-qmk compile -kb crkbd/rev1 -km naskbd 
-./draw.sh 
-nsxiv diagram.svg 
-qmk compile -kb crkbd/rev1 -km naskbd
-z /home/nasreddin/Dots/.config/naskbd 
-la
-./draw.sh 
-ka conky 
-qmk compile -kb crkbd/rev1 -km naskbd
-./draw.sh 
-nsxiv diagram.svg
-qmk compile -kb crkbd/rev1 -km naskbd
-m
-./draw.sh 
-nsxiv diagram.svg
-./watch-presentations.sh 
-exit
-./draw.sh 
-ka conky
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
-qmk compile -kb crkbd/rev1 -km naskbd
-kbdlistener 
 qmk compile -kb crkbd/rev1 -km naskbd
 kbdlistener 
 qmk compile -kb crkbd/rev1 -km naskbd 
@@ -126,3 +79,50 @@ qtile cmd-obj -o cmd -f restart
 qtile check
 exit
 qtile check
+picom
+la
+chmod +x autostart.sh 
+la
+chmod +x ../screenlayout.sh 
+la
+ka dunst
+./autostart.sh 
+systemctl --status emacs
+systemctl status emacs
+systemctl --user status emacs
+qtile check
+yay -Syu qtile-extras
+qtile check
+./autostart.sh 
+emacsclient --alternate-editor= --create-frame
+emacsclient --alternate-editor= --create-frame -n
+emacs --bg-daemon
+notify-send oiee
+ka dunst
+dunst
+dunst &
+notify-send oiee&
+ka dunst
+dunst
+notify-send oie
+yay -Syu feh
+feh --bg-fill ./.config/wp.jpg 
+feh --bg-fill $HOME/.config/wp.jpg
+setxkbmap -layout us -variant intl &
+feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
+printf '%s\n' ~/.config/wp.* | head -n 1
+sh -c feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
+notify-send oieeee
+test-notify 
+qtile check 
+qtile cmd-obj -o cmd -f restart
+feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
+feh --bg-fill ~/.config/wp.jpg
+qtile check
+qtile cmd-obj -o cmd -f restart
+qtile check
+qtile cmd-obj -o cmd -f restart
+flameshot
+flameshot gui
+feh --bg-fill ~/.config/wp.jpgh
+feh --bg-fill ~/.config/wp.jpg

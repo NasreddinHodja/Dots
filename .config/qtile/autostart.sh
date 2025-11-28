@@ -1,11 +1,19 @@
 #!/usr/bin/env sh
 
-$HOME/.config/screenlayout.sh
-emacs --fg-daemon &
-setxkbmap -layout us -variant intl
+notify() {
+    if "$@"; then
+        dunstify "✔️ Success" "$*"
+    else
+        dunstify "❌ Failed" "$*"
+    fi
+}
+
+"$HOME/.config/screenlayout.sh"
+feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
+emacs --bg-daemon &
+setxkbmap -layout us -variant intl &
 picom &
 
-main-emacsclient
+emacsclient --alternate-editor= --create-frame -n
 
 xscreensaver -no-splash &
-dunst &

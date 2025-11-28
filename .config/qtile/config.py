@@ -5,6 +5,9 @@ import libqtile.resources
 from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from qtile_extras import widget
+from qtile_extras.widget import decorations
+from qtile_extras.widget.decorations import BorderDecoration
 
 from modules.dracula import colors
 from modules.sysmon import get_sysmon
@@ -20,7 +23,6 @@ for ext in ("jpg", "jpeg", "png", "gif", "bmp", "webp"):
 outer_gaps = 5
 inner_gaps = 5
 mod = "mod4"
-terminal = "kitty"
 spawn_cmd = "rofi -show drun"
 screen_saver = "xscreensaver -no-splash &"
 power_menu = os.path.expanduser("~/.local/bin/power-menu")
@@ -81,8 +83,9 @@ keys = [
 
     Key([mod], "s", lazy.spawn(spawn_cmd), desc="Rofi drun menu"),
     Key([mod], "w", lazy.spawn(window_menu), desc="Rofi window menu"),
-    Key([mod, "Shift"], "x", lazy.spawn(power_menu), desc="Power menu"),
+    Key([mod, "shift"], "x", lazy.spawn(power_menu), desc="Power menu"),
     Key([mod], "p", lazy.spawn(screen_shot), desc="Screenshot"),
+    Key([mod, "shift"], "b", lazy.spawn("/home/nasreddin/.local/bin/pickbg"), desc="Wallpaper picker"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -150,12 +153,24 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+
+def getSep():
+    return widget.Sep(
+    ),
+
 widget_defaults = dict(
     font="Source Code Pro",
     fontsize=12,
     padding=4,
     foreground=colors["fg"],
     background=colors["bg_dark"],
+)
+sep_defaults = dict(
+    foreground=colors["bg_dark"],
+    background=colors["bg_dark"],
+    linewidth=3,
+    padding=8,
+    size_percent=50,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -186,7 +201,7 @@ screens = [
                     rounded=False,
                     borderwidth=0,
                 ),
-                widget.CurrentLayout(),
+                widget.Sep(foreground=colors["bg_dark"], background=colors["bg_dark"]),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -197,19 +212,34 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
+                widget.Systray(icon_size=14),
+                widget.Sep(**sep_defaults),
+                widget.CurrentLayout(
+                    decorations=[
+                        BorderDecoration(
+                            border_width=2,
+                            colour=colors["bg_dark"],
+                        ),
+                    ],
+                    foreground=colors["fg"],
+                    background=colors["gray"],
+                    padding=10,
+                ),
+                widget.Sep(**sep_defaults),
                 widget.GenPollText(
                     func=get_sysmon,
                     update_interval=3,
                     foreground=colors["fg"],
                 ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Sep(foreground=colors["bg_dark"], background=colors["bg_dark"]),
             ],
             24,
-            margin=[inner_gaps - inner_gaps / 2,
-                    outer_gaps + inner_gaps,
+            margin=[inner_gaps,
+                    250,
                     inner_gaps,
-                    outer_gaps + inner_gaps],
+                    250],
+            padding=4
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -223,6 +253,13 @@ screens = [
         right=bar.Gap(outer_gaps),
         top=bar.Gap(outer_gaps),
         left=bar.Gap(outer_gaps),
+        x=1920,
+    ),
+    Screen(
+        background="#000000",
+        wallpaper=wallpaper,
+        wallpaper_mode="center",
+        x=0,
     ),
 ]
 keys.extend([
@@ -253,7 +290,10 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-    ]
+    ],
+    border_focus=colors["purple"],
+    border_normal=colors["bg"],
+    border_width=3,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

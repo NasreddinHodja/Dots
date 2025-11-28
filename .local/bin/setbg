@@ -26,31 +26,33 @@ mkdir -p ~/.config
 rm -f ~/.config/wp.*
 cp "$IMAGE_FILE" "$CONFIG_FILE"
 
-# detect image dimensions
-set +e
-read WIDTH HEIGHT < <(identify -format "%w %h" "$IMAGE_FILE" 2>/dev/null)
-set -e
-echo $WIDTH
+feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)"
 
-if [ -z "$WIDTH" ] || [ -z "$HEIGHT" ]; then
-    echo "Error: could not read image dimensions."
-    exit 1
-fi
+# # detect image dimensions
+# set +e
+# read WIDTH HEIGHT < <(identify -format "%w %h" "$IMAGE_FILE" 2>/dev/null)
+# set -e
+# echo $WIDTH
 
-# determine mode based on size
-# 5 = stretched (default), 2 = tiled
-if [ "$WIDTH" -le 1000 ] && [ "$HEIGHT" -le 1000 ]; then
-    STYLE=2
-else
-    STYLE=5
-fi
+# if [ -z "$WIDTH" ] || [ -z "$HEIGHT" ]; then
+#     echo "Error: could not read image dimensions."
+#     exit 1
+# fi
 
-xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-mode -s true
+# # determine mode based on size
+# # 5 = stretched (default), 2 = tiled
+# if [ "$WIDTH" -le 1000 ] && [ "$HEIGHT" -le 1000 ]; then
+#     STYLE=2
+# else
+#     STYLE=5
+# fi
 
-MONITORS=$(xrandr --listmonitors | awk 'NR>1 {print $4}')
+# xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-mode -s true
 
-for monitor in $MONITORS; do
-    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$IMAGE_FILE"
-    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$CONFIG_FILE"
-    xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/image-style" -s "$STYLE"
-done
+# MONITORS=$(xrandr --listmonitors | awk 'NR>1 {print $4}')
+
+# for monitor in $MONITORS; do
+#     xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$IMAGE_FILE"
+#     xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/last-image" -s "$CONFIG_FILE"
+#     xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor/workspace0/image-style" -s "$STYLE"
+# done

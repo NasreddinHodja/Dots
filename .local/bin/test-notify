@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+notify-send "Normal notification" "This is a normal test."
+
+notify-send -u low "Low urgency" "Just a low-urgency ping."
+
+notify-send -u critical "Critical notification" "Something went VERY wrong!"
+
+notify-send -i dialog-information "With icon" "This one has an icon."
+
+for i in $(seq 0 20 100); do
+    notify-send -h int:value:$i \
+                -h string:x-dunst-stack-tag:test-progress \
+                "Progress Test" \
+                "progress: $i%"
+    sleep 0.3
+done
+
+notify-send -h string:desktop-entry:firefox \
+            "Desktop-entry Icon Test" \
+            "Should pick Firefox icon from theme"
+
+notify-send -h string:x-canonical-private-synchronous:volume \
+            "Replacing-notifications Test" \
+            "This replaces the previous one with the same tag"
+
+notify-send -t 2000 "Timeout Test" "This disappears after 2 seconds."
+
+notify-send -a "TestApp" "App Name Test" "Dunst should show 'TestApp'"
+
+notify-send -i dialog-warning \
+            --action=default,Ok \
+            --action=alt,Cancel \
+            "Action Test" "Dunst must support actions (enable in config)."
+
+echo "Done firing notifications."
