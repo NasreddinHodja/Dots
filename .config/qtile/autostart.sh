@@ -17,3 +17,4 @@ picom &
 emacsclient --alternate-editor= --create-frame -n
 
 xscreensaver -no-splash &
+nm-applet &

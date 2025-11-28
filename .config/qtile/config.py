@@ -80,6 +80,19 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
+    Key([], "XF86AudioRaiseVolume",
+        lazy.spawn("/home/nasreddin/.local/bin/setvol up")),
+    Key([], "XF86AudioLowerVolume",
+        lazy.spawn("/home/nasreddin/.local/bin/setvol down")),
+    Key([], "XF86AudioMute",
+        lazy.spawn("/home/nasreddin/.local/bin/setvol mute")),
+    Key([], "XF86AudioPlay",
+        lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext",
+        lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev",
+        lazy.spawn("playerctl previous")),
+
 
     Key([mod], "s", lazy.spawn(spawn_cmd), desc="Rofi drun menu"),
     Key([mod], "w", lazy.spawn(window_menu), desc="Rofi window menu"),
@@ -118,7 +131,7 @@ for i in groups:
             Key(
                 [mod, "shift"],
                 i.name,
-                lazy.window.togroup(i.name, switch_group=True),
+                lazy.window.togroup(i.name, switch_group=False),
                 desc=f"Switch to & move focused window to group {i.name}",
             ),
             # Or, use below if you prefer not to switch to that group.
@@ -135,13 +148,21 @@ layouts = [
         border_focus_stack=[colors["pink"], colors["purple"]],
         border_width=3,
         margin=inner_gaps,
-        single_margin=outer_gaps,
+        single_border_width=3,
     ),
     layout.Max(
         margin=inner_gaps,
     ),
     # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
+    # layout.Stack(
+    #     num_stacks=1,
+    #     border_width=3,
+    #     border_focus=colors["purple"],
+    #     border_normal=colors["bg"],
+    #     margin=inner_gaps,
+    #     single_border_width=3,
+    #     single_margin=8
+    # )
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
@@ -217,7 +238,7 @@ screens = [
                 widget.CurrentLayout(
                     decorations=[
                         BorderDecoration(
-                            border_width=2,
+                            border_width=3,
                             colour=colors["bg_dark"],
                         ),
                     ],
@@ -225,11 +246,14 @@ screens = [
                     background=colors["gray"],
                     padding=10,
                 ),
-                widget.Sep(**sep_defaults),
+                # widget.Sep(**sep_defaults),
                 widget.GenPollText(
                     func=get_sysmon,
                     update_interval=3,
                     foreground=colors["fg"],
+                ),
+                widget.PulseVolume(
+                    fmt='󰕾 {}',
                 ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.Sep(foreground=colors["bg_dark"], background=colors["bg_dark"]),
