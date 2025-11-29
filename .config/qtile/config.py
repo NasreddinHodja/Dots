@@ -35,8 +35,7 @@ def autostart():
     subprocess.Popen([home])
 
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+    # https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -99,6 +98,7 @@ keys = [
     Key([mod, "shift"], "x", lazy.spawn(power_menu), desc="Power menu"),
     Key([mod], "p", lazy.spawn(screen_shot), desc="Screenshot"),
     Key([mod, "shift"], "b", lazy.spawn("/home/nasreddin/.local/bin/pickbg"), desc="Wallpaper picker"),
+    Key([mod, "mod1"], "b", lazy.spawn("/home/nasreddin/.local/bin/rand-bg"), desc="Wallpaper picker"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -145,10 +145,13 @@ layouts = [
     layout.Columns(
         border_focus=colors["purple"],
         border_normal=colors["gray"],
-        border_focus_stack=[colors["pink"], colors["purple"]],
+        border_focus_stack=colors["purple"],
+        border_normal_stack=colors["gray"],
         border_width=3,
         margin=inner_gaps,
+        margin_on_single=inner_gaps,
         single_border_width=3,
+        border_on_single=True,
     ),
     layout.Max(
         margin=outer_gaps,
@@ -280,26 +283,10 @@ screens = [
                     inner_gaps,
                     360],
             padding=4
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        background="#000000",
-        wallpaper=wallpaper,
-        wallpaper_mode="center",
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
         right=bar.Gap(outer_gaps),
         top=bar.Gap(outer_gaps),
         left=bar.Gap(outer_gaps),
-        x=1920,
-    ),
-    Screen(
-        background="#000000",
-        wallpaper=wallpaper,
-        wallpaper_mode="center",
-        x=0,
     ),
 ]
 keys.extend([

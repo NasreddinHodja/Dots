@@ -1,11 +1,3 @@
-/home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps/naskbd
-/home/nasreddin/Dots/.config/qmk_userspace
-/home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps
-/home/nasreddin/Dots/.config/naskbd
-~
-/sudo:root@localhost:/usr/lib/sddm/sddm.conf.d
-~
-/home/nasreddin/Pictures/wp
 /home/nasreddin/Dots/.local/bin
 /home/nasreddin/Dots
 /home/nasreddin/Dots/.config/qtile
@@ -31,3 +23,11 @@
 /home/nasreddin
 /home/nasreddin/Dots/.config/qtile
 /home/nasreddin/Dots
+/home/nasreddin/Dots/.config/qtile
+~
+/home/nasreddin/Dots
+~
+/home/nasreddin/Dots/.config/qtile
+~
+/home/nasreddin/Dots/.local/bin
+~

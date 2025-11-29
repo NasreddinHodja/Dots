@@ -22,4 +22,4 @@ until xdotool search --class Emacs >/dev/null 2>&1; do
 done
 
 wmctrl -x -r emacs.Emacs -t 0
-center-window
+# center-window

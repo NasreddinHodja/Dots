@@ -14,7 +14,11 @@ emacs --bg-daemon &
 setxkbmap -layout us -variant intl
 picom &
 
-emacsclient --alternate-editor= --create-frame -n
+$HOME/.local/bin/main-emacsclient
 
+xset s off
+xset s noblank
+xset -dpms
+xset dpms 0 0 0
 xscreensaver -no-splash &
 nm-applet &

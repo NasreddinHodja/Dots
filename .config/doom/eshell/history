@@ -1,17 +1,3 @@
-qmk compile -kb crkbd/rev1 -km naskbd-colemak
-qmk compile -kb crkbd/rev1 -km naskbd
-./draw.sh 
-ka conky
-yay
-ka conky
-yay -Rns lightdm
-yay -Rns lightdm lightdm-gtk-greeter
-yay -Rns lightdm-gtk-greeter
-yay -Rns lightdm-gtk-greeter-settings
-yay -Rns lightdm-gtk-greeter
-yay -Rns lightdm
-systemctl disable sddm
-sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 systemctl enable lightdm
 yay -Rns sddm sddm-kcm
 yay -Rns sddm 
@@ -126,3 +112,17 @@ mgdl -u
 setxkbmap -layout us -variant intl
 qtile cmd-obj -o cmd -f restart
 feh --bg-fill ~/.config/wp.jpg
+qtile check 
+qtile cmd-obj -o cmd -f restart 
+feh --bg-fill ~/.config/wp.jpg
+qtile cmd-obj -o cmd -f restart 
+feh --bg-fill ~/.config/wp.jpg
+ps aux | grep -E 'xfce4-power-manager|lxqt|gnome-settings-daemon|kded|powerdevil'
+xset -q
+rand-bg 
+qtile cmd-obj -o cmd -f restart 
+mgdl -d https://weebcentral.com/series/01JEV1W0KZGH1N314XPA83K4DV/bug-ego
+wmctrl -x -r emacs.Emacs -t 0
+main-emacsclient 
+main-emacsclient  
+main-emacsclient  &
