@@ -12,7 +12,7 @@ FAILURE_MSG="$INIT_MSG""[ERROR] Failed to open Main frame\n"
 
 notify-send "$TITLE" "$INIT_MSG" --icon=emacs --hint=int:value:"0%" --replace-id=$TRID
 
-if systemctl --user restart emacs; then
+if killall emacs; then
     notify-send "$TITLE" "$DAEMON_MSG" --hint=int:value:"50%" --icon=emacs --replace-id=$TRID
 
     if main-emacsclient; then

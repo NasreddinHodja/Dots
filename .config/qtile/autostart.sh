@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+set -x
 notify() {
     if "$@"; then
         dunstify "✔️ Success" "$*"
@@ -21,4 +22,5 @@ xset s noblank
 xset -dpms
 xset dpms 0 0 0
 xscreensaver -no-splash &
+$HOME/.local/bin/conky-kbd &
 nm-applet &

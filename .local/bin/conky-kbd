@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pkill -f "conky -c $HOME/.config/conky/keyboard-layers.conf"
+pkill -f kbdlistener
+
+conky -c "$HOME/.config/conky/keyboard-layers.conf" 2>&1 &
+"$HOME/.local/bin/kbdlistener" > /tmp/kbdlistener.log

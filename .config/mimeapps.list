@@ -248,3 +248,4 @@ text/markdown=nvim.desktop;
 x-scheme-handler/mid=userapp-Thunderbird-Z0PYC3.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-NUNZC3.desktop;
 x-scheme-handler/webcals=userapp-Thunderbird-NUNZC3.desktop;
+application/x-shellscript=emacs.desktop;

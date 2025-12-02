@@ -1,128 +1,128 @@
-systemctl enable lightdm
-yay -Rns sddm sddm-kcm
-yay -Rns sddm 
-yay -Rns sddm sddm-silent-theme
-systemctl enable --now lightdm
-journalctl -xeu lightdm.service
-./on-workspace-switch 
+lspci -k | grep -A3 -E "VGA|3D"
+glxinfo | grep "OpenGL renderer"
+glewinfo | grep "OpenGL renderer"
+glxewinfo | grep "OpenGL renderer"
+vulkaninfo | grep deviceName
+python main.py 
+python main.py 
+jupiter notebook
+yay -Syu python-jupyter
+yay -Syu python-jupyter-notebook
+yay -Syu jupiter-notebook
+yay -Syu jupyter-notebook
+jupyter notebook
+yay -Syu jupyterlab-vim
+yay -Syu python-jupyterlab-vim
+yay -Syu jupyterlab
+yay -Syu python-jupyterlab-vim
+ping google.com
+jupyter notebook
 exit
-yay -Syu qtile
-xrandr
-yay -Syu arandr
-la ../screenlayout.sh 
+chmod +x main.py 
+./main.py 
 exit
-la ~/.local/bin
-window-menu 
-loginctl lock-session
-xscreensaver 
-xscreensaver-command -lock
-xscreensaver -no-splash &
-xscreensaver-command -lock
-lxappearence
-yay -Syu lxappearence
-yay -Syu lxappearance
-./config.py
-python config.py 
-qtile cmd-obj -o cmd -f reload_config
-qtile check
-yay -Syu dunst
-qtile check
-yay -Syu python-mypy
-qtile check
-mypy
-yay -Syu mypy
-python ./config.py 
-python ./config.py
-touch modules/__init__.py
-qtile cmd-obj -o cmd -f restart
-python3
-qtile cmd-obj -o cmd -f restart
-qtile check
-qtile cmd-obj -o cmd -f restart
-qtile check
-exit
-qtile check
-picom
-la
-chmod +x autostart.sh 
-la
-chmod +x ../screenlayout.sh 
-la
-ka dunst
-./autostart.sh 
-systemctl --status emacs
-systemctl status emacs
-systemctl --user status emacs
-qtile check
-yay -Syu qtile-extras
-qtile check
-./autostart.sh 
-emacsclient --alternate-editor= --create-frame
-emacsclient --alternate-editor= --create-frame -n
-emacs --bg-daemon
-notify-send oiee
-ka dunst
-dunst
-dunst &
-notify-send oiee&
-ka dunst
-dunst
-notify-send oie
-yay -Syu feh
-feh --bg-fill ./.config/wp.jpg 
-feh --bg-fill $HOME/.config/wp.jpg
-setxkbmap -layout us -variant intl &
-feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
-printf '%s\n' ~/.config/wp.* | head -n 1
-sh -c feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
-notify-send oieeee
-test-notify 
-qtile check 
-qtile cmd-obj -o cmd -f restart
-feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)" &
-feh --bg-fill ~/.config/wp.jpg
-qtile check
-qtile cmd-obj -o cmd -f restart
-qtile check
-qtile cmd-obj -o cmd -f restart
-flameshot
-flameshot gui
-feh --bg-fill ~/.config/wp.jpgh
-feh --bg-fill ~/.config/wp.jpg
-qtile check
-qtile cmd-obj -o cmd -f restartk
-qtile cmd-obj -o cmd -f restart
-test-notify 
-yay -Syu gtk-nocsd
-yay -Rns gtk-nocsd
-yay -Rns gtk-nocsd-git
-qtile cmd-obj -o cmd -f restart
-exit
-yay -S amixer 
-yay -Syu python-pulsectl-asyncio
-qtile cmd-obj -o cmd -f restart
-yay -S python-dbus-fast
-qtile cmd-obj -o cmd -f restartt
-setvol
-setvol u
-setvol mute
 qmk compile -kb crkbd/rev1 -km naskbd
-mgdl -u
-./watch-presentations.sh 
+exit
+qmk compile -kb crkbd/rev1 -km naskbd
 setxkbmap -layout us -variant intl
-qtile cmd-obj -o cmd -f restart
-feh --bg-fill ~/.config/wp.jpg
-qtile check 
-qtile cmd-obj -o cmd -f restart 
-feh --bg-fill ~/.config/wp.jpg
-qtile cmd-obj -o cmd -f restart 
-feh --bg-fill ~/.config/wp.jpg
-ps aux | grep -E 'xfce4-power-manager|lxqt|gnome-settings-daemon|kded|powerdevil'
-xset -q
-rand-bg 
-qtile cmd-obj -o cmd -f restart 
-mgdl -d https://weebcentral.com/series/01JEV1W0KZGH1N314XPA83K4DV/bug-ego
-wmctrl -x -r emacs.Emacs -t 0
-main-emacsclient 
-main-emacsclient  
-main-emacsclient  &
+yay
+./autostart.sh 
+xdg-open $HOME/.local/share/applications/conky-kbd.desktop &&
+xdg-open $HOME/.local/share/applications/conky-kbd.desktop
+setxkbmap -layout us -variant intl
+xdg-open $HOME/.local/share/applications/conky-kbd.desktop 
+xdg-open -c "$HOME/.local/share/applications/conky-kbd.desktop"
+xdg-open "$HOME/.local/share/applications/conky-kbd.desktop"
+xdg-open $HOME/.local/share/applications/kbdlistener.desktope
+xdg-open $HOME/.local/share/applications/kbdlistener.desktop
+xdg-open ~/.local/share/applications/kbdlistener.desktop 
+desktop-file-validate ~/.local/share/applications/kbdlistener.desktop
+./autostart.sh 
+xdg-open ~/.local/share/applications/conky-kbd.desktop 
+gio open ~/.local/share/applications/conky-kbd.desktop 
+sh -c "$HOME/.local/bin/conky-kbd & $HOME/.local/bin/kbdlistener > /tmp/kbdlistener.log 2>&1" 
+sh -c "conky -c $HOME/.config/conky/keyboard-layers.conf & $HOME/.local/bin/kbdlistener > /tmp/kbdlistener.log 2>&1"
+sh -c "conky -c $HOME/.config/conky/keyboard-layers.conf & $HOME/.local/bin/kbdlistener > /tmp/kbdlistener.log 2>&1"
+./conky-kbd 
+xdg-open ../share/applications/conky-kbd.desktop 
+conky -c ~/.config/conky/keyboard-layers.conf
+ka conky-kbd 
+xdg-open ../share/applications/conky-kbd.desktop 
+xdg-open .local/share/applications/conky-kbd.desktop 
+xdg-open ~/.local/share/applications/conky-kbd.desktop 
+xdg-open ~/.local/share/applications/conky-kbd.desktop  
+conky-kbd 
+conky
+conky-kbd 
+xdg-open 
+xdg-open ~/.local/share/applications/conky-kbd.desktop   
+xdg-open ~/.local/share/applications/conky-kbd.desktop    
+grep Exec ~/.local/share/applications/conky-kbd.desktop
+ls -l /home/nasreddin/.local/bin/conky-kbd
+LC_ALL=C sed -n l ~/.local/share/applications/conky-kbd.desktop
+which xdg-openreadlink -f $(which xdg-open)
+gio open ~/.local/share/applications/conky-kbd.desktop 
+conky-kbd
+./autostart.sh 
+qmk compile -kb crkbd/rev1 -km naskbd
+setxkbmap -layout us -variant intl
+unzip drive-download-20251130T150811Z-1-001.zip 
+la
+npm install @mtproto/core
+la
+npm i -D esbuild
+npm i -D cross-fetch
+npm run build
+npm i
+npm i -D gramjs/client
+npm i -D gramjs
+npm i telegram
+npm i
+pm run build
+git clone https://github.com/gram-js/gramjscd gramjsnpm installnpm run build # or webpack if manual
+pm i
+npm runwebpack
+npm run webpack
+npm webpack
+npm help
+npm run build
+webpack
+npx webpack
+exit
+pm i
+pm run build
+pm i
+pm run build
+pm i
+pm build
+pm runbuild
+pm run build
+la
+rm node_modules/ package.json package-lock.json 
+la
+rm -rf node_modules/ 
+la
+rm  -rf gramjs dist
+la
+git clone https://github.com/gram-js/gramjscd gramjsnpm install
+tsc
+nvm use
+wevbcak
+npx webpack
+z ..
+exit
+qmk compile -kb crkbd/rev1 -km naskbd
+git clone https://github.com/gram-js/gramjscd gramjsnpm install
+la
+node generate_webpack.js 
+exit
+webpack 
+npx webpack
+npx webpackk
+npx webpack
+node generate_webpack.js 
+cd ..
+rm -rf gramjs/ 
+node background.jsf
+node background.js
+bthc

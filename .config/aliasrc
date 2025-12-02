@@ -20,4 +20,5 @@ alias \
 	la="eza --icons -la --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi"
+	ccat="highlight --out-format=ansi" \
+	bthc="bluetoothctl connect 40:9F:38:8A:C2:D8"

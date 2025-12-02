@@ -79,6 +79,8 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
+    Key([mod], "comma", lazy.next_screen(), desc="Shutdown Qtile"),
+
     Key([], "XF86AudioRaiseVolume",
         lazy.spawn("/home/nasreddin/.local/bin/setvol up")),
     Key([], "XF86AudioLowerVolume",
@@ -289,10 +291,6 @@ screens = [
         left=bar.Gap(outer_gaps),
     ),
 ]
-keys.extend([
-    Key([mod], "period", lazy.to_screen(0), desc="Focus right screen"),
-    Key([mod], "comma", lazy.to_screen(1), desc="Focus left screen"),
-])
 
 # Drag floating layouts.
 mouse = [

@@ -1,12 +1,15 @@
 #+title: Dotfiles
 #+description: Personal dotfiles
 
-[[./assets/screenshot.png]]
-[[./assets/screenshot-qtile.png]]
-
 * Overview
 
 Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org][Linux]] setup with [[https://www.xfce.org/][XFCE4]], [[https://qtile.org/][Qtile]], [[https://www.gnu.org/software/emacs/][Emacs]], and some custom stuff for efficiency.
+
+** Qtile
+[[./assets/screenshot-qtile.png]]
+
+** XFCE
+[[./assets/screenshot.png]]
 
 ** Philosophy
 + Keyboard-driven workflow with vim keybindings across all applications
