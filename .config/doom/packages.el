@@ -53,3 +53,6 @@
 
 (package! eat
   :recipe (:host codeberg :repo "akib/emacs-eat"))
+
+(package! perfect-margin
+  :recipe (:host github :repo "mpwang/perfect-margin"))

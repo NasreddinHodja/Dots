@@ -1,11 +1,3 @@
-lspci -k | grep -A3 -E "VGA|3D"
-glxinfo | grep "OpenGL renderer"
-glewinfo | grep "OpenGL renderer"
-glxewinfo | grep "OpenGL renderer"
-vulkaninfo | grep deviceName
-python main.py 
-python main.py 
-jupiter notebook
 yay -Syu python-jupyter
 yay -Syu python-jupyter-notebook
 yay -Syu jupiter-notebook
@@ -126,3 +118,11 @@ rm -rf gramjs/
 node background.jsf
 node background.js
 bthc
+qmk compile -kb crkbd/rev1 -km naskbd
+ka claude
+xsel --clipboard --output >> websocket-frames.txt
+setxkbmap -layout us -variant intl
+qmk compile -kb crkbd/rev1 -km naskbd
+qmk compile -kb crkbd/rev1 -km naskbd-mirocu
+setxkbmap -layout us -variant intl 
+./draw.sh 

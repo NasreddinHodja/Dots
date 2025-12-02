@@ -20,7 +20,7 @@ for ext in ("jpg", "jpeg", "png", "gif", "bmp", "webp"):
         wallpaper = matches[0]
         break
 
-outer_gaps = 5
+outer_gaps = 10
 inner_gaps = 5
 mod = "mod4"
 spawn_cmd = "rofi -show drun"
@@ -286,6 +286,12 @@ screens = [
                     360],
             padding=4
         ),
+        right=bar.Gap(outer_gaps),
+        top=bar.Gap(outer_gaps),
+        left=bar.Gap(outer_gaps),
+    ),
+    Screen(
+        bottom=bar.Gap(outer_gaps),
         right=bar.Gap(outer_gaps),
         top=bar.Gap(outer_gaps),
         left=bar.Gap(outer_gaps),

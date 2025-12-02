@@ -80,6 +80,8 @@
       :desc "Proced"
       "o h" #'proced)
 
+;; centered buffer
+(centered-window-mode 1)
 
 ;;
 ;;; * EMACS BINDINGS ===========================================================
