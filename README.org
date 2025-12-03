@@ -74,6 +74,9 @@ Dots/
 *** 34 keys
 34 keys feel extremely comfortable 😀.
 
+*** Typing with 3 layers
+Miryoku-like layout with BASE + NUM + SYM.
+
 *** Colemak DH for =BASE= + combos
 Combos for most common symbols, =CAPS= and =DEL=
 
@@ -82,11 +85,6 @@ Combos for most common symbols, =CAPS= and =DEL=
 + =CED= layer is then activated for the next keypress, with easy access to:
   - =õ= and =ã=
   - =ões= and =ão=
-
-*** Typing with only 2 layers
-Initially, I used separate layers for numbers and symbols, inspired by [[https://github.com/manna-harbour/miryoku][miryoku]].
-I later found that holding the outer thumb keys on the Corne is a bit uncomfortable, but pressing keys with the right hand while holding a thumb key on the same hand actually feels fine.
-I’m now experimenting with having just one additional layer for typing, accessed by holding the most comfortable right-hand thumb key (the one that’s less messed up).
 
 *** =SYM= layer
 + Top row: numbers, mimicking a classic keyboard layout
