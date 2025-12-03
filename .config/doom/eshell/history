@@ -1,45 +1,3 @@
-jupyter notebook
-yay -Syu jupyterlab-vim
-yay -Syu python-jupyterlab-vim
-yay -Syu jupyterlab
-yay -Syu python-jupyterlab-vim
-ping google.com
-jupyter notebook
-exit
-chmod +x main.py 
-./main.py 
-exit
-qmk compile -kb crkbd/rev1 -km naskbd
-exit
-qmk compile -kb crkbd/rev1 -km naskbd
-setxkbmap -layout us -variant intl
-yay
-./autostart.sh 
-xdg-open $HOME/.local/share/applications/conky-kbd.desktop &&
-xdg-open $HOME/.local/share/applications/conky-kbd.desktop
-setxkbmap -layout us -variant intl
-xdg-open $HOME/.local/share/applications/conky-kbd.desktop 
-xdg-open -c "$HOME/.local/share/applications/conky-kbd.desktop"
-xdg-open "$HOME/.local/share/applications/conky-kbd.desktop"
-xdg-open $HOME/.local/share/applications/kbdlistener.desktope
-xdg-open $HOME/.local/share/applications/kbdlistener.desktop
-xdg-open ~/.local/share/applications/kbdlistener.desktop 
-desktop-file-validate ~/.local/share/applications/kbdlistener.desktop
-./autostart.sh 
-xdg-open ~/.local/share/applications/conky-kbd.desktop 
-gio open ~/.local/share/applications/conky-kbd.desktop 
-sh -c "$HOME/.local/bin/conky-kbd & $HOME/.local/bin/kbdlistener > /tmp/kbdlistener.log 2>&1" 
-sh -c "conky -c $HOME/.config/conky/keyboard-layers.conf & $HOME/.local/bin/kbdlistener > /tmp/kbdlistener.log 2>&1"
-sh -c "conky -c $HOME/.config/conky/keyboard-layers.conf & $HOME/.local/bin/kbdlistener > /tmp/kbdlistener.log 2>&1"
-./conky-kbd 
-xdg-open ../share/applications/conky-kbd.desktop 
-conky -c ~/.config/conky/keyboard-layers.conf
-ka conky-kbd 
-xdg-open ../share/applications/conky-kbd.desktop 
-xdg-open .local/share/applications/conky-kbd.desktop 
-xdg-open ~/.local/share/applications/conky-kbd.desktop 
-xdg-open ~/.local/share/applications/conky-kbd.desktop  
-conky-kbd 
 conky
 conky-kbd 
 xdg-open 
@@ -126,3 +84,45 @@ qmk compile -kb crkbd/rev1 -km naskbd-mirocu
 qmk compile -kb crkbd/rev1 -km naskbd-mirocu
 qmk compile -kb crkbd/rev1 -km naskbd
 ./draw.sh 
+setxkbmap -layout us -variant intl 
+./draw.sh  
+./draw.sh 
+mgdl -d https://weebcentral.com/series/01J76XYC8G410R3D1DYHXF0K0J/Beastars
+supabase init
+la
+supabase link 
+supabase login
+supabase link --help
+supabase link --project-ref anmkcmibfjdmhttldcfq
+which supabase
+la
+npm init
+la
+rm package.json 
+npm init -y
+pm
+npm i -D typescript
+npx tsc --init
+cd ..
+yay -Rns supabase/ 
+yay -Rns supabase
+la
+pm 
+pm i -D supa
+pm i -D supabase
+la
+bask
+qmk compile -kb crkbd/rev1 -km naskbd
+./draw.sh 
+qmk compile -kb crkbd/rev1 -km naskbd
+yay -Syu qtile-bonsai
+yay -QS uv_build
+yay -Qs uv_build
+yay -Qs uv
+yay -Syu python-uv-build
+yay -Syu qtile-bonsai
+uv-build 
+uv-build --help
+yay -Syu python-uv
+yay -Syu qtile-bonsai
+uv install qtile-bonsai

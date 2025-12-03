@@ -156,7 +156,10 @@ layouts = [
         border_on_single=True,
     ),
     layout.Max(
-        margin=outer_gaps,
+        margin=inner_gaps,
+        border_width=3,
+        border_focus=colors["purple"],
+        border_normal=colors["gray"],
     ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(
@@ -246,8 +249,9 @@ screens = [
                 widget.CurrentLayout(
                     decorations=[
                         BorderDecoration(
-                            border_width=4,
+                            border_width=3,
                             colour=colors["bg_dark"],
+                            margin=2,
                         ),
                     ],
                     foreground=colors["fg"],
