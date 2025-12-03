@@ -1,7 +1,3 @@
-yay -Syu python-jupyter
-yay -Syu python-jupyter-notebook
-yay -Syu jupiter-notebook
-yay -Syu jupyter-notebook
 jupyter notebook
 yay -Syu jupyterlab-vim
 yay -Syu python-jupyterlab-vim
@@ -125,4 +121,8 @@ xsel --clipboard --output >> websocket-frames.txt
 qmk compile -kb crkbd/rev1 -km naskbd
 qmk compile -kb crkbd/rev1 -km naskbd-mirocu
 setxkbmap -layout us -variant intl 
+./draw.sh 
+./watch-presentations.sh 
+qmk compile -kb crkbd/rev1 -km naskbd-mirocu
+qmk compile -kb crkbd/rev1 -km naskbd
 ./draw.sh 

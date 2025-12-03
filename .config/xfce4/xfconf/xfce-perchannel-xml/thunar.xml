@@ -10,14 +10,14 @@
   <property name="last-separator-position" type="int" value="170"/>
   <property name="last-show-hidden" type="bool" value="true"/>
   <property name="last-window-width" type="int" value="934"/>
-  <property name="last-window-height" type="int" value="502"/>
+  <property name="last-window-height" type="int" value="1020"/>
   <property name="misc-use-csd" type="bool" value="false"/>
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_DATE_MODIFIED"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_DESCENDING"/>
   <property name="misc-status-bar-active-info" type="uint" value="31"/>
   <property name="last-side-pane" type="string" value="THUNAR_SIDEPANE_TYPE_TREE"/>
   <property name="tree-icon-emblems" type="bool" value="true"/>
-  <property name="misc-symbolic-icons-in-sidepane" type="bool" value="false"/>
+  <property name="misc-symbolic-icons-in-sidepane" type="bool" value="true"/>
   <property name="shortcuts-icon-emblems" type="bool" value="true"/>
   <property name="last-menubar-visible" type="bool" value="true"/>
   <property name="last-statusbar-visible" type="bool" value="false"/>
