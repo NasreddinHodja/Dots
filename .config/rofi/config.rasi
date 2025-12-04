@@ -39,7 +39,7 @@ configuration {
 window {
     background-color: @background;
     border:           2px;
-    border-radius:    0px;
+    border-radius:    5px;
     border-color:     @purple;
     width:            465px;
     height:           370px;

@@ -3,12 +3,12 @@
     "output": "DP-3",
     "layer": "top",
     "position": "bottom",
-    "height": 24, // Waybar height (to be removed for auto height)
+    "height": 28, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "margin-left": 380,
     "margin-right": 380,
     "margin-bottom": 6,
-    "spacing": 6, // Gaps between modules (4px)
+    "spacing": 12, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
@@ -21,10 +21,10 @@
         "tray",
         // "mpd",
         "idle_inhibitor",
-        "pulseaudio",
         // "network",
         // "power-profiles-daemon",
         "custom/sysmon",
+        "pulseaudio",
         // "cpu",
         // "memory",
         // "temperature",
@@ -102,9 +102,12 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+            "activated": " ",
+            "deactivated": " "
+        },
+        "start-activated": true,
+        "margin-left": 10,
+        "margin-right": 10
     },
     "tray": {
         // "icon-size": 21,
@@ -179,11 +182,11 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "{icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",

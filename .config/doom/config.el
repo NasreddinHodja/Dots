@@ -310,6 +310,9 @@
 ;;; * VTERM ====================================================================
 ;;
 
+(setq vterm-shell "/bin/bash")
+(setenv "SHELL" "/bin/bash")
+
 ;; (add-hook 'vterm-mode-hook #'evil-emacs-state)
 
 ;; (after! vterm

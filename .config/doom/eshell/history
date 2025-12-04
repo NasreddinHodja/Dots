@@ -1,28 +1,3 @@
-npx tsc --init
-cd ..
-yay -Rns supabase/ 
-yay -Rns supabase
-la
-pm 
-pm i -D supa
-pm i -D supabase
-la
-bask
-qmk compile -kb crkbd/rev1 -km naskbd
-./draw.sh 
-qmk compile -kb crkbd/rev1 -km naskbd
-yay -Syu qtile-bonsai
-yay -QS uv_build
-yay -Qs uv_build
-yay -Qs uv
-yay -Syu python-uv-build
-yay -Syu qtile-bonsai
-uv-build 
-uv-build --help
-yay -Syu python-uv
-yay -Syu qtile-bonsai
-uv install qtile-bonsai
-./da
 ./draw.sh 
 nsxiv ./diagram.svg 
 ./draw.sh  
@@ -126,3 +101,28 @@ yay -Rns qtile-extras
 yay -Rns qtile
 ./.config/hypr/autostart.sh 
 ./autostart.sh 
+waybar
+bthc
+waybar
+ln -s .bashrc ../
+rm ../.bashrc 
+ln -s .bashrc ../
+la ../bash*
+la ../.bash*
+rm ../.bashrc 
+la
+bat .bashrc 
+ln -s .bashrc ../.bashrc
+ln -sf .bashrc ../.bashrc
+rm -rf ../.bashrc 
+ln -s ./.bashrc ../.bashrc
+rm -rf ../.bashrc c
+rm -rf ../.bashrc
+rm -f /home/nasreddin/.bashrc
+la ~/.bashrc 
+rm -f -- ~/.bashrc
+la ~/.bashrc 
+unlink ~/.bashrc 
+la ~/.bashrc 
+ln -s ~/Dots/.bashrc ~/.bashrc
+la ~/.bashrc 

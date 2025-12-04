@@ -25,7 +25,7 @@ window#waybar {
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background-image: linear-gradient(0deg, @selection, @background-darker);
+    background: @selection;
 }
 #workspaces button.focused,
 #workspaces button.active {
@@ -34,16 +34,12 @@ window#waybar {
     color: @background-darker;
 }
 #workspaces button.urgent {
-    background-image: linear-gradient(0deg, @red, @background-darker);
+    background: @red;
 }
 #taskbar button.active {
-    background-image: linear-gradient(0deg, @selection, @background-darker);
+    background: @background-darker;
 }
 #clock {
     padding: 0 6px;
     background: @background;
-}
-
-#idle-inhibitor {
-    min-width: 100px;
 }

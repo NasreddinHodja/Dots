@@ -1,7 +1,3 @@
-/home/nasreddin/Dots/.config/qmk_userspace
-/home/nasreddin/Dots/.config/qtile
-~
-/home/nasreddin/Prog/zviewimg
 /home/nasreddin/Prog
 /home/nasreddin/Dots/.config/qtile
 /home/nasreddin/Dots/.config/hypr
@@ -31,3 +27,7 @@
 /home/nasreddin/Dots/.config/hypr
 ~
 /home/nasreddin/Dots/.config/hypr
+/home/nasreddin/Dots/.config/waybar
+/home/nasreddin/Dots/.config/doom
+/home/nasreddin/Dots
+/home/nasreddin/Dots/.config/doom

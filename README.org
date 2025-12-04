@@ -99,4 +99,4 @@ These layers are mostly used for navigation keys, which are often pressed in seq
 [[./assets/screenshot-qtile.png]]
 
 ** XFCE (legacy)
-[[./assets/screenshot.png]]
+[[./assets/screenshot-xfce.png]]
