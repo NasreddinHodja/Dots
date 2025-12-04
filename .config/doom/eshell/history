@@ -1,100 +1,3 @@
-conky
-conky-kbd 
-xdg-open 
-xdg-open ~/.local/share/applications/conky-kbd.desktop   
-xdg-open ~/.local/share/applications/conky-kbd.desktop    
-grep Exec ~/.local/share/applications/conky-kbd.desktop
-ls -l /home/nasreddin/.local/bin/conky-kbd
-LC_ALL=C sed -n l ~/.local/share/applications/conky-kbd.desktop
-which xdg-openreadlink -f $(which xdg-open)
-gio open ~/.local/share/applications/conky-kbd.desktop 
-conky-kbd
-./autostart.sh 
-qmk compile -kb crkbd/rev1 -km naskbd
-setxkbmap -layout us -variant intl
-unzip drive-download-20251130T150811Z-1-001.zip 
-la
-npm install @mtproto/core
-la
-npm i -D esbuild
-npm i -D cross-fetch
-npm run build
-npm i
-npm i -D gramjs/client
-npm i -D gramjs
-npm i telegram
-npm i
-pm run build
-git clone https://github.com/gram-js/gramjscd gramjsnpm installnpm run build # or webpack if manual
-pm i
-npm runwebpack
-npm run webpack
-npm webpack
-npm help
-npm run build
-webpack
-npx webpack
-exit
-pm i
-pm run build
-pm i
-pm run build
-pm i
-pm build
-pm runbuild
-pm run build
-la
-rm node_modules/ package.json package-lock.json 
-la
-rm -rf node_modules/ 
-la
-rm  -rf gramjs dist
-la
-git clone https://github.com/gram-js/gramjscd gramjsnpm install
-tsc
-nvm use
-wevbcak
-npx webpack
-z ..
-exit
-qmk compile -kb crkbd/rev1 -km naskbd
-git clone https://github.com/gram-js/gramjscd gramjsnpm install
-la
-node generate_webpack.js 
-exit
-webpack 
-npx webpack
-npx webpackk
-npx webpack
-node generate_webpack.js 
-cd ..
-rm -rf gramjs/ 
-node background.jsf
-node background.js
-bthc
-qmk compile -kb crkbd/rev1 -km naskbd
-ka claude
-xsel --clipboard --output >> websocket-frames.txt
-setxkbmap -layout us -variant intl
-qmk compile -kb crkbd/rev1 -km naskbd
-qmk compile -kb crkbd/rev1 -km naskbd-mirocu
-setxkbmap -layout us -variant intl 
-./draw.sh 
-./watch-presentations.sh 
-qmk compile -kb crkbd/rev1 -km naskbd-mirocu
-qmk compile -kb crkbd/rev1 -km naskbd
-./draw.sh 
-setxkbmap -layout us -variant intl 
-./draw.sh  
-./draw.sh 
-mgdl -d https://weebcentral.com/series/01J76XYC8G410R3D1DYHXF0K0J/Beastars
-supabase init
-la
-supabase link 
-supabase login
-supabase link --help
-supabase link --project-ref anmkcmibfjdmhttldcfq
-which supabase
 la
 npm init
 la
@@ -126,3 +29,100 @@ uv-build --help
 yay -Syu python-uv
 yay -Syu qtile-bonsai
 uv install qtile-bonsai
+./da
+./draw.sh 
+nsxiv ./diagram.svg 
+./draw.sh  
+setxkbmap -layout us -variant intl
+qtile cmd-obj -o cmd -f reload_config
+mgdl -d https://weebcentral.com/series/01J76XY8CJ2RJGWMHM69ZS0J3H/Blame
+codium
+codium .
+pm dev
+z ..
+la
+nuxi init zm-reader
+exit
+yay -Syu hyprland hyprpaper hyprlock
+yay -Syu dolphin
+hyprctl binds | grep Enter
+hyprlauncher --show drun
+hyprctl reload
+yay -Rns waybar
+setbg ~/.config/wp.jpg 
+hyprpaper ~/.config/wp.jpg 
+hyprctl hyprpaper reload ,"~/.config/wp.jpg"
+setbg ~/Pictures/e.png
+yay -Syu waybar-hyprland-workspaces
+yay -Rnswaybar-hyprland-workspaces
+yay -Rns waybar-hyprland-workspaces
+pkill waybar && hyprctl dispatch exec waybars
+pkill waybar && hyprctl dispatch exec waybar
+waybar
+hyprctl monitors list
+waybar 
+ka waybar
+waybar
+yay -Syu swayimg
+swayimg ~/Manga/one_piece/chapter_0001-01/ 
+waybar
+flameshot gui
+yay -Syu grim
+flameshot gui
+flameshot gui 
+waybar
+yay -Syu satty
+satty
+satty oie.png
+satty --fullscreen
+satty gui
+satty -f -
+satty -f - --fullfscreen
+satty -f oie.png --fullfscreen
+satty -f oie.png --fullscreen
+satty -f - --fullscreen
+yay -Syu hyprpicker
+yay -Syu hyprshot
+yay -Rns satty
+hyprshot
+hyprshot region
+hyprshot -m region
+hyprshot -m region --freeze
+hyprshot --help
+hyprcursor-util 
+setbg ~/.config/wp.jpg 
+swayimg --gallery ~/Pictures/wp
+swayimg --gallery ~/Pictures/wp --config ~/.config/swayimg/swayimgrc 
+swayimg --gallery ~/Pictures/wp --config "~/.config/swayimg/swayimgrc"
+swayimg --gallery ~/Pictures/wp
+swayimg --help
+swayimg --gallery ~/Pictures/wp -c ~/.config/swayimg/swayimgrc
+swayimg --gallery ~/Pictures/wp --config=~/.config/swayimg/swayimgrc
+swayimg --config=~/.config/swayimg/swayimgrc --gallery ~/Pictures/wp 
+swayimg --config=/home/nasreddin/.config/swayimg/swayimgrc --gallery ~/Pictures/wp 
+swayimg --gallery ~/Pictures/wp 
+swayimg --gallery ~/Pictures/wp -c ~/.config/swayimg/config 
+swayimg --gallery ~/Pictures/wp
+hyprctl reload
+setbg
+ka setbg
+hyprctl hyprpaper listloaded
+setbg
+hyprctl logs | grep exec
+hyprlogs
+hyprctl logs
+hyprctl config
+yay -Syu pfetch
+pfe
+pfetch 
+yay -Rns pfetch
+yay -Rns dolphin
+hyprshot --help
+exit
+hyprctl reload
+yay -Ss rofi
+rofi -show drun
+yay -Rns hyprlauncer
+yay -Rns hyprlauncher
+hyprctl exit
+hyprctl logout

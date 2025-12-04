@@ -1,0 +1,49 @@
+@import url("./colors.css");
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Sauce Code Pro;
+    font-size: 14px;
+    min-height: 0;
+}
+window#waybar {
+    opacity: 0.9;
+    background: @background-darker;
+    color: @foreground;
+    /* border-bottom: 2px solid @background; */
+}
+
+#workspaces {
+    margin-left: 2px;
+}
+#workspaces button {
+    padding: 0 0px;
+    margin: 4px 2px 4px 2px;
+    background: @background-dark;
+    color: @foreground;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background-image: linear-gradient(0deg, @selection, @background-darker);
+}
+#workspaces button.focused,
+#workspaces button.active {
+    /* background-image: linear-gradient(0deg, @purple, @selection); */
+    background: @foreground;
+    color: @background-darker;
+}
+#workspaces button.urgent {
+    background-image: linear-gradient(0deg, @red, @background-darker);
+}
+#taskbar button.active {
+    background-image: linear-gradient(0deg, @selection, @background-darker);
+}
+#clock {
+    padding: 0 6px;
+    background: @background;
+}
+
+#idle-inhibitor {
+    min-width: 100px;
+}

@@ -117,7 +117,16 @@ for vt in range(1, 8):
     )
 
 
-groups = [Group(i) for i in "12345678"]
+groups = [
+    Group("1", layout="columns"),
+    Group("2", layout="columns"),
+    Group("3", layout="columns"),
+    Group("4", layout="columns"),
+    Group("5", layout="columns"),
+    Group("6", layout="columns"),
+    Group("7", layout="columns"),
+    Group("8", layout="columns"),
+]
 
 for i in groups:
     keys.extend(
@@ -155,11 +164,29 @@ layouts = [
         single_border_width=3,
         border_on_single=True,
     ),
-    layout.Max(
-        margin=inner_gaps,
+    # layout.Max(
+    #     margin=inner_gaps,
+    #     border_width=3,
+    #     border_focus=colors["purple"],
+    #     border_normal=colors["gray"],
+    # ),
+    layout.TreeTab(
+        bg_color=colors["bg_dark"],
         border_width=3,
         border_focus=colors["purple"],
-        border_normal=colors["gray"],
+        border_normal=colors["bg"],
+        font="Source Code Pro",
+        inactive_bg=colors["bg_dark"],
+        inactive_fg=colors["fg"],
+        padding_x=6,
+        previous_on_rm=True,
+        section_left=8,
+        section_top=8,
+        section_fg=colors["fg"],
+        active_bg=colors["gray"],
+        active_fg=colors["fg"],
+        urgent_bg=colors["red"],
+        urgent_fg=colors["bg_dark"],
     ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(
@@ -177,7 +204,6 @@ layouts = [
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]

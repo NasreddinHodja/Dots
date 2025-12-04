@@ -1,23 +1,31 @@
 #!/usr/bin/env bash
-
 set -e
 
+apply_wp() {
+    local img="$1"
+    local conf="$HOME/.config/hypr/hyprpaper.conf"
+
+    mkdir -p "$HOME/.config/hypr"
+
+    {
+        echo "preload = $img"
+        echo "wallpaper = , $img"
+    } > "$conf"
+
+    hyprctl hyprpaper reload ,$img
+}
+
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <image_file>"
-    exit 1
+    WP=$(printf '%s\n' ~/.config/wp.* | head -n 1)
+    if [ -z "$WP" ]; then exit 1; fi
+    apply_wp "$WP"
+    exit 0
 fi
 
 IMAGE_FILE="$1"
 
-if [ ! -f "$IMAGE_FILE" ]; then
-    echo "Error: File '$IMAGE_FILE' does not exist."
-    exit 1
-fi
-
-if ! command -v identify >/dev/null; then
-    echo "Error: ImageMagick (identify) is required."
-    exit 1
-fi
+if [ ! -f "$IMAGE_FILE" ]; then exit 1; fi
+if ! command -v identify >/dev/null; then exit 1; fi
 
 EXT="${IMAGE_FILE##*.}"
 CONFIG_FILE="$HOME/.config/wp.$EXT"
@@ -26,7 +34,8 @@ mkdir -p ~/.config
 rm -f ~/.config/wp.*
 cp "$IMAGE_FILE" "$CONFIG_FILE"
 
-feh --bg-fill "$(printf '%s\n' ~/.config/wp.* | head -n 1)"
+WP=$(printf '%s\n' ~/.config/wp.* | head -n 1)
+apply_wp "$WP"
 
 # # detect image dimensions
 # set +e

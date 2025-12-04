@@ -2,4 +2,5 @@
 
 WP_DIR="$HOME/Pictures/wp/"
 
-nsxiv -r -t -g 1200x800+2277+127 "$WP_DIR"
+# nsxiv -r -t -g 1200x800+2277+127 "$WP_DIR"
+swayimg --gallery "$WP_DIR"

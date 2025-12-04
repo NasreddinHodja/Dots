@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.1f", $2 + $4}')
+cpu_usage=$(printf "%05.1f" $cpu_usage)
+
+mem_info=$(free -h | awk '/Mem/ {used=$3; total=$2; percent=$3/$2*100; printf "%.1f|%s|%s", percent, used, total}')
+mem_percent=$(echo $mem_info | cut -d'|' -f1)
+mem_used=$(echo $mem_info | cut -d'|' -f2)
+mem_total=$(echo $mem_info | cut -d'|' -f3)
+mem_percent=$(printf "%05.1f" $mem_percent)
+
+disk_info=$(df -h / | awk 'NR==2 {used=$3; total=$2; percent=$5; gsub(/%/, "", percent); printf "%.1f|%s|%s", percent, used, total}')
+disk_percent=$(echo $disk_info | cut -d'|' -f1)
+disk_used=$(echo $disk_info | cut -d'|' -f2)
+disk_total=$(echo $disk_info | cut -d'|' -f3)
+disk_percent=$(printf "%05.1f" $disk_percent)
+
+cpu_icon=" "
+ram_icon="󰘚 "
+disk_icon="󰆼 "
+
+# echo "<txt>${cpu_icon} ${cpu_usage}%</txt>"
+# echo "<txt>${ram_icon} ${mem_percent}% <span fgcolor='#888888'>(${mem_used}/${mem_total})</span></txt>"
+# echo "<txt>${disk_icon} ${disk_percent}% <span fgcolor='#888888'>(${disk_used}/${disk_total})</span></txt>"
+echo "${cpu_icon} ${cpu_usage}% | ${ram_icon} ${mem_percent}% (${mem_used}/${mem_total}) | ${disk_icon} ${disk_percent}% (${disk_used}/${disk_total})"

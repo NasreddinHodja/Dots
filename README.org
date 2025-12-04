@@ -1,15 +1,11 @@
 #+title: Dotfiles
 #+description: Personal dotfiles
 
-* Overview
+* Nas' inferno
 
-Welcome to my dotfiles repository! This is my /minimal/ [[https://archlinux.org][Linux]] setup with [[https://www.xfce.org/][XFCE4]], [[https://qtile.org/][Qtile]], [[https://www.gnu.org/software/emacs/][Emacs]], and some custom stuff for efficiency.
-
-** Qtile
-[[./assets/screenshot-qtile.png]]
-
-** XFCE
 [[./assets/screenshot.png]]
+
+Welcome to my dotfiles repository! This is my /minimal/ GNU/Linux setup.
 
 ** Philosophy
 + Keyboard-driven workflow with vim keybindings across all applications
@@ -28,7 +24,7 @@ Dots/
 │   ├── sioyek/            # PDF viewer config
 │   └── ...
 ├── .local/
-│   └── bin/               # Custom scripts
+│   └── bin/               # Personal scripts
 ├── .zshrc                 # ZSH config
 ├── .Xresources            # X params
 ├── ...
@@ -44,17 +40,16 @@ Dots/
 ** Applications
 + *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (or =dired=)
 + *Video player*: [[https://mpv.io/][mpv]]
-+ *Image viewer*: [[https://github.com/nsxiv/nsxiv][nsxiv]]
++ *Image viewer*: [[https://github.com/artemsen/swayimg][swayimg]]
 + *PDF viewer*: [[https://sioyek.info/][sioyek]]
 
 ** Desktop Environment
-+ *DE*: [[https://www.xfce.org/][XFCE4]] with keyboard-centric workflow
-+ *Compositor*: [[https://github.com/yshui/picom][picom]]
-+ *Bar*: [[https://docs.xfce.org/xfce/xfce4-panel/start][xfce panel]] with [[https://docs.xfce.org/panel-plugins/xfce4-genmon-plugin/start][genmon plugin]]
++ *WM*: [[https://hypr.land/][Hyprland]]
++ *Bar*: [[https://github.com/Alexays/Waybar][Waybar]]
 + *App launcher*: [[https://github.com/davatorium/rofi][rofi]]
 + *Theme / Color Scheme*: [[https://draculatheme.com/contribute][Dracula]] - é Brasil porra
-  - minimal xfwm theme generator: =.local/share/themes/gen-xfwm-theme.py=
-  - minimal xfce-notify theme: =.local/share/themes/Nas-Notify/=
+  - minimal xfwm theme generator (legacy): =.local/share/themes/gen-xfwm-theme.py=
+  - minimal xfce-notify theme (legacy): =.local/share/themes/Nas-Notify/=
 
 ** Dev Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
@@ -99,3 +94,9 @@ Combos for most common symbols, =CAPS= and =DEL=
 After holding the corresponding layer key and pressing any key defined in =MOU=, the layer remains active even after releasing the key.
 The layer automatically turns off when a =KC_TRNS= or =KC_NO= key is pressed.
 These layers are mostly used for navigation keys, which are often pressed in sequences. Keeping the layer sticky prevents strain from holding the layer key for extended periods — you only need to hold it for the first keypress.
+
+** Qtile (legacy)
+[[./assets/screenshot-qtile.png]]
+
+** XFCE (legacy)
+[[./assets/screenshot.png]]

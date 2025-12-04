@@ -7,7 +7,7 @@ configuration {
     kb-accept-entry:  "Control+m,Return,KP_Enter";
     kb-remove-to-eol: "Control+Shift+e";
     window-type: "normal";
-    modes: [window, drun, windowcd];
+    modes: [window, drun];
 }
 
 * {

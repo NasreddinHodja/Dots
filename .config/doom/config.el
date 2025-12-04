@@ -72,8 +72,10 @@
 (setq lsp-inlay-hint-enable t)
 
 ;; transparency
-(set-frame-parameter (selected-frame) 'alpha '(91 . 91))
-(add-to-list 'default-frame-alist '(alpha . (91 . 91)))
+;; (set-frame-parameter (selected-frame) 'alpha '(91 . 91))
+;; (add-to-list 'default-frame-alist '(alpha . (91 . 91)))
+;; (set-frame-parameter nil 'alpha-background 80)
+;; (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 ;; proced
 (map! :leader

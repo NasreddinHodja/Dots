@@ -31,7 +31,8 @@ case $CHOICE in
     *"Reboot") systemctl reboot ;;
     *"Lock") xscreensaver-command -lock ;;
     *"Sleep") systemctl suspend ;;
-    *"Log out") loginctl terminate-session $XDG_SESSION_ID ;;
+    # *"Log out") loginctl terminate-session $XDG_SESSION_ID ;;
+    *"Log out") hyprctl dispatch exit;;
     "") ;;
     *) exit 1 ;;
 esac
