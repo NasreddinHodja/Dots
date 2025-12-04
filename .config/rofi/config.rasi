@@ -38,9 +38,9 @@ configuration {
 
 window {
     background-color: @background;
-    border:           3px;
+    border:           2px;
     border-radius:    0px;
-    border-color:     @current-line;
+    border-color:     @purple;
     width:            465px;
     height:           370px;
     padding:          14px 20px;

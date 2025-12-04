@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 max_count=1000
 count=0
 until emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do

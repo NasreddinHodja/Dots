@@ -1,10 +1,3 @@
-la
-npm init
-la
-rm package.json 
-npm init -y
-pm
-npm i -D typescript
 npx tsc --init
 cd ..
 yay -Rns supabase/ 
@@ -126,3 +119,10 @@ yay -Rns hyprlauncer
 yay -Rns hyprlauncher
 hyprctl exit
 hyprctl logout
+hyprctl monitors list
+exit
+yay -Rns qtile
+yay -Rns qtile-extras
+yay -Rns qtile
+./.config/hypr/autostart.sh 
+./autostart.sh 
