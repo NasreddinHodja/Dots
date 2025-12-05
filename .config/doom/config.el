@@ -83,7 +83,7 @@
       "o h" #'proced)
 
 ;; centered buffer
-(perfect-margin-mode 1)
+;; (perfect-margin-mode 1)
 
 ;;
 ;;; * EMACS BINDINGS ===========================================================

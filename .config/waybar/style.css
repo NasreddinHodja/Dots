@@ -40,6 +40,9 @@ window#waybar {
     background: @background-darker;
 }
 #clock {
-    padding: 0 6px;
-    background: @background;
+    padding: 0 14px;
+    margin: 0px;
+    background: @foreground;
+    color: @background;
+    /* border: 2px solid @foreground; */
 }

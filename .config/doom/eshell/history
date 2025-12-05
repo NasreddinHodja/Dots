@@ -1,108 +1,3 @@
-./draw.sh 
-nsxiv ./diagram.svg 
-./draw.sh  
-setxkbmap -layout us -variant intl
-qtile cmd-obj -o cmd -f reload_config
-mgdl -d https://weebcentral.com/series/01J76XY8CJ2RJGWMHM69ZS0J3H/Blame
-codium
-codium .
-pm dev
-z ..
-la
-nuxi init zm-reader
-exit
-yay -Syu hyprland hyprpaper hyprlock
-yay -Syu dolphin
-hyprctl binds | grep Enter
-hyprlauncher --show drun
-hyprctl reload
-yay -Rns waybar
-setbg ~/.config/wp.jpg 
-hyprpaper ~/.config/wp.jpg 
-hyprctl hyprpaper reload ,"~/.config/wp.jpg"
-setbg ~/Pictures/e.png
-yay -Syu waybar-hyprland-workspaces
-yay -Rnswaybar-hyprland-workspaces
-yay -Rns waybar-hyprland-workspaces
-pkill waybar && hyprctl dispatch exec waybars
-pkill waybar && hyprctl dispatch exec waybar
-waybar
-hyprctl monitors list
-waybar 
-ka waybar
-waybar
-yay -Syu swayimg
-swayimg ~/Manga/one_piece/chapter_0001-01/ 
-waybar
-flameshot gui
-yay -Syu grim
-flameshot gui
-flameshot gui 
-waybar
-yay -Syu satty
-satty
-satty oie.png
-satty --fullscreen
-satty gui
-satty -f -
-satty -f - --fullfscreen
-satty -f oie.png --fullfscreen
-satty -f oie.png --fullscreen
-satty -f - --fullscreen
-yay -Syu hyprpicker
-yay -Syu hyprshot
-yay -Rns satty
-hyprshot
-hyprshot region
-hyprshot -m region
-hyprshot -m region --freeze
-hyprshot --help
-hyprcursor-util 
-setbg ~/.config/wp.jpg 
-swayimg --gallery ~/Pictures/wp
-swayimg --gallery ~/Pictures/wp --config ~/.config/swayimg/swayimgrc 
-swayimg --gallery ~/Pictures/wp --config "~/.config/swayimg/swayimgrc"
-swayimg --gallery ~/Pictures/wp
-swayimg --help
-swayimg --gallery ~/Pictures/wp -c ~/.config/swayimg/swayimgrc
-swayimg --gallery ~/Pictures/wp --config=~/.config/swayimg/swayimgrc
-swayimg --config=~/.config/swayimg/swayimgrc --gallery ~/Pictures/wp 
-swayimg --config=/home/nasreddin/.config/swayimg/swayimgrc --gallery ~/Pictures/wp 
-swayimg --gallery ~/Pictures/wp 
-swayimg --gallery ~/Pictures/wp -c ~/.config/swayimg/config 
-swayimg --gallery ~/Pictures/wp
-hyprctl reload
-setbg
-ka setbg
-hyprctl hyprpaper listloaded
-setbg
-hyprctl logs | grep exec
-hyprlogs
-hyprctl logs
-hyprctl config
-yay -Syu pfetch
-pfe
-pfetch 
-yay -Rns pfetch
-yay -Rns dolphin
-hyprshot --help
-exit
-hyprctl reload
-yay -Ss rofi
-rofi -show drun
-yay -Rns hyprlauncer
-yay -Rns hyprlauncher
-hyprctl exit
-hyprctl logout
-hyprctl monitors list
-exit
-yay -Rns qtile
-yay -Rns qtile-extras
-yay -Rns qtile
-./.config/hypr/autostart.sh 
-./autostart.sh 
-waybar
-bthc
 waybar
 ln -s .bashrc ../
 rm ../.bashrc 
@@ -126,3 +21,108 @@ unlink ~/.bashrc
 la ~/.bashrc 
 ln -s ~/Dots/.bashrc ~/.bashrc
 la ~/.bashrc 
+exit
+~/.config/emacs/bin/doom sync -
+~/.config/emacs/bin/doom sync --rebuild
+exit
+nvm use
+codium .
+npx eslint .
+codium
+codium .
+qmk compile
+qmk compile -kb crkbd -km naskbd
+xdg-open 001.png 
+swayimg-browsedir ~/Pictures/wp
+conky-kbd 
+yay
+yay -Syu eww
+eww daemon
+eww open keyboard-hud
+eww daemon 
+ka
+ka ewww
+ka eww
+eww daemon
+eww open keyboard-hud
+ka eww
+eww daemon
+ka eww
+eww daemon
+ka
+ka daemon
+ka eww
+eww daemon
+eww open keyboard-hudn
+eww open keyboard-hud
+eww --version
+eww validate
+eww --version/usr/bin/eww logs | tail -n 20
+eww logs
+yay -Rns eww
+npx supabase@latest migration up
+npx supabase@latest status
+sqlite mgdl.db 
+sqlite3 mgdl.db 
+exit
+npx supabase@latest db reset
+npx supabase start
+git init .
+virtualenv .venv
+source .venv/bin/activate 
+pip install requests bs)
+pip install requests bs4
+cd ..
+cargo add uuid
+cargo add csv
+cargo run
+cargo run -- -s
+cargo run -- -s https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+la
+chmod +x ./csv_to_inserts.py 
+./csv_to_inserts.py 
+z ..
+./csv_to_inserts.py 
+la
+la supabase/ 
+./csv_to_inserts.py 
+npm init
+npm install @supabase/supabase-js axios cheerio commander dotenv
+la
+chmod +x scripts/upload_manga.ts 
+./scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+ts-node scripts/upload_manga.ts 
+npx ts-node ./scripts/upload_manga.ts 
+mgdl -u
+cd ..
+la
+npm install ts-node typescript @supabase/supabase-js dotenv csv-parse node-fetch
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npm install ts-node typescript @supabase/supabase-js dotenv csv-parse node-fetch
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npm install --save-dev ts-node typescript
+npx ts-node --esm scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npx tsc --init
+npx ts-node --esm scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npx ts-node --loader ts-node/esm scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npm init
+npx tsc --init
+npm install --save-dev ts-node typescript
+npm install ts-node typescript @supabase/supabase-js dotenv csv-parse node-fetch
+npx tsc --init
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawat
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+la
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawaa
+npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npm i -D tsx
+npx tsx scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npm install axios cheerio dotenv
+npm install -D @types/node
+npx tsx scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+npm install commander
+npx tsx scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
+mgdl -u
+waybar
+mgdl -u

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Swayimg
+Exec=/home/nasreddin/.local/bin/swayimg-browsedir %f
+Type=Application
+MimeType=image/png;image/jpeg;image/gif;image/bmp;image/webp;image/tiff;
+Icon=image-viewer
+Categories=Graphics;Viewer;
