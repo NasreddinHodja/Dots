@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-TRID="666666"
-notify-send -i camera-photo "Dots screenshot" --hint=int:value:"50%" --replace-id=$TRID
+# TRID="666666"
+# notify-send -i camera-photo "Dots screenshot" --hint=int:value:"50%" --replace-id=$TRID
 
-flameshot full -p ~/Dots/assets/screenshot_raw.png
-magick ~/Dots/assets/screenshot_raw.png -crop 2x1@ +repage -reverse -append ~/Dots/assets/screenshot.png
-rm ~/Dots/assets/screenshot_raw.png
+# flameshot full -p ~/Dots/assets/screenshot_raw.png
+# magick ~/Dots/assets/screenshot_raw.png -crop 2x1@ +repage -reverse -append ~/Dots/assets/screenshot.png
+# rm ~/Dots/assets/screenshot_raw.png
 
-notify-send -i camera-photo "Dots screenshot" --hint=int:value:"100%" --replace-id=$TRID
+# notify-send -i camera-photo "Dots screenshot" --hint=int:value:"100%" --replace-id=$TRID
+
+rm -f ~/Dots/assets/screenshot.png
+hyprshot -o ~/Dots/assets -f screenshot.png -m output

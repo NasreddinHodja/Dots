@@ -15,6 +15,8 @@ window#waybar {
 
 #workspaces {
     margin-left: 2px;
+    /* padding: 0 12px; */
+    background: @background-darker;
 }
 #workspaces button {
     padding: 0 0px;
@@ -36,13 +38,34 @@ window#waybar {
 #workspaces button.urgent {
     background: @red;
 }
+#window {
+    background: @background-darker;
+}
 #taskbar button.active {
     background: @background-darker;
 }
 #clock {
-    padding: 0 14px;
+    /* padding: 0 12px; */
+    padding-right: 8px;
     margin: 0px;
-    background: @foreground;
-    color: @background;
+    background: @background-darker;
+    color: @foreground;
+    /* border-bottom: 1px solid @foreground */
     /* border: 2px solid @foreground; */
+}
+#tray {
+    background: @background-darker;
+    /* padding: 0 12px; */
+}
+#idle_inhibitor {
+    background: @background-darker;
+    /* padding: 0 12px; */
+}
+#custom-sysmon {
+    background: @background-darker;
+    /* padding: 0 12px; */
+}
+#pulseaudio {
+    background: @background-darker;
+    /* padding: 0 12px; */
 }
