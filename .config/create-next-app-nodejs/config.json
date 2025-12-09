@@ -1,0 +1,15 @@
+{
+	"preferences": {
+		"typescript": true,
+		"eslint": false,
+		"linter": "eslint",
+		"tailwind": true,
+		"app": true,
+		"srcDir": false,
+		"importAlias": "@/*",
+		"customizeImportAlias": false,
+		"empty": false,
+		"disableGit": false,
+		"reactCompiler": false
+	}
+}

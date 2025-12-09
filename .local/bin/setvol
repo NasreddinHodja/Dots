@@ -1,21 +1,23 @@
 #!/usr/bin/env sh
 
 case "$1" in
-  up)   pactl set-sink-volume @DEFAULT_SINK@ +5% ;;
-  down) pactl set-sink-volume @DEFAULT_SINK@ -5% ;;
-  mute) pactl set-sink-mute   @DEFAULT_SINK@ toggle ;;
+  up)   wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ ;;
+  down) wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- ;;
+  mute) wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle ;;
 esac
 
-muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-if [ "$muted" = "yes" ]; then
-  vol=0
+if echo "$raw" | grep -q "\[MUTED\]"; then
+  vol="[MUTED]"
+  hint_val=0
 else
-  vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{print $2}' | tr -dc '0-9')
+  vol=$(echo "$raw" | awk '{printf "%.0f%", $2*100}')
+  hint_val=$vol
 fi
 
 notify-send \
   -u low \
-  -h int:value:"$vol" \
+  -h int:value:"$hint_val" \
   -h string:x-canonical-private-synchronous:volume \
-  "Volume" "$vol%"
+  "Volume" "$vol"

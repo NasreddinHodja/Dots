@@ -1,124 +1,3 @@
-la ~/.bashrc 
-ln -s ~/Dots/.bashrc ~/.bashrc
-la ~/.bashrc 
-exit
-~/.config/emacs/bin/doom sync -
-~/.config/emacs/bin/doom sync --rebuild
-exit
-nvm use
-codium .
-npx eslint .
-codium
-codium .
-qmk compile
-qmk compile -kb crkbd -km naskbd
-xdg-open 001.png 
-swayimg-browsedir ~/Pictures/wp
-conky-kbd 
-yay
-yay -Syu eww
-eww daemon
-eww open keyboard-hud
-eww daemon 
-ka
-ka ewww
-ka eww
-eww daemon
-eww open keyboard-hud
-ka eww
-eww daemon
-ka eww
-eww daemon
-ka
-ka daemon
-ka eww
-eww daemon
-eww open keyboard-hudn
-eww open keyboard-hud
-eww --version
-eww validate
-eww --version/usr/bin/eww logs | tail -n 20
-eww logs
-yay -Rns eww
-npx supabase@latest migration up
-npx supabase@latest status
-sqlite mgdl.db 
-sqlite3 mgdl.db 
-exit
-npx supabase@latest db reset
-npx supabase start
-git init .
-virtualenv .venv
-source .venv/bin/activate 
-pip install requests bs)
-pip install requests bs4
-cd ..
-cargo add uuid
-cargo add csv
-cargo run
-cargo run -- -s
-cargo run -- -s https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-la
-chmod +x ./csv_to_inserts.py 
-./csv_to_inserts.py 
-z ..
-./csv_to_inserts.py 
-la
-la supabase/ 
-./csv_to_inserts.py 
-npm init
-npm install @supabase/supabase-js axios cheerio commander dotenv
-la
-chmod +x scripts/upload_manga.ts 
-./scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-ts-node scripts/upload_manga.ts 
-npx ts-node ./scripts/upload_manga.ts 
-mgdl -u
-cd ..
-la
-npm install ts-node typescript @supabase/supabase-js dotenv csv-parse node-fetch
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npm install ts-node typescript @supabase/supabase-js dotenv csv-parse node-fetch
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npm install --save-dev ts-node typescript
-npx ts-node --esm scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npx tsc --init
-npx ts-node --esm scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npx ts-node --loader ts-node/esm scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npm init
-npx tsc --init
-npm install --save-dev ts-node typescript
-npm install ts-node typescript @supabase/supabase-js dotenv csv-parse node-fetch
-npx tsc --init
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawat
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-la
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawaa
-npx ts-node scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npm i -D tsx
-npx tsx scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npm install axios cheerio dotenv
-npm install -D @types/node
-npx tsx scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-npm install commander
-npx tsx scripts/upload_manga.ts --url https://weebcentral.com/series/01J76XY7QDWR5GCSAGVFBD5C1P/Onani-Master-Kurosawa
-mgdl -u
-waybar
-mgdl -u
-waybar
-hyprctl reload
-journalctl -xe | grep hypr
-systemctl start hypr
-waybar
-hyprctl
-hyprctl reload
-systemctl --user hypr
-systemctl --user hyprctl
-hyprctl 
-exit
-dots-screenshot 
-exit
 swayimg-browsedir ~/Pictures/ref
 swayimg-browsedir ~/Pictures/refs/
 swayimg-browsedir ~/Pictures/refs/scifi/Moebius06.webp
@@ -126,3 +5,124 @@ dots-screenshot
 setbg
 waybar
 waybar 
+yay 
+yay -Syu hyprcursor
+mgdl -u
+pnpm create next-app@latest pinga-pay-frontend
+pm run dev
+codium .
+mgdl -d https://weebcentral.com/series/01J76XYEMWA55C7XTZHP1HNARM/Dandadan
+hyprctl dispatch fullscreen
+tar -xvf Etterna-0.74.4-Linux.tar.gz 
+la
+cd Etterna-0.74.4-Linux/
+la
+cd Etterna/
+la
+./Etterna 
+qmk compile -kb crkbd -km naskbd
+exit
+codium
+git push -u origin main
+rm -rf .git
+qmk compile -kb crkbd -km naskbd
+zeditor .
+codium .
+exit
+la
+convert favicon.png favicon.ico
+la
+rm favicon.png 
+yay -Syu gstreamer-vaapi
+yay -Syu obs-vaapi
+obs --enable-wayland-im
+sudo pacman -S obs-studio pipewire wireplumber xdg-desktop-portal-hyprland qt6-wayland
+sudo pacman -R pipewire wireplumber
+yay -Syu wlrobs
+xdg-open Tomas_Bizet_CV.pdf 
+yay -Qs mupdf
+yay -Syu libmupdf
+xdg-open Tomas_Bizet_CV.pdf 
+yay  
+yay -Syu libmupdf
+yay -Syu mupdf
+xdg-open Tomas_Bizet_CV.pdf 
+yay -Rns sioyek
+yay 
+yay -Syu sioyek-git
+yay -Rns sioyek-debug
+yay -Syu sioyek-git
+./watch-presentations.sh
+exit
+setvol down
+pipewire 
+yay -Qs pipewire
+systemctl status pipewire
+systemctl --user status pipewire
+setvol down
+setvol up
+setvol muted
+setvol up
+wpctl get-volume @DEFAULT_AUDIO_SINK@ 
+qmk compile -kb crkbd -km naskbd
+wpctl get-mute @DEFAULT_AUDIO_SINK@d
+wpctl status @DEFAULT_AUDIO_SINK@d
+wpctl get-volume @DEFAULT_AUDIO_SINK@
+setvol up
+setvol muted
+exit
+pm dev
+exit
+codium .
+yay 
+systemctl -Rns heroic games g!
+systemctl -Rns heroic
+yay -Rns heroic
+yay -Rns heroic-games
+yay -Rns heroic-launcher
+yay -Qs heroic
+yay -Rns heroic-games-launcher-bin
+mgdl -r bleach
+mgdl
+yay -Syu dolphin
+mgdl -d https://weebcentral.com/series/01J76XYCV7SKAQA8HTTRE298Y8/Ningen-Shikkaku
+mgdl -d https://weebcentral.com/series/01J76XYCY7MD7C3P86V79R07VJ/Dai-Dark
+gcc sleep.c -o sleep
+./sleep 1
+./sleep 2
+./sleep 10
+gcc sleep.c -o sleep
+./sleep 2
+gcc sleep.c -nostdlib-o sleep2
+gcc sleep.c -nostdlib -o sleep2
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep 2
+gcc sleep.c -nostdlib -lc -o sleep2
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep
+gcc sleep.c -nostdlib -lc -o sleepp
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep 
+la
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep 
+./sleep 2
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep 2
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep 2
+gcc sleep.c -nostdlib -o sleep2
+gcc sleep.c -nostdlib -o sleep
+gcc sleep.c -nostdlib -lc -o sleep
+./sleep 
+./sleep 2
+gcc sleep.c -nostdlib -lc -o sleep2
+./sleep 2
+gcc sleep.c -nostdlib -lc -o sleep
+rm sleep2 
+./sleep 2
+gcc sleep.c -nostdlib -o sleep
+gcc sleep.c -nostdlib -lc -o sleep
+gcc sleep.c -nostdlib -fno-stack-o sleep
+gcc sleep.c -nostdlib -fno-stack-protector -o sleep
+./sleep 2
