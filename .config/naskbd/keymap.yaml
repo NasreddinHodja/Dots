@@ -38,8 +38,8 @@ layers:
 
   NAV:
     - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
-    - ['', LGUI, LALT, LCTL, LSFT, VOLU, LEFT, DOWN, UP, RGHT, TAB, '']
-    - ['', VOLD, MPRV, MPLY, MNXT, '', HOME, PGDN, PGUP, END, '', '']
+    - ['', LGUI, LALT, LCTL, LSFT, VOLU, LEFT, DOWN, UP, RGHT, VOLU, '']
+    - ['', VOLD, MPRV, MPLY, MNXT, '', HOME, PGDN, PGUP, END, VOLD, '']
     - ['', {type: held}, '', INS, {t: DEL, h: FUN}, '']
 
   MOU:

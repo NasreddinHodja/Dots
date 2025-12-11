@@ -75,20 +75,15 @@ Miryoku-like layout with BASE + NUM + SYM.
 *** Colemak DH for =BASE= + combos
 Combos for most common symbols, =CAPS= and =DEL=
 
+*** Home row mods on =BASE=
++ hold homerow keys to activate mods
++ includes right alt
+
 *** =CED= layer
 + When using US intl. layout, =RALT + ,= produces a =ç=
 + =CED= layer is then activated for the next keypress, with easy access to:
   - =õ= and =ã=
   - =ões= and =ão=
-
-*** =SYM= layer
-+ Top row: numbers, mimicking a classic keyboard layout
-+ Left hand: symbols
-+ Right hand: =() [] {} <>=
-
-*** Home row mods on =BASE= and =SYM=
-+ hold homerow keys to activate mods
-+ includes right alt
 
 *** Sticky =MOU= layer
 After holding the corresponding layer key and pressing any key defined in =MOU=, the layer remains active even after releasing the key.

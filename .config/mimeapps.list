@@ -185,7 +185,7 @@ x-scheme-handler/webcals=userapp-Thunderbird-NUNZC3.desktop
 
 [Added Associations]
 image/bmp=swayimg.desktop;
-image/gif=swayimg.desktop;nsxiv.desktop;
+image/gif=swayimg.desktop;
 image/jpg=swayimg.desktop;
 image/png=swayimg.desktop;
 image/tiff=swayimg.desktop;
@@ -243,7 +243,7 @@ application/x-xbel=zen-browser.desktop;
 application/xliff+xml=zen-browser.desktop;
 application/xml=zen-browser.desktop;
 application/xml-external-parsed-entity=chromium.desktop;zen-browser.desktop;
-image/webp=zen-browser.desktop;swayimg.desktop;nsxiv.desktop;
+image/webp=swayimg.desktop;zen-browser.desktop;
 text/markdown=nvim.desktop;
 x-scheme-handler/mid=userapp-Thunderbird-Z0PYC3.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-NUNZC3.desktop;

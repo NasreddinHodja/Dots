@@ -1,19 +1,11 @@
 #!/usr/bin/env bash
 
-set -e
+file="$1"
 
-if [ $# -ne 1 ]; then
-    echo "usage: $0 <image>"
-    exit 1
+if [ -d "$file" ]; then
+  swayimg "$file"
+  exit
 fi
 
-IMG="$1"
-
-if [ ! -f "$IMG" ]; then
-    echo "file not found: $IMG"
-    exit 1
-fi
-
-DIR="$(dirname "$(realpath "$IMG")")"
-
-swayimg --gallery "$DIR"
+dir="$(dirname "$file")"
+swayimg "$file" "$dir"
