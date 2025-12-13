@@ -56,3 +56,5 @@
 
 (package! perfect-margin
   :recipe (:host github :repo "mpwang/perfect-margin"))
+
+(package! yuck-mode)

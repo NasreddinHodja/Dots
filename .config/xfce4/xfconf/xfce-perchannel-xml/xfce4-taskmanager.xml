@@ -16,7 +16,7 @@
     <property name="full-command-line" type="bool" value="false"/>
     <property name="more-precision" type="bool" value="true"/>
   </property>
-  <property name="window-maximized" type="bool" value="false"/>
+  <property name="window-maximized" type="bool" value="true"/>
   <property name="window-width" type="int" value="989"/>
   <property name="window-height" type="int" value="638"/>
 </channel>

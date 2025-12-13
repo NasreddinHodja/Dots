@@ -180,7 +180,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}   {volume}%",
-        "format-bluetooth": "{icon}    {volume}% {format_source}",
+        "format-bluetooth": "{icon}   {volume}% {format_source}",
         "format-bluetooth-muted": "{icon}    {format_source}",
         "format-muted": "  {format_source}",
         "format-source": "  {volume}%",
@@ -199,11 +199,9 @@
     "custom/sysmon": {
         "exec": "~/.local/bin/hypr-sysmon",
         "interval": 2,
+        "return-type": "json",
         "format": "{text}",
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
+        "on-click": "xfce4-taskmanager"
     },
     "custom/media": {
         "format": "{icon} {text}",

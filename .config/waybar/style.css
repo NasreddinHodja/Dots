@@ -40,7 +40,7 @@ window#waybar {
 }
 #window {
     background: @background-darker;
-    margin-right: 4px;
+    margin-right: 10px;
 }
 #taskbar button.active {
     background: @background-darker;

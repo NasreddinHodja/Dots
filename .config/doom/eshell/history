@@ -1,41 +1,3 @@
-la
-convert favicon.png favicon.ico
-la
-rm favicon.png 
-yay -Syu gstreamer-vaapi
-yay -Syu obs-vaapi
-obs --enable-wayland-im
-sudo pacman -S obs-studio pipewire wireplumber xdg-desktop-portal-hyprland qt6-wayland
-sudo pacman -R pipewire wireplumber
-yay -Syu wlrobs
-xdg-open Tomas_Bizet_CV.pdf 
-yay -Qs mupdf
-yay -Syu libmupdf
-xdg-open Tomas_Bizet_CV.pdf 
-yay  
-yay -Syu libmupdf
-yay -Syu mupdf
-xdg-open Tomas_Bizet_CV.pdf 
-yay -Rns sioyek
-yay 
-yay -Syu sioyek-git
-yay -Rns sioyek-debug
-yay -Syu sioyek-git
-./watch-presentations.sh
-exit
-setvol down
-pipewire 
-yay -Qs pipewire
-systemctl status pipewire
-systemctl --user status pipewire
-setvol down
-setvol up
-setvol muted
-setvol up
-wpctl get-volume @DEFAULT_AUDIO_SINK@ 
-qmk compile -kb crkbd -km naskbd
-wpctl get-mute @DEFAULT_AUDIO_SINK@d
-wpctl status @DEFAULT_AUDIO_SINK@d
 wpctl get-volume @DEFAULT_AUDIO_SINK@
 setvol up
 setvol muted
@@ -126,3 +88,41 @@ xdg-mime query default image/svg+xml
 exit
 qmk compile -kb crkbd -km naskbd
 dots-screenshot
+yay -Ss eww
+yay -Syu eww
+eww open example
+eww close example
+eww open example
+eww close examplee
+eww close example
+eww open example
+hyprctl reload
+eww close example
+eww open examplee
+eww open example
+eww close example
+eww open example
+eww close example
+eww open example
+date "+%a, %b %d %I:%M %p"
+eww close example
+date "+%a, %b %d %I:%M %p"
+eww open example
+exit
+node main.js 
+tsc main.js 
+tsc main.ts
+node main.ts 
+node main.js
+tsc main.ts
+node main.js
+tsc main.ts; node main.js
+exit
+echo $HYPRLAND_INSTANCE_SIGNATURE
+hyprctl
+hyprctl dispatch cyclenextwindow
+./cycle-windows.sh 
+waybar
+hypr-sysmon 
+ka waybar
+waybar
