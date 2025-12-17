@@ -1,21 +1,3 @@
-wpctl get-volume @DEFAULT_AUDIO_SINK@
-setvol up
-setvol muted
-exit
-pm dev
-exit
-codium .
-yay 
-systemctl -Rns heroic games g!
-systemctl -Rns heroic
-yay -Rns heroic
-yay -Rns heroic-games
-yay -Rns heroic-launcher
-yay -Qs heroic
-yay -Rns heroic-games-launcher-bin
-mgdl -r bleach
-mgdl
-yay -Syu dolphin
 mgdl -d https://weebcentral.com/series/01J76XYCV7SKAQA8HTTRE298Y8/Ningen-Shikkaku
 mgdl -d https://weebcentral.com/series/01J76XYCY7MD7C3P86V79R07VJ/Dai-Dark
 gcc sleep.c -o sleep
@@ -126,3 +108,21 @@ waybar
 hypr-sysmon 
 ka waybar
 waybar
+yay -Rns lutris
+./toggle-cursor-timeout.sh 
+yay -Syu nautilus 
+gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 appsv
+gsettings set org.gnome.desktop.interface gtk-theme "dracula"
+gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+ka nautilus
+yay -Rns caffeine-ng
+mpv 2025-11-21\ 16-22-34.mp4 
+yay -Rns xfce
+yay -Rns xfce4
+main-emacsclient 
+yay -Rns xfce4
+yay -Qs xfce4
+yay -Qs xfconf
+sudo pacman -Rns \exo \garcon \libxfce4ui \libxfce4util \libxfce4windowing \thunar \thunar-volman \tumbler \xfce4-appfinder \xfce4-genmon-plugin \xfce4-notifyd \xfce4-panel \xfce4-power-manager \xfce4-pulseaudio-plugin \xfce4-session \xfce4-settings \xfce4-taskmanager \xfce4-terminal \xfce4-xkb-plugin \xfconf \xfdesktop \xfwm4 \xfwm4-themes
+./draw.sh 

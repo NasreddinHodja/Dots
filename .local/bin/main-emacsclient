@@ -1,25 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-max_count=1000
+max_count=100
 count=0
-until emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
-    (( count++ > $max_count )) && exit 1
-    sleep 0.1
-done
 
-frame_params="((width . 120) (height . 45) (left . 2269) (top . 0) (fullscreen . fullheight))"
-
-if [ -n "$*" ]; then
-    /usr/bin/emacsclient --alternate-editor= --display="$DISPLAY" --frame-parameters="$frame_params" "$@" &
-else
-    /usr/bin/emacsclient --alternate-editor= --create-frame --display="$DISPLAY" --frame-parameters="$frame_params" &
+if ! emacsclient -e '(emacs-pid)' >/dev/null 2>&1; then
+    emacs --daemon
 fi
 
-count=0
-until xdotool search --class Emacs >/dev/null 2>&1; do
-    (( count++ > $max_count )) && exit 1
+until emacsclient -e '(emacs-pid)' >/dev/null 2>&1; do
+    (( count++ > max_count )) && exit 1
     sleep 0.1
 done
 
-wmctrl -x -r emacs.Emacs -t 0
-# center-window
+frame_params='((name . "main-emacs")
+               (width . 120)
+               (height . 45))'
+
+emacsclient \
+    --alternate-editor= \
+    --create-frame \
+    --frame-parameters="$frame_params" \
+    "$@" &
