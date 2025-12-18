@@ -1,27 +1,3 @@
-mgdl -d https://weebcentral.com/series/01J76XYCV7SKAQA8HTTRE298Y8/Ningen-Shikkaku
-mgdl -d https://weebcentral.com/series/01J76XYCY7MD7C3P86V79R07VJ/Dai-Dark
-gcc sleep.c -o sleep
-./sleep 1
-./sleep 2
-./sleep 10
-gcc sleep.c -o sleep
-./sleep 2
-gcc sleep.c -nostdlib-o sleep2
-gcc sleep.c -nostdlib -o sleep2
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep 2
-gcc sleep.c -nostdlib -lc -o sleep2
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep
-gcc sleep.c -nostdlib -lc -o sleepp
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep 
-la
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep 
-./sleep 2
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep 2
 gcc sleep.c -nostdlib -lc -o sleep
 ./sleep 2
 gcc sleep.c -nostdlib -o sleep2
@@ -126,3 +102,27 @@ yay -Qs xfce4
 yay -Qs xfconf
 sudo pacman -Rns \exo \garcon \libxfce4ui \libxfce4util \libxfce4windowing \thunar \thunar-volman \tumbler \xfce4-appfinder \xfce4-genmon-plugin \xfce4-notifyd \xfce4-panel \xfce4-power-manager \xfce4-pulseaudio-plugin \xfce4-session \xfce4-settings \xfce4-taskmanager \xfce4-terminal \xfce4-xkb-plugin \xfconf \xfdesktop \xfwm4 \xfwm4-themes
 ./draw.sh 
+swayimg diagram.svg 
+la
+rm -rf .git
+la
+setbg --tiled ~/Pictures/me.png
+ka swayimg
+hyprpaper
+Hyprland --version
+ka hyprpaper
+hyprpaper
+hyprpaper &
+yay -Syu
+swayimg diagram.svg 
+swayimg diagram.svg &
+./draw.sh 
+swayimg diagram.svg &
+./draw.sh 
+swayimg diagram.svg &
+./draw.sh 
+swayimg diagram.svg &
+./draw.sh &
+swayimg diagram.svg &
+qmk compile -kb crkbd -km naskbd
+yay -Rns dolphin

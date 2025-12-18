@@ -179,7 +179,9 @@ bottom_right = name,status
 [keys.viewer]
 F1 = help
 Home = first_file
+g = first_file
 End = last_file
+Shift+G = last_file
 Prior = prev_file
 BackSpace = prev_file
 Next = next_file
@@ -235,6 +237,7 @@ MouseLeft = drag
 MouseSide = prev_file
 MouseExtra = next_file
 Ctrl+w = exec /home/nasreddin/.local/bin/setbg %
+Shift+Ctrl+w = exec /home/nasreddin/.local/bin/setbg --tile %
 
 ################################################################################
 # Slideshow mode key binding configuration: key = action [parameters]
@@ -242,7 +245,9 @@ Ctrl+w = exec /home/nasreddin/.local/bin/setbg %
 [keys.slideshow]
 F1 = help
 Home = first_file
+g = first_file
 End = last_file
+Shift+G = last_file
 Prior = prev_file
 Next = next_file
 Shift+r = rand_file
@@ -261,7 +266,9 @@ q = exit
 [keys.gallery]
 F1 = help
 Home = first_file
+g = first_file
 End = last_file
+Shift+g = last_file
 Left = step_left
 h = step_left
 Right = step_right
@@ -294,3 +301,4 @@ Ctrl+ScrollUp = thumb +20
 Ctrl+ScrollDown = thumb -20
 MouseLeft = mode viewer
 Ctrl+w = exec /home/nasreddin/.local/bin/setbg %
+Shift+Ctrl+w = exec /home/nasreddin/.local/bin/setbg --tile %
