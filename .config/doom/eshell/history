@@ -1,40 +1,3 @@
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep 2
-gcc sleep.c -nostdlib -o sleep2
-gcc sleep.c -nostdlib -o sleep
-gcc sleep.c -nostdlib -lc -o sleep
-./sleep 
-./sleep 2
-gcc sleep.c -nostdlib -lc -o sleep2
-./sleep 2
-gcc sleep.c -nostdlib -lc -o sleep
-rm sleep2 
-./sleep 2
-gcc sleep.c -nostdlib -o sleep
-gcc sleep.c -nostdlib -lc -o sleep
-gcc sleep.c -nostdlib -fno-stack-o sleep
-gcc sleep.c -nostdlib -fno-stack-protector -o sleep
-./sleep 2
-ka conky
-qmk compile -kb crkbd -km naskbd
-ka gimp
-setbg
-./watch-presentations.sh 
-exit
-./watch-presentations.sh 
-./build-presentations.sh 
-./watch-presentations.sh 
-./draw.sh 
-yay -Rns nsxiv
-waybar
-nsxiv 
-yay -Rns nsxiv
-which nsxiv
-rm -rf/usr/local/bin/nsxiv
-rm -rf /usr/local/bin/nsxiv
-sudo rm -rf /usr/local/bin/nsxiv
-swayimg fun
-swayimg fun.svg 
 swayimg-browsedir diagram.svg 
 xdg-open naskbd/diagram.svg 
 $XDG_CURRENT_DESKTOP 
@@ -126,3 +89,40 @@ swayimg diagram.svg &
 swayimg diagram.svg &
 qmk compile -kb crkbd -km naskbd
 yay -Rns dolphin
+swayimg diagram.svg &
+./draw.sh && swayimg diagram.svg &
+arm-none-eabi-gcc -mthumb -c first.c
+arm-none-eabi-gcc -mthumb -c mai.c
+arm-none-eabi-gcc -mthumb -c main.c
+la
+arm-none-eabi-gcc -specs=gba.specs -mthumb main.o -o main.elf
+make
+la
+exit
+make
+la
+mgba-qt hello.gba
+cd ..
+make
+la
+mgba-qt gba-learning.gba 
+cd ..
+la
+make
+mgba-qt gba-learning.gba 
+cd ..
+yay -Sc
+p 
+p -Scc
+yarn cache clean
+./draw.sh 
+qmk compile -kb crkbd -km naskbd
+exi
+exib
+exi
+exit
+ka conky
+qmk compile -kb crkbd -km naskbd
+./draw.sh 
+la
+qmk compile -kb crkbd -km naskbd
