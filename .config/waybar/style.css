@@ -7,21 +7,21 @@
     min-height: 0;
 }
 window#waybar {
-    opacity: 0.9;
     background: @background-darker;
     color: @foreground;
     /* border-bottom: 2px solid @background; */
+    margin-right: 10px;
 }
 
 #workspaces {
     margin-left: 2px;
     /* padding: 0 12px; */
-    background: @background-darker;
+    /* background: @background-darker; */
 }
 #workspaces button {
     padding: 0 0px;
     margin: 4px 2px 4px 2px;
-    background: @background-dark;
+    /* background: @background-darker; */
     color: @foreground;
 }
 #workspaces button:hover {
@@ -38,35 +38,31 @@ window#waybar {
 #workspaces button.urgent {
     background: @red;
 }
-#window {
-    background: @background-darker;
-    margin-right: 10px;
-}
 #taskbar button.active {
-    background: @background-darker;
+    /* background: @background-darker; */
 }
 #clock {
     /* padding: 0 12px; */
     padding-right: 8px;
     margin: 0px;
-    background: @background-darker;
+    /* background: @background-darker; */
     color: @foreground;
     /* border-bottom: 1px solid @foreground */
     /* border: 2px solid @foreground; */
 }
 #tray {
-    background: @background-darker;
+    /* background: @background-darker; */
     /* padding: 0 12px; */
 }
 #idle_inhibitor {
-    background: @background-darker;
+    /* background: @background-darker; */
     /* padding: 0 12px; */
 }
 #custom-sysmon {
-    background: @background-darker;
+    /* background: @background-darker; */
     /* padding: 0 12px; */
 }
 #pulseaudio {
-    background: @background-darker;
+    /* background: @background-darker; */
     /* padding: 0 12px; */
 }

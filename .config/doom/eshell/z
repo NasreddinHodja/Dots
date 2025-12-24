@@ -25,11 +25,11 @@
 /home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps|18|1764772893
 /home/nasreddin/Pictures/refs/scifi|1|1763987522
 /home/nasreddin/.local/share/Trash/files|2|1763748989
-/home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps/naskbd|402|1766108938
+/home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps/naskbd|424|1766432271
 /home/nasreddin/Prog/gba-rasgamortalha/source|1|1762297921
 /home/nasreddin/Prog/gba-learning/libtonc-examples/basic/first|6|1762146154
 /sudo:root@localhost:/usr/share/sddm/scripts|6|1763697516
-/sudo:root@localhost:/usr/lib/sddm/sddm.conf.d|19|1764259096
+/sudo:root@localhost:/usr/lib/sddm/sddm.conf.d|31|1766487603
 /usr/share/sddm/themes/sugar-dark|2|1762023175
 /usr/share/sddm/themes|8|1762025834
 /home/nasreddin/Dots/.config/hypr|138|1765943232
@@ -46,10 +46,10 @@
 /home/nasreddin/Games|12|1765658211
 /home/nasreddin/Prog/seed-website|14|1761252623
 /home/nasreddin/Dots/.local/share/themes|23|1762148256
-/home/nasreddin/Facu/tcc/content/step_002|5|1766079896
+/home/nasreddin/Facu/tcc/content/step_002|6|1766182897
 /home/nasreddin/Dots/assets|23|1764860078
 /home/nasreddin/Downloads|7|1761198316
-/home/nasreddin/Videos/obs|25|1765916414
+/home/nasreddin/Videos/obs|31|1766417556
 /home/nasreddin/Dots/.config/qmk_firmware|57|1762558044
 /home/nasreddin/Dots/.config/naskbd|343|1766108920
 /home/nasreddin/Prog/zxtab/src|112|1760135018
@@ -69,7 +69,7 @@
 /home/nasreddin/Work/minerva|104|1757099589
 /home/nasreddin/.themes/Nas-Notify/xfce4-notify-4.0|1|1756067345
 /home/nasreddin/Dots/.local/bin|399|1766005494
-/home/nasreddin/Dots|364|1765943451
+/home/nasreddin/Dots|376|1766508274
 /home/nasreddin/Dots/.config/doom|43|1765543143
 /home/nasreddin/Dots/.config|31|1765404715
 /home/nasreddin/.themes/Dracula/gtk-3.0/widgets|21|1756067784
@@ -91,7 +91,7 @@
 /home/nasreddin/Dots/.config/conky|61|1764931814
 /home/nasreddin/Dots/.config/qmk_firmware/keyboards|7|1762629641
 /home/nasreddin/Facu/tcc/content|2|1760631313
-/home/nasreddin/Facu/tcc|194|1766081914
+/home/nasreddin/Facu/tcc|200|1766431612
 /home/nasreddin/.local/share/themes/MinimalGen|90|1760739152
 /|2|1760738706
 /home/nasreddin/.local/share/themes|4|1761622847
@@ -127,7 +127,7 @@
 /sudo:root@localhost:/run/media/nasreddin/1679b46b-7fbf-4cd7-8dc0-44e728d25e4a|4|1764411938
 /home/nasreddin/Prog/elisp-learning|8|1764412696
 /home/nasreddin/Prog/ml|2|1764426027
-/home/nasreddin/Prog/pytorch-scratch|33|1764443752
+/home/nasreddin/Prog/pytorch-scratch|105|1766180088
 /home/nasreddin/Prog/take-home-challenge/gramjs|21|1764594603
 /home/nasreddin/Prog/take-home-v2|6|1764630922
 /home/nasreddin/Prog/take-home-v4|12|1764892669
@@ -155,3 +155,7 @@
 /home/nasreddin/Prog/tonc-rasgamortalha|8|1766023401
 /home/nasreddin/Prog/gba-learning/libtonc-examples/basic/hello|6|1766023483
 /home/nasreddin/Prog/gba-learning/source|7|1766024962
+/home/nasreddin/Manga/dai_dark/chapter_0011-01|3|1766185473
+/home/nasreddin/Dots/.config/zellij|2|1766186921
+/home/nasreddin/Dots/.config/zellij/themes|4|1766205862
+/usr/share/sddm/themes/silent|4|1766488067

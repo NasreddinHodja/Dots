@@ -1,70 +1,3 @@
-swayimg-browsedir diagram.svg 
-xdg-open naskbd/diagram.svg 
-$XDG_CURRENT_DESKTOP 
-echo $XDG_CURRENT_DESKTOP 
-xdg-mime default org.swayimg.desktop image/svg+xmlxdg-mime default org.swayimg.desktop image/svg+xml-compressed
-xdg-mime query default image/svg+xml
-xdg-mime default org.swayimg.desktop image/svg+xml
-xdg-mime query default image/svg+xml
-exit
-qmk compile -kb crkbd -km naskbd
-dots-screenshot
-yay -Ss eww
-yay -Syu eww
-eww open example
-eww close example
-eww open example
-eww close examplee
-eww close example
-eww open example
-hyprctl reload
-eww close example
-eww open examplee
-eww open example
-eww close example
-eww open example
-eww close example
-eww open example
-date "+%a, %b %d %I:%M %p"
-eww close example
-date "+%a, %b %d %I:%M %p"
-eww open example
-exit
-node main.js 
-tsc main.js 
-tsc main.ts
-node main.ts 
-node main.js
-tsc main.ts
-node main.js
-tsc main.ts; node main.js
-exit
-echo $HYPRLAND_INSTANCE_SIGNATURE
-hyprctl
-hyprctl dispatch cyclenextwindow
-./cycle-windows.sh 
-waybar
-hypr-sysmon 
-ka waybar
-waybar
-yay -Rns lutris
-./toggle-cursor-timeout.sh 
-yay -Syu nautilus 
-gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
-gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 appsv
-gsettings set org.gnome.desktop.interface gtk-theme "dracula"
-gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
-ka nautilus
-yay -Rns caffeine-ng
-mpv 2025-11-21\ 16-22-34.mp4 
-yay -Rns xfce
-yay -Rns xfce4
-main-emacsclient 
-yay -Rns xfce4
-yay -Qs xfce4
-yay -Qs xfconf
-sudo pacman -Rns \exo \garcon \libxfce4ui \libxfce4util \libxfce4windowing \thunar \thunar-volman \tumbler \xfce4-appfinder \xfce4-genmon-plugin \xfce4-notifyd \xfce4-panel \xfce4-power-manager \xfce4-pulseaudio-plugin \xfce4-session \xfce4-settings \xfce4-taskmanager \xfce4-terminal \xfce4-xkb-plugin \xfconf \xfdesktop \xfwm4 \xfwm4-themes
-./draw.sh 
 swayimg diagram.svg 
 la
 rm -rf .git
@@ -123,6 +56,73 @@ exi
 exit
 ka conky
 qmk compile -kb crkbd -km naskbd
-./draw.sh 
-la
+yay -Syu vulkan-radeon
+rm -rf ~/.local/share/umurm -rf ~/.steam/root/ubuntu12_32rm -rf ~/.steam/root/ubuntu12_64
+pacman -Qs lib32-mesapacman -Qs lib32-vulkan
+yay -Qs pytorch
+./main.py 
+virtualenv .venv
+source .venv/bin/activate 
+yay 
+yay -Ss torchvision
+yay -Syu python-torchvision-cuda
+yay -Rns zed
+yay -Rns python-pytorch
+yay -Syu python-torchvision-cuda
 qmk compile -kb crkbd -km naskbd
+yay -Syu thunar
+yay -Rns thunar
+yay -Syu python-torchvision-cuda
+qmk compile -kb crkbd -km naskbd
+la
+./main.py 
+yay -Qs cuda
+./main.py
+yay -Rns python-torchvision-cuda
+sudo pacman -Rns cuda cudnn python-pytorch-cuda python-torchvision-cuda
+sudo pacman -Rns python-pytorch-cuda python-torchvision-cuda
+yay -Rns python-pytorch-cuda python-torchvision-cuda
+yay -Qspython-pytorch-cuda python-torchvision-cuda
+yay -Qs python-pytorch-cuda python-torchvision-cuda
+yay -Syu python-torchvision
+./main.py
+la
+la data/ 
+la data/FashionMNIST/raw/ 
+./main.py
+./man
+./main.py 
+la
+./main.py a
+./main.py
+yay -Syu python-pykan
+pipx install pykan
+virtualenv .venv
+source .venv/bin/activate
+./main.py 
+mgdl -u
+yay -Syu ghostty
+yay -Syu zellij
+yay -Rns zellij
+yay -Syu zellij
+unzip zellij-master.zip 
+la
+cp zellij-master/dracula.kdl .
+yay -Syu ghostty
+curl wttr.in
+./watch.sh 
+qmk compile -kb crkbd -km naskbdk
+qmk compile -kb crkbd -km naskbd
+mv ~/qmk_userspace/ ~/.config/ 
+qmk compile -kb crkbd -km naskbd
+setbg
+ka Hyprland
+sddm
+la
+yay -Syu sddm-silent
+yay -Syu sddm-silent-greeter
+yay -Syu sddm-silent-theme
+ka Hyprland
+./test.sh 
+yay
+yay -Syu hyprpanel
