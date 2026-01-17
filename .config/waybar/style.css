@@ -38,6 +38,9 @@ window#waybar {
 #workspaces button.urgent {
     background: @red;
 }
+#window {
+    margin-right: 12px;
+}
 #taskbar button.active {
     /* background: @background-darker; */
 }

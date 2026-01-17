@@ -362,3 +362,11 @@
             (when (string-match "/\\.config/kanata/kanata\\.kbd$" buffer-file-name)
               (copy-file buffer-file-name "/sudo::/etc/kanata/kanata-config.kbd" t)
               (message "Kanata config updated!"))))
+
+(with-eval-after-load 'eglot
+  (with-eval-after-load 'typst-ts-mode
+    (add-to-list 'eglot-server-programs
+                 `((typst-ts-mode) .
+                   ,(eglot-alternatives `(,typst-ts-lsp-download-path
+                                          "tinymist"
+                                          "typst-lsp"))))))

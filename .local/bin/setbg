@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -xe
 
 mode="cover"
 
@@ -18,11 +18,14 @@ apply_wp() {
     mkdir -p "$HOME/.config/hypr"
 
     {
-        echo "preload = $img"
-        echo "wallpaper = ,$wp"
+        echo "wallpaper {"
+        echo "    monitor ="
+        echo "    path = $img"
+        echo "    fit_mode = $mode"
+        echo "}"
     } > "$conf"
 
-    hyprctl hyprpaper reload ,$wp
+    hyprctl hyprpaper wallpaper ,$wp
 }
 
 if [ $# -ne 1 ]; then

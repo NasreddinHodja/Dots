@@ -29,7 +29,7 @@ CHOICE=$(echo -e "󰐥  Shutdown\n󰜉  Reboot\n󰌾  Lock\n󰒲  Sleep\n󰍃  L
 case $CHOICE in
     *"Shutdown") systemctl poweroff ;;
     *"Reboot") systemctl reboot ;;
-    *"Lock") xscreensaver-command -lock ;;
+    *"Lock") hyprlock ;;
     *"Sleep") systemctl suspend ;;
     # *"Log out") loginctl terminate-session $XDG_SESSION_ID ;;
     *"Log out") hyprctl dispatch exit;;

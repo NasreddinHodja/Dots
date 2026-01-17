@@ -58,3 +58,6 @@
   :recipe (:host github :repo "mpwang/perfect-margin"))
 
 (package! yuck-mode)
+
+(package! typst-ts-mode
+  :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
