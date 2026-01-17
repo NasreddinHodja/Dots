@@ -1,4 +1,3 @@
-make
 mgba-qt gba-learning.gba 
 cd ..
 yay -Sc
@@ -126,3 +125,4 @@ bluetoothctl
 exit
 mgdl -u
 qmk compile -kb crkbd -km naskbd
+./draw.sh 
