@@ -105,4 +105,5 @@ wp.state.json
 .local/bin/ffultima1.8.6.irc.zip
 .local/bin/zeninstall
 .local/bin/keymap
+.local/bin/claude
 /.local/share/applications/musescore-studio.desktop

@@ -1,19 +1,3 @@
-mgba-qt gba-learning.gba 
-cd ..
-yay -Sc
-p 
-p -Scc
-yarn cache clean
-./draw.sh 
-qmk compile -kb crkbd -km naskbd
-exi
-exib
-exi
-exit
-ka conky
-qmk compile -kb crkbd -km naskbd
-yay -Syu vulkan-radeon
-rm -rf ~/.local/share/umurm -rf ~/.steam/root/ubuntu12_32rm -rf ~/.steam/root/ubuntu12_64
 pacman -Qs lib32-mesapacman -Qs lib32-vulkan
 yay -Qs pytorch
 ./main.py 
@@ -126,3 +110,19 @@ exit
 mgdl -u
 qmk compile -kb crkbd -km naskbd
 ./draw.sh 
+lsblk
+exit
+lsblk
+sudo dd bs=4M if=Downloads/archlinux-2025.12.01-x86_64.iso of=/dev/sda conv=fsync oflag=direct status=progress
+exit
+yay -S thunar
+lsblk
+mem
+free
+1
+1 + 1
+(+ 1 1)
+(* 55 4)
+mgdl -d https://weebcentral.com/series/01J76XYAYGAB16JWK8Y3HRNFXD/Phantom-Blood
+mgdl -d https://weebcentral.com/series/01J76XY8CJ2RJGWMHM69ZS0J3H/Blame
+mgdl -u

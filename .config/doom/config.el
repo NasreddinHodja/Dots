@@ -179,7 +179,44 @@
          '((sequence "TODO(t)" "PROJ(p)" "LOOP(r)" "STRT(s)" "WAIT (W)" "WAIT TEST(w)" "HOLD(h)" "IDEA(i)"
             "|" "DONE(d)" "KILL(k) CANCELLED(c)")
            (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
-           (sequence "|" "OKAY(o)" "YES(y)" "NO(n)"))))
+           (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
+
+  ;; archive to archived/<name>_archived.org
+  (defun nas/set-org-archive-location ()
+    (when (buffer-file-name)
+      (setq-local org-archive-location
+                  (format "archived/%s_archived.org::"
+                          (file-name-sans-extension
+                           (file-name-nondirectory (buffer-file-name)))))))
+  (add-hook 'org-mode-hook #'nas/set-org-archive-location))
+
+(defun nas/org-archive-done ()
+  "Archive subtree to closed/ and leave a link stub in its place."
+  (interactive)
+  (org-back-to-heading t)
+  (let* ((heading (org-get-heading t t t t))
+         (level (org-current-level))
+         (todo-state (org-get-todo-state))
+         (stars (make-string level ?*))
+         (base (file-name-sans-extension
+                (file-name-nondirectory (buffer-file-name))))
+         (archive-file (concat "archived/" base "_archived.org"))
+         (archive-dir (expand-file-name "archived/"
+                                        (file-name-directory (buffer-file-name)))))
+    (unless (file-directory-p archive-dir)
+      (make-directory archive-dir t))
+    (org-archive-subtree)
+    (insert (format "%s %s [[file:%s::*%s][%s]]\n"
+                    stars
+                    (or todo-state "DONE")
+                    archive-file
+                    heading
+                    heading))))
+
+(map! :after org
+      :map org-mode-map
+      :leader
+      :desc "Archive done" "m A" #'nas/org-archive-done)
 
 
 ;;

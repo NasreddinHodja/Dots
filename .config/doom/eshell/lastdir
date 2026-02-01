@@ -1,11 +1,3 @@
-~
-/home/nasreddin/Videos/obs
-/home/nasreddin/Facu/tcc
-/home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps/naskbd
-~
-/sudo:root@localhost:/usr/lib/sddm/sddm.conf.d
-/usr/share/sddm/themes/silent
-/home/nasreddin/Dots
 /home/nasreddin/Dots/.config/waybar
 ~
 /home/nasreddin/Manga/one_piece/chapter_1170-01
@@ -31,3 +23,11 @@
 ~
 /home/nasreddin/Dots/.config/qmk_userspace/keyboards/crkbd/keymaps/naskbd
 /home/nasreddin/Dots/.config/naskbd
+~
+/home/nasreddin
+/home/nasreddin/Dots/.local/bin
+~
+/home/nasreddin
+/home/nasreddin/Manga
+/home/nasreddin/Prog
+/home/nasreddin/Manga
