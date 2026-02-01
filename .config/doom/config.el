@@ -39,6 +39,16 @@
 ;; remove quit prompt
 (setq! confirm-kill-emacs nil)
 
+;; compilation buffer as a normal split, not a popup
+(after! compile
+  (set-popup-rule! "^\\*compilation" :ignore t))
+(setq display-buffer-alist
+      (cons '("\\*compilation\\*"
+              (display-buffer-reuse-window display-buffer-in-direction)
+              (direction . below)
+              (window-height . 0.35))
+            display-buffer-alist))
+
 ;; load path for local packages
 (add-to-list 'load-path (expand-file-name "local" doom-user-dir))
 
@@ -177,7 +187,7 @@
 (after! org
   (setq! org-todo-keywords
          '((sequence "TODO(t)" "PROJ(p)" "LOOP(r)" "STRT(s)" "WAIT (W)" "WAIT TEST(w)" "HOLD(h)" "IDEA(i)"
-            "|" "DONE(d)" "KILL(k) CANCELLED(c)")
+            "|" "DONE(d)" "KILL(k)")
            (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
            (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
 
