@@ -202,16 +202,21 @@
                 (file-name-nondirectory (buffer-file-name))))
          (archive-file (concat "archived/" base "_archived.org"))
          (archive-dir (expand-file-name "archived/"
-                                        (file-name-directory (buffer-file-name)))))
+                                        (file-name-directory (buffer-file-name))))
+         (link-stub (format "%s %s [[file:%s::*%s][%s]]"
+                            stars
+                            (or todo-state "DONE")
+                            archive-file
+                            heading
+                            heading)))
     (unless (file-directory-p archive-dir)
       (make-directory archive-dir t))
     (org-archive-subtree)
-    (insert (format "%s %s [[file:%s::*%s][%s]]\n"
-                    stars
-                    (or todo-state "DONE")
-                    archive-file
-                    heading
-                    heading))))
+    (save-excursion
+      (insert "\n"))
+    (let ((stub-start (point)))
+      (insert link-stub "\n")
+      (goto-char stub-start))))
 
 (map! :after org
       :map org-mode-map
