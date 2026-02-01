@@ -347,30 +347,27 @@
 ;;; * VTERM ====================================================================
 ;;
 
-(setq vterm-shell "/bin/bash")
-(setenv "SHELL" "/bin/bash")
+(setq vterm-shell "/bin/zsh")
 
-;; (add-hook 'vterm-mode-hook #'evil-emacs-state)
+;; Disable evil-collection's broken vterm bindings
+(after! evil-collection
+  (setq evil-collection-mode-list (delq 'vterm evil-collection-mode-list)))
 
-;; (after! vterm
-;;   (defun nas/vterm-send-c ()
-;;     "Send c command to zsh vi mode."
-;;     (interactive)
-;;     (execute-kbd-macro (kbd "i"))
-;;     (vterm-send-key (kbd "ESC"))
-;;     (vterm-send-key (kbd "c")))
+(after! vterm
+  ;; Start in emacs state — all input goes straight to zsh (incl. vi-mode)
+  (evil-set-initial-state 'vterm-mode 'emacs)
 
-;;   (defun nas/vterm-send-d ()
-;;     "Send c command to zsh vi mode."
-;;     (interactive)
-;;     (execute-kbd-macro (kbd "i"))
-;;     (vterm-send-key (kbd "ESC"))
-;;     (vterm-send-key (kbd "d")))
+  ;; M-ESC enters evil normal state for buffer navigation/scrolling/yanking
+  ;; Press i to drop back to emacs state (zsh handles everything)
+  (evil-define-key 'emacs vterm-mode-map
+    (kbd "M-<escape>") #'evil-normal-state)
 
-;;   (evil-define-key 'normal vterm-mode-map
-;;     "c" #'nas/vterm-send-c
-;;     "d" #'nas/vterm-send-d)
-;;   )
+  (evil-define-key* 'normal vterm-mode-map
+    "i" (lambda () (interactive) (evil-emacs-state))
+    "p" (lambda () (interactive) (evil-emacs-state) (vterm-yank))
+    "G" #'vterm-reset-cursor-point
+    "[[" #'vterm-previous-prompt
+    "]]" #'vterm-next-prompt))
 
 
 ;;
