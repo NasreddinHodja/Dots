@@ -354,6 +354,9 @@
   (setq evil-collection-mode-list (delq 'vterm evil-collection-mode-list)))
 
 (after! vterm
+  ;; Show modeline in vterm buffers
+  (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
+
   ;; Start in emacs state — all input goes straight to zsh (incl. vi-mode)
   (evil-set-initial-state 'vterm-mode 'emacs)
 
