@@ -15,42 +15,42 @@ layers:
     - {t: i, h: LALT}
     - {t: o, h: LGUI}
     - ''
-    - ['', z, x, c, d, v, k, h, {t: ',', h: CED}, '.', '/', '']
+    - ['', z, x, c, d, v, k, h, ',', '.', '/', '']
     - ['', {t: ESC, h: NAV}, {t: BSPC, h: MOU}, {t: ENT, h: SYM}, {t: SPC, h: NUM}, '']
 
   NUM:
-    - ['', '', '9', '8', '7', '[', '', '', '', '', '', '']
-    - ['', '`', '3', '2', '1', '=', 'RALT', 'LSFT', 'LCTL', 'LALT', 'LGUI', '']
+    - ['', '`', '9', '8', '7', '[', '', '', '', '', '', '']
+    - ['', "'", '3', '2', '1', '=', 'RALT', 'LSFT', 'LCTL', 'LALT', 'LGUI', '']
     - ['', '/', '6', '5', '4', ']', '', '', '', '', '', '']
-    - ['', '0', '\', '', {type: held}, '']
+    - ['', {t: '0', h: FUN}, '\', '', {type: held}, '']
 
   SYM:
     - ['', '^', '~', '{', '(', '&', '', '', '', '', '', '']
-    - ['', '%', '#', '*', '!', '+', '', 'LSFT', 'LCTL', 'LALT', 'LGUI', '']
+    - ['', '%', '#', '*', '!', '+', 'RALT', 'LSFT', 'LCTL', 'LALT', 'LGUI', '']
     - ['', '@', '|', '}', ')', '$', '', '', '', '', '', '']
     - ['', '-', '_', {type: held}, '', '']
 
   NAV:
-    - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
-    - ['', LGUI, LALT, LCTL, LSFT, VOLU, LEFT, DOWN, UP, RGHT, VOLU, '']
-    - ['', VOLD, MPRV, MPLY, MNXT, '', HOME, PGDN, PGUP, END, VOLD, '']
+    - ['', C-z, C-u, C-v, C-c, C-x, C-x, C-c, C-v, C-u, MUTE, '']
+    - ['', LGUI, LALT, LCTL, LSFT, CAPS, LEFT, DOWN, UP, RGHT, VOLU, '']
+    - ['', '', MPRV, MPLY, MNXT, C-a, HOME, PGDN, PGUP, END, VOLD, '']
     - ['', {type: held}, '', INS, {t: DEL, h: FUN}, '']
 
   MOU:
-    - ['', AGIN, UNDO, PSTE, COPY, CUT, CUT, COPY, PSTE, UNDO, AGIN, '']
-    - ['', LGUI, LALT, LCTL, LSFT, VOLU, MS LEFT, MS DOWN, MS UP, MS RGHT, TAB, '']
-    - ['', VOLD, MPRV, MPLY, MNXT, MOU BRR, MS WHLL, MS WHLD, MS WHLU, MS WHLR, MS BTN3, '']
-    - ['', '', {type: held}, MS BTN2, MS BTN1, '']
+    - ['', C-z, C-u, C-v, C-c, C-x, C-x, C-c, C-v, C-u, C-z, '']
+    - ['', LGUI, LALT, LCTL, LSFT, VOLU, MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, TAB, '']
+    - ['', VOLD, MPRV, MPLY, MNXT, MOU_BRR, MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, MS_BTN3, '']
+    - ['', '', {type: held}, MS_BTN2, MS_BTN1, '']
 
   FUN:
-    - ['', F10, F9, F8, F7, PAUS, GAM, {t: 'DM PLY1', shifted: 'DM PLY2'}, {t: 'DM REC1', shifted: 'DM REC2'}, 'DM RSTP', '', '']
-    - ['', F11, F3, F2, F1, PSCR, QK BOOT, LSFT, LCTL, LALT, LGUI, '']
-    - ['', F12, F6, F5, F4, '', LOCK, APP, '', '', '', '']
+    - ['', F10, F9, F8, F7, PAUS, {t: GAM, type: toggle}, DM_PLY1, DM_REC1, DM_RSTP, '', '']
+    - ['', F11, F3, F2, F1, PSCR, QK_BOOT, LSFT, LCTL, LALT, LGUI, '']
+    - ['', F12, F6, F5, F4, '', QK_LOCK, APP, '', '', '', '']
     - ''
     - {type: held}
     - ''
     - ''
-    - {type: held}
+    - ''
     - ''
 
   CED:
@@ -58,6 +58,12 @@ layers:
     - ['', '', '', '', 'ã', '', '', 'ão', '', '', '', '']
     - ['', '', '', '', 'õ', '', '', 'ões', '', '', '', '']
     - ['', '', '', '', '', '']
+
+  GAM:
+    - [T, TAB, Q, W, E, R, Y, U, I, O, P, '']
+    - [G, LSFT, A, S, D, F, H, J, K, L, ';', '']
+    - [B, LCTL, Z, X, C, V, N, M, ',', '.', '/', {t: GAM, type: toggle}]
+    - ['', ESC, BSPC, ENT, SPC, '']
 
 combos:
   - {p: [2, 3], k: "TAB", l: ["BASE"]}
@@ -70,4 +76,5 @@ combos:
   - {p: [32, 33], k: "&", l: ["BASE"]}
   - {p: [6, 7], k: "CAPS", l: ["BASE"]}
   - {p: [4, 5], k: "DEL", l: ["BASE"]}
-  - {p: [3, 4], k: "CSV", l: ["NAV"]}
+  - {p: [3, 4], k: "LCS-v", l: ["NAV"]}
+  - {p: [2, 3], k: "LCS-c", l: ["NAV"]}
