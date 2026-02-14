@@ -100,6 +100,7 @@ wp.state.json
 .config/zoom*
 .config/Google
 .config/flutter
+.config/zen
 
 .local/bin/gallery-dl
 .local/bin/manga-py
