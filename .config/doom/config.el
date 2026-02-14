@@ -422,3 +422,24 @@
                    ,(eglot-alternatives `(,typst-ts-lsp-download-path
                                           "tinymist"
                                           "typst-lsp"))))))
+
+;;
+;;; * FLUTTER ===================================================================
+;;
+
+(add-to-list 'exec-path (expand-file-name "~/.local/src/flutter/bin"))
+
+(after! lsp-dart
+  (setq lsp-dart-sdk-dir (expand-file-name "~/.local/src/flutter/bin/cache/dart-sdk")))
+
+(defun nas/flutter-hot-reload ()
+  "Send hot reload signal to running Flutter process."
+  (when (and (eq major-mode 'dart-mode)
+             (file-exists-p "/tmp/flutter.pid"))
+    (let ((pid (string-trim (with-temp-buffer
+                              (insert-file-contents "/tmp/flutter.pid")
+                              (buffer-string)))))
+      (call-process "kill" nil nil nil "-USR1" pid))))
+
+(add-hook 'dart-mode-hook
+          (lambda () (add-hook 'after-save-hook #'nas/flutter-hot-reload nil t)))

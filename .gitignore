@@ -98,6 +98,8 @@ wp.state.json
 .config/FreeCAD
 .config/MuseScore
 .config/zoom*
+.config/Google
+.config/flutter
 
 .local/bin/gallery-dl
 .local/bin/manga-py
