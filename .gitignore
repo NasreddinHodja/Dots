@@ -101,6 +101,8 @@ wp.state.json
 .config/Google
 .config/flutter
 .config/zen
+.config/Android Open Source Project/
+.config/capacitor/
 
 .local/bin/gallery-dl
 .local/bin/manga-py
