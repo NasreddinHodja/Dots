@@ -105,6 +105,7 @@ wp.state.json
 .config/capacitor/
 .config/vlc/
 .config/simple-update-notifier/
+.config/mgdl/secrets.toml
 
 .local/bin/gallery-dl
 .local/bin/manga-py
