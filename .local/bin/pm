@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -f bun.lockb ]; then
+if [ -f bun.lockb ] || [ -f bun.lock ]; then
     PM="bun"
 elif [ -f yarn.lock ]; then
     PM="yarn"
