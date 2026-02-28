@@ -27,3 +27,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . "$HOME/.cargo/env"
+
+# peon-ping quick controls
+alias peon="bash /home/nasreddin/.claude/hooks/peon-ping/peon.sh"
+[ -f /home/nasreddin/.claude/hooks/peon-ping/completions.bash ] && source /home/nasreddin/.claude/hooks/peon-ping/completions.bash
