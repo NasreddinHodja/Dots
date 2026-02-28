@@ -103,6 +103,8 @@ wp.state.json
 .config/zen
 .config/Android Open Source Project/
 .config/capacitor/
+.config/vlc/
+.config/simple-update-notifier/
 
 .local/bin/gallery-dl
 .local/bin/manga-py
