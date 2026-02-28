@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=konigslibrary
+Exec=/home/nasreddin/Prog/konigslibrary/src-tauri/target/release/app
+Icon=/home/nasreddin/Prog/konigslibrary/static/icon-512.png
+Type=Application
+StartupNotify=true
+Terminal=false
