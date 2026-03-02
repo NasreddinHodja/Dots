@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 # format = " $all $character"
 format = """
  $username\

@@ -88,14 +88,14 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
 # tweaks for vterm
-source ~/.config/zsh/zsh-vterm
+source ~/.config/zsh/plugins/zsh-vterm
 
 # peon-ping quick controls
 alias peon="bash /home/nasreddin/.claude/hooks/peon-ping/peon.sh"
 [ -f /home/nasreddin/.claude/hooks/peon-ping/completions.bash ] && source /home/nasreddin/.claude/hooks/peon-ping/completions.bash
 
 # *should be last*
-# load zsh-syntax-highlighting & zsh-history-substring-search
-source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# load plugins
+source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+# source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -106,7 +106,9 @@ wp.state.json
 .config/vlc/
 .config/simple-update-notifier/
 .config/mgdl/secrets.toml
-
+.config/zsh/plugins/zsh-autosuggestions/
+.config/zsh/plugins/zsh-history-substring-search/
+.config/zsh/plugins/zsh-syntax-highlighting/
 .local/bin/gallery-dl
 .local/bin/manga-py
 .local/bin/RuneLite.AppImage
