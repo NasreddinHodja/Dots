@@ -1,6 +1,3 @@
-setbg
-ka Hyprland
-sddm
 la
 yay -Syu sddm-silent
 yay -Syu sddm-silent-greeter
@@ -126,3 +123,6 @@ qmk compile -kb crkbd -km naskbd-extended
 qmk compile -kb crkbd -km naskbd
 git rm --cached .config/simple-update-notifier/ 
 git rm --cached -r .config/simple-update-notifier/ 
+./draw.sh 
+qmk compile -kb crkbd -km naskbd
+./draw.sh 

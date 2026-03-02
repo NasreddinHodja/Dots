@@ -63,34 +63,10 @@ Dots/
 + [[https://qmk.fm/][QMK firmware]]
 + [[https://github.com/NasreddinHodja/qmk_userspace][my qmk external userpace repo]]
 
-[[./.config/naskbd/diagram.svg]]
+* Legacy
+Configs for these are still being used, deleted, or flagged as legacy.
 
-** Features
-*** 34 keys
-34 keys feel extremely comfortable 😀.
-
-*** Typing with 3 layers
-Miryoku-like layout with BASE + NUM + SYM.
-
-*** Colemak DH for =BASE= + combos
-Combos for most common symbols, =CAPS= and =DEL=
-
-*** Home row mods on =BASE=
-+ hold homerow keys to activate mods
-+ includes right alt
-
-*** =CED= layer
-+ When using US intl. layout, =RALT + ,= produces a =ç=
-+ =CED= layer is then activated for the next keypress, with easy access to:
-  - =õ= and =ã=
-  - =ões= and =ão=
-
-*** Sticky =MOU= layer
-After holding the corresponding layer key and pressing any key defined in =MOU=, the layer remains active even after releasing the key.
-The layer automatically turns off when a =KC_TRNS= or =KC_NO= key is pressed.
-These layers are mostly used for navigation keys, which are often pressed in sequences. Keeping the layer sticky prevents strain from holding the layer key for extended periods — you only need to hold it for the first keypress.
-
-** Qtile (legacy)
+** Qtile
 [[./assets/screenshot-qtile.png]]
 
 ** XFCE (legacy)
