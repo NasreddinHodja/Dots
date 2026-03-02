@@ -243,7 +243,7 @@
   "Generic function to find files in DIR."
 
   (interactive)
-  (find-file (read-file-name (format "Find file in %s: " dir) dir)))
+  (find-file (read-file-name (format "Find file in %s: " dir) dir dir)))
 
 (defun nas/build-keybinding (key path)
   "Create keybinding specification for KEY and PATH."
