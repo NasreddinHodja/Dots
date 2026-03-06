@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+KNORGPUB_FRAMEWORK_DIR="/home/nasreddin/.local/share/knorgpub" exec "/home/nasreddin/.local/share/knorgpub/bin/knorgpub" "$@"
