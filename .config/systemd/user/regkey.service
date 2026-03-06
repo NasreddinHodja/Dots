@@ -1,0 +1,21 @@
+# Install:
+#   cargo install --path .
+#   mkdir -p ~/.config/systemd/user
+#   cp contrib/regkey.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now regkey
+#
+# Logs:
+#   journalctl --user -u regkey -f
+
+[Unit]
+Description=regkey keystroke recorder
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.cargo/bin/regkey record
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
