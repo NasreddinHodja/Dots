@@ -14,17 +14,29 @@ export ANDROID_HOME="$ANDROID_SDK_ROOT"
 
 source ~/.config/zsh/.node_token
 
-export PATH="$HOME/.yarn/bin:$PATH"
+# XDG tool homes
+export CARGO_HOME="$HOME/.local/share/cargo"
+export RUSTUP_HOME="$HOME/.local/share/rustup"
+export BUN_INSTALL="$HOME/.local/share/bun"
+export NVM_DIR="$HOME/.local/share/nvm"
+export DOCKER_CONFIG="$HOME/.config/docker"
+export GNUPGHOME="$HOME/.local/share/gnupg"
+export IPYTHONDIR="$HOME/.config/ipython"
+export JUPYTER_CONFIG_DIR="$HOME/.config/jupyter"
+export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
+export WGETRC="$HOME/.config/wget/wgetrc"
+
+export PATH="$HOME/.local/share/yarn/bin:$PATH"
 export PATH="/home/nasreddin/.local/share/gem/ruby/3.0.0/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="/home/nasreddin/.local/bin:$PATH"
 export PATH="$HOME/.local/src/flutter/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-. "$HOME/.cargo/env"
+. "$CARGO_HOME/env"
 
 # pnpm
 export PNPM_HOME="/home/nasreddin/.local/share/pnpm"
@@ -35,8 +47,4 @@ esac
 # pnpm end
 
 # bun completions
-[ -s "/home/nasreddin/.bun/_bun" ] && source "/home/nasreddin/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"

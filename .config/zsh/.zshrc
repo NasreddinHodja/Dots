@@ -12,7 +12,7 @@ HISTFILE=~/.config/zsh/.zhistory
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
+compinit -d ~/.cache/zsh/zcompdump
 _comp_options+=(globdots)       # include hidden files
 
 is_interactive_terminal() {

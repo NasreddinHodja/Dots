@@ -5,6 +5,12 @@ tmp/
 
 wp.state.json
 
+.config/yarn/
+.config/wget/
+.config/npm/
+.config/jupyter/
+.config/ipython/
+.config/docker/
 .config/cef_user_data/
 .config/Postman/
 .config/chromium/
