@@ -12,10 +12,8 @@ alias p sudo pacman $@*
 alias szhist bat $HOME/.config/zsh/.zhistory | grep -i $@*
 alias juno nohup jupyter notebook > error.log & $@*
 alias p5s nohup p5 server > error.log & $@*
-alias mgdl ~/Prog/mgdl/target/release/mgdl $@*
 alias ls eza --icons --group-directories-first $@*
 alias la eza --icons -la --group-directories-first $@*
 alias grep grep --color=auto $@*
 alias diff diff --color=auto $@*
 alias ccat highlight --out-format=ansi $@*
-alias bthc bluetoothctl connect 40:9F:38:8A:C2:D8 $@*

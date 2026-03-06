@@ -272,6 +272,7 @@
  ("p" "~/Prog/")
  ("f" "~/Facu/")
  ("w" "~/Work/")
+ ("m" "~/Manga/")
  ("h" "~/"))
 
 ;; Remap code format to "SPC c RET"

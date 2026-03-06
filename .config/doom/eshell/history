@@ -1,14 +1,3 @@
-yay -Syu sddm-silent
-yay -Syu sddm-silent-greeter
-yay -Syu sddm-silent-theme
-ka Hyprland
-./test.sh 
-yay
-yay -Syu hyprpanel
-waybar
-mgdl -u
-yay -Syu ly
-systemctl disable sddm
 yay -Rns sddm
 yay -Rns sddm-silent-theme sddm
 ka sddm
@@ -126,3 +115,14 @@ git rm --cached -r .config/simple-update-notifier/
 qmk compile -kb crkbd -km naskbd
 ./draw.sh 
 ./draw.sh  
+which mgdl
+mgdl update
+../knorgpub/install.sh 
+rm -rf *
+knorgpub init
+./watch.sh 
+qmk compile -kb crkbd -km naskbd
+./draw
+./draw.sh 
+qmk compile -kb crkbd -km naskbd
+yay -Rns steam
