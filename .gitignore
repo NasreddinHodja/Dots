@@ -5,6 +5,7 @@ tmp/
 
 wp.state.json
 
+.config/easyeffects/
 .config/yarn/
 .config/wget/
 .config/npm/

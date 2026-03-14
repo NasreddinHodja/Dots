@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Android Studio
+Comment=Integrated Development Environment for Android
+Exec=/home/nasreddin/.local/src/android-studio/bin/studio.sh
+Icon=/home/nasreddin/.local/src/android-studio/bin/studio.png
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=jetbrains-android-studio
