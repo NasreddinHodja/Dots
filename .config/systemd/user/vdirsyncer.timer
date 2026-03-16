@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync vdirsyncer calendars every 5 minutes
+
+[Timer]
+OnStartupSec=30
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

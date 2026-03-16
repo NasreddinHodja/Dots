@@ -1,7 +1,7 @@
 {
   "currentThemeName": "dynamic",
-  "currentThemeCategory": "registry",
-  "customThemeFile": "/home/nasreddin/.config/DankMaterialShell/themes/dracula/theme.json",
+  "currentThemeCategory": "dynamic",
+  "customThemeFile": "/home/nasreddin/.config/DankMaterialShell/themes/everforest/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -22,12 +22,12 @@
   "widgetColorMode": "colorful",
   "controlCenterTileColorMode": "primary",
   "buttonColorMode": "primary",
-  "cornerRadius": 3,
+  "cornerRadius": 4,
   "niriLayoutGapsOverride": -1,
   "niriLayoutRadiusOverride": -1,
   "niriLayoutBorderSize": -1,
   "hyprlandLayoutGapsOverride": -1,
-  "hyprlandLayoutRadiusOverride": 4,
+  "hyprlandLayoutRadiusOverride": -1,
   "hyprlandLayoutBorderSize": -1,
   "mangoLayoutGapsOverride": -1,
   "mangoLayoutRadiusOverride": -1,
@@ -257,7 +257,7 @@
   "bluetoothDevicePins": {},
   "audioInputDevicePins": {},
   "audioOutputDevicePins": {},
-  "gtkThemingEnabled": false,
+  "gtkThemingEnabled": true,
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
@@ -270,7 +270,7 @@
   "matugenTemplateQt6ct": true,
   "matugenTemplateFirefox": true,
   "matugenTemplatePywalfox": true,
-  "matugenTemplateZenBrowser": true,
+  "matugenTemplateZenBrowser": false,
   "matugenTemplateVesktop": true,
   "matugenTemplateEquibop": true,
   "matugenTemplateGhostty": true,
@@ -390,7 +390,7 @@
       "id": "default",
       "name": "Main Bar",
       "enabled": true,
-      "position": 0,
+      "position": 1,
       "screenPreferences": [
         {
           "name": "DP-3",
@@ -399,14 +399,37 @@
       ],
       "showOnLastDisplay": false,
       "leftWidgets": [
-        "launcherButton",
         "workspaceSwitcher",
-        "focusedWindow"
+        {
+          "id": "focusedWindow",
+          "enabled": true,
+          "focusedWindowCompactMode": false
+        }
       ],
       "centerWidgets": [
-        "music",
-        "clock",
-        "weather"
+        {
+          "id": "spacer",
+          "enabled": true,
+          "size": 5
+        },
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 1
+        },
+        {
+          "id": "clock",
+          "enabled": true,
+          "clockCompactMode": false
+        },
+        {
+          "id": "weather",
+          "enabled": true
+        },
+        {
+          "id": "notificationButton",
+          "enabled": true
+        }
       ],
       "rightWidgets": [
         {
@@ -431,11 +454,14 @@
         },
         {
           "id": "cpuUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true
         },
         {
           "id": "memUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true,
+          "showSwap": true
         },
         {
           "id": "diskUsage",
@@ -443,36 +469,35 @@
           "mountPath": "/"
         },
         {
-          "id": "notificationButton",
-          "enabled": true
-        },
-        {
           "id": "controlCenterButton",
-          "enabled": true
+          "enabled": true,
+          "showAudioPercent": true,
+          "showMicIcon": true
         }
       ],
-      "spacing": 6,
+      "spacingX": 0,
+      "spacingY": 0,
       "innerPadding": -4,
-      "bottomGap": -4,
+      "bottomGap": 0,
       "transparency": 0,
       "widgetTransparency": 1,
-      "squareCorners": false,
+      "squareCorners": true,
       "noBackground": false,
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,
       "removeWidgetPadding": false,
       "widgetPadding": 8,
       "gothCornersEnabled": false,
-      "gothCornerRadiusOverride": false,
-      "gothCornerRadiusValue": 12,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 4,
       "borderEnabled": false,
       "borderColor": "surfaceText",
       "borderOpacity": 1,
       "borderThickness": 1,
-      "widgetOutlineEnabled": false,
+      "widgetOutlineEnabled": true,
       "widgetOutlineColor": "primary",
-      "widgetOutlineOpacity": 1,
-      "widgetOutlineThickness": 1,
+      "widgetOutlineOpacity": 0.1,
+      "widgetOutlineThickness": 2,
       "fontScale": 1,
       "iconScale": 1,
       "autoHide": false,
@@ -483,14 +508,15 @@
       "popupGapsAuto": true,
       "popupGapsManual": 4,
       "maximizeDetection": false,
-      "scrollEnabled": true,
+      "scrollEnabled": false,
       "scrollXBehavior": "column",
       "scrollYBehavior": "workspace",
       "shadowIntensity": 0,
-      "shadowOpacity": 60,
+      "shadowOpacity": 100,
       "shadowColorMode": "surface",
       "shadowCustomColor": "#000000",
-      "clickThrough": false
+      "clickThrough": false,
+      "spacing": 0
     }
   ],
   "desktopClockEnabled": false,

@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync vdirsyncer calendars
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/vdirsyncer sync

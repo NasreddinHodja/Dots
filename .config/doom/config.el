@@ -19,6 +19,7 @@
 (setq! doom-font (font-spec :family "Source Code Pro" :size 16)
        doom-variable-pitch-font (font-spec :family "sans" :size 16))
 
+(add-to-list 'custom-theme-load-path (expand-file-name "~/.config/emacs/themes/"))
 (setq! doom-theme 'doom-dracula)
 
 (setq! +doom-dashboard-banner-file (expand-file-name "banner.png" doom-user-dir))
@@ -268,6 +269,7 @@
 
 (nas/def-find-dirs
  ("d" "~/Dots/")
+ ("l" "~/.local/")
  ("b" "~/.local/bin/")
  ("p" "~/Prog/")
  ("f" "~/Facu/")

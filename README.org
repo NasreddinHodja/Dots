@@ -44,12 +44,7 @@ Dots/
 + *PDF viewer*: [[https://sioyek.info/][sioyek]]
 
 ** Desktop Environment
-+ *WM*: [[https://hypr.land/][Hyprland]]
-+ *Bar*: [[https://github.com/Alexays/Waybar][Waybar]]
-+ *App launcher*: [[https://github.com/davatorium/rofi][rofi]]
-+ *Theme / Color Scheme*: [[https://draculatheme.com/contribute][Dracula]] - é Brasil porra
-  - minimal xfwm theme generator (legacy): =.local/share/themes/gen-xfwm-theme.py=
-  - minimal xfce-notify theme (legacy): =.local/share/themes/Nas-Notify/=
++ *Compositor + Quickshell*: [[https://hypr.land/][Hyprland]] + [[https://danklinux.com/][DMS]]
 
 ** Dev Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]

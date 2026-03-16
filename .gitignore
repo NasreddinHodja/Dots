@@ -5,6 +5,8 @@ tmp/
 
 wp.state.json
 
+.config/vdirsyncer/
+.config/khal/
 .config/easyeffects/
 .config/yarn/
 .config/wget/
