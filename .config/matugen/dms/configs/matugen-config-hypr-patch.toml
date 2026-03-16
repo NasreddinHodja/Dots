@@ -1,0 +1,3 @@
+[templates.hypr_border_patch]
+input_path = '/home/nasreddin/.config/DankMaterialShell/matugen/templates/hypr-border-patch.conf'
+output_path = '/home/nasreddin/.config/hypr/dms/border-patch.conf'

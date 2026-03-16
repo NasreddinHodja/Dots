@@ -1,7 +1,7 @@
 {
   "currentThemeName": "dynamic",
   "currentThemeCategory": "dynamic",
-  "customThemeFile": "/home/nasreddin/.config/DankMaterialShell/themes/everforest/theme.json",
+  "customThemeFile": "/home/nasreddin/.config/DankMaterialShell/themes/peaceAndQuiet/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -11,15 +11,16 @@
     },
     "flexoki": "magenta",
     "oxocarbon": "pink",
-    "peaceAndQuiet": "lavender"
+    "peaceAndQuiet": "pink",
+    "everforest": "medium"
   },
   "matugenScheme": "scheme-tonal-spot",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
   "dockTransparency": 1,
-  "widgetBackgroundColor": "sch",
-  "widgetColorMode": "colorful",
+  "widgetBackgroundColor": "s",
+  "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
   "buttonColorMode": "primary",
   "cornerRadius": 4,
@@ -33,7 +34,7 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "use24HourClock": true,
-  "showSeconds": false,
+  "showSeconds": true,
   "padHours12Hour": false,
   "useFahrenheit": false,
   "windSpeedUnit": "kmh",
@@ -496,7 +497,7 @@
       "borderThickness": 1,
       "widgetOutlineEnabled": true,
       "widgetOutlineColor": "primary",
-      "widgetOutlineOpacity": 0.1,
+      "widgetOutlineOpacity": 0.26,
       "widgetOutlineThickness": 2,
       "fontScale": 1,
       "iconScale": 1,
