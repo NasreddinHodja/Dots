@@ -61,6 +61,9 @@ Dots/
 * Legacy
 Configs for these are still being used, deleted, or flagged as legacy.
 
+** Hyprland
+[[./assets/screenshot-hyprland.png]]
+
 ** Qtile
 [[./assets/screenshot-qtile.png]]
 
