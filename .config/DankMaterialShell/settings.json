@@ -40,8 +40,8 @@
   "windSpeedUnit": "kmh",
   "nightModeEnabled": false,
   "animationSpeed": 4,
-  "customAnimationDuration": 200,
-  "syncComponentAnimationSpeeds": false,
+  "customAnimationDuration": 85,
+  "syncComponentAnimationSpeeds": true,
   "popoutAnimationSpeed": 4,
   "popoutCustomAnimationDuration": 150,
   "modalAnimationSpeed": 4,
@@ -188,7 +188,7 @@
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
   "dankLauncherV2Size": "compact",
-  "dankLauncherV2BorderEnabled": false,
+  "dankLauncherV2BorderEnabled": true,
   "dankLauncherV2BorderThickness": 2,
   "dankLauncherV2BorderColor": "primary",
   "dankLauncherV2ShowFooter": true,
@@ -377,7 +377,11 @@
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
   "displayNameMode": "system",
-  "screenPreferences": {},
+  "screenPreferences": {
+    "notifications": [
+      "DP-3"
+    ]
+  },
   "showOnLastDisplay": {},
   "niriOutputSettings": {},
   "hyprlandOutputSettings": {},
