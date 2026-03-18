@@ -1,4 +1,3 @@
-yay -Rns lightdm
 yay -Rns lightdm lightdm-gtk-greeter
 yay -Rns lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 yay -Rns zellij xscreensaver 
@@ -126,3 +125,4 @@ qmk compile -kb crkbd -km naskbd
 mgdl update
 hyprctl kill
 qmk compile -kb crkbd -km naskbd
+mgdl update
