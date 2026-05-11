@@ -1,0 +1,46 @@
+ignore-empty-password
+show-failed-attempts
+daemonize
+
+# background — blur current screen
+screenshots
+effect-blur=7x5
+effect-vignette=0.4:0.5
+
+# clock
+clock
+timestr=%H:%M
+datestr=%a, %B %e
+font-size=24
+
+# indicator
+indicator
+indicator-radius=120
+indicator-thickness=8
+fade-in=0.2
+grace=2
+
+# dracula colors
+inside-color=1e1f2900
+inside-clear-color=1e1f2900
+inside-ver-color=bd93f980
+inside-wrong-color=ff555580
+
+ring-color=6272a4aa
+ring-clear-color=50fa7baa
+ring-ver-color=bd93f9ff
+ring-wrong-color=ff5555ff
+
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+
+text-color=f8f8f2ff
+text-clear-color=50fa7bff
+text-ver-color=bd93f9ff
+text-wrong-color=ff5555ff
+
+key-hl-color=bd93f9ff
+bs-hl-color=ff5555ff
+separator-color=00000000

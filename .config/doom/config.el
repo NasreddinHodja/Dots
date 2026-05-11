@@ -431,7 +431,9 @@
 ;;
 
 (add-to-list 'exec-path (expand-file-name "~/.local/src/flutter/bin"))
+(add-to-list 'exec-path (expand-file-name "~/.local/share/cargo/bin"))
 (setenv "PATH" (concat (expand-file-name "~/.local/src/flutter/bin") ":" (getenv "PATH")))
+(setenv "PATH" (concat (expand-file-name "~/.local/share/cargo/bin") ":" (getenv "PATH")))
 (setenv "CHROME_EXECUTABLE" "/usr/sbin/chromium")
 
 (after! lsp-dart

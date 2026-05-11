@@ -1,0 +1,4 @@
+[templates.mango_border_patch]
+input_path = '/home/nasreddin/.config/DankMaterialShell/matugen/templates/mango-border-patch.conf'
+output_path = '/home/nasreddin/.config/mango/dms/border-patch.conf'
+post_hook = 'mango-border-darken'

@@ -11,8 +11,8 @@
     "spacing": 12, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+        "mango/workspaces",
+        "dwl/window"
     ],
     "modules-right": [
         "tray",
@@ -35,21 +35,9 @@
     ],
 
     // Modules configuration
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        // "format": "{name}: {icon}",
-        "format-icons": {
-            // "1": "",
-            // "2": "",
-            // "3": "",
-            // "4": "",
-            // "5": "",
-            // "urgent": "",
-            // "focused": "",
-            // "default": ""
-        }
+    "mango/workspaces": {
+        "num-tags": 9,
+        "hide-empty": true
     },
     "keyboard-state": {
         "numlock": true,

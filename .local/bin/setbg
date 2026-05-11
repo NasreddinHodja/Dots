@@ -1,36 +1,28 @@
 #!/usr/bin/env bash
-set -xe
+set -e
 
-mode="cover"
+mode="crop"
 
 if [ "$1" = "--tile" ]; then
-    mode="tile"
+    mode="no"
     shift
 fi
 
 apply_wp() {
     local img="$1"
-    local conf="$HOME/.config/hypr/hyprpaper.conf"
-    local wp="$img"
 
-    [ "$mode" != "cover" ] && wp="$mode:$img"
+    # ensure awww daemon is running
+    if ! pgrep -x awww-daemon > /dev/null; then
+        awww-daemon &
+        sleep 0.5
+    fi
 
-    mkdir -p "$HOME/.config/hypr"
-
-    {
-        echo "wallpaper {"
-        echo "    monitor ="
-        echo "    path = $img"
-        echo "    fit_mode = $mode"
-        echo "}"
-    } > "$conf"
-
-    hyprctl hyprpaper wallpaper ,$wp
+    awww img "$img" --resize "$mode" --transition-type fade --transition-duration 0.5
 }
 
 if [ $# -ne 1 ]; then
     WP=$(printf '%s\n' ~/.config/wp.* | head -n 1)
-    if [ -z "$WP" ]; then exit 1; fi
+    if [ -z "$WP" ] || [ ! -f "$WP" ]; then exit 1; fi
     apply_wp "$WP"
     exit 0
 fi
@@ -38,14 +30,11 @@ fi
 IMAGE_FILE="$1"
 
 if [ ! -f "$IMAGE_FILE" ]; then exit 1; fi
-if ! command -v identify >/dev/null; then exit 1; fi
 
 EXT="${IMAGE_FILE##*.}"
 CONFIG_FILE="$HOME/.config/wp.$EXT"
 
-mkdir -p ~/.config
 rm -f ~/.config/wp.*
 cp "$IMAGE_FILE" "$CONFIG_FILE"
 
-WP=$(printf '%s\n' ~/.config/wp.* | head -n 1)
-apply_wp "$WP"
+apply_wp "$CONFIG_FILE"

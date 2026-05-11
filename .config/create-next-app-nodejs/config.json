@@ -10,6 +10,7 @@
 		"customizeImportAlias": false,
 		"empty": false,
 		"disableGit": false,
-		"reactCompiler": false
+		"reactCompiler": false,
+		"agentsMd": true
 	}
 }

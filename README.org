@@ -35,16 +35,14 @@ Dots/
 
 + *GNU/Linux*: [[https://archlinux.org][Arch Linux]]
 + *Init System*: [[https://systemd.io/][systemd]]
-+ *Package manager*: [[https://github.com/Jguer/yay][yay]]
++ *Package manager*: [[https://github.com/Morganamilo/paru][paru]]
++ *Compositor*: [[https://mangowm.github.io/][mangowc]]
 
 ** Applications
 + *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (or =dired=)
 + *Video player*: [[https://mpv.io/][mpv]]
 + *Image viewer*: [[https://github.com/artemsen/swayimg][swayimg]]
 + *PDF viewer*: [[https://sioyek.info/][sioyek]]
-
-** Desktop Environment
-+ *Compositor + Quickshell*: [[https://hypr.land/][Hyprland]] + [[https://danklinux.com/][DMS]]
 
 ** Dev Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]

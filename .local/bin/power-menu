@@ -29,10 +29,9 @@ CHOICE=$(echo -e "󰐥  Shutdown\n󰜉  Reboot\n󰌾  Lock\n󰒲  Sleep\n󰍃  L
 case $CHOICE in
     *"Shutdown") systemctl poweroff ;;
     *"Reboot") systemctl reboot ;;
-    *"Lock") hyprlock ;;
+    *"Lock") swaylock -f ;;
     *"Sleep") systemctl suspend ;;
-    # *"Log out") loginctl terminate-session $XDG_SESSION_ID ;;
-    *"Log out") hyprctl dispatch exit;;
+    *"Log out") mmsg -s -d quit ;;
     "") ;;
     *) exit 1 ;;
 esac

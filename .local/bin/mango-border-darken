@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+import colorsys, pathlib
+
+patch = pathlib.Path.home() / '.config/mango/dms/border-patch.conf'
+hex_color = patch.read_text().strip()
+
+r = int(hex_color[0:2], 16) / 255
+g = int(hex_color[2:4], 16) / 255
+b = int(hex_color[4:6], 16) / 255
+
+h, l, s = colorsys.rgb_to_hls(r, g, b)
+nr, ng, nb = colorsys.hls_to_rgb(h, l * 0.65, s)
+darkened = '%02x%02x%02x' % (round(nr * 255), round(ng * 255), round(nb * 255))
+
+patch.write_text(
+    '# ! Auto-generated border contrast patch. Do not edit directly.\n\n'
+    f'bordercolor = 0x{darkened}ff\n'
+)

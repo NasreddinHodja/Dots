@@ -13,7 +13,7 @@ Description=regkey keystroke recorder
 After=graphical-session.target
 
 [Service]
-ExecStart=%h/.cargo/bin/regkey record
+ExecStart=%h/.local/share/cargo/bin/regkey record
 Restart=on-failure
 RestartSec=5
 
