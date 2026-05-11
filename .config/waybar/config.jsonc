@@ -39,6 +39,11 @@
         "num-tags": 9,
         "hide-empty": true
     },
+    "dwl/window": {
+        "format": "[{layout}]  {title}",
+        "on-click":"bash ~/.config/mango/scripts/screenshot.sh",
+        // "max-length": 50
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
