@@ -26,6 +26,7 @@ window#waybar {
     background: @bockground-darker;
     color: @foreground;
     font-weight: 400;
+    transition: background 200ms ease, color 200ms ease;
 }
 #workspaces button:hover {
     box-shadow: inherit;
@@ -58,6 +59,7 @@ window#waybar {
     margin: 4px 2px 4px 2px;
     color: @foreground;
     font-weight: 400;
+    transition: background 200ms ease, color 200ms ease;
 }
 #tags button:hover {
     box-shadow: inherit;
@@ -92,6 +94,14 @@ window#waybar {
     /* border-bottom: 1px solid @foreground */
     /* border: 2px solid @foreground; */
 }
+#keyboard-state label.capslock {
+    color: @muted;
+    transition: color 200ms ease;
+}
+#keyboard-state label.capslock.locked {
+    color: @foreground;
+}
+
 #tray {
     /* background: @background-darker; */
     /* padding: 0 12px; */
@@ -105,6 +115,9 @@ window#waybar {
     /* padding: 0 12px; */
 }
 #pulseaudio {
-    /* background: @background-darker; */
-    /* padding: 0 12px; */
+    color: @foreground;
+    transition: color 200ms ease;
+}
+#pulseaudio.muted {
+    color: @muted;
 }
