@@ -67,3 +67,4 @@ Configs for these are still being used, deleted, or flagged as legacy.
 
 ** XFCE (legacy)
 [[./assets/screenshot-xfce.png]]
+

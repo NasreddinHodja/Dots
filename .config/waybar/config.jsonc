@@ -3,10 +3,10 @@
     "output": "DP-3",
     "layer": "top",
     "position": "bottom",
-    "height": 28, // Waybar height (to be removed for auto height)
+    "height": 26, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "margin-left": 380,
-    "margin-right": 380,
+    "margin-left": 340,
+    "margin-right": 340,
     "margin-bottom": 6,
     "spacing": 12, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -16,8 +16,9 @@
     ],
     "modules-right": [
         "tray",
+        "keyboard-state",
         // "mpd",
-        "idle_inhibitor",
+        // "idle_inhibitor",
         // "network",
         // "power-profiles-daemon",
         "custom/sysmon",
@@ -26,7 +27,6 @@
         // "memory",
         // "temperature",
         // "backlight",
-        // "keyboard-state",
         // "sway/language",
         // "battery",
         // "battery#bat2",
@@ -41,16 +41,15 @@
     },
     "dwl/window": {
         "format": "[{layout}]  {title}",
-        "on-click":"bash ~/.config/mango/scripts/screenshot.sh",
-        // "max-length": 50
+        "max-length": 50
     },
     "keyboard-state": {
-        "numlock": true,
+        "numlock": false,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": "{icon}",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": "⟪▲⟫",
+            "unlocked": ""
         }
     },
     "sway/mode": {
@@ -100,7 +99,7 @@
         "margin-right": 10
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 16,
         "spacing": 6,
         // "icons": {
         //   "blueman": "bluetooth",
