@@ -1,0 +1,46 @@
+[config]
+
+[templates.mango]
+input_path  = '~/.config/matugen/templates/mango-colors.conf'
+output_path = '~/.config/mango/colors.conf'
+post_hook   = 'mmsg -s -d reload_config'
+
+[templates.waybar]
+input_path  = '~/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook   = 'pkill -SIGUSR2 waybar || true'
+
+[templates.dunst]
+input_path  = '~/.config/matugen/templates/dunstrc'
+output_path = '~/.config/dunst/dunstrc'
+post_hook   = 'pkill -x dunst; sleep 0.2; dunst &'
+
+[templates.gtk3]
+input_path  = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/dank-colors.css'
+
+[templates.gtk4]
+input_path  = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/dank-colors.css'
+post_hook   = 'gsettings set org.gnome.desktop.interface color-scheme default && sleep 0.1 && gsettings set org.gnome.desktop.interface color-scheme prefer-dark'
+
+[templates.qt5ct]
+input_path  = '~/.config/matugen/templates/qt-colors.colors'
+output_path = '~/.config/qt5ct/colors/matugen.colors'
+
+[templates.qt6ct]
+input_path  = '~/.config/matugen/templates/qt-colors.colors'
+output_path = '~/.config/qt6ct/colors/matugen.colors'
+
+[templates.shell]
+input_path  = '~/.config/matugen/templates/shell-colors.sh'
+output_path = '~/.cache/matugen/colors.sh'
+
+[templates.rofi]
+input_path  = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+# [templates.swaync]
+# input_path  = '~/.config/matugen/templates/colors.css'
+# output_path = '~/.config/swaync/colors.css'
+# post_hook   = 'swaync-client --reload-css'

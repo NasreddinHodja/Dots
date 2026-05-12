@@ -10,20 +10,9 @@ configuration {
     modes: [window, drun];
 }
 
-* {
-    bg-dark: #1d1f27;
-    bg: #282a36;
-    current-line: #44475a;
-    fg: #f8f8f2;
-    comment: #6272a4;
-    cyan: #8be9fd;
-    green: #50fa7b;
-    orange: #ffb86c;
-    pink: #ff79c6;
-    purple: #bd93f9;
-    red: #ff5555;
-    yellow: #f1fa8c;
+@import "colors.rasi"
 
+* {
     font: "Source Code Pro 12";
     background: @bg-dark;
     active-background: @bg;
@@ -157,7 +146,7 @@ case-indicator {
 entry {
     spacing:            0;
     text-color:         @fg;
-    placeholder-color:  #44475a;
+    placeholder-color:  @current-line;
     placeholder: "";
 }
 

@@ -1,0 +1,15 @@
+@define-color background-darker #{{colors.surface_container_lowest.default.hex_stripped}};
+/* @define-color border           #{{colors.primary_fixed_dim.default.hex_stripped}}; */
+@define-color border           #{{colors.primary_fixed_dim.default.hex_stripped}};
+@define-color background       #{{colors.background.default.hex_stripped}};
+@define-color selection        #{{colors.surface_container_high.default.hex_stripped}};
+@define-color foreground       #{{colors.on_surface_variant.default.hex_stripped}};
+@define-color muted            #{{colors.outline.default.hex_stripped}};
+@define-color comment          #{{colors.outline.default.hex_stripped}};
+@define-color cyan             #{{colors.tertiary.default.hex_stripped}};
+@define-color green            #{{colors.secondary.default.hex_stripped}};
+@define-color orange           #{{colors.secondary_container.default.hex_stripped}};
+@define-color pink             #{{colors.primary_container.default.hex_stripped}};
+@define-color purple           #{{colors.primary.default.hex_stripped}};
+@define-color red              #{{colors.error.default.hex_stripped}};
+@define-color yellow           #{{colors.tertiary_container.default.hex_stripped}};

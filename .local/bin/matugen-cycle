@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+
+SCHEMES=(
+    scheme-vibrant
+    scheme-expressive
+    scheme-tonal-spot
+    scheme-fidelity
+    scheme-neutral
+    scheme-monochrome
+)
+
+SCHEME_STATE="$HOME/.config/matugen-scheme"
+
+current="$(cat "$SCHEME_STATE" 2>/dev/null || echo "scheme-vibrant")"
+
+next=""
+for i in "${!SCHEMES[@]}"; do
+    if [ "${SCHEMES[$i]}" = "$current" ]; then
+        next="${SCHEMES[$(( (i + 1) % ${#SCHEMES[@]} ))]}"
+        break
+    fi
+done
+[ -z "$next" ] && next="${SCHEMES[0]}"
+
+setbg -t "$next"

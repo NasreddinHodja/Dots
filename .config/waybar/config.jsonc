@@ -3,16 +3,18 @@
     "output": "DP-3",
     "layer": "top",
     "position": "bottom",
-    "height": 26, // Waybar height (to be removed for auto height)
+    // "height": 26, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "margin-left": 340,
-    "margin-right": 340,
+    "margin-left": 10,
+    "margin-right": 10,
     "margin-bottom": 6,
     "spacing": 12, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "mango/workspaces",
-        "dwl/window"
+        "dwl/window",
+        "mpris"
+        // "custom/sep",
     ],
     "modules-right": [
         "tray",
@@ -41,7 +43,10 @@
     },
     "dwl/window": {
         "format": "[{layout}]  {title}",
-        "max-length": 50
+        "max-length": 50,
+        "rewrite": {
+            "^\\[(.*)\\]  $": "[$1]"
+        }
     },
     "keyboard-state": {
         "numlock": false,
@@ -61,6 +66,22 @@
         "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
+    },
+    "mpris": {
+        "format": "{player_icon} {status_icon} <i>{artist} - {title}</i>",
+        "player": "playerctld",
+        "max-length": 50,
+        "on-click": "playerctl play-pause",
+        "format-paused": "{player_icon} {status_icon} {artist} - {title}",
+        "player-icons": {
+            "default": "󰝚 ",
+            "spotify": "󰓇 ",
+            "mpv": "󰝚 "
+        },
+        "status-icons": {
+            "paused": "󰐊 ",
+            "playing": "󰏤 "
+        }
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -109,7 +130,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "format": "{:%a, %b %d %I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt><big>{calendar}</big></tt>"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -218,5 +239,9 @@
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
         }
+    },
+    "custom/sep": {
+        "format": " ",
+        "tooltip": false
     }
 }

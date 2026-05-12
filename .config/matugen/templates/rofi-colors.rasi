@@ -1,0 +1,14 @@
+* {
+    bg-dark:      #{{colors.surface_container_lowest.default.hex_stripped}};
+    bg:           #{{colors.background.default.hex_stripped}};
+    current-line: #{{colors.surface_container_high.default.hex_stripped}};
+    fg:           #{{colors.on_background.default.hex_stripped}};
+    comment:      #{{colors.on_surface_variant.default.hex_stripped}};
+    cyan:         #{{colors.tertiary.default.hex_stripped}};
+    green:        #{{colors.secondary.default.hex_stripped}};
+    orange:       #{{colors.secondary_container.default.hex_stripped}};
+    pink:         #{{colors.primary_container.default.hex_stripped}};
+    purple:       #{{colors.primary.default.hex_stripped}};
+    red:          #{{colors.error.default.hex_stripped}};
+    yellow:       #{{colors.tertiary_container.default.hex_stripped}};
+}

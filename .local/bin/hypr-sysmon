@@ -1,5 +1,9 @@
 #!/bin/bash
 
+muted_color="#888888"
+# shellcheck source=/dev/null
+[ -f "$HOME/.cache/matugen/colors.sh" ] && source "$HOME/.cache/matugen/colors.sh" && muted_color="$MATUGEN_MUTED"
+
 cpu_usage=$(top -bn1 | awk '/Cpu/ {printf "%.1f", $2 + $4}')
 cpu_usage=$(printf "%05.1f" "$cpu_usage")
 
@@ -17,7 +21,7 @@ cpu_icon=" "
 ram_icon="󰘚 "
 disk_icon="󰆼 "
 
-text="${cpu_icon} ${cpu_usage}% | ${ram_icon} ${mem_percent}% <span fgcolor='#888888'>(${mem_used}/${mem_total})</span> | ${disk_icon} ${disk_percent}% <span fgcolor='#888888'>(${disk_used}/${disk_total})</span>"
+text="${cpu_icon} ${cpu_usage}% | ${ram_icon} ${mem_percent}% <span fgcolor='${muted_color}'>(${mem_used}/${mem_total})</span> | ${disk_icon} ${disk_percent}% <span fgcolor='${muted_color}'>(${disk_used}/${disk_total})</span>"
 
 uptime_info=$(uptime -p)
 load_avg=$(uptime | awk -F'load average:' '{print $2}' | xargs)

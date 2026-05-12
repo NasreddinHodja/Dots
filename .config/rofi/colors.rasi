@@ -1,0 +1,14 @@
+* {
+    bg-dark:      #100d12;
+    bg:           #151218;
+    current-line: #2c292f;
+    fg:           #e7e0e8;
+    comment:      #ccc4cf;
+    cyan:         #f2b7c1;
+    green:        #cfc2da;
+    orange:       #4c4357;
+    pink:         #533c72;
+    purple:       #d7bafb;
+    red:          #ffb4ab;
+    yellow:       #653b43;
+}

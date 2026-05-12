@@ -1,6 +1,3 @@
-mgdl -u
-qmk compile -kb crkbd -km naskbd
-./draw.sh 
 lsblk
 exit
 lsblk
@@ -126,3 +123,6 @@ dots-screenshot
 git add .
 la 
 rm -rf waybar/
+which matugen-cycle 
+cp /etc/xdg/swaync/style.css .
+cp /etc/xdg/swaync/config.json .

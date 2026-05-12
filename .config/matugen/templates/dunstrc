@@ -33,9 +33,9 @@
     horizontal_padding = 16
     text_icon_padding = 0
     frame_width = 3
-    frame_color = "#100d12"
+    frame_color = "#{{colors.surface_container_lowest.default.hex_stripped}}"
     gap_size = 12
-    separator_color = "#2c292f"
+    separator_color = "#{{colors.surface_container_high.default.hex_stripped}}"
     sort = yes
 
     ### Text ###
@@ -96,22 +96,22 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#100d12"
-    foreground = "#e7e0e8"
+    background = "#{{colors.surface_container_lowest.default.hex_stripped}}"
+    foreground = "#{{colors.on_surface.default.hex_stripped}}"
     timeout = 10
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#100d12"
-    foreground = "#e7e0e8"
+    background = "#{{colors.surface_container_lowest.default.hex_stripped}}"
+    foreground = "#{{colors.on_surface.default.hex_stripped}}"
     timeout = 10
     override_pause_level = 30
     default_icon = dialog-information
 
 [urgency_critical]
-    background = "#100d12"
-    foreground = "#e7e0e8"
-    frame_color = "#ffb4ab"
+    background = "#{{colors.surface_container_lowest.default.hex_stripped}}"
+    foreground = "#{{colors.on_surface.default.hex_stripped}}"
+    frame_color = "#{{colors.error.default.hex_stripped}}"
     timeout = 0
     override_pause_level = 60
     default_icon = dialog-warning

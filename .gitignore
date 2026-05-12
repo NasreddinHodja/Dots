@@ -109,6 +109,10 @@ wp.state.json
 .config/zoom*
 .config/Google
 .config/flutter
+.config/BraveSoftware
+.config/google-chrome
+.config/opera
+.config/vivaldi
 .config/zen
 .config/Android Open Source Project/
 .config/capacitor/

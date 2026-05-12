@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Name=Kentucky Route Zero
+Icon=lutris_kentucky-route-zero
+Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
+Categories=Game
+TryExec=lutris

@@ -2,22 +2,42 @@
 set -e
 
 mode="crop"
+scheme=""
 
-if [ "$1" = "--tile" ]; then
-    mode="no"
-    shift
-fi
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --tile) mode="no"; shift ;;
+        -t) scheme="$2"; shift 2 ;;
+        *) break ;;
+    esac
+done
+
+SCHEME_STATE="$HOME/.config/matugen-scheme"
+
+resolve_scheme() {
+    if [ -n "$scheme" ]; then
+        echo "$scheme"
+    elif [ -f "$SCHEME_STATE" ]; then
+        cat "$SCHEME_STATE"
+    else
+        echo "scheme-vibrant"
+    fi
+}
 
 apply_wp() {
     local img="$1"
+    local s; s="$(resolve_scheme)"
 
-    # ensure awww daemon is running
     if ! pgrep -x awww-daemon > /dev/null; then
         awww-daemon &
         sleep 0.5
     fi
 
     awww img "$img" --resize "$mode" --transition-type fade --transition-duration 0.5
+    matugen image "$img" -m dark --source-color-index 0 -t "$s"
+    echo "$s" > "$SCHEME_STATE"
+    # TODO: dunst -> swaync
+    notify-send -u low -t 2000 -i preferences-desktop-wallpaper "matugen: $s"
 }
 
 if [ $# -ne 1 ]; then
