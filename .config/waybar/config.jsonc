@@ -5,8 +5,10 @@
     "position": "bottom",
     // "height": 26, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "margin-left": 10,
-    "margin-right": 10,
+    // "margin-left": 340,
+    // "margin-right": 340,
+    "margin-left": 200,
+    "margin-right": 200,
     "margin-bottom": 6,
     "spacing": 12, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -19,6 +21,7 @@
     "modules-right": [
         "tray",
         "keyboard-state",
+        // "bluetooth",
         // "mpd",
         // "idle_inhibitor",
         // "network",
@@ -42,8 +45,8 @@
         "hide-empty": true
     },
     "dwl/window": {
-        "format": "[{layout}]  {title}",
-        "max-length": 50,
+        "format": "󰒓   {layout}      󰘔   {title}",
+        "max-length": 60,
         "rewrite": {
             "^\\[(.*)\\]  $": "[$1]"
         }
@@ -70,7 +73,7 @@
     "mpris": {
         "format": "{player_icon} {status_icon} <i>{artist} - {title}</i>",
         "player": "playerctld",
-        "max-length": 50,
+        "max-length": 60,
         "on-click": "playerctl play-pause",
         "format-paused": "{player_icon} {status_icon} {artist} - {title}",
         "player-icons": {
@@ -119,8 +122,12 @@
         "margin-left": 10,
         "margin-right": 10
     },
+    "bluetooth": {
+        "on-click": "blueman-manager",
+        "format": " {status}",
+    },
     "tray": {
-        "icon-size": 16,
+        "icon-size": 14,
         "spacing": 6,
         // "icons": {
         //   "blueman": "bluetooth",

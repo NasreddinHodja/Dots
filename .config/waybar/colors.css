@@ -1,15 +1,15 @@
 @define-color background-darker #100d12;
-/* @define-color border           #d7bafb; */
-@define-color border           #d7bafb;
-@define-color background       #151218;
-@define-color selection        #2c292f;
-@define-color foreground       #ccc4cf;
-@define-color muted            #958e99;
-@define-color comment          #958e99;
-@define-color cyan             #f2b7c1;
-@define-color green            #cfc2da;
-@define-color orange           #4c4357;
-@define-color pink             #533c72;
-@define-color purple           #d7bafb;
+/* @define-color border           #ddb9f8; */
+@define-color border           #ddb9f8;
+@define-color background       #151217;
+@define-color selection        #2c292e;
+@define-color foreground       #cdc4ce;
+@define-color muted            #968e98;
+@define-color comment          #968e98;
+@define-color cyan             #f3b7bc;
+@define-color green            #d1c1d9;
+@define-color orange           #4e4256;
+@define-color pink             #573a70;
+@define-color purple           #ddb9f8;
 @define-color red              #ffb4ab;
-@define-color yellow           #653b43;
+@define-color yellow           #663a3f;

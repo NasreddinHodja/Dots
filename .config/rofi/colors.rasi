@@ -1,14 +1,14 @@
 * {
     bg-dark:      #100d12;
-    bg:           #151218;
-    current-line: #2c292f;
-    fg:           #e7e0e8;
-    comment:      #ccc4cf;
-    cyan:         #f2b7c1;
-    green:        #cfc2da;
-    orange:       #4c4357;
-    pink:         #533c72;
-    purple:       #d7bafb;
+    bg:           #151217;
+    current-line: #2c292e;
+    fg:           #e8e0e8;
+    comment:      #cdc4ce;
+    cyan:         #f3b7bc;
+    green:        #d1c1d9;
+    orange:       #4e4256;
+    pink:         #573a70;
+    purple:       #ddb9f8;
     red:          #ffb4ab;
-    yellow:       #653b43;
+    yellow:       #663a3f;
 }

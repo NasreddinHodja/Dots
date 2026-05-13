@@ -1,0 +1,163 @@
+@import url("./colors.css");
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Sauce Code Pro;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @background-darker;
+    background: transparent;
+    color: @foreground;
+    /* border-bottom: 2px solid @background; */
+    margin-right: 10px;
+}
+
+
+#workspaces {
+    margin-left: 0px;
+    padding: 0 4px;
+    /* border-bottom: 1px solid @foreground */
+    border: 2px solid @border;
+    background: @background-darker;
+    font-weight: 400;
+}
+#workspaces button {
+    padding: 0 0px;
+    margin: 4px 2px 4px 2px;
+    background: @background-darker;
+    color: @foreground;
+    font-weight: 400;
+    transition: background 200ms ease, color 200ms ease;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: @selection;
+}
+#workspaces button.hidden {
+    background: transparent;
+    color: @foreground;
+}
+#workspaces button.active {
+    background: @foreground;
+    color: @background-darker;
+}
+#workspaces button.focused {
+    background: @foreground;
+    color: @background-darker;
+}
+#workspaces button.visible {
+    background: @selection;
+    color: @foreground;
+}
+#workspaces button.urgent {
+    background: @red;
+    color: @background-darker;
+}
+
+#tags button {
+    padding: 0 0px;
+    margin: 4px 2px 4px 2px;
+    color: @foreground;
+    font-weight: 400;
+    transition: background 200ms ease, color 200ms ease;
+}
+#tags button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: @selection;
+}
+#tags button.occupied {
+    background: @purple;
+    color: @background-darker;
+}
+#tags button.focused {
+    background: @foreground;
+    color: @foreground;
+}
+#tags button.urgent {
+    background: @red;
+}
+
+#window {
+    background: @background-darker;
+    border: 2px solid @border;
+    /* margin-right: 12px; */
+    padding: 0 12px;
+}
+
+#mpris {
+    background: @background-darker;
+    border: 2px solid @border;
+    padding: 0 12px;
+}
+
+#taskbar button.active {
+    /* background: @background-darker; */
+    background: @background-darker;
+    border: 2px solid @border;
+}
+
+#clock {
+    padding: 0 12px;
+    padding-right: 8px;
+    margin: 0px;
+    background: @background-darker;
+    border: 2px solid @border;
+    color: @foreground;
+    /* border-bottom: 1px solid @foreground */
+    /* border: 2px solid @foreground; */
+}
+
+#keyboard-state {
+    background: @background-darker;
+    border: 2px solid @border;
+    padding: 0 12px;
+}
+#keyboard-state label.capslock {
+    color: @muted;
+    transition: color 200ms ease;
+    background: @background-darker;
+}
+#keyboard-state label.capslock.locked {
+    color: @foreground;
+    background: @background-darker;
+}
+
+#tray {
+    background: @background-darker;
+    border: 2px solid @border;
+    padding: 0 12px;
+}
+
+#idle_inhibitor {
+    background: @background-darker;
+    border: 2px solid @border;
+    padding: 0 12px;
+}
+
+#custom-sysmon {
+    background: @background-darker;
+    border: 2px solid @border;
+    padding: 0 12px;
+}
+
+#pulseaudio {
+    color: @foreground;
+    background: @background-darker;
+    border: 2px solid @border;
+    padding: 0 12px;
+    transition: color 200ms ease;
+}
+#pulseaudio.muted {
+    color: @muted;
+}
+
+#custom-sep {
+  min-width: 12px;
+  background: transparent;
+  margin: 0 6px;
+}

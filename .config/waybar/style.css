@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background: transparent;
+    background: @background-darker;
     color: @foreground;
     /* border-bottom: 2px solid @background; */
     margin-right: 10px;
@@ -19,7 +19,7 @@ window#waybar {
     margin-left: 0px;
     padding: 0 4px;
     /* border-bottom: 1px solid @foreground */
-    border: 2px solid @border;
+    /* border: 2px solid @border; */
     background: @background-darker;
     font-weight: 400;
 }
@@ -83,29 +83,30 @@ window#waybar {
 
 #window {
     background: @background-darker;
-    border: 2px solid @border;
+    /* border: 2px solid @border; */
     /* margin-right: 12px; */
-    padding: 0 12px;
+    /* padding: 0 12px; */
 }
 
 #mpris {
     background: @background-darker;
-    border: 2px solid @border;
-    padding: 0 12px;
+    margin: 0 12px 0 4px;
+    /* border: 2px solid @border; */
+    /* padding: 0 12px; */
 }
 
 #taskbar button.active {
     /* background: @background-darker; */
     background: @background-darker;
-    border: 2px solid @border;
+    /* border: 2px solid @border; */
 }
 
 #clock {
-    padding: 0 12px;
+    /* padding: 0 12px; */
     padding-right: 8px;
     margin: 0px;
     background: @background-darker;
-    border: 2px solid @border;
+    /* border: 2px solid @border; */
     color: @foreground;
     /* border-bottom: 1px solid @foreground */
     /* border: 2px solid @foreground; */
@@ -113,8 +114,8 @@ window#waybar {
 
 #keyboard-state {
     background: @background-darker;
-    border: 2px solid @border;
-    padding: 0 12px;
+    /* border: 2px solid @border; */
+    /* padding: 0 12px; */
 }
 #keyboard-state label.capslock {
     color: @muted;
@@ -128,27 +129,27 @@ window#waybar {
 
 #tray {
     background: @background-darker;
-    border: 2px solid @border;
-    padding: 0 12px;
+    /* border: 2px solid @border; */
+    /* padding: 0 12px; */
 }
 
 #idle_inhibitor {
     background: @background-darker;
-    border: 2px solid @border;
-    padding: 0 12px;
+    /* border: 2px solid @border; */
+    /* padding: 0 12px; */
 }
 
 #custom-sysmon {
     background: @background-darker;
-    border: 2px solid @border;
-    padding: 0 12px;
+    /* border: 2px solid @border; */
+    /* padding: 0 12px; */
 }
 
 #pulseaudio {
     color: @foreground;
     background: @background-darker;
-    border: 2px solid @border;
-    padding: 0 12px;
+    /* border: 2px solid @border; */
+    /* padding: 0 12px; */
     transition: color 200ms ease;
 }
 #pulseaudio.muted {
