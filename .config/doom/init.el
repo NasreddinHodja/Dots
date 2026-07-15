@@ -51,7 +51,7 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       zen               ; distraction-free coding or writing
+       ;;zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -158,6 +158,7 @@
         +roam2
         +dragndrop
         ;; +pretty
+        +present
         +hugo
         +journal)               ; organize your plain life in plain text
        ;; php               ; perl's insecure younger brother

@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Hollow Knight
+Name=NGU IDLE
 Comment=Play this game on Steam
-Exec=steam steam://rungameid/367520
-Icon=steam_icon_367520
+Exec=steam steam://rungameid/1147690
+Icon=steam_icon_1147690
 Terminal=false
 Type=Application
 Categories=Game;

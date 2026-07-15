@@ -184,6 +184,7 @@ application/x-extension-ics=userapp-Thunderbird-NUNZC3.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-NUNZC3.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 x-scheme-handler/heroic=heroic.desktop
+inode/directory=org.gnome.Nautilus.desktop
 
 [Added Associations]
 image/bmp=swayimg.desktop;

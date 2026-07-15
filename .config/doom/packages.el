@@ -48,6 +48,8 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
+(package! centered-window :disable t)
+
 (package! claudemacs
   :recipe (:host github :repo "cpoile/claudemacs"))
 

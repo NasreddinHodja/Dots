@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Tear down the lesson-audio virtual mic chain cleanly.
+set -euo pipefail
+
+PIDFILE="${XDG_RUNTIME_DIR:-/tmp}/lesson-audio-watch.pid"
+
+echo "==> Stopping lesson-audio-watch..."
+if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+  kill "$(cat "$PIDFILE")"
+  echo "    stopped watcher (pid $(cat "$PIDFILE"))"
+else
+  echo "    watcher not running (per pidfile)"
+fi
+rm -f "$PIDFILE"
+
+# Belt-and-suspenders: catch any stray watcher/subscribe processes from
+# earlier buggy runs (pidfile only ever tracked the top-level script, not
+# its `pactl subscribe` child, so old runs could leak orphans).
+if pkill -f "bash .*/lesson-audio-watch$" 2>/dev/null; then
+  echo "    killed stray lesson-audio-watch process(es)"
+fi
+if pkill -f "^pactl subscribe$" 2>/dev/null; then
+  echo "    killed stray pactl subscribe process(es)"
+fi
+
+echo "==> Moving any streams currently on lesson_combine back to your default sink..."
+pactl list sink-inputs | awk '
+  /^Sink Input #/ { if (id != "") print id "\t" sink; id=$0; sub(/^Sink Input #/,"",id); sink="" }
+  /^\tSink: /      { line=$0; sub(/^\tSink: /,"",line); sink=line }
+  END { if (id != "") print id "\t" sink }
+' | while IFS=$'\t' read -r id sink; do
+  combine_id=$(pactl list sinks short | awk '$2=="lesson_combine"{print $1}')
+  if [[ -n "$combine_id" && "$sink" == "$combine_id" ]]; then
+    pactl move-sink-input "$id" @DEFAULT_SINK@ 2>/dev/null \
+      && echo "    moved sink-input $id back to default sink"
+  fi
+done
+
+echo "==> Unloading lesson-audio modules..."
+pactl list modules short | awk -F'\t' '
+  $2 == "module-remap-source"   && $3 ~ /source_name=lesson_mic/    { print $1 }
+  $2 == "module-loopback"       && $3 ~ /sink=lesson_audio/         { print $1 }
+  $2 == "module-combine-sink"   && $3 ~ /sink_name=lesson_combine/  { print $1 }
+  $2 == "module-null-sink"      && $3 ~ /sink_name=lesson_audio/    { print $1 }
+' | sort -u | while read -r id; do
+  echo "    unloading module $id"
+  pactl unload-module "$id"
+done
+
+echo "==> Remaining lesson-audio-related modules (should be empty):"
+pactl list modules short | grep -iE "lesson_audio|lesson_mic" || echo "    none"

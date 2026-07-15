@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Background watcher: auto-routes ONLY specific apps' playback (Spotify,
+# browser for YouTube) into lesson_combine, which duplicates them to your
+# real output AND the Zoom mix. Everything else -- crucially Zoom/Meet's own
+# received audio (the other participant's voice) -- stays on your normal
+# output only, so they never hear themselves echoed back.
+set -uo pipefail
+
+APPS_REGEX="${LESSON_AUDIO_APPS:-Spotify|Zen}"
+
+route_matching_streams() {
+  local sink_id
+  sink_id=$(pactl list sinks short | awk '$2=="lesson_combine"{print $1}')
+  [[ -z "$sink_id" ]] && return
+
+  pactl list sink-inputs | awk '
+    /^Sink Input #/ { if (id != "") print id "\t" sink "\t" app; id=$0; sub(/^Sink Input #/,"",id); sink=""; app="" }
+    /^\tSink: /      { line=$0; sub(/^\tSink: /,"",line); sink=line }
+    /application\.name = / { line=$0; sub(/^.*application\.name = /,"",line); gsub(/"/,"",line); app=line }
+    END { if (id != "") print id "\t" sink "\t" app }
+  ' | while IFS=$'\t' read -r id sink app; do
+    [[ -z "$id" || -z "$app" ]] && continue
+    if [[ "$app" =~ ^($APPS_REGEX)$ && "$sink" != "$sink_id" ]]; then
+      pactl move-sink-input "$id" "$sink_id" 2>/dev/null \
+        && echo "$(date '+%H:%M:%S') routed sink-input $id ($app) -> lesson_combine"
+    fi
+  done
+}
+
+echo "$(date '+%H:%M:%S') watching for streams matching /$APPS_REGEX/ ..."
+route_matching_streams
+
+# pactl subscribe is run as an explicit background job (not the RHS of a pipe)
+# so its PID is known and it gets killed on exit -- piping it directly here
+# left orphaned `pactl subscribe` processes behind every time this script
+# was killed, since a pipeline's left side isn't a child of this shell.
+FIFO=$(mktemp -u "${XDG_RUNTIME_DIR:-/tmp}/lesson-audio-watch.XXXXXX.fifo")
+mkfifo "$FIFO"
+trap 'kill "$SUBSCRIBE_PID" 2>/dev/null; rm -f "$FIFO"' EXIT TERM INT
+
+pactl subscribe 2>/dev/null > "$FIFO" &
+SUBSCRIBE_PID=$!
+
+while read -r line; do
+  [[ "$line" == *"on sink-input"* ]] && route_matching_streams
+done < "$FIFO"

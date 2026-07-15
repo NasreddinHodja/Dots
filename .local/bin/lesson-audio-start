@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# Build the "Lesson_Mic" virtual input: mic + SELECTED desktop apps
+# (Spotify, Zen browser -- see lesson-audio-watch) merged into one source
+# Zoom can select as a microphone.
+#
+# Uses module-combine-sink so watcher-routed apps play normally through your
+# real output AND get duplicated into the Zoom mix, in one step -- no
+# loopback-back-to-hardware hop, which is what caused the earlier
+# rate-mismatch/feedback bugs.
+#
+#   [watcher-routed apps, e.g. Zen] --> combine-sink `lesson_combine`
+#                                          |-- duplicated to: your real output (normal playback)
+#                                          |-- duplicated to: null-sink `lesson_audio` (Zoom mix)
+#   mic (hw) ---------------------------------------------> null-sink `lesson_audio`
+#   lesson_audio.monitor -> module-remap-source -> `lesson_mic` (Zoom-visible mic)
+#
+# Deliberately NOT looping @DEFAULT_SINK@.monitor into lesson_audio: that
+# would also capture Zoom/Meet's own received audio and echo the other
+# participant's voice back to them.
+set -euo pipefail
+
+MIC="alsa_input.usb-046d_0825_66934690-02.mono-fallback"
+PIDFILE="${XDG_RUNTIME_DIR:-/tmp}/lesson-audio-watch.pid"
+REAL_SINK="$(pactl get-default-sink)"
+
+module_exists() {
+  pactl list modules short | grep -qF -- "$1"
+}
+
+echo "==> Checking for existing lesson-audio modules..."
+echo "    (real output detected: $REAL_SINK)"
+
+# Lock the graph to a fixed quantum BEFORE attaching any new nodes to the
+# live hardware sink. Without this, PipeWire renegotiates the shared
+# quantum/clock every time a node attaches/detaches, which was audible as
+# crackle/robotic distortion on this hardware (confirmed by isolated
+# testing). This is runtime-only and resets on reboot, hence set here.
+pw-metadata -n settings 0 clock.force-quantum 1024 >/dev/null
+echo "    forced clock.force-quantum=1024 (prevents renegotiation glitches)"
+
+if module_exists "sink_name=lesson_audio"; then
+  echo "    lesson_audio null-sink already loaded, skipping"
+else
+  pactl load-module module-null-sink \
+    sink_name=lesson_audio \
+    sink_properties=device.description=Combined_Mic_Desktop
+  echo "    loaded null-sink lesson_audio (final mix, this is what Zoom sees)"
+fi
+
+if module_exists "sink_name=lesson_combine"; then
+  echo "    lesson_combine combine-sink already loaded, skipping"
+else
+  pactl load-module module-combine-sink \
+    sink_name=lesson_combine \
+    slaves="$REAL_SINK,lesson_audio" \
+    sink_properties=device.description=Lesson_Combine
+  echo "    loaded combine-sink lesson_combine ($REAL_SINK + lesson_audio)"
+fi
+
+if module_exists "source=$MIC sink=lesson_audio"; then
+  echo "    mic loopback already loaded, skipping"
+else
+  pactl load-module module-loopback \
+    source="$MIC" \
+    sink=lesson_audio \
+    latency_msec=1
+  echo "    loaded mic -> lesson_audio loopback"
+fi
+
+if module_exists "master=lesson_audio.monitor source_name=lesson_mic"; then
+  echo "    lesson_mic remap-source already loaded, skipping"
+else
+  pactl load-module module-remap-source \
+    master=lesson_audio.monitor \
+    source_name=lesson_mic \
+    source_properties=device.description=Lesson_Mic
+  echo "    loaded remap-source lesson_mic (Zoom-visible mic)"
+fi
+
+if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+  echo "    watcher already running (pid $(cat "$PIDFILE")), skipping"
+else
+  nohup ~/.local/bin/lesson-audio-watch >"${XDG_RUNTIME_DIR:-/tmp}/lesson-audio-watch.log" 2>&1 &
+  echo $! > "$PIDFILE"
+  echo "    started lesson-audio-watch (pid $!)"
+fi
+
+echo
+echo "==> Done. In Zoom: Settings > Audio > Microphone > select 'Lesson_Mic'."
+echo "    Open Spotify / Zen (YouTube) now -- they'll auto-route into lesson_combine within a second"
+echo "    and play normally through your speakers AND feed into the Zoom mix."
+echo "    Zoom/Meet's own received audio is untouched, so no echo to the other side."
