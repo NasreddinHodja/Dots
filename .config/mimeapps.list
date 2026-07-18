@@ -185,6 +185,7 @@ x-scheme-handler/webcals=userapp-Thunderbird-NUNZC3.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 x-scheme-handler/heroic=heroic.desktop
 inode/directory=org.gnome.Nautilus.desktop
+x-scheme-handler/bitwarden=bitwarden.desktop
 
 [Added Associations]
 image/bmp=swayimg.desktop;
