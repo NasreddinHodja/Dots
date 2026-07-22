@@ -1,0 +1,54 @@
+import QtQuick
+import QtQuick.Layouts
+import Quickshell
+
+PanelWindow {
+    id: bar
+
+    screen: {
+        for (let i = 0; i < Quickshell.screens.length; i++) {
+            if (Quickshell.screens[i].name === "DP-3") return Quickshell.screens[i]
+        }
+        return Quickshell.screens[0]
+    }
+
+    anchors {
+        bottom: true
+        left: true
+        right: true
+    }
+
+    margins {
+        bottom: 6
+        left: 200
+        right: 200
+    }
+
+    implicitHeight: 24
+    color: Colors.surfaceContainerLowest
+
+    RowLayout {
+        anchors.left: parent.left
+        anchors.leftMargin: 4
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: 18
+
+        Workspaces {}
+        LayoutIndicator {}
+        ActiveWindow {}
+        MprisWidget {}
+    }
+
+    RowLayout {
+        anchors.right: parent.right
+        anchors.rightMargin: 8
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: 18
+
+        Tray { barWindow: bar }
+        KeyboardState {}
+        SysMon {}
+        Pulseaudio {}
+        Clock {}
+    }
+}

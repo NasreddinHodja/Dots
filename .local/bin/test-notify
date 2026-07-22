@@ -16,6 +16,11 @@ for i in $(seq 0 20 100); do
     sleep 0.3
 done
 
+for i in 1 2 3 4; do
+    notify-send -a "StackApp" "Duplicate Test" "Sent repeatedly, should stack as (x4) not 4 bubbles"
+    sleep 0.3
+done
+
 notify-send -h string:desktop-entry:firefox \
             "Desktop-entry Icon Test" \
             "Should pick Firefox icon from theme"

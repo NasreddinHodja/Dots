@@ -450,3 +450,23 @@
 
 (add-hook 'dart-mode-hook
           (lambda () (add-hook 'after-save-hook #'nas/flutter-hot-reload nil t)))
+
+;;
+;;; * QML ===================================================================
+;;
+(add-to-list 'treesit-extra-load-path (expand-file-name "tree-sitter/" doom-data-dir))
+
+(use-package! qml-ts-mode
+  :mode "\\.qml\\'"
+  :init
+(add-hook 'qml-ts-mode-local-vars-hook #'lsp! 'append))
+
+(after! lsp-mode
+(add-to-list 'lsp-language-id-configuration '(qml-ts-mode . "qml-ts"))
+(lsp-register-client
+(make-lsp-client :new-connection (lsp-stdio-connection '("/usr/lib/qt6/bin/qmlls" "-E"))
+                 :activation-fn (lsp-activate-on "qml-ts")
+                 :server-id 'qmlls)))
+
+(setq-hook! 'qml-ts-mode-hook
+  electric-indent-chars '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?\,))
