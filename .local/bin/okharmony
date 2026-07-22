@@ -1,0 +1,155 @@
+#!/usr/bin/env python3
+"""Generate hue-harmony variants of a color in Oklch, preserving lightness/chroma.
+
+Usage: okharmony <hex-color> [--split-angle 30]
+
+Prints JSON to stdout:
+{
+  "source": {"hex": "905ebb", "oklch": [L, C, H]},
+  "harmony": {
+    "complementary": {"hex": "...", "oklch": [...]},
+    "split_a":       {...},   # complementary - split-angle
+    "split_b":       {...},   # complementary + split-angle
+    "triadic_a":     {...},   # +120
+    "triadic_b":     {...},   # +240 (-120)
+    "analogous_a":   {...},   # +30
+    "analogous_b":   {...}    # -30
+  },
+  "named": {
+    "red": {...}, "orange": {...}, "yellow": {...}, "green": {...},
+    "cyan": {...}, "blue": {...}, "violet": {...}, "magenta": {...}, "pink": {...}
+  }
+}
+
+`harmony` offsets are relative to the source's own hue (evenly spaced,
+but which literal color lands where drifts with the wallpaper).
+`named` are fixed semantic anchors calibrated from real sRGB primaries
+(e.g. #0000ff) converted to their Oklch hue, so "blue" always means the
+same thing across wallpapers -- only L and C are pulled from the source,
+so it stays tonally consistent with the rest of the palette.
+
+All of this is computed in Oklch (perceptually uniform lightness/chroma),
+not naive HSL, so rotated/anchored hues keep the same apparent lightness
+and vividness as the source instead of drifting pale/muddy/neon.
+"""
+import sys
+import json
+import math
+
+# Anchor hues (Oklch degrees), calibrated from canonical sRGB primaries
+# (e.g. red = oklch hue of #ff0000). Only the hue is used -- L and C
+# always come from the source color being themed.
+NAMED_ANCHORS = {
+    "red": 29.2,
+    "orange": 70.7,
+    "yellow": 109.8,
+    "green": 142.5,
+    "cyan": 194.8,
+    "blue": 264.1,
+    "violet": 293.9,
+    "magenta": 328.4,
+    "pink": 352.0,
+}
+
+def srgb_to_linear(c):
+    c = c / 255.0
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+def linear_to_srgb_byte(c):
+    s = c / 12.92 if c <= 0.0031308 else 1.055 * (max(c, 0) ** (1 / 2.4)) - 0.055
+    return round(min(max(s, 0.0), 1.0) * 255)
+
+def hex_to_rgb(h):
+    h = h.lstrip('#')
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+
+def rgb_to_hex(rgb):
+    return '{:02x}{:02x}{:02x}'.format(*rgb)
+
+def rgb_to_oklab(rgb):
+    r, g, b = (srgb_to_linear(c) for c in rgb)
+    l = 0.4122214708*r + 0.5363325363*g + 0.0514459929*b
+    m = 0.2119034982*r + 0.6806995451*g + 0.1073969566*b
+    s = 0.0883024619*r + 0.2817188376*g + 0.6299787005*b
+    l_, m_, s_ = l**(1/3) if l >= 0 else -(-l)**(1/3), \
+                 m**(1/3) if m >= 0 else -(-m)**(1/3), \
+                 s**(1/3) if s >= 0 else -(-s)**(1/3)
+    L = 0.2104542553*l_ + 0.7936177850*m_ - 0.0040720468*s_
+    A = 1.9779984951*l_ - 2.4285922050*m_ + 0.4505937099*s_
+    B = 0.0259040371*l_ + 0.7827717662*m_ - 0.8086757660*s_
+    return L, A, B
+
+def oklab_to_rgb_linear(L, A, B):
+    l_ = L + 0.3963377774*A + 0.2158037573*B
+    m_ = L - 0.1055613458*A - 0.0638541728*B
+    s_ = L - 0.0894841775*A - 1.2914855480*B
+    l, m, s = l_**3, m_**3, s_**3
+    r = +4.0767416621*l - 3.3077115913*m + 0.2309699292*s
+    g = -1.2684380046*l + 2.6097574011*m - 0.3413193965*s
+    b = -0.0041960863*l - 0.7034186147*m + 1.7076147010*s
+    return r, g, b
+
+def in_gamut(rgb_linear, eps=1e-4):
+    return all(-eps <= c <= 1 + eps for c in rgb_linear)
+
+def oklch_to_rgb_hex(L, C, H):
+    """Convert Oklch -> sRGB hex, reducing chroma if out of gamut (CSS Color 4 style)."""
+    hrad = math.radians(H)
+    lo, hi = 0.0, C
+    best = None
+    # binary search the largest in-gamut chroma <= C at this L, H
+    for _ in range(24):
+        mid = (lo + hi) / 2
+        a, b = mid * math.cos(hrad), mid * math.sin(hrad)
+        rgb_lin = oklab_to_rgb_linear(L, a, b)
+        if in_gamut(rgb_lin):
+            best = rgb_lin
+            lo = mid
+        else:
+            hi = mid
+    if best is None:
+        a, b = 0.0, 0.0
+        best = oklab_to_rgb_linear(L, a, b)
+    rgb = tuple(linear_to_srgb_byte(c) for c in best)
+    return rgb_to_hex(rgb)
+
+def main():
+    args = sys.argv[1:]
+    if not args:
+        print("usage: okharmony <hex-color> [--split-angle N]", file=sys.stderr)
+        sys.exit(1)
+    hexcolor = args[0]
+    split_angle = 30.0
+    if "--split-angle" in args:
+        split_angle = float(args[args.index("--split-angle") + 1])
+
+    rgb = hex_to_rgb(hexcolor)
+    L, A, B = rgb_to_oklab(rgb)
+    C = math.hypot(A, B)
+    H = math.degrees(math.atan2(B, A)) % 360
+
+    def at_hue(h):
+        h = h % 360
+        hx = oklch_to_rgb_hex(L, C, h)
+        return {"hex": hx, "oklch": [round(L, 4), round(C, 4), round(h, 1)]}
+
+    def variant(offset):
+        return at_hue(H + offset)
+
+    out = {
+        "source": {"hex": rgb_to_hex(rgb), "oklch": [round(L, 4), round(C, 4), round(H, 1)]},
+        "harmony": {
+            "complementary": variant(180),
+            "split_a": variant(180 - split_angle),
+            "split_b": variant(180 + split_angle),
+            "triadic_a": variant(120),
+            "triadic_b": variant(240),
+            "analogous_a": variant(30),
+            "analogous_b": variant(-30),
+        },
+        "named": {name: at_hue(hue) for name, hue in NAMED_ANCHORS.items()},
+    }
+    print(json.dumps(out, indent=2))
+
+if __name__ == "__main__":
+    main()

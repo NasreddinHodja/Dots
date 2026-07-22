@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 mode="crop"
 scheme=""
 
@@ -33,8 +35,11 @@ apply_wp() {
         sleep 0.5
     fi
 
-    awww img "$img" --resize "$mode" --transition-type fade --transition-duration 0.5
-    matugen image "$img" -m dark --source-color-index 0 -t "$s"
+    awww img "$img" --resize "$mode" --transition-type fade --transition-duration 0.5 &
+    local harmony_json; harmony_json="$("$SCRIPT_DIR/matugen-splitcomp" "$img" -m dark -t "$s")"
+    wait
+
+    matugen image "$img" -m dark --source-color-index 0 -t "$s" --import-json-string "$harmony_json"
     echo "$s" > "$SCHEME_STATE"
     # TODO: dunst -> swaync
     notify-send -u low -t 2000 -i preferences-desktop-wallpaper "matugen: $s"

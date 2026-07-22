@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Prints a matugen --import-json-string payload: named-anchor accent colors
+# (see okharmony) derived in Oklch from whatever matugen would
+# extract as `primary` for this image/mode/scheme, so they're tinted to
+# match but never collide with matugen's own roles. matugen's own template
+# filters only take literal numeric args (no variables/expressions), so
+# this hue math has to happen out-of-process and get spliced back in.
+#
+# Usage: matugen-splitcomp <image> -m <dark|light> -t <scheme-type>
+#   matugen image "$img" -m dark -t "$s" --import-json-string "$(matugen-splitcomp "$img" -m dark -t "$s")"
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+IMG="$1"; shift
+MODE=""
+SCHEME=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -m) MODE="$2"; shift 2 ;;
+        -t) SCHEME="$2"; shift 2 ;;
+        *) echo "matugen-splitcomp: unknown arg $1" >&2; exit 1 ;;
+    esac
+done
+: "${MODE:?-m dark|light required}" "${SCHEME:?-t scheme-type required}"
+
+PRIMARY_HEX="$(matugen image "$IMG" -m "$MODE" --source-color-index 0 -t "$SCHEME" -q -j hex --dry-run 2>/dev/null \
+    | jq -r '.colors.primary.default.color[1:]')"
+
+"$SCRIPT_DIR/okharmony" "$PRIMARY_HEX" | jq -c '{
+    named_blue:    .named.blue.hex,
+    named_green:   .named.green.hex,
+    named_magenta: .named.magenta.hex
+}'
