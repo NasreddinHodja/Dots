@@ -27,48 +27,19 @@ for arg in "$@"; do
   esac
 done
 
-notify_id_master=505050
-notify_id_app=505051
-timeout_ms=500
-
-icon_for() {
-  local pct="$1" muted="$2"
-  if [ "$muted" = "true" ] || [ "$pct" -le 0 ]; then
-    echo "audio-volume-muted-symbolic"
-  elif [ "$pct" -lt 34 ]; then
-    echo "audio-volume-low-symbolic"
-  elif [ "$pct" -lt 67 ]; then
-    echo "audio-volume-medium-symbolic"
-  elif [ "$pct" -le 100 ]; then
-    echo "audio-volume-high-symbolic"
-  else
-    echo "audio-volume-overamplified-symbolic"
-  fi
-}
-
 # master sink
 
 notify_master() {
-  local raw vol hint muted icon
+  local raw hint muted
   raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
   if [[ "$raw" == *"[MUTED]"* ]]; then
-    vol="[MUTED]"
     hint=0
     muted=true
   else
-    vol=$(awk '{printf "%.0f", $2 * 100}' <<<"$raw")
-    hint="$vol"
+    hint=$(awk '{printf "%.0f", $2 * 100}' <<<"$raw")
     muted=false
-    vol="${vol}%"
   fi
-  icon=$(icon_for "$hint" "$muted")
-  notify-send -u low \
-    -h int:value:"$hint" \
-    -h string:x-canonical-private-synchronous:volume \
-    -t "$timeout_ms" \
-    -i "$icon" \
-    --replace-id="$notify_id_master" \
-    "Volume" "$vol"
+  qs ipc call osd volume "$hint" "$muted" "" >/dev/null 2>&1 &
 }
 
 do_master() {
@@ -125,7 +96,7 @@ matched_sink_inputs() {
 }
 
 notify_app() {
-  local sid="$1" muted pct hint text icon
+  local sid="$1" muted pct hint
   read -r muted pct < <(
     pactl -f json list sink-inputs | jq -r --arg id "$sid" '
       .[] | select(.index == ($id | tonumber)) |
@@ -134,19 +105,10 @@ notify_app() {
   )
   if [ "$muted" = "true" ]; then
     hint=0
-    text="[MUTED]"
   else
     hint="$pct"
-    text="${pct}%"
   fi
-  icon=$(icon_for "$hint" "$muted")
-  notify-send -u low \
-    -h int:value:"$hint" \
-    -h string:x-canonical-private-synchronous:app-volume \
-    -t "$timeout_ms" \
-    -i "$icon" \
-    --replace-id="$notify_id_app" \
-    "Volume — ${focused_app:-app}" "$text"
+  qs ipc call osd volume "$hint" "$muted" "${focused_app:-app}" >/dev/null 2>&1 &
 }
 
 do_app() {
