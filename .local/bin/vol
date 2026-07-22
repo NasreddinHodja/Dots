@@ -1,0 +1,177 @@
+#!/usr/bin/env bash
+#
+# Volume control: up/down/mute the master sink, or with --app the audio
+# stream(s) belonging to the currently focused window (mango, then
+# hyprland as fallback). Falls back to the master sink when the focused
+# app has no active audio stream.
+
+set -euo pipefail
+
+usage() {
+  echo "Usage: vol up|down|mute [--app] [step%]" >&2
+  exit 1
+}
+
+[ $# -ge 1 ] || usage
+action="$1"
+shift
+case "$action" in up | down | mute) ;; *) usage ;; esac
+
+app_mode=false
+step=5
+for arg in "$@"; do
+  case "$arg" in
+  -a | --app) app_mode=true ;;
+  *[!0-9]*) usage ;;
+  *) step="$arg" ;;
+  esac
+done
+
+notify_id_master=505050
+notify_id_app=505051
+timeout_ms=500
+
+icon_for() {
+  local pct="$1" muted="$2"
+  if [ "$muted" = "true" ] || [ "$pct" -le 0 ]; then
+    echo "audio-volume-muted-symbolic"
+  elif [ "$pct" -lt 34 ]; then
+    echo "audio-volume-low-symbolic"
+  elif [ "$pct" -lt 67 ]; then
+    echo "audio-volume-medium-symbolic"
+  elif [ "$pct" -le 100 ]; then
+    echo "audio-volume-high-symbolic"
+  else
+    echo "audio-volume-overamplified-symbolic"
+  fi
+}
+
+# master sink
+
+notify_master() {
+  local raw vol hint muted icon
+  raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+  if [[ "$raw" == *"[MUTED]"* ]]; then
+    vol="[MUTED]"
+    hint=0
+    muted=true
+  else
+    vol=$(awk '{printf "%.0f", $2 * 100}' <<<"$raw")
+    hint="$vol"
+    muted=false
+    vol="${vol}%"
+  fi
+  icon=$(icon_for "$hint" "$muted")
+  notify-send -u low \
+    -h int:value:"$hint" \
+    -h string:x-canonical-private-synchronous:volume \
+    -t "$timeout_ms" \
+    -i "$icon" \
+    --replace-id="$notify_id_master" \
+    "Volume" "$vol"
+}
+
+do_master() {
+  case "$action" in
+  up) wpctl set-volume @DEFAULT_AUDIO_SINK@ "${step}%+" ;;
+  down) wpctl set-volume @DEFAULT_AUDIO_SINK@ "${step}%-" ;;
+  mute) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+  esac
+  notify_master
+}
+
+# focused app
+
+focused_pid=""
+focused_app=""
+
+focused_window() {
+  local client
+  if command -v mmsg >/dev/null && client=$(mmsg get focusing-client 2>/dev/null); then
+    focused_pid=$(jq -r '.pid // empty' <<<"$client")
+    focused_app=$(jq -r '.appid // empty' <<<"$client")
+  elif command -v hyprctl >/dev/null && client=$(hyprctl -j activewindow 2>/dev/null); then
+    focused_pid=$(jq -r '.pid // empty' <<<"$client")
+    focused_app=$(jq -r '.class // empty' <<<"$client")
+  fi
+}
+
+# is `pid` (or any of its ancestors) equal to `target`? handles apps whose
+# audio is a subprocess (e.g. browsers).
+is_descendant_of() {
+  local pid="$1" target="$2"
+  while [ "$pid" -gt 1 ] 2>/dev/null; do
+    [ "$pid" = "$target" ] && return 0
+    pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ')
+    [ -n "$pid" ] || return 1
+  done
+  return 1
+}
+
+matched_sink_inputs() {
+  local index pid name binary
+  while IFS=$'\t' read -r index pid name binary; do
+    if [ -n "$focused_pid" ] && [ "$pid" != "null" ] && is_descendant_of "$pid" "$focused_pid"; then
+      echo "$index"
+    elif [ -n "$focused_app" ] && { [[ "${name,,}" == *"${focused_app,,}"* ]] || [[ "${binary,,}" == *"${focused_app,,}"* ]]; }; then
+      echo "$index"
+    fi
+  done < <(pactl -f json list sink-inputs | jq -r '.[] | [
+      .index,
+      (.properties["application.process.id"] // "null"),
+      (.properties["application.name"] // ""),
+      (.properties["application.process.binary"] // "")
+    ] | @tsv')
+}
+
+notify_app() {
+  local sid="$1" muted pct hint text icon
+  read -r muted pct < <(
+    pactl -f json list sink-inputs | jq -r --arg id "$sid" '
+      .[] | select(.index == ($id | tonumber)) |
+      "\(.mute) \(.volume[(.volume | keys[0])].value_percent | rtrimstr("%"))"
+    '
+  )
+  if [ "$muted" = "true" ]; then
+    hint=0
+    text="[MUTED]"
+  else
+    hint="$pct"
+    text="${pct}%"
+  fi
+  icon=$(icon_for "$hint" "$muted")
+  notify-send -u low \
+    -h int:value:"$hint" \
+    -h string:x-canonical-private-synchronous:app-volume \
+    -t "$timeout_ms" \
+    -i "$icon" \
+    --replace-id="$notify_id_app" \
+    "Volume — ${focused_app:-app}" "$text"
+}
+
+do_app() {
+  focused_window
+  local ids=()
+  mapfile -t ids < <(matched_sink_inputs)
+
+  if [ "${#ids[@]}" -eq 0 ]; then
+    do_master
+    return
+  fi
+
+  local sid
+  for sid in "${ids[@]}"; do
+    case "$action" in
+    up) pactl set-sink-input-volume "$sid" "+${step}%" ;;
+    down) pactl set-sink-input-volume "$sid" "-${step}%" ;;
+    mute) pactl set-sink-input-mute "$sid" toggle ;;
+    esac
+  done
+  notify_app "${ids[0]}"
+}
+
+if "$app_mode"; then
+  do_app
+else
+  do_master
+fi
