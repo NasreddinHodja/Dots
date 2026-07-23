@@ -1,7 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
-import Quickshell.Wayland
 
 Item {
     id: root
@@ -15,8 +13,6 @@ Item {
     // at once left stale items flickering back into view mid-fade-in.
     property bool clearingAll: false
 
-    // Bar.qml's own PanelWindow, passed in so the popup can track this
-    // widget's actual position - see card.x/y below.
     property var barWindow: null
 
     function openPanel() {
@@ -61,67 +57,24 @@ Item {
         }
     }
 
-    // Full-screen overlay (not edge-anchored) so clicking anywhere outside
-    // the card can dismiss it; the card itself is positioned manually,
-    // same pattern as Clock.qml's detail card.
-    PanelWindow {
-        id: overlay
-        WlrLayershell.namespace: "quickshell-notification-center"
-        WlrLayershell.layer: WlrLayer.Overlay
+    Loader {
+        active: root.detailOpen
+        sourceComponent: overlayComponent
+    }
 
-        screen: {
-            for (let i = 0; i < Quickshell.screens.length; i++) {
-                if (Quickshell.screens[i].name === "DP-3") return Quickshell.screens[i]
-            }
-            return Quickshell.screens[0]
-        }
+    Component {
+        id: overlayComponent
 
-        anchors { top: true; bottom: true; left: true; right: true }
-        exclusionMode: ExclusionMode.Ignore
-        color: "transparent"
-
-        visible: root.detailOpen
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: root.detailOpen = false
-        }
-
-        Rectangle {
-            id: card
-            readonly property int padding: 12
-            // Live bindings, not a one-shot computation: overlay.height in
-            // particular isn't negotiated by the compositor until this
-            // (normally hidden) surface actually becomes visible, so a
-            // snapshot taken right before that would freeze in a stale
-            // placeholder value forever. `void root.detailOpen` has no
-            // effect on the value but forces x to re-read mapToItem every
-            // time the panel opens, since nothing else would otherwise
-            // prompt that (unlike y, which naturally redoes itself whenever
-            // overlay.height changes). Centered under the widget, clamped
-            // so it never runs past the screen edges.
-            x: {
-                void root.detailOpen
-                if (!root.barWindow) return 0
-                const widgetCenterX = root.barWindow.margins.left + root.mapToItem(null, 0, 0).x + root.width / 2
-                return Math.max(0, Math.min(widgetCenterX - width / 2, overlay.width - width))
-            }
-            y: root.barWindow ? (overlay.height - (root.barWindow.margins.bottom + root.barWindow.height) - height - 6) : 0
-            width: 340
-            height: 460
-            color: Colors.surfaceContainerLowest
-            border.width: 0
-            border.color: Colors.outline
-
-            // Swallows clicks so they don't fall through to the dismiss
-            // MouseArea behind the card.
-            MouseArea {
-                anchors.fill: parent
-            }
+        PopupPanel {
+            namespace: "quickshell-notification-center"
+            anchorItem: root
+            barWindow: root.barWindow
+            cardWidth: 340
+            cardHeight: 460
+            onDismissed: root.detailOpen = false
 
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: card.padding
                 spacing: 8
 
                 RowLayout {
