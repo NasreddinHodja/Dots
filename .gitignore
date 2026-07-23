@@ -131,3 +131,4 @@ wp.state.json
 .local/bin/claude
 /.local/share/applications/musescore-studio.desktop
 /.local/share/applications/Fallout New Vegas.desktop
+.config/quickshell/notification_history.json

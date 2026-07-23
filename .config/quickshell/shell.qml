@@ -4,4 +4,5 @@ import Quickshell
 Scope {
   Bar {}
   Notifications {}
+  OSD {}
 }

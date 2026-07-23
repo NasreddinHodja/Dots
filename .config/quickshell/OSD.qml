@@ -102,7 +102,7 @@ Scope {
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
-                    text: root.muted ? " " : (root.pct < 50 ? " " : " ")
+                    text: root.muted || root.pct == 0 ? " " : (root.pct < 50 ? " " : " ")
                     horizontalAlignment: Text.AlignHCenter
                     font.family: Style.fontFamily
                     font.pixelSize: Style.fontSize + 4

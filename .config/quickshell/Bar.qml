@@ -31,7 +31,7 @@ PanelWindow {
         anchors.left: parent.left
         anchors.leftMargin: 4
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 18
+        spacing: 14
 
         Workspaces {}
         LayoutIndicator {}
@@ -43,12 +43,13 @@ PanelWindow {
         anchors.right: parent.right
         anchors.rightMargin: 8
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 18
+        spacing: 14
 
         Tray { barWindow: bar }
         KeyboardState {}
         SysMon {}
+        NotificationCenter { barWindow: bar }
         Pulseaudio {}
-        Clock {}
+        Clock { barWindow: bar }
     }
 }
