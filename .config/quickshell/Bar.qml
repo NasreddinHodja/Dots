@@ -36,7 +36,7 @@ PanelWindow {
         Workspaces {}
         LayoutIndicator {}
         ActiveWindow {}
-        MprisWidget {}
+        MinimizedWindows {}
     }
 
     RowLayout {
@@ -46,6 +46,7 @@ PanelWindow {
         spacing: 14
 
         Tray { barWindow: bar }
+        MprisWidget {}
         KeyboardState {}
         SysMon {}
         NotificationCenter { barWindow: bar }

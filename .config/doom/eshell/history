@@ -1,8 +1,3 @@
-cargo run -- -u
-cargo run -- --sync
-cargo run -- -u
-cargo run -- -u 
-cargo build --release
 cargo -ov
 cargo run -- -ov
 exit
@@ -126,3 +121,8 @@ qmk compile -kb crkbd -km naskb
 qmk compile -kb crkbd -km naskbd
 qmk compile -kb crkbd -km naskbd-immediate
 qmk compile -kb crkbd -km naskbd
+(+ 1 nil)
+qmk compile -kb crkbd -km naskbd
+emacs --batch -l kindergarten-garden.el 
+qmk compile -kb crkbd -km naskbd
+qmk compile -kb crkbd -km naskbd-immediate

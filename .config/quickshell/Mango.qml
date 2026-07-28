@@ -9,6 +9,7 @@ Singleton {
 
     property var monitorData: ({})
     property var allMonitorTags: ({})
+    property var minimizedClients: []
 
     readonly property var tags: monitorData.tags ?? []
     readonly property string layoutSymbol: monitorData.layout_symbol ?? ""
@@ -73,6 +74,27 @@ Singleton {
                     allMonitorTags = map
                 } catch (e) {
                     console.warn("Mango: failed to parse mmsg all-tags output:", line)
+                }
+            }
+        }
+
+        onRunningChanged: {
+            if (!running) running = true
+        }
+    }
+
+    Process {
+        id: allClientsWatch
+        command: ["mmsg", "watch", "all-clients"]
+        running: true
+
+        stdout: SplitParser {
+            onRead: (line) => {
+                try {
+                    const data = JSON.parse(line)
+                    minimizedClients = data.clients.filter(c => c.is_minimized)
+                } catch (e) {
+                    console.warn("Mango: failed to parse mmsg all-clients output:", line)
                 }
             }
         }

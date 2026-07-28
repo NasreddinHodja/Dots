@@ -132,3 +132,5 @@ wp.state.json
 /.local/share/applications/musescore-studio.desktop
 /.local/share/applications/Fallout New Vegas.desktop
 .config/quickshell/notification_history.json
+/.config/exercism/
+/.local/bin/exercism

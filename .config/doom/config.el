@@ -470,3 +470,17 @@
 
 (setq-hook! 'qml-ts-mode-hook
   electric-indent-chars '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?\,))
+
+
+;;
+;;; * ert ======================================================================
+;;
+
+(defun my-eval-and-run-all-tests-in-buffer ()
+  "Deletes all loaded tests from the runtime, evaluates the
+   current buffer and runs all loaded tests with ert."
+  (interactive)
+  (require 'ert)
+  (ert-delete-all-tests)
+  (eval-buffer)
+  (ert 't))
