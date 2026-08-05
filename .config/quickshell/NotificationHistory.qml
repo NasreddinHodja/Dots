@@ -45,9 +45,25 @@ Singleton {
         return match ? action.text.slice(match[0].length) : action.text
     }
 
+    // The "default" action (identifier "default") is the implicit
+    // click-to-activate action defined by the notification spec -
+    // conventionally sent with an empty label since it's meant to be
+    // invoked by clicking the notification itself, not rendered as its
+    // own button (Heroic and others rely on this and would otherwise show
+    // an empty chip).
+    function visibleActions(notification) {
+        if (!notification) return []
+        return notification.actions.filter(a => a.identifier !== "default")
+    }
+
+    function defaultAction(notification) {
+        if (!notification) return null
+        return notification.actions.find(a => a.identifier === "default") || null
+    }
+
     function actionLabelsFor(historyId) {
         const n = root._liveRefs[historyId]
-        return n ? n.actions.map(a => root.cleanActionLabel(a)) : []
+        return n ? root.visibleActions(n).map(a => root.cleanActionLabel(a)) : []
     }
 
     function resolveIcon(notification) {
@@ -142,7 +158,13 @@ Singleton {
 
     function invokeAction(historyId, index) {
         const n = root._liveRefs[historyId]
-        if (n && n.actions[index]) n.actions[index].invoke()
+        const action = n ? root.visibleActions(n)[index] : null
+        if (action) action.invoke()
+        // Resident notifications are meant to stay open after an action
+        // fires (e.g. multi-step flows) - closing them immediately races
+        // the app's own handling and can make the action look like it did
+        // nothing.
+        if (n && n.resident) return
         root.dismissEntry(historyId)
     }
 

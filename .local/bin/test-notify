@@ -38,4 +38,33 @@ notify-send -i dialog-warning \
             --action=alt,Cancel \
             "Action Test" "Dunst must support actions (enable in config)."
 
+# Heroic-style: a single "default" action with an empty label - this is
+# the implicit click-to-activate action from the notification spec, sent
+# with no label since it's not meant to render as its own button. Should
+# show NO action chip; clicking the notification body should invoke it.
+notify-send -a "Heroic Games Launcher" "Test Game" "Installation complete." \
+            -A "default=" &
+
+# Named action, non-resident: clicking "Reply" should invoke it and
+# dismiss the bubble.
+notify-send -a "TestApp" "Non-resident action" "Click Reply below." \
+            -A "reply=Reply" &
+
+# Named action, resident: clicking "Reply" should invoke it but the
+# bubble must stay open (resident notifications only close when
+# explicitly dismissed/closed, not just because an action fired).
+# Sent via gdbus, not notify-send: notify-send is itself the "sender" in
+# spec terms, and it explicitly calls CloseNotification the instant it
+# gets an answer back (confirmed via dbus-monitor) - spec-legal cleanup,
+# but it auto-closes the bubble regardless of the resident hint, which
+# defeats the point of this test. gdbus fires the request and exits, so
+# nothing is left listening to close it after the click.
+gdbus call --session \
+    --dest org.freedesktop.Notifications \
+    --object-path /org/freedesktop/Notifications \
+    --method org.freedesktop.Notifications.Notify \
+    "TestApp" 0 "" "Resident action" \
+    "Click Reply below - bubble should stay open." \
+    "['reply', 'Reply']" "{'resident': <true>}" 0 > /dev/null &
+
 echo "Done firing notifications."

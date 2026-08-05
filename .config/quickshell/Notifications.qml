@@ -214,7 +214,7 @@ Scope {
                     capturedIcon = bubble._resolveIcon(n)
                     capturedUrgency = n.urgency
                     capturedProgress = bubble._resolveProgress(n)
-                    capturedActionLabels = n.actions.map(a => NotificationHistory.cleanActionLabel(a))
+                    capturedActionLabels = NotificationHistory.visibleActions(n).map(a => NotificationHistory.cleanActionLabel(a))
                     capturedDupCount = root.dupCounts[n.id] || 1
                     // Per spec, expireTimeout is -1 when the app leaves it up to the
                     // server, 0 when the app asks to never expire, and >0 for an
@@ -283,14 +283,27 @@ Scope {
                     anchors.fill: parent
                     acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
                     onClicked: (mouse) => {
-                        if (!bubble.modelData) return
+                        const n = bubble.modelData
+                        if (!n) return
                         if (mouse.button === Qt.LeftButton) {
-                            bubble.modelData.dismiss()
+                            // Clicking the bubble body is the conventional
+                            // way to invoke the implicit "default" action
+                            // (e.g. Heroic's "open game"), which isn't
+                            // rendered as its own button. Unlike the action
+                            // chips, this is also the explicit "click
+                            // elsewhere to dismiss" gesture - always closes,
+                            // even for resident notifications, since resident
+                            // only protects against auto-close *because an
+                            // action fired*, not against the user closing it.
+                            const def = NotificationHistory.defaultAction(n)
+                            if (def) def.invoke()
+                            n.dismiss()
                         } else if (mouse.button === Qt.MiddleButton) {
-                            if (bubble.modelData.actions.length > 0) bubble.modelData.actions[0].invoke()
-                            bubble.modelData.dismiss()
+                            const first = NotificationHistory.visibleActions(n)[0]
+                            if (first) first.invoke()
+                            if (!n.resident) n.dismiss()
                         } else if (mouse.button === Qt.RightButton) {
-                            for (const n of [...server.trackedNotifications.values]) n.dismiss()
+                            for (const t of [...server.trackedNotifications.values]) t.dismiss()
                         }
                     }
                 }
@@ -405,10 +418,11 @@ Scope {
                                         hoverEnabled: true
                                         cursorShape: Qt.PointingHandCursor
                                         onClicked: {
-                                            if (bubble.modelData && bubble.modelData.actions[actionChip.index]) {
-                                                bubble.modelData.actions[actionChip.index].invoke()
-                                            }
-                                            if (bubble.modelData) bubble.modelData.dismiss()
+                                            const n = bubble.modelData
+                                            if (!n) return
+                                            const action = NotificationHistory.visibleActions(n)[actionChip.index]
+                                            if (action) action.invoke()
+                                            if (!n.resident) n.dismiss()
                                         }
                                     }
                                 }
