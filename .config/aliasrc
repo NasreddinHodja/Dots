@@ -11,7 +11,7 @@ alias \
 	trem="transmission-remote" \
 	f="$FILE" \
 	e="$EDITOR" \
-	p="sudo pacman" \
+	p="paru" \
 	szhist="bat $HOME/.config/zsh/.zhistory | grep -i" \
 	juno="nohup jupyter notebook > error.log &" \
 	p5s="nohup p5 server > error.log &" \
