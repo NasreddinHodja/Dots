@@ -8,7 +8,7 @@ alias ka killall $@*
 alias trem transmission-remote $@*
 alias f $FILE $@*
 alias e $EDITOR $@*
-alias p sudo pacman $@*
+alias p paru $@*
 alias szhist bat $HOME/.config/zsh/.zhistory | grep -i $@*
 alias juno nohup jupyter notebook > error.log & $@*
 alias p5s nohup p5 server > error.log & $@*

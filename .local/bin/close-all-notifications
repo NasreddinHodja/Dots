@@ -1,0 +1,5 @@
+#!/bin/bash
+last_id=$(notify-send -p -t 1 " " " ")
+for ((i=last_id; i>=1; i--)); do
+  qdbus6 org.freedesktop.Notifications /org/freedesktop/Notifications org.freedesktop.Notifications.CloseNotification "$i" >/dev/null 2>&1
+done

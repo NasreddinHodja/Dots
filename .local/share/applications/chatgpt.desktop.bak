@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ChatGPT
+Comment=Launch ChatGPT
+Exec=chromium --app=https://chatgpt.com/ --class=ChatGPT
+Icon=/home/nasreddin/.local/share/icons/chatgpt.png
+Terminal=false
+Categories=Network;WebBrowser;

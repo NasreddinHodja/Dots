@@ -4,16 +4,18 @@ muted_color="#888888"
 # shellcheck source=/dev/null
 [ -f "$HOME/.cache/matugen/colors.sh" ] && source "$HOME/.cache/matugen/colors.sh" && muted_color="$MATUGEN_MUTED"
 
-cpu_usage=$(top -bn1 | awk '/Cpu/ {printf "%.1f", $2 + $4}')
-cpu_usage=$(printf "%05.1f" "$cpu_usage")
+cpu_raw=$(top -bn1 | awk '/Cpu/ {printf "%.1f", $2 + $4}')
+cpu_usage=$(printf "%05.1f" "$cpu_raw")
 
 mem_info=$(free -h | awk '/Mem/ {printf "%.1f|%s|%s", $3/$2*100, $3, $2}')
-mem_percent=$(printf "%05.1f" "$(cut -d'|' -f1 <<< "$mem_info")")
+mem_raw=$(cut -d'|' -f1 <<< "$mem_info")
+mem_percent=$(printf "%05.1f" "$mem_raw")
 mem_used=$(cut -d'|' -f2 <<< "$mem_info")
 mem_total=$(cut -d'|' -f3 <<< "$mem_info")
 
 disk_info=$(df -h / | awk 'NR==2 {gsub(/%/, "", $5); printf "%.1f|%s|%s", $5, $3, $2}')
-disk_percent=$(printf "%05.1f" "$(cut -d'|' -f1 <<< "$disk_info")")
+disk_raw=$(cut -d'|' -f1 <<< "$disk_info")
+disk_percent=$(printf "%05.1f" "$disk_raw")
 disk_used=$(cut -d'|' -f2 <<< "$disk_info")
 disk_total=$(cut -d'|' -f3 <<< "$disk_info")
 
@@ -49,6 +51,15 @@ json_escape() {
   sed ':a;N;$!ba; s/\\/\\\\/g; s/"/\\"/g; s/\n/\\n/g'
 }
 
-printf '{"text":"%s","tooltip":"%s"}\n' \
+printf '{"text":"%s","tooltip":"%s","cpu_percent":%s,"mem_percent":%s,"mem_used":"%s","mem_total":"%s","disk_percent":%s,"disk_used":"%s","disk_total":"%s","load_avg":"%s","uptime":"%s"}\n' \
   "$(printf "%s" "$text" | json_escape)" \
-  "$(printf "%s" "$tooltip" | json_escape)"
+  "$(printf "%s" "$tooltip" | json_escape)" \
+  "$cpu_raw" \
+  "$mem_raw" \
+  "$(printf "%s" "$mem_used" | json_escape)" \
+  "$(printf "%s" "$mem_total" | json_escape)" \
+  "$disk_raw" \
+  "$(printf "%s" "$disk_used" | json_escape)" \
+  "$(printf "%s" "$disk_total" | json_escape)" \
+  "$(printf "%s" "$load_avg" | json_escape)" \
+  "$(printf "%s" "$uptime_info" | json_escape)"

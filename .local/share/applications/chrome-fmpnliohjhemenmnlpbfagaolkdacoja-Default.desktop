@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Claude
+Exec=/usr/bin/chromium --profile-directory=Default --app-id=fmpnliohjhemenmnlpbfagaolkdacoja
+Icon=chrome-fmpnliohjhemenmnlpbfagaolkdacoja-Default
+StartupWMClass=crx_fmpnliohjhemenmnlpbfagaolkdacoja

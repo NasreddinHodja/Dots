@@ -22,7 +22,7 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.config/emacs/themes/"))
 (setq! doom-theme 'doom-dracula)
 
-(setq! +doom-dashboard-banner-file (expand-file-name "banner.png" doom-user-dir))
+(setq! fancy-splash-image (expand-file-name "banner.png" doom-user-dir))
 
 (setq! display-line-numbers-type 'relative)
 
@@ -259,13 +259,11 @@
                                (nas/build-keybinding (nth 0 pair) (nth 1 pair)))
                              key-path-pairs)))
     `(progn (map! :leader
-                  (:prefix ("f" . "file")
+                  (:prefix "f"
                            (:prefix ("i" . "find in")
                                     ,@keybindings))))))
 
-(map! :leader
-      (:prefix ("f" . "file")
-               "i" nil))
+(map! :leader "f i" nil)
 
 (nas/def-find-dirs
  ("d" "~/Dots/")
@@ -293,7 +291,7 @@
       :desc "Toggle" "t" #'+popup/toggle
       :desc "Cycle" "n" #'+popup/other
       :desc "Restore" "u" #'+popup/restore
-      :desc "Close all" "u" #'+popup/cloase-all
+      :desc "Close all" "a" #'+popup/close-all
       :desc "Buffer to popup" "RET" #'+popup/buffer)
 
 ;; restart & restart daemon

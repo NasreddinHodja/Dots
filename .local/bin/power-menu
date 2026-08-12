@@ -31,7 +31,7 @@ case $CHOICE in
     *"Reboot") systemctl reboot ;;
     *"Lock") swaylock -f ;;
     *"Sleep") systemctl suspend ;;
-    *"Log out") mmsg -s -d quit ;;
+    *"Log out") mmsg dispatch quit ;;
     "") ;;
     *) exit 1 ;;
 esac
