@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+# dev-layout — switch to a virtual desktop and open a two-pane dev session on
+# the main monitor: kitty on the left half, an emacsclient frame on the right.
+#
+# KWin on Wayland refuses external geometry control, so the placement half runs
+# as a KWin script loaded over D-Bus. It matches only the marker class/title
+# below, so ordinary kitty and emacs windows are never touched.
+#
+# The --class marker below becomes the Wayland app_id, which is also how Plasma
+# looks up the window's icon: app_id -> <app_id>.desktop. Without a matching
+# entry you get the generic Wayland logo instead of the kitty icon, so this
+# needs ~/.local/share/applications/dev-kitty.desktop (Icon=kitty).
+
+set -u
+
+MAIN_OUTPUT="${DEV_LAYOUT_OUTPUT:-DP-3}"
+DESKTOP="${DEV_LAYOUT_DESKTOP:-1}"   # 1-based, as shown in the pager
+SPLIT="${DEV_LAYOUT_SPLIT:-0.5}"     # fraction of the width given to kitty
+FOCUS_SIDE="${DEV_LAYOUT_FOCUS:-left}"
+
+KITTY_CLASS="dev-kitty"
+EMACS_FRAME="dev-emacs"
+SETTLE_MS=4000    # how long to keep re-asserting geometry against self-sizing apps
+TOLERANCE=40      # px slack, so char-cell rounding is not fought forever
+
+JS="${XDG_RUNTIME_DIR:-/tmp}/dev-layout.js"
+PLUGIN="dev-layout"
+
+die() { printf '%s: %s\n' "${0##*/}" "$*" >&2; exit 1; }
+
+command -v qdbus6 >/dev/null || die "qdbus6 not found"
+[[ ${XDG_CURRENT_DESKTOP:-} == *KDE* ]] || die "not a KDE session"
+
+kwin() { qdbus6 org.kde.KWin /Scripting "org.kde.kwin.Scripting.$@"; }
+
+# --- the KWin side ----------------------------------------------------------
+
+{
+    cat <<EOF
+const MAIN_OUTPUT   = "$MAIN_OUTPUT";
+const DESKTOP_INDEX = $((DESKTOP - 1));
+const SPLIT         = $SPLIT;
+const FOCUS_SIDE    = "$FOCUS_SIDE";
+const LEFT_CLASS    = "$KITTY_CLASS";
+const RIGHT_TITLE   = "$EMACS_FRAME";
+const SETTLE_MS     = $SETTLE_MS;
+const TOLERANCE     = $TOLERANCE;
+EOF
+    cat <<'EOF'
+
+function mainOutput() {
+    var found = null;
+    workspace.screens.forEach(function (s) {
+        if (s.name === MAIN_OUTPUT) found = s;
+    });
+    return found || workspace.activeScreen;
+}
+
+function targetDesktop() {
+    var i = Math.max(0, Math.min(DESKTOP_INDEX, workspace.desktops.length - 1));
+    return workspace.desktops[i];
+}
+
+function sideOf(w) {
+    if (!w || !w.normalWindow) return null;
+    var cls = String(w.resourceClass).toLowerCase();
+    if (cls === LEFT_CLASS) return "left";
+    if (cls.indexOf("emacs") !== -1 &&
+        String(w.caption).indexOf(RIGHT_TITLE) !== -1) return "right";
+    return null;
+}
+
+// Emacs (and any other client that sizes itself in character cells) picks its
+// own geometry shortly after mapping, overriding whatever we set. Re-assert the
+// target until it settles, then get out of the way. There is no setTimeout in
+// KWin's JS engine, so the give-up point is a wall-clock deadline tested on
+// each geometry change rather than a timer.
+function enforce(w, rect) {
+    var deadline = Date.now() + SETTLE_MS;
+    var stopped = false;
+
+    function fits(g) {
+        return Math.abs(g.x - rect.x) <= TOLERANCE &&
+               Math.abs(g.y - rect.y) <= TOLERANCE &&
+               Math.abs(g.width  - rect.width)  <= TOLERANCE &&
+               Math.abs(g.height - rect.height) <= TOLERANCE;
+    }
+
+    function stop() {
+        if (stopped) return;
+        stopped = true;
+        try { w.frameGeometryChanged.disconnect(onChange); } catch (e) {}
+        try { w.interactiveMoveResizeStarted.disconnect(stop); } catch (e) {}
+    }
+
+    function onChange() {
+        if (stopped) return;
+        if (Date.now() > deadline) { stop(); return; }
+        if (fits(w.frameGeometry)) return;
+        w.frameGeometry = rect;
+    }
+
+    try { w.frameGeometryChanged.connect(onChange); } catch (e) {}
+    try { w.interactiveMoveResizeStarted.connect(stop); } catch (e) {}
+    w.frameGeometry = rect;
+}
+
+var leftWindow = null;
+
+function place(w) {
+    var side = sideOf(w);
+    if (side === null) return;
+
+    var out  = mainOutput();
+    var desk = targetDesktop();
+
+    w.onAllDesktops = false;
+    w.desktops = [desk];
+    if (w.fullScreen) w.fullScreen = false;
+    w.setMaximize(false, false);
+
+    var a = workspace.clientArea(KWin.PlacementArea, out, desk);
+    var leftWidth = Math.round(a.width * SPLIT);
+
+    if (side === "left") {
+        enforce(w, { x: a.x, y: a.y, width: leftWidth, height: a.height });
+        leftWindow = w;
+    } else {
+        enforce(w, { x: a.x + leftWidth, y: a.y,
+                     width: a.width - leftWidth, height: a.height });
+    }
+
+    if (side === FOCUS_SIDE) workspace.activeWindow = w;
+    else if (FOCUS_SIDE === "left" && leftWindow !== null) workspace.activeWindow = leftWindow;
+}
+
+workspace.currentDesktop = targetDesktop();
+workspace.windowList().forEach(place);   // re-tile anything already open
+workspace.windowAdded.connect(place);    // catch the windows we spawn below
+EOF
+} > "$JS"
+
+# Reload so a re-run re-tiles existing windows instead of stacking listeners.
+kwin unloadScript "$PLUGIN" >/dev/null 2>&1
+kwin loadScript "$JS" "$PLUGIN" >/dev/null || die "KWin refused the layout script"
+kwin start >/dev/null
+
+# --- the applications -------------------------------------------------------
+
+if ! pgrep -f "kitty --class $KITTY_CLASS" >/dev/null; then
+    kitty --class "$KITTY_CLASS" >/dev/null 2>&1 &
+    disown
+fi
+
+if ! emacsclient -e '(emacs-pid)' >/dev/null 2>&1; then
+    emacs --daemon >/dev/null 2>&1 || die "emacs daemon failed to start"
+fi
+
+has_frame=$(emacsclient -e \
+    "(if (seq-find (lambda (f) (equal (frame-parameter f 'name) \"$EMACS_FRAME\")) (frame-list)) t nil)" \
+    2>/dev/null)
+
+if [[ $has_frame != t ]]; then
+    emacsclient --alternate-editor= --create-frame --no-wait \
+        --frame-parameters="((name . \"$EMACS_FRAME\"))" \
+        "$@" >/dev/null 2>&1
+fi

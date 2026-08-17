@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Dev Layout
+GenericName=Split Dev Session
+Comment=Open kitty and an Emacs frame tiled side by side on the main monitor
+Exec=/home/nasreddin/.local/bin/dev-layout %F
+TryExec=/home/nasreddin/.local/bin/dev-layout
+Icon=view-split-left-right
+Terminal=false
+StartupNotify=false
+Categories=Development;
+Keywords=tile;tiling;layout;split;session;kitty;emacs;

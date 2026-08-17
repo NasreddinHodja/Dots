@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=konigslibrary
-Exec=/home/nasreddin/Prog/konigslibrary/src-tauri/target/release/app
+Exec=/home/nasreddin/Prog/konigslibrary/dist/konigslibrary_0.7.1_amd64.AppImage
 Icon=/home/nasreddin/Prog/konigslibrary/static/icon-512.png
 Type=Application
 StartupNotify=true

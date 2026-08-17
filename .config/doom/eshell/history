@@ -1,6 +1,3 @@
-cargi
-cargo run -- -u
-mgdl
 mgdl -u
 z mgdl
 cargo build --releas
@@ -126,3 +123,6 @@ qmk compile -kb crkbd -km naskbd
 sudo rm yggdrasil.conf 
 ka rofi
 qmk compile -kb crkbd -km naskbd
+python3 -m http.server 8000
+ip addr show | grep "inet " | grep -v 127.0.0.1
+python3 -m http.server 8000
