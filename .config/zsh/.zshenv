@@ -11,6 +11,9 @@ export CHROME_EXECUTABLE=/usr/sbin/chromium
 
 export ANDROID_SDK_ROOT="$HOME/.local/src/Android"
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export ANDROID_USER_HOME="$HOME/.local/share/android"
+export ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
+export JAVA_HOME="/usr/lib/jvm/default"
 # platform-tools adb's mDNS/netwatch thread aborts on this machine; disable it
 export ADB_MDNS=0
 
