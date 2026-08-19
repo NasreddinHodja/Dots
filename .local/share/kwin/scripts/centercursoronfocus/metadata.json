@@ -1,0 +1,18 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "nasreddin"
+            }
+        ],
+        "Description": "Warps the mouse cursor to the center of the active window whenever focus changes (directional focus switch, screen switch, desktop switch, alt-tab, etc.)",
+        "Icon": "input-mouse",
+        "Id": "centercursoronfocus",
+        "Name": "Center Cursor on Focus",
+        "Version": "1.0",
+        "License": "GPL"
+    },
+    "KPackageStructure": "KWin/Script",
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js"
+}
