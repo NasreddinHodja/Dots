@@ -9,7 +9,8 @@
  '(package-selected-packages '(centered-window perfect-margin))
  '(safe-local-variable-directories
    '("/home/nasreddin/Prog/konigslibrary/" "/home/nasreddin/.config/doom/"
-     "~/.config/emacs/")))
+     "~/.config/emacs/"))
+ '(warning-suppress-types '((doom-first-buffer-hook) (defvaralias) (lexical-binding))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

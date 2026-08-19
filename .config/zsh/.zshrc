@@ -76,10 +76,10 @@ unsetopt prompt_cr prompt_sp
 # fzf completion
 source /usr/share/fzf/completion.zsh
 
-# tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    ~/.local/bin/start_tmux
-fi
+# # tmux
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     ~/.local/bin/start_tmux
+# fi
 
 # zoxide
 eval "$(zoxide init zsh)"
@@ -96,6 +96,6 @@ alias peon="bash /home/nasreddin/.claude/hooks/peon-ping/peon.sh"
 
 # *should be last*
 # load plugins
-source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

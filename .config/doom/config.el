@@ -34,6 +34,13 @@
 (dolist (param nas/frame-parameters)
   (add-to-list 'default-frame-alist param))
 
+;; frame-resize-pixelwise alone isn't enough: Emacs still rounds a frame's
+;; content area down to whole rows/columns when resized by the compositor
+;; (e.g. our dev-layout KWin tiling script) unless window-resize-pixelwise is
+;; also set, leaving a stray gap of up to one char-height at the frame edge.
+(setq! frame-resize-pixelwise t
+       window-resize-pixelwise t)
+
 ;; use trash
 (setq! delete-by-moving-to-trash t)
 

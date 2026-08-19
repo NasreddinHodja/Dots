@@ -2,6 +2,7 @@ return {
 	{
 		"RRethy/base16-nvim",
 		priority = 1000,
+		lazy = true, -- installed but inactive; dracula (lua/plugins/dracula.lua) is the active colorscheme
 		config = function()
 			require('base16-colorscheme').setup({
 				base00 = '#131318',

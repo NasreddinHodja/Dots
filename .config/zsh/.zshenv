@@ -14,12 +14,13 @@ export ANDROID_HOME="$ANDROID_SDK_ROOT"
 # platform-tools adb's mDNS/netwatch thread aborts on this machine; disable it
 export ADB_MDNS=0
 
-source ~/.config/zsh/.node_token
+# source ~/.config/zsh/.node_token
 
 # XDG tool homes
 export CARGO_HOME="$HOME/.local/share/cargo"
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export BUN_INSTALL="$HOME/.local/share/bun"
+export BUN_INSTALL_CACHE_DIR="$BUN_INSTALL/install/cache"
 export NVM_DIR="$HOME/.local/share/nvm"
 export DOCKER_CONFIG="$HOME/.config/docker"
 export GNUPGHOME="$HOME/.local/share/gnupg"
@@ -50,3 +51,6 @@ esac
 
 # bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# XDG relocation for claude config/session data
+export CLAUDE_CONFIG_DIR="$HOME/.local/share/claude/config"

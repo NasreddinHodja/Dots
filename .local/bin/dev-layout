@@ -18,13 +18,14 @@ DESKTOP="${DEV_LAYOUT_DESKTOP:-1}"   # 1-based, as shown in the pager
 SPLIT="${DEV_LAYOUT_SPLIT:-0.5}"     # fraction of the width given to kitty
 FOCUS_SIDE="${DEV_LAYOUT_FOCUS:-left}"
 
-KITTY_CLASS="dev-kitty"
-EMACS_FRAME="dev-emacs"
-SETTLE_MS=4000    # how long to keep re-asserting geometry against self-sizing apps
-TOLERANCE=40      # px slack, so char-cell rounding is not fought forever
+KITTY_CLASS="${DEV_LAYOUT_KITTY_CLASS:-dev-kitty}"
+EMACS_FRAME="${DEV_LAYOUT_EMACS_FRAME:-dev-emacs}"
+TOLERANCE=2       # px slack for float rounding only — with frame/window-resize-pixelwise
+                  # set (see doom config.el), Emacs can hit exact pixel geometry, so this
+                  # should not be raised to paper over a real, un-fixed gap again
 
-JS="${XDG_RUNTIME_DIR:-/tmp}/dev-layout.js"
-PLUGIN="dev-layout"
+PLUGIN="${DEV_LAYOUT_PLUGIN:-dev-layout}"
+JS="${XDG_RUNTIME_DIR:-/tmp}/$PLUGIN.js"
 
 die() { printf '%s: %s\n' "${0##*/}" "$*" >&2; exit 1; }
 
@@ -43,7 +44,6 @@ const SPLIT         = $SPLIT;
 const FOCUS_SIDE    = "$FOCUS_SIDE";
 const LEFT_CLASS    = "$KITTY_CLASS";
 const RIGHT_TITLE   = "$EMACS_FRAME";
-const SETTLE_MS     = $SETTLE_MS;
 const TOLERANCE     = $TOLERANCE;
 EOF
     cat <<'EOF'
@@ -71,14 +71,13 @@ function sideOf(w) {
 }
 
 // Emacs (and any other client that sizes itself in character cells) picks its
-// own geometry shortly after mapping, overriding whatever we set. Re-assert the
-// target until it settles, then get out of the way. There is no setTimeout in
-// KWin's JS engine, so the give-up point is a wall-clock deadline tested on
-// each geometry change rather than a timer.
+// own geometry shortly after mapping, overriding whatever we set — and Doom in
+// particular can do this more than once (fonts, doom-modeline, treemacs, first-
+// run package init all reflow the frame at their own pace). There's no reliable
+// point at which it's "done", so rather than fight it for a fixed window and
+// then give up, keep re-asserting indefinitely and only stand down once the
+// user actually grabs the window themselves.
 function enforce(w, rect) {
-    var deadline = Date.now() + SETTLE_MS;
-    var stopped = false;
-
     function fits(g) {
         return Math.abs(g.x - rect.x) <= TOLERANCE &&
                Math.abs(g.y - rect.y) <= TOLERANCE &&
@@ -87,21 +86,26 @@ function enforce(w, rect) {
     }
 
     function stop() {
-        if (stopped) return;
-        stopped = true;
         try { w.frameGeometryChanged.disconnect(onChange); } catch (e) {}
         try { w.interactiveMoveResizeStarted.disconnect(stop); } catch (e) {}
+        try { w.maximizedAboutToChange.disconnect(stop); } catch (e) {}
+        try { w.quickTileModeChanged.disconnect(stop); } catch (e) {}
     }
 
     function onChange() {
-        if (stopped) return;
-        if (Date.now() > deadline) { stop(); return; }
         if (fits(w.frameGeometry)) return;
         w.frameGeometry = rect;
     }
 
     try { w.frameGeometryChanged.connect(onChange); } catch (e) {}
+    // A mouse drag is caught by interactiveMoveResizeStarted, but maximizing
+    // (titlebar/keyboard) and quick-tiling (edge snap/keyboard) change geometry
+    // through a different path entirely, bypassing that signal — without these,
+    // onChange fights back and silently reverts the maximize/tile before it's
+    // visible.
     try { w.interactiveMoveResizeStarted.connect(stop); } catch (e) {}
+    try { w.maximizedAboutToChange.connect(stop); } catch (e) {}
+    try { w.quickTileModeChanged.connect(stop); } catch (e) {}
     w.frameGeometry = rect;
 }
 

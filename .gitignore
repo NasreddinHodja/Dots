@@ -134,6 +134,8 @@ wp.state.json
 .config/quickshell/notification_history.json
 /.config/exercism/
 /.local/bin/exercism
+.config/mozilla/
+.local/bin/zoxide
 
 # kde
 .config/KDE/
@@ -196,3 +198,7 @@ wp.state.json
 .config/systemd/user/plasma-kwin_wayland.service.d/
 .local/bin/gpg-socket-watch.sh
 .local/bin/pinentry-logwrap
+.config/breezerc
+.config/emaildefaults
+.config/glib-2.0/
+.config/plasma-nm

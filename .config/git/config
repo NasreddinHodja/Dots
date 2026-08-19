@@ -1,5 +1,5 @@
 [credential]
-	helper = store
+	helper = libsecret
 [user]
 	email = tbizetde@gmail.com
 	name = tbizetde@gmail.com
