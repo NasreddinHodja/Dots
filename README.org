@@ -1,30 +1,19 @@
 #+title: Dotfiles
 #+description: Personal dotfiles
 
-* Nas' inferno
-
-[[./assets/screenshot.png]]
-
-Welcome to my dotfiles repository! This is my /minimal/ GNU/Linux setup.
-
-** Philosophy
-+ Keyboard-driven workflow with vim keybindings across all applications
-+ Unix philosophy
-+ Free ((or open-source)) software tools
-+ Plain text configuration files that are transparent and version-controllable
-
-** Directory Structure
+* Directory Structure
 
 #+begin_example
 Dots/
 ├── .config/
 │   ├── doom/              # Doom Emacs config
 │   ├── kitty/             # Terminal emulator config
-│   ├── rofi/              # App launcher config
-│   ├── sioyek/            # PDF viewer config
+│   ├── nvim/              # Neovim config
 │   └── ...
 ├── .local/
-│   └── bin/               # Personal scripts
+│   ├── bin/               # Personal scripts
+│   └── share/kwin/scripts/ # KWin scripts
+├── legacy/                # Configs from previous setups (same layout as ~)
 ├── .zshrc                 # ZSH config
 ├── .Xresources            # X params
 ├── ...
@@ -36,18 +25,18 @@ Dots/
 + *GNU/Linux*: [[https://archlinux.org][Arch Linux]]
 + *Init System*: [[https://systemd.io/][systemd]]
 + *Package manager*: [[https://github.com/Morganamilo/paru][paru]]
-+ *Compositor*: [[https://mangowm.github.io/][mangowc]]
++ *Desktop*: [[https://kde.org/plasma-desktop/][KDE Plasma]] with the default Breeze theme
 
 ** Applications
-+ *File manager*: [[https://docs.xfce.org/xfce/thunar/start][thunar]] (or =dired=)
++ *File manager*: [[https://apps.kde.org/dolphin/][Dolphin]] (or =dired=)
 + *Video player*: [[https://mpv.io/][mpv]]
 + *Image viewer*: [[https://github.com/artemsen/swayimg][swayimg]]
-+ *PDF viewer*: [[https://sioyek.info/][sioyek]]
++ *PDF viewer*: [[https://okular.kde.org/][Okular]]
 
 ** Dev Tools
 + *Primary Editor*: [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
 + *WebDev Editor*: [[https://vscodium.com/][VSCodium]] with =vim= mode
-+ *Terminal emulator*: [[https://sw.kovidgoyal.net/kitty/][kitty]] with =tmux= and [[https://starship.rs/][starship]]
++ *Terminal emulator*: [[https://sw.kovidgoyal.net/kitty/][kitty]] (sessions/tabs instead of tmux) with [[https://starship.rs/][starship]]
 + *Shell*: [[https://www.zsh.org/][zsh]] with vim mode, history substring search, and syntax highlighting
 
 * Keyboard Layout [WIP]
@@ -56,8 +45,13 @@ Dots/
 + [[https://qmk.fm/][QMK firmware]]
 + [[https://github.com/NasreddinHodja/qmk_userspace][my qmk external userpace repo]]
 
+* KDE
+KDE's own config files (=kwinrc=, =kglobalshortcutsrc=, etc.) are gitignored — they're rewritten by Plasma and don't diff cleanly.
+Tracked instead: KWin scripts in =.local/share/kwin/scripts/= (=centercursoronfocus=, [[https://github.com/NasreddinHodja/quicktilegaps][quicktilegaps]]).
+
 * Legacy
-Configs for these are still being used, deleted, or flagged as legacy.
+Configs from previous setups live in =legacy/=, mirroring the home layout (=legacy/.config/=, =legacy/.local/bin/=, =legacy/.config/systemd/user/=).
+They aren't linked anywhere. Includes Hyprland, niri, mangowc, Qtile, XFCE, DankMaterialShell, quickshell, waybar, rofi, dunst/swaync, matugen, sioyek, zathura, yazi, zellij, tmux, alacritty, ghostty and more.
 
 ** Hyprland
 [[./assets/screenshot-hyprland.png]]

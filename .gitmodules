@@ -1,3 +1,6 @@
 [submodule ".config/qmk_userspace"]
 	path = .config/qmk_userspace
 	url = https://github.com/NasreddinHodja/qmk_userspace.git
+[submodule ".local/share/kwin/scripts/quicktilegaps"]
+	path = .local/share/kwin/scripts/quicktilegaps
+	url = https://github.com/NasreddinHodja/quicktilegaps.git

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# swayimg can't read archives: extract the pages and open them in order
+set -euo pipefail
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+
+unzip -qq "$1" -x ComicInfo.xml -d "$tmp"
+mapfile -t pages < <(find "$tmp" -type f | sort -V)
+swayimg "${pages[@]}"

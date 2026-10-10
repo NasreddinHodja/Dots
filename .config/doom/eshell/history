@@ -1,17 +1,3 @@
-mgdl -u
-z mgdl
-cargo build --releas
-cargo build --release
-mgdl -u
-qmk compile -kb crkbd -km naskbdk
-qmk compile -kb crkbd -km naskbd
-kitty .
-qmk compile -kb crkbd -km naskbd
-yay
-yay -Ss vlc
-yay -Syu vl
-yay -Syu vlc
-z videos
 la
 mpv --ao=pulse 2025-12-18\ 10-41-20.mp4 
 mpv --ao=pulse Jujutsu.Kaisen.S03E05.Fever.1080p.NF.WEB-DL.JPN.AAC2.0.H.264.MSubs-ToonsHub.mkv 
@@ -126,3 +112,17 @@ qmk compile -kb crkbd -km naskbd
 python3 -m http.server 8000
 ip addr show | grep "inet " | grep -v 127.0.0.1
 python3 -m http.server 8000
+la
+qmk compile -kb crkbd -km naskbd
+qmk compile -kb crkbd -km naskbd --compiledb
+qmk compile -kb crkbd -km naskbd
+rgbgfx -u -o ~/Prog/kgboy/roms/pic.2bpp -t Untitled.png 
+rgbgfx -u -o ~/Prog/kgboy/roms/pic.2bpp -t ~/Prog/kgboy/rom/pic.tilemap Untitled.png 
+rgbgfx -u -o ~/Prog/kgboy/roms/pic.2bpp -t ~/Prog/kgboy/roms/pic.tilemap Untitled.png
+qmk compile -kb crkbd -km naskbd
+(seq-filter #'f-dir-p (directory-files "~/Manga/" 'full))
+qmk compile -kb crkbd -km naskbd
+./mother3_linux
+./mother3_linux 
+./tsukuyomi 
+qmk compile -kb crkbd -km naskbd

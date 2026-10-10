@@ -1,30 +1,21 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; - `use-package!' for configuring packages
-;; - `after!' for reconfiguring packages
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;; - `load!' for loading external *.el files relative to this one
-
-
 ;;
 ;;; * GENERAL ==================================================================
 ;;
 
-(setq! user-full-name "tomás bizet"
+(setopt user-full-name "Tomás Bizet"
        user-mail-address "tbizetde@gmail.com")
 
-(setq! doom-font (font-spec :family "Source Code Pro" :size 16)
+(setopt doom-font (font-spec :family "Source Code Pro" :size 16)
        doom-variable-pitch-font (font-spec :family "sans" :size 16))
 
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.config/emacs/themes/"))
-(setq! doom-theme 'doom-dracula)
+(setopt doom-theme 'doom-dracula)
 
-(setq! fancy-splash-image (expand-file-name "banner.png" doom-user-dir))
+(setopt fancy-splash-image (expand-file-name "banner.png" doom-user-dir))
 
-(setq! display-line-numbers-type 'relative)
+(setopt display-line-numbers-type 'relative)
 
 (defconst nas/frame-parameters
   '((width . 100)
@@ -38,14 +29,14 @@
 ;; content area down to whole rows/columns when resized by the compositor
 ;; (e.g. our dev-layout KWin tiling script) unless window-resize-pixelwise is
 ;; also set, leaving a stray gap of up to one char-height at the frame edge.
-(setq! frame-resize-pixelwise t
+(setopt frame-resize-pixelwise t
        window-resize-pixelwise t)
 
 ;; use trash
-(setq! delete-by-moving-to-trash t)
+(setopt delete-by-moving-to-trash t)
 
 ;; remove quit prompt
-(setq! confirm-kill-emacs nil)
+(setopt confirm-kill-emacs nil)
 
 ;; compilation buffer as a normal split, not a popup
 (after! compile
@@ -60,11 +51,24 @@
 ;; load path for local packages
 (add-to-list 'load-path (expand-file-name "local" doom-user-dir))
 
-(setq! projectile-project-search-path '("~/prog/"))
+(setopt projectile-project-search-path '("~/prog/"))
 
 ;; evil
-(setq! evil-want-minibuffer t
-       evil-default-state 'normal)
+(setopt evil-want-minibuffer t
+        evil-default-state 'normal)
+
+;; `evil-set-initial-state' can't target the minibuffer (it has no
+;; major-mode), so with `evil-default-state' set to normal above, the
+;; minibuffer falls back to normal state instead of insert. Turning on
+;; `evil-collection-setup-minibuffer' should fix that (it hooks
+;; `evil-collection-minibuffer-insert' into `minibuffer-setup-hook'), but
+;; `add-hook' prepends by default, so that hook runs *before*
+;; `evil-initialize' — which then resets the buffer's state back to
+;; `evil-default-state', undoing the insert state. Forcing our own hook to
+;; run last (depth 100) is what actually makes insert state stick.
+(defvar evil-collection-setup-minibuffer t)
+(after! evil-collection
+  (add-hook 'minibuffer-setup-hook #'evil-insert-state 100))
 
 ;; line numbers in text-mode
 (add-hook! text-mode #'display-line-numbers-mode)
@@ -73,17 +77,17 @@
 (add-hook! prog-mode #'display-fill-column-indicator-mode)
 
 ;; TODO hide modeline ignores
-(setq! hide-mode-line-excluded-modes '(elemental-mode vterm-mode eshell-mode))
+(setopt hide-mode-line-excluded-modes '(elemental-mode vterm-mode eshell-mode))
 
 ;; workspaces
 (defconst nas/workspaces-dir "~/.config/doom/workspaces/")
 (defconst nas/workspaces-file "workspaces")
 
-(setq! doom-modeline-persp-name t
+(setopt doom-modeline-persp-name t
        +workspaces-data-file (concat nas/workspaces-dir nas/workspaces-file))
 
 ;; TODO figure why this is being reset
-(setq! persp-auto-save-opt 0
+(setopt persp-auto-save-opt 0
        persp-save-dir nas/workspaces-dir)
 
 ;; lsp hints
@@ -102,6 +106,16 @@
 
 ;; centered buffer
 ;; (perfect-margin-mode 1)
+
+;; don't omit anything in dired
+(remove-hook 'dired-mode-hook #'dired-omit-mode)
+
+;; find other file (.c/.h in C)
+(map! :leader
+    :prefix "c"
+    :desc "Other file (.c/.h)" "h" #'projectile-find-other-file
+    :desc "Other file, other window" "H" (cmd! (projectile-find-other-file t)))
+
 
 ;;
 ;;; * EMACS BINDINGS ===========================================================
@@ -123,14 +137,14 @@
 (add-hook 'org-babel-after-execute-hook 'nas/ansi-colorize-buffer)
 
 ;; dirs
-(setq! org-directory "~/Notes/"
+(setopt org-directory "~/Notes/"
        org-roam-directory org-directory)
 
 ;; default to org-mode on buffers
-(setq! initial-major-mode 'org-mode)
+(setopt initial-major-mode 'org-mode)
 
 ;; org-mode src block syntax highlight
-(setq! org-src-fontify-natively t
+(setopt org-src-fontify-natively t
        org-src-tab-acts-natively t
        org-confirm-babel-evaluate nil
        org-edit-src-content-indentation 0)
@@ -162,10 +176,10 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-(setq! org-latex-listings 't)
+(setopt org-latex-listings 't)
 
 ;; configure org latex preview
-(setq! org-preview-latex-process-alist
+(setopt org-preview-latex-process-alist
        '((imagemagick
           :programs ("pdflatex" "convert")
           :description "pdf > png"
@@ -176,7 +190,7 @@
           :latex-compiler ("pdflatex -interaction nonstopmode -output-directory %o %f")
           :image-converter ("convert -density 300 -trim -antialias %f -quality 100 %O"))))
 
-(setq! org-preview-latex-default-process 'imagemagick)
+(setopt org-preview-latex-default-process 'imagemagick)
 
 ;; roam capture templates
 (defun nas/org-roam-slug (title)
@@ -184,7 +198,7 @@
    "[^[:alnum:]-]+" "-"
    (replace-regexp-in-string "[ \t]+" "-" title)))
 
-(setq! org-roam-capture-templates
+(setopt org-roam-capture-templates
        '(("d" "default" plain
           "%?"
           :if-new
@@ -193,7 +207,7 @@
 
 
 (after! org
-  (setq! org-todo-keywords
+  (setopt org-todo-keywords
          '((sequence "TODO(t)" "PROJ(p)" "LOOP(r)" "STRT(s)" "WAIT (w)" "HOLD(h)"
             "IDEA(i)" "|" "DONE(d)" "KILL(k)")
            (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
@@ -363,7 +377,7 @@
 
 (add-hook! eshell-mode #'nas/eshell-convert-aliasrc)
 
-(setq! eshell-directory-name "~/.config/doom/eshell/")
+(setopt eshell-directory-name "~/.config/doom/eshell/")
 
 
 ;;
@@ -444,6 +458,15 @@
 (after! lsp-dart
   (setq lsp-dart-sdk-dir (expand-file-name "~/.local/src/flutter/bin/cache/dart-sdk")))
 
+;; Force apheleia to use the `dart format` CLI instead of routing through
+;; lsp-mode. Doom's LSP-format bridge (+format--with-lsp-mode) hits a
+;; `cl-return' outside any `cl-block nil', which throws
+;; "No catch for tag: --cl-block-nil--, nil" whenever the LSP capability
+;; check falls through its cond branches. Setting `+format-with' here (before
+;; lsp-managed-mode-hook fires) makes `+format-with-lsp-toggle-h' skip
+;; enabling lsp-based formatting for dart-mode entirely.
+(setq-hook! 'dart-mode-hook +format-with 'dart-format)
+
 (defun nas/flutter-hot-reload ()
   "Send hot reload signal to running Flutter process."
   (when (and (eq major-mode 'dart-mode)
@@ -489,3 +512,20 @@
   (ert-delete-all-tests)
   (eval-buffer)
   (ert 't))
+
+;;
+;;; * emgrack ==================================================================
+;;
+
+(use-package! emgrack
+  :load-path "~/Prog/emgrack"
+  :commands (emgrack)
+  :config
+  (evil-make-overriding-map emgrack-library-mode-map 'normal)
+  (evil-make-overriding-map emgrack-series-mode-map 'normal)
+  (keymap-set emgrack-library-mode-map "<remap> <evil-forward-char>" #'emgrack-library-next)
+  (keymap-set emgrack-library-mode-map "<remap> <evil-backward-char>" #'emgrack-library-previous)
+  (keymap-set emgrack-library-mode-map "<remap> <evil-next-line>" #'emgrack-library-down)
+  (keymap-set emgrack-library-mode-map "<remap> <evil-previous-line>" #'emgrack-library-up)
+  (keymap-set emgrack-library-mode-map "<remap> <evil-next-visual-line>" #'emgrack-library-down)
+  (keymap-set emgrack-library-mode-map "<remap> <evil-previous-visual-line>" #'emgrack-library-up))

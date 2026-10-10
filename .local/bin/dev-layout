@@ -1,150 +1,46 @@
 #!/usr/bin/env bash
-# dev-layout — switch to a virtual desktop and open a two-pane dev session on
-# the main monitor: kitty on the left half, an emacsclient frame on the right.
-#
-# KWin on Wayland refuses external geometry control, so the placement half runs
-# as a KWin script loaded over D-Bus. It matches only the marker class/title
-# below, so ordinary kitty and emacs windows are never touched.
-#
-# The --class marker below becomes the Wayland app_id, which is also how Plasma
-# looks up the window's icon: app_id -> <app_id>.desktop. Without a matching
-# entry you get the generic Wayland logo instead of the kitty icon, so this
-# needs ~/.local/share/applications/dev-kitty.desktop (Icon=kitty).
+# spawn kitty + an emacsclient frame on the main output, tile them left/right.
+# placement is a kwin script (dev-layout.js) loaded over d-bus.
+# the --class marker needs a matching dev-kitty.desktop or plasma shows the
+# generic wayland icon instead of kitty's.
 
 set -u
 
 MAIN_OUTPUT="${DEV_LAYOUT_OUTPUT:-DP-3}"
 DESKTOP="${DEV_LAYOUT_DESKTOP:-1}"   # 1-based, as shown in the pager
-SPLIT="${DEV_LAYOUT_SPLIT:-0.5}"     # fraction of the width given to kitty
 FOCUS_SIDE="${DEV_LAYOUT_FOCUS:-left}"
 
 KITTY_CLASS="${DEV_LAYOUT_KITTY_CLASS:-dev-kitty}"
 EMACS_FRAME="${DEV_LAYOUT_EMACS_FRAME:-dev-emacs}"
-TOLERANCE=2       # px slack for float rounding only — with frame/window-resize-pixelwise
-                  # set (see doom config.el), Emacs can hit exact pixel geometry, so this
-                  # should not be raised to paper over a real, un-fixed gap again
 
 PLUGIN="${DEV_LAYOUT_PLUGIN:-dev-layout}"
 JS="${XDG_RUNTIME_DIR:-/tmp}/$PLUGIN.js"
+
+# resolve through the ~/.local/bin symlink
+SELF="$(readlink -f "${BASH_SOURCE[0]}")"
+SOURCE_JS="${DEV_LAYOUT_JS:-${SELF%/*}/dev-layout.js}"
 
 die() { printf '%s: %s\n' "${0##*/}" "$*" >&2; exit 1; }
 
 command -v qdbus6 >/dev/null || die "qdbus6 not found"
 [[ ${XDG_CURRENT_DESKTOP:-} == *KDE* ]] || die "not a KDE session"
+[[ -r $SOURCE_JS ]] || die "cannot read KWin script: $SOURCE_JS"
 
 kwin() { qdbus6 org.kde.KWin /Scripting "org.kde.kwin.Scripting.$@"; }
 
-# --- the KWin side ----------------------------------------------------------
+# --- the kwin side ----------------------------------------------------------
 
+# kwin scripts can't read config or files, so the settings go in as source
 {
-    cat <<EOF
-const MAIN_OUTPUT   = "$MAIN_OUTPUT";
-const DESKTOP_INDEX = $((DESKTOP - 1));
-const SPLIT         = $SPLIT;
-const FOCUS_SIDE    = "$FOCUS_SIDE";
-const LEFT_CLASS    = "$KITTY_CLASS";
-const RIGHT_TITLE   = "$EMACS_FRAME";
-const TOLERANCE     = $TOLERANCE;
-EOF
-    cat <<'EOF'
-
-function mainOutput() {
-    var found = null;
-    workspace.screens.forEach(function (s) {
-        if (s.name === MAIN_OUTPUT) found = s;
-    });
-    return found || workspace.activeScreen;
-}
-
-function targetDesktop() {
-    var i = Math.max(0, Math.min(DESKTOP_INDEX, workspace.desktops.length - 1));
-    return workspace.desktops[i];
-}
-
-function sideOf(w) {
-    if (!w || !w.normalWindow) return null;
-    var cls = String(w.resourceClass).toLowerCase();
-    if (cls === LEFT_CLASS) return "left";
-    if (cls.indexOf("emacs") !== -1 &&
-        String(w.caption).indexOf(RIGHT_TITLE) !== -1) return "right";
-    return null;
-}
-
-// Emacs (and any other client that sizes itself in character cells) picks its
-// own geometry shortly after mapping, overriding whatever we set — and Doom in
-// particular can do this more than once (fonts, doom-modeline, treemacs, first-
-// run package init all reflow the frame at their own pace). There's no reliable
-// point at which it's "done", so rather than fight it for a fixed window and
-// then give up, keep re-asserting indefinitely and only stand down once the
-// user actually grabs the window themselves.
-function enforce(w, rect) {
-    function fits(g) {
-        return Math.abs(g.x - rect.x) <= TOLERANCE &&
-               Math.abs(g.y - rect.y) <= TOLERANCE &&
-               Math.abs(g.width  - rect.width)  <= TOLERANCE &&
-               Math.abs(g.height - rect.height) <= TOLERANCE;
-    }
-
-    function stop() {
-        try { w.frameGeometryChanged.disconnect(onChange); } catch (e) {}
-        try { w.interactiveMoveResizeStarted.disconnect(stop); } catch (e) {}
-        try { w.maximizedAboutToChange.disconnect(stop); } catch (e) {}
-        try { w.quickTileModeChanged.disconnect(stop); } catch (e) {}
-    }
-
-    function onChange() {
-        if (fits(w.frameGeometry)) return;
-        w.frameGeometry = rect;
-    }
-
-    try { w.frameGeometryChanged.connect(onChange); } catch (e) {}
-    // A mouse drag is caught by interactiveMoveResizeStarted, but maximizing
-    // (titlebar/keyboard) and quick-tiling (edge snap/keyboard) change geometry
-    // through a different path entirely, bypassing that signal — without these,
-    // onChange fights back and silently reverts the maximize/tile before it's
-    // visible.
-    try { w.interactiveMoveResizeStarted.connect(stop); } catch (e) {}
-    try { w.maximizedAboutToChange.connect(stop); } catch (e) {}
-    try { w.quickTileModeChanged.connect(stop); } catch (e) {}
-    w.frameGeometry = rect;
-}
-
-var leftWindow = null;
-
-function place(w) {
-    var side = sideOf(w);
-    if (side === null) return;
-
-    var out  = mainOutput();
-    var desk = targetDesktop();
-
-    w.onAllDesktops = false;
-    w.desktops = [desk];
-    if (w.fullScreen) w.fullScreen = false;
-    w.setMaximize(false, false);
-
-    var a = workspace.clientArea(KWin.PlacementArea, out, desk);
-    var leftWidth = Math.round(a.width * SPLIT);
-
-    if (side === "left") {
-        enforce(w, { x: a.x, y: a.y, width: leftWidth, height: a.height });
-        leftWindow = w;
-    } else {
-        enforce(w, { x: a.x + leftWidth, y: a.y,
-                     width: a.width - leftWidth, height: a.height });
-    }
-
-    if (side === FOCUS_SIDE) workspace.activeWindow = w;
-    else if (FOCUS_SIDE === "left" && leftWindow !== null) workspace.activeWindow = leftWindow;
-}
-
-workspace.currentDesktop = targetDesktop();
-workspace.windowList().forEach(place);   // re-tile anything already open
-workspace.windowAdded.connect(place);    // catch the windows we spawn below
-EOF
+    printf 'const MAIN_OUTPUT   = "%s";\n' "$MAIN_OUTPUT"
+    printf 'const DESKTOP_INDEX = %d;\n'   "$((DESKTOP - 1))"
+    printf 'const FOCUS_SIDE    = "%s";\n' "$FOCUS_SIDE"
+    printf 'const LEFT_CLASS    = "%s";\n' "$KITTY_CLASS"
+    printf 'const RIGHT_TITLE   = "%s";\n' "$EMACS_FRAME"
+    cat "$SOURCE_JS"
 } > "$JS"
 
-# Reload so a re-run re-tiles existing windows instead of stacking listeners.
+# reload, else re-runs stack listeners
 kwin unloadScript "$PLUGIN" >/dev/null 2>&1
 kwin loadScript "$JS" "$PLUGIN" >/dev/null || die "KWin refused the layout script"
 kwin start >/dev/null

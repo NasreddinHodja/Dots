@@ -7,13 +7,14 @@
 
 swayimg.set_window_size(1280, 720)
 swayimg.decoration = false
-swayimg.antialiasing = true
+swayimg.antialiasing = false
 
 --------------------------------------------------------------------------------
 -- Image list
 --------------------------------------------------------------------------------
 
 swayimg.imagelist.order = "alpha"
+swayimg.imagelist.adjacent = true
 
 --------------------------------------------------------------------------------
 -- Font / text overlay
@@ -35,19 +36,21 @@ swayimg.on_initialized(function() swayimg.text.visible = false end)
 --------------------------------------------------------------------------------
 
 swayimg.viewer.set_window_background(0xff000000)
-swayimg.viewer.default_scale = "optimal"
+swayimg.viewer.default_scale = "fit"
 swayimg.viewer.default_position = "center"
 swayimg.viewer.loop = true
 swayimg.viewer.preload = 1
 swayimg.viewer.drag_button = "MouseLeft"
 
-swayimg.viewer.set_text("topleft", {
-  "{name}", "{format}", "{sizehr}", "{frame.width}x{frame.height}",
-  "{meta.Exif.Photo.DateTimeOriginal}", "{meta.Exif.Image.Model}",
-})
-swayimg.viewer.set_text("topright", { "{list.index}/{list.total}" })
-swayimg.viewer.set_text("bottomleft", { "{scale}" })
-swayimg.viewer.set_text("bottomright", {})
+swayimg.viewer.text = {
+  topleft = {
+    "{name}", "{format}", "{sizehr}", "{frame.width}x{frame.height}",
+    "{meta.Exif.Photo.DateTimeOriginal}", "{meta.Exif.Image.Model}",
+  },
+  topright = { "{list.index}/{list.total}" },
+  bottomleft = { "{scale}" },
+  bottomright = {},
+}
 
 swayimg.viewer.on_signal("USR2", function()
   swayimg.viewer.open("next")
@@ -179,10 +182,12 @@ swayimg.slideshow.set_image_background(0xff000000)
 swayimg.slideshow.default_scale = "fit"
 swayimg.slideshow.default_position = "center"
 
-swayimg.slideshow.set_text("topleft",    {})
-swayimg.slideshow.set_text("topright",   {})
-swayimg.slideshow.set_text("bottomleft", {})
-swayimg.slideshow.set_text("bottomright", { "{dir}" })
+swayimg.slideshow.text = {
+  topleft     = {},
+  topright    = {},
+  bottomleft  = {},
+  bottomright = { "{dir}" },
+}
 
 swayimg.slideshow.on_signal("USR2", function()
   swayimg.slideshow.open("next")
@@ -233,10 +238,12 @@ swayimg.gallery.unselected_color = 0xff202020
 swayimg.gallery.selected_color = 0xff404040
 swayimg.gallery.border_color = 0xff000000
 
-swayimg.gallery.set_text("topleft",    {})
-swayimg.gallery.set_text("topright",   { "{list.index}/{list.total}" })
-swayimg.gallery.set_text("bottomleft", {})
-swayimg.gallery.set_text("bottomright", { "{name}" })
+swayimg.gallery.text = {
+  topleft     = {},
+  topright    = { "{list.index}/{list.total}" },
+  bottomleft  = {},
+  bottomright = { "{name}" },
+}
 
 swayimg.gallery.bind_reset()
 

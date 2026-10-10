@@ -170,6 +170,15 @@ wp.state.json
 .config/kwinrc
 .config/kwinrulesrc
 .config/kxkbrc
+.config/kglobalshortcutsrc.bak*
+.config/kxkbrc.bak*
+.config/baloofileinformationrc
+.config/ktrashrc
+.config/partitionmanagerrc
+.config/plasmaparc
+.config/kamosorc
+.config/kwinscriptsrc
+.config/xdg-desktop-portal-kderc
 .config/libaccounts-glib/
 .config/okularpartrc
 .config/okularrc
@@ -202,3 +211,10 @@ wp.state.json
 .config/emaildefaults
 .config/glib-2.0/
 .config/plasma-nm
+.config/zsh/.zcompdump*
+.config/persepolis_download_manager/persepolis.db
+.config/persepolis_download_manager/persepolis_tmp/
+/legacy/.config/tmux/plugins/
+/.config/plowshare/
+.local/bin/uv
+.local/bin/uvx

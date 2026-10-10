@@ -5,11 +5,11 @@
                 "Name": "nasreddin"
             }
         ],
-        "Description": "Warps the mouse cursor to the center of the active window whenever focus changes (directional focus switch, screen switch, desktop switch, alt-tab, etc.)",
+        "Description": "Warps the mouse cursor to the centre of the active window for keyboard-driven focus changes only (directional window/screen switch, desktop switch), and follows the active window when it is sent to another desktop",
         "Icon": "input-mouse",
         "Id": "centercursoronfocus",
         "Name": "Center Cursor on Focus",
-        "Version": "1.0",
+        "Version": "2.4",
         "License": "GPL"
     },
     "KPackageStructure": "KWin/Script",

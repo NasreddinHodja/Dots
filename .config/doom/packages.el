@@ -66,3 +66,4 @@
 
 (package! qml-ts-mode
   :recipe (:host github :repo "xhcoding/qml-ts-mode"))
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Swayimg (CBZ)
+GenericName=Comic Book Viewer
+Comment=Open a .cbz archive in swayimg
+Exec=/home/nasreddin/.local/bin/swayimg-cbz %f
+TryExec=/home/nasreddin/.local/bin/swayimg-cbz
+Icon=swayimg
+Terminal=false
+NoDisplay=true
+MimeType=application/vnd.comicbook+zip;
+Categories=Graphics;Viewer;
