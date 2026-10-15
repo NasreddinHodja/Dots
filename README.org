@@ -1,6 +1,8 @@
 #+title: Dotfiles
 #+description: Personal dotfiles
 
+[[./assets/screenshot.png]]
+
 * Directory Structure
 
 #+begin_example
@@ -25,7 +27,7 @@ Dots/
 + *GNU/Linux*: [[https://archlinux.org][Arch Linux]]
 + *Init System*: [[https://systemd.io/][systemd]]
 + *Package manager*: [[https://github.com/Morganamilo/paru][paru]]
-+ *Desktop*: [[https://kde.org/plasma-desktop/][KDE Plasma]] with the default Breeze theme
++ *Desktop*: [[https://kde.org/plasma-desktop/][KDE Plasma]]
 
 ** Applications
 + *File manager*: [[https://apps.kde.org/dolphin/][Dolphin]] (or =dired=)
@@ -46,8 +48,7 @@ Dots/
 + [[https://github.com/NasreddinHodja/qmk_userspace][my qmk external userpace repo]]
 
 * KDE
-KDE's own config files (=kwinrc=, =kglobalshortcutsrc=, etc.) are gitignored — they're rewritten by Plasma and don't diff cleanly.
-Tracked instead: KWin scripts in =.local/share/kwin/scripts/= (=centercursoronfocus=, [[https://github.com/NasreddinHodja/quicktilegaps][quicktilegaps]]).
+KWin scripts in =.local/share/kwin/scripts/= (=centercursoronfocus=, [[https://github.com/NasreddinHodja/quicktilegaps][quicktilegaps]]).
 
 * Legacy
 Configs from previous setups live in =legacy/=, mirroring the home layout (=legacy/.config/=, =legacy/.local/bin/=, =legacy/.config/systemd/user/=).
