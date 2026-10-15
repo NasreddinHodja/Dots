@@ -4,14 +4,14 @@
 ;;; * GENERAL ==================================================================
 ;;
 
+(setopt doom-font (font-spec :family "Source Code Pro" :size 16 :weight 'medium)
+       doom-variable-pitch-font (font-spec :family "sans" :size 16))
+
 (setopt user-full-name "Tomás Bizet"
        user-mail-address "tbizetde@gmail.com")
 
-(setopt doom-font (font-spec :family "Source Code Pro" :size 16)
-       doom-variable-pitch-font (font-spec :family "sans" :size 16))
-
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.config/emacs/themes/"))
-(setopt doom-theme 'doom-dracula)
+(setopt doom-theme 'doom-laland)
 
 (setopt fancy-splash-image (expand-file-name "banner.png" doom-user-dir))
 

@@ -1,7 +1,6 @@
 #!/bin/sh
 
 alias \
-	bat="bat --theme=Dracula" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
