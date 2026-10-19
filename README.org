@@ -33,7 +33,7 @@ Dots/
 ** Applications
 + *File manager*: [[https://apps.kde.org/dolphin/][Dolphin]] (or =dired=)
 + *Video player*: [[https://mpv.io/][mpv]]
-+ *Image viewer*: [[https://github.com/artemsen/swayimg][swayimg]]
++ *Image viewer*: [[https://apps.kde.org/gwenview/][Gwenview]]
 + *PDF viewer*: [[https://okular.kde.org/][Okular]]
 
 ** Dev Tools

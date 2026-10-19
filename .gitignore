@@ -218,3 +218,4 @@ wp.state.json
 /.config/plowshare/
 .local/bin/uv
 .local/bin/uvx
+/.config/gwenviewrc
